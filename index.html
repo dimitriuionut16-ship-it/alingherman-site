@@ -420,17 +420,110 @@
             font-size: 12px;
             color: rgba(255, 255, 255, 0.7);
         }
-        
-        @media (max-width: 968px) {
-            .about-grid, .instruments-showcase, .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-            .work-grid {
-                grid-template-columns: 1fr;
-            }
+
+        /* ── NAV TOGGLE (hamburger) ── */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 22px; height: 16px;
+            background: none; border: none;
+            cursor: pointer; padding: 0; z-index: 1100;
+            flex-shrink: 0;
         }
-    
+        .nav-toggle span {
+            display: block; width: 100%; height: 2px;
+            background: var(--burgundy);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+        .nav-toggle.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .nav-toggle.open span:nth-child(2) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* ── MOBILE BREAKPOINTS ── */
+        @media (max-width: 900px) {
+            .nav-content { padding: 18px 32px; }
+            .nav-links { gap: 28px; }
+        }
+
+        @media (max-width: 768px) {
+            /* show hamburger, hide links */
+            .nav-toggle { display: flex; }
+            .nav-content { padding: 16px 24px; }
+            .nav-links {
+                position: fixed;
+                inset: 0;
+                background: rgba(253,251,247,0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 36px;
+                z-index: 1050;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+            .nav-links.open {
+                opacity: 1;
+                pointer-events: all;
+            }
+            .nav-links a {
+                font-size: 18px;
+                letter-spacing: 1px;
+                color: var(--burgundy);
+            }
+
+            /* hero */
+            .hero { padding: 100px 24px 64px; min-height: 90vh; }
+            .hero-title { font-size: clamp(34px, 10vw, 56px) !important; }
+            .hero-text { font-size: 15px; padding: 0 8px; }
+            .hero-cta { flex-direction: column; align-items: center; gap: 12px; }
+            .btn-primary, .btn-secondary {
+                width: 100%; max-width: 280px;
+                text-align: center; display: block;
+            }
+
+            /* sections */
+            section { padding: 80px 0; }
+            .container-fluid, .container-narrow { padding: 0 24px; }
+            .section-title { font-size: clamp(30px, 7vw, 52px) !important; }
+            .section-label { font-size: 10px; }
+
+            /* about */
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-stats { flex-direction: column; gap: 28px; }
+            .stat-number { font-size: 36px; }
+
+            /* work cards */
+            .work-grid { grid-template-columns: 1fr; gap: 16px; }
+            .work-card { padding: 24px; }
+
+            /* instruments */
+            .instruments-showcase { grid-template-columns: 1fr; gap: 40px; }
+
+            /* contact */
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .form-row { grid-template-columns: 1fr; }
+
+            /* footer */
+            .footer-content { flex-direction: column; gap: 16px; text-align: center; }
+            .footer-center { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-content { padding: 14px 20px; }
+            .hero { padding: 90px 20px 56px; }
+            .container-fluid, .container-narrow { padding: 0 20px; }
+            .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 13px; }
+            .work-card { padding: 20px; }
+            .section-title { font-size: clamp(26px, 8vw, 40px) !important; }
+        }
+
         .cat-link:hover {
             border-color: var(--burgundy) !important;
             transform: translateX(4px);
@@ -1220,6 +1313,26 @@
     })();
     </script>
     <script>
+
+        // ── HAMBURGER MENU ──
+        (function() {
+            var toggle = document.getElementById('navToggle');
+            var links  = document.querySelector('.nav-links');
+            if (!toggle || !links) return;
+            toggle.addEventListener('click', function() {
+                toggle.classList.toggle('open');
+                links.classList.toggle('open');
+                document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+            });
+            links.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    toggle.classList.remove('open');
+                    links.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+        })();
+
     window.addEventListener('pageshow', function(e) {
         if (e.persisted) { window.location.reload(); }
     });
