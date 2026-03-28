@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Instruments &mdash; Alin Gherman</title>\r\n    <link rel="icon" href="/favicon.png" type="image/x-icon">\r\n    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+        .hero{padding:140px 48px 32px;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'Instrument Serif',serif;font-size:clamp(24px,4vw,48px);font-weight:400;color:var(--burgundy);line-height:1.25;}
+        .hero-note{font-size:13px;color:var(--grey);margin-top:10px;font-style:italic;}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin-top:20px;}
+        .container{max-width:1200px;padding:0 48px 100px;flex:1;}
+        .toc{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;padding-top:20px;}
+        .toc a{padding:7px 16px;border:1px solid var(--burgundy);color:var(--burgundy);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:0.5px;transition:all 0.22s;}
+        .toc a:hover,.toc a.active{background:var(--burgundy);color:#fff;}
+        .section-percussion{background:linear-gradient(135deg,#fdf5f8,#f9edf2);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-piano{background:linear-gradient(135deg,#f8f5ff,#f0ebfa);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-percussion::before,.section-piano::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(transparent 43%,rgba(107,27,61,0.05) 43%,rgba(107,27,61,0.05) 45%,transparent 45%),linear-gradient(transparent 57%,rgba(107,27,61,0.05) 57%,rgba(107,27,61,0.05) 59%,transparent 59%);}
+        .section-anchor{scroll-margin-top:90px;}
+        .works-list{display:flex;flex-direction:column;gap:2px;margin-bottom:40px;}
+        .work-row{background:var(--white);border:1px solid var(--grey-light);overflow:hidden;position:relative;transition:border-color 0.25s;}
+        .work-row:hover,.work-row.open{border-color:var(--burgundy);}
+        .work-row-header{padding:20px 28px 16px;cursor:pointer;position:relative;}
+        .work-row-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--burgundy);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+        .work-row.open .work-row-header::after{transform:scaleX(1);}
+        .work-title{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+        .work-meta-inline{font-size:12px;color:var(--grey);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+        .work-details{display:none;padding:0 28px 22px;border-top:1px solid var(--grey-light);}
+        .work-row.open .work-details{display:block;}
+        .detail-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;align-items:center;}
+        .score-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font-size:12px;font-weight:500;letter-spacing:0.5px;text-decoration:none;border:1px solid var(--burgundy);color:var(--burgundy);background:transparent;transition:all 0.22s;cursor:pointer;white-space:nowrap;}
+        .score-btn:hover{background:var(--burgundy);color:#fff;}
+        .score-btn.free{border-color:#16a34a;color:#16a34a;}
+        .score-btn.free:hover{background:#16a34a;color:#fff;}
+        .toggle-icon{float:right;font-size:18px;color:var(--burgundy);transition:transform 0.25s;user-select:none;margin-top:2px;}
+        .work-row.open .toggle-icon{transform:rotate(45deg);}
+        .waveform-bg{position:absolute;right:60px;top:0;bottom:0;width:200px;opacity:0.04;pointer-events:none;display:flex;align-items:center;}
+        .badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-left:6px;vertical-align:middle;}
+        .badge-commissioned{background:#FEF3C7;color:#92400E;}
+        .badge-premiere{background:#EDE9FE;color:#5B21B6;}
+        .badge-free{background:#DCFCE7;color:#166534;}
+        .badge-papillon{background:#FEE2E2;color:#991B1B;}
+        .show-details-section{margin-top:16px;border-top:1px solid var(--grey-light);padding-top:14px;}
+        .show-details-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--burgundy);color:var(--burgundy);font-size:12px;font-weight:500;letter-spacing:1px;padding:7px 16px;cursor:pointer;text-transform:uppercase;transition:all 0.22s;}
+        .show-details-btn:hover{background:var(--burgundy);color:#fff;}
+        .arrow-icon{transition:transform 0.25s;display:inline-block;}
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+        @media(max-width:768px){.nav-content,.container,.hero{padding-left:24px;padding-right:24px;}}
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN</a>
+            <a href="index.html#work" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                Back
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">Compositions</span>
+        <h1 class="hero-title">Solo Instruments</h1>
+        <p class="hero-note">Works for a single performer &mdash; Percussion &amp; Piano</p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <div class="container">
+        <nav class="toc">
+            <a href="#percussion">Percussion</a>
+            <a href="#piano">Piano</a>
+        </nav>
+
+        <!-- ═══ PERCUSSION ═══ -->
+        <div id="percussion" class="section-anchor">
+            <div class="section-percussion" style="margin-bottom:12px;">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+                    <ellipse cx="40" cy="30" rx="28" ry="12" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <line x1="40" y1="42" x2="40" y2="65" stroke="#6B1B3D" stroke-width="2"/>
+                    <line x1="28" y1="55" x2="52" y2="55" stroke="#6B1B3D" stroke-width="2"/>
+                    <circle cx="22" cy="22" r="5" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                    <circle cx="58" cy="22" r="5" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                </svg>
+                <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                    <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#92400E;opacity:0.8;">01</span>
+                    <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Percussion &mdash;</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="works-list">
+
+            <!-- PURPLE RITUAL -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Percussion &mdash; Multi percussion solo</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Purple ritual</span>
+                        <span class="badge badge-papillon">Editions Papillon</span>
+                        <span class="badge badge-commissioned">Concours de Gen&egrave;ve</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 78</span><span>2009</span><span>ca. 9&prime;&ndash;10&prime;</span><span>for multi percussion</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="2.6" width="3" height="42.7" rx="1" fill="#6B1B3D"/><rect x="5" y="2.6" width="3" height="42.8" rx="1" fill="#6B1B3D"/><rect x="10" y="7.2" width="3" height="33.6" rx="1" fill="#6B1B3D"/><rect x="15" y="15.9" width="3" height="16.3" rx="1" fill="#6B1B3D"/><rect x="20" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="25" y="3.3" width="3" height="41.3" rx="1" fill="#6B1B3D"/><rect x="30" y="4.3" width="3" height="39.4" rx="1" fill="#6B1B3D"/><rect x="35" y="12.7" width="3" height="22.6" rx="1" fill="#6B1B3D"/><rect x="40" y="9.8" width="3" height="28.4" rx="1" fill="#6B1B3D"/><rect x="45" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="50" y="5.9" width="3" height="36.1" rx="1" fill="#6B1B3D"/><rect x="55" y="7.5" width="3" height="33.0" rx="1" fill="#6B1B3D"/><rect x="60" y="12.1" width="3" height="23.9" rx="1" fill="#6B1B3D"/><rect x="65" y="4.8" width="3" height="38.3" rx="1" fill="#6B1B3D"/><rect x="70" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="75" y="9.7" width="3" height="28.7" rx="1" fill="#6B1B3D"/><rect x="80" y="11.8" width="3" height="24.4" rx="1" fill="#6B1B3D"/><rect x="85" y="8.7" width="3" height="30.5" rx="1" fill="#6B1B3D"/><rect x="90" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="95" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="100" y="12.2" width="3" height="23.5" rx="1" fill="#6B1B3D"/><rect x="105" y="9.4" width="3" height="29.1" rx="1" fill="#6B1B3D"/><rect x="110" y="6.6" width="3" height="34.8" rx="1" fill="#6B1B3D"/><rect x="115" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="120" y="5.0" width="3" height="38.1" rx="1" fill="#6B1B3D"/><rect x="125" y="15.6" width="3" height="16.7" rx="1" fill="#6B1B3D"/><rect x="130" y="5.1" width="3" height="37.9" rx="1" fill="#6B1B3D"/><rect x="135" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="140" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="145" y="10.2" width="3" height="27.6" rx="1" fill="#6B1B3D"/><rect x="150" y="11.7" width="3" height="24.5" rx="1" fill="#6B1B3D"/><rect x="155" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="160" y="5.0" width="3" height="37.9" rx="1" fill="#6B1B3D"/><rect x="165" y="3.3" width="3" height="41.3" rx="1" fill="#6B1B3D"/><rect x="170" y="16.4" width="3" height="15.2" rx="1" fill="#6B1B3D"/><rect x="175" y="6.2" width="3" height="35.6" rx="1" fill="#6B1B3D"/><rect x="180" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="185" y="5.0" width="3" height="38.1" rx="1" fill="#6B1B3D"/><rect x="190" y="7.5" width="3" height="33.1" rx="1" fill="#6B1B3D"/><rect x="195" y="14.8" width="3" height="18.5" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.archive.org/download/PurpleRitualaudioExcerpt/extraitpurpleritual.mp3" target="_blank" class="score-btn">&#9654; Audio Excerpt</a>
+                        <a href="http://home.scarlet.be/bucovina/scores/preview/Purple_ritual_by_Alin_Gherman_PREVIEW.pdf" target="_blank" class="score-btn">Score PREVIEW</a>
+                        <a href="http://www.editionspapillon.ch/" target="_blank" class="score-btn">Score &mdash; Editions Papillon (25 CHF)</a>
+                        <a href="http://www.sideralfilm.com/" target="_blank" class="score-btn">Order DVD</a>
+                    </div>
+                    <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;">
+                        <a href="https://www.youtube.com/watch?v=xZl3EUlQDbg" target="_blank" class="score-btn">&#9654; Brian Archinal at HKB</a>
+                        <a href="https://www.youtube.com/watch?v=FWwQw9H9Wrc" target="_blank" class="score-btn">&#9654; Playlist Concours de Gen&egrave;ve</a>
+                        <a href="purpleritual.html" class="score-btn">&#128247; Photos of the Set-up</a>
+                    </div>
+
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Purple is a general term for the range of shades of colour occurring between red and blue. If we consider the red as the human passion and the blue a mysticism-oriented colour then the purple position in between would be (ideally) the magic gate in between. Through a high level of excitement and virtuosity I wanted this piece to spread the huge amount of energy, vibrations and wishes raised by the performer.<br><br><em>Would it be (musically) possible to pass &ldquo;through the door&rdquo;?</em></div>
+                                <!-- Japanese toggle -->
+                                <div style="margin-top:12px;">
+                                    <button onclick="event.stopPropagation();var c=this.nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';this.textContent=o?'&#12398;&#26085;&#26412;&#35486;':'&#38560;&#12377;';" style="background:none;border:1px solid #D1C4C9;color:var(--grey);font-size:11px;padding:4px 12px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--burgundy)';this.style.color='var(--burgundy)'" onmouseout="this.style.borderColor='#D1C4C9';this.style.color='var(--grey)'">&#12398;&#26085;&#26412;&#35486;</button>
+                                    <div style="display:none;margin-top:12px;padding:16px 20px;background:#F9F7F4;border-left:3px solid var(--burgundy);font-size:13px;color:#1F2937;line-height:2.0;">
+                                        &#12300;&#32043;&#12301;&#12399;&#36196;&#12392;&#38738;&#12398;&#20013;&#38291;&#33394;&#12434;&#12373;&#12377;&#12290;&#36196;&#12364;&#20154;&#38291;&#12398;&#24773;&#29105;&#30340;&#12394;&#24863;&#24773;&#12434;&#12354;&#12425;&#12431;&#12377;&#33394;&#12289;&#38738;&#12364;&#31070;&#31192;&#30340;&#12394;&#33394;&#12384;&#12392;&#12377;&#12427;&#12392;&#12289;&#32043;&#12399;&#12381;&#12398;&#38291;&#12398;&#12289;&#39764;&#27861;&#12398;&#27211;&#12398;&#12424;&#12358;&#12394;&#20301;&#32622;&#12395;&#12354;&#12427;&#65288;&#29702;&#24819;&#30340;&#12395;&#12399;&#65289;&#12290;&#12371;&#12398;&#26354;&#12391;&#12399;&#38750;&#24120;&#12395;&#22823;&#12365;&#12394;&#12456;&#12493;&#12523;&#12462;&#12540;&#12289;&#12496;&#12452;&#12502;&#12524;&#12540;&#12471;&#12519;&#12531;&#12289;&#12381;&#12375;&#12390;&#24076;&#27714;&#12377;&#12427;&#24515;&#12434;&#30330;&#20449;&#12377;&#12427;&#12424;&#12358;&#12395;&#12289;&#28436;&#22863;&#32773;&#12395;&#12399;&#39640;&#12356;&#12524;&#12505;&#12523;&#12391;&#12398;&#12497;&#12527;&#12540;&#12398;&#25345;&#32154;&#12392;&#38899;&#27005;&#30340;&#12486;&#12463;&#12491;&#12483;&#12463;&#12364;&#35201;&#27714;&#12373;&#12428;&#12427;&#12290;<br><br>&#38899;&#27005;&#30340;&#12394;&#24847;&#21619;&#12391;&#12289;&#12300;&#12489;&#12450;&#12434;&#36890;&#12426;&#25244;&#12369;&#12427;&#12301;&#12371;&#12392;&#12399;&#21487;&#33021;&#12384;&#12429;&#12358;&#12363;&#65311;<br><br>&#12472;&#12517;&#12493;&#12540;&#12502;&#22269;&#38555;&#38899;&#27005;&#12467;&#12531;&#12463;&#12540;&#12523;&#65298;&#65296;&#65296;&#65305;&#12392;PRO&#12504;&#12523;&#12532;&#12455;&#12486;&#12451;&#12450;&#12289;&#12473;&#12452;&#12473;&#25991;&#21270;&#36001;&#22243;&#12395;&#12424;&#12426;&#22996;&#22065;&#12290;&#12456;&#12487;&#12451;&#12471;&#12458;&#12531;&#12539;&#12497;&#12500;&#12520;&#12531;&#31038;&#65288;&#12473;&#12452;&#12473;&#12289;&#12472;&#12517;&#12493;&#12540;&#12502;&#65289;&#20986;&#29256;&#12290;&#65298;&#12388;&#12398;&#29420;&#31435;&#12375;&#12383;&#37096;&#20998;&#65288;&#12381;&#12428;&#12398;&#12415;&#12391;&#28演&#22863;&#21487;&#33021;&#65289;&#12399;&#12289;&#31532;&#19968;&#37096;&#12392;&#31532;&#19977;&#37096;&#12364;&#12418;&#12392;&#12395;&#12394;&#12387;&#12390;&#12356;&#12390;&#12289;&#12300;&#32043;&#12398;&#20426;&#24335;&#12301;&#12363;&#12425;&#25198;&#31105;&#12375;&#12383;&#12418;&#12398;&#12391;&#12354;&#12427;&#12290;&#12288;&#12289;&#12471;&#12531;&#12496;&#12523;&#12539;&#12532;&#12451;&#12479;&#12511;&#12531;&#65288;&#31532;&#19968;&#37096;&#12398;&#38263;&#12356;&#12496;&#12540;&#12472;&#12519;&#12531;&#65289;&#12288;&#12289;&#12480;&#12531;&#12473;&#12289;&#19998;&#12395;&#964;&#12427;&#38632;&#12398;&#19979;&#12391;&#65288;&#31532;&#19977;&#37096;&#12398;&#12415;&#65289;&#12288;&#12450;&#12522;&#12531;&#12539;&#12466;&#12523;&#12510;&#12531;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Instrumentation <button onclick="event.stopPropagation();var c=this.closest('h4').nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';this.textContent=o?'show':'hide';" style="background:none;border:1px solid #D1C4C9;color:var(--grey);font-size:10px;padding:2px 8px;cursor:pointer;margin-left:8px;vertical-align:middle;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--burgundy)';this.style.color='var(--burgundy)'" onmouseout="this.style.borderColor='#D1C4C9';this.style.color='var(--grey)'">show</button></h4>
+                                <div style="display:none;font-size:13px;color:#1F2937;line-height:1.9;">
+                                    <strong style="text-decoration:underline;">- 6 very large and resonant Chimes:</strong><br>
+                                    &nbsp;&nbsp;<strong>Wood</strong> (hard, avoid the bamboo),<br>
+                                    &nbsp;&nbsp;<strong>Bamboo</strong> (medium high*) * For instance the KOLBERG Bamboo wind-chimes, medium &ldquo;Naruko&rdquo;, only the highest 28 tubes,<br>
+                                    &nbsp;&nbsp;<strong>Metal</strong> (cans for instance, organized by low, medium and high ranges, avoid scale-organized Wind chimes racks),<br>
+                                    &nbsp;&nbsp;<strong>Stone</strong> (may be replaced by additional irregular chimes if necessary),<br>
+                                    &nbsp;&nbsp;<strong>Glass</strong> (lamp bulbs for instance, organized by low, medium and high ranges, avoid scale-organized Wind chimes racks),<br>
+                                    &nbsp;&nbsp;<strong>Seashell</strong> (including very thin, smooth and delicate range as well as medium and lower one).<br>
+                                    &nbsp;&nbsp;<em>ALL must resonate long.</em><br><br>
+                                    <strong style="text-decoration:underline;">- 5 Temple blocks</strong><br><br>
+                                    <strong style="text-decoration:underline;">- 8 Cymbals:</strong> <strong>Hi-hat</strong> (Pedal set on half open), <strong>1 Orchestra heavy cymbal</strong>, <strong>22&Prime;</strong> cymbal, <strong>18&Prime;</strong> cymbal, <strong>16&Prime;</strong> cymbal, <strong>16&Prime;</strong> Rived cymbal, <strong>12&Prime;</strong> Splash cymbal and <strong>10&Prime;</strong> Splash cymbal.<br>
+                                    <span style="color:#991B1B;font-size:12px;">These dimensions represent the suggestion of a scale and may be adapted freely.</span><br><br>
+                                    <strong style="text-decoration:underline;">- 3 Tam-tams:</strong> <strong>very high</strong>, <strong>med. high</strong> and (med.) <strong>low</strong><br><br>
+                                    <strong style="text-decoration:underline;">- 7 Skins or Drums</strong> for example, consisting of: <strong>3 Bongos</strong> (very high, high and medium**), <strong>3 Tom-toms</strong> (high, medium and (very) low) and <strong>Bass drum</strong> (particularly resonant).<br>
+                                    <span style="color:#991B1B;font-size:12px;">This instrument distribution represents the suggestion of a scale and may be adapted freely.<br>** The medium one may be replaced with a Chinese drum &ldquo;Low Pitch Battle Drum&rdquo; for instance.</span><br><br>
+                                    <em>accessories (optional)</em><br>
+                                    - Material to attach to the thumbnail (see Note, for the DRUMS)<br><br>
+                                    <em>mallets</em><br>
+                                    - 1 Tam-tam beater<br>
+                                    - 2 Snare drum sticks<br>
+                                    - 1 metal brush<br><br>
+                                    <a href="purpleritual.html" style="color:var(--burgundy);font-weight:500;font-size:12px;">&#128247; photos of the Set-up (used as a basis during the Geneva Competition 2009)</a>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Comments</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Although it is not explicitly wished to break glass bulbs during the performance, so many bulbs were broken during rehearsals that it is now part of the piece&rsquo;s characteristics. Ya-Hsin CHENG did it in such a spectacular way during her preliminary round at the Geneva Competition 2009 that it became an opportunity to show rather than hide it.<br><br><em>(Conclusion: You may break glass bulbs BUT ONLY if the glass chimes were NOT made by the composer!)</em></div>
+                            </div>
+
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">
+                                    2009 &mdash; DVD Video released by <a href="http://www.sideralfilm.com/" target="_blank" style="color:var(--burgundy);font-weight:500;">Sid&eacute;ral Film SA</a>, Gen&egrave;ve (Switzerland) with the performances of the 15 candidates selected for the &ldquo;R&eacute;cital 1&rdquo; round. The video clips of all 31 candidates are also available. Recorded in High Definition.<br><br>
+                                    <strong>1 DVD</strong> = 30 CHF / 30 US$ / 20 &euro; + shipping &nbsp;&bull;&nbsp; <strong>2 DVDs</strong> = 50 CHF / 50 US$ / 33 &euro; + shipping
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About Performances</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">
+                                    2009 &mdash; <strong>Concours de Gen&egrave;ve</strong>: see the details for each performer on the individual video preview page on <a href="https://www.youtube.com/alinescu1" target="_blank" style="color:var(--burgundy);font-weight:500;">youtube.com/alinescu1</a>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About Audio Excerpt</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">
+                                    Audio excerpt, MP3 file 320kbits &mdash; 1&prime;17&Prime; of 9&prime;07&Prime; (the beginning).<br>
+                                    <strong>Brian ARCHINAL</strong> (percussion) playing live at the Geneva Competition 2009 (1st Round), Unimail.
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Dedicated to <strong>Simon FORSTER</strong> and his family.<br>Commissioned by the <strong>64th Geneva International Music Competition &mdash; 2009</strong>, with the support of ProHelvetia, Fondation suisse pour la Culture.<br>Published by <strong>Editions Papillon</strong>, Gen&egrave;ve. Worldwide delivery via <a href="http://www.editionspapillon.ch/" target="_blank" style="color:var(--burgundy);font-weight:500;">editionspapillon.ch</a>.</div>
+                            </div>
+
+                            <div>
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Related Works</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Two standalone pieces derived from this work: <em>Cymbals Vitamins</em> (opus 78b, variation, ca. 3&prime;30&Prime;) and <em>Dance &ndash;under impending rain&ndash;</em> (opus 78c, ca. 3&prime;).</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CYMBALS VITAMINS -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Percussion &mdash; Cymbals, bass drum and voice</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Cymbals Vitamins</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 78b</span><span>2009</span><span>ca. 3&prime;30&Prime;</span><span>for cymbals, bass drum and voice</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="5" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="10" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="15" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="20" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="25" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="30" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="35" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="40" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="45" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="50" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="55" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="60" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="65" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="70" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="75" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="80" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="85" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="90" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="95" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="100" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="105" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="110" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="115" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="120" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="125" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="130" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="135" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="140" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="145" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="150" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="155" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="160" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="165" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="170" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="175" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="180" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="185" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="190" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="195" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.youtube.com/watch?v=pcSejc5ZXW0" target="_blank" class="score-btn">&#9654; Show video</a>
+                        <a href="http://home.scarlet.be/bucovina/scores/Cymbals_Vitamins_by_Alin_Gherman_(secured).pdf" target="_blank" class="score-btn">Score (locked) &mdash; Code to unlock: <strong>8 &euro;</strong></a>
+                    </div>
+                    <div style="margin-top:10px;">
+                        <a href="https://www.tudou.com/" target="_blank" style="font-size:12px;color:var(--grey);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--burgundy)'" onmouseout="this.style.color='var(--grey)'">&#22914;&#26524;&#20320;&#22312;&#20013;&#22269;&#30340;&#26102;&#20505;&#65292;&#35831;&#28857;&#20987;&#36825;&#37324;&#35266;&#30475;&#30001;Brian Archinal&#38073;&#32500;&#29983;&#32032;&#30340;&#38899;&#20048;&#24405;&#24433;&#24102;&#65281; &nbsp;&nbsp;&nbsp; If you&rsquo;re in China, click here to watch the music video of Cymbals vitamins by Brian Archinal!</a>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Standalone variation upon the first part of <em>&ldquo;Purple ritual&rdquo;</em>. The instrumentation comprises only cymbals and a bass drum. In addition, there are some speech voice elements.</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Instrumentation</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>6 Cymbals:</strong> Hi-hat (pedal half open), 22&Prime;, 18&Prime;, 16&Prime;, 16&Prime; Rived, 12&Prime; Splash. <span style="color:#991B1B;font-size:12px;">These dimensions represent a suggestion and may be adapted freely.</span><br><strong>1 Bass Drum</strong> (particularly resonant)<br><strong>Mallets:</strong> 2 Snare drum sticks</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Dedicated to <strong>Simon FORSTER</strong> and his family. Version: v.1.2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DANCE UNDER IMPENDING RAIN -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Percussion &mdash; Multi percussion solo</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Dance &ndash;under impending rain&ndash;</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 78c</span><span>2009</span><span>ca. 3&prime;</span><span>for multi percussion</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="5" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="10" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="15" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="20" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="25" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="30" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="35" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="40" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="45" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="50" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="55" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="60" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="65" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="70" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="75" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="80" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="85" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="90" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="95" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="100" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="105" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="110" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="115" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="120" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="125" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="130" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="135" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="140" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="145" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="150" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="155" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="160" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="165" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="170" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="175" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="180" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="185" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="190" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="195" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.youtube.com/watch?v=i78q7nBjJ7U" target="_blank" class="score-btn">&#9654; Show video</a>
+                        <a href="http://home.scarlet.be/bucovina/scores/Dance-under_impending_rain-by_Alin_Gherman_tempv1.1%28secured%29.pdf" target="_blank" class="score-btn">Score (locked) &mdash; Code to unlock: <strong>9 &euro;</strong></a>
+                    </div>
+                    <div style="margin-top:10px;">
+                        <a href="https://www.tudou.com/" target="_blank" style="font-size:12px;color:var(--grey);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--burgundy)'" onmouseout="this.style.color='var(--grey)'">&#22914;&#26524;&#20320;&#22312;&#20013;&#22269;&#30340;&#26102;&#20505;&#65292;&#35831;&#28857;&#20987;&#36825;&#37324;&#35266;&#30475;&#30001;Brian Archinal&#38073;&#32500;&#29983;&#32032;&#30340;&#38899;&#20048;&#24405;&#24433;&#24102;&#65281; &nbsp;&nbsp;&nbsp; If you&rsquo;re in China, click here to watch the music video of Dance &ndash;under impending rain&ndash; by Brian Archinal!</a>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Standalone version of the third part of <em>&ldquo;Purple ritual&rdquo;</em>.</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Instrumentation <button onclick="event.stopPropagation();var c=this.closest('h4').nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';this.textContent=o?'show':'hide';" style="background:none;border:1px solid #D1C4C9;color:var(--grey);font-size:10px;padding:2px 8px;cursor:pointer;margin-left:8px;vertical-align:middle;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--burgundy)';this.style.color='var(--burgundy)'" onmouseout="this.style.borderColor='#D1C4C9';this.style.color='var(--grey)'">show</button></h4>
+                                <div style="display:none;font-size:13px;color:#1F2937;line-height:1.9;">
+                                    <strong style="text-decoration:underline;">- 4 very large and resonant Chimes:</strong><br>
+                                    &nbsp;&nbsp;<strong>Wood</strong> (hard, avoid the bamboo),<br>
+                                    &nbsp;&nbsp;<strong>Bamboo</strong> (medium high*) * For instance the KOLBERG Bamboo wind-chimes, medium &ldquo;Naruko&rdquo;, only the highest 28 tubes,<br>
+                                    &nbsp;&nbsp;<strong>Metal</strong> (cans for instance, avoid the typically used scale-organized Wind chimes racks),<br>
+                                    &nbsp;&nbsp;<strong>Stone</strong> (may be replaced by additional irregular chimes if necessary),<br>
+                                    &nbsp;&nbsp;<em>ALL must resonate long.</em><br><br>
+                                    <strong style="text-decoration:underline;">- 5 Temple blocks</strong><br><br>
+                                    <strong style="text-decoration:underline;">- 7 Cymbals:</strong> <strong>Hi-hat</strong> (Pedal set on half open), <strong>22&Prime;</strong> cymbal, <strong>18&Prime;</strong> cymbal, <strong>16&Prime;</strong> cymbal, <strong>16&Prime;</strong> Rived cymbal, <strong>12&Prime;</strong> Splash cymbal and <strong>10&Prime;</strong> Splash cymbal.<br>
+                                    <span style="color:#991B1B;font-size:12px;">These dimensions represent the suggestion of a scale and may be adapted freely.</span><br><br>
+                                    <strong style="text-decoration:underline;">- 2 Tam-tams:</strong> <strong>med. high</strong> and (med.) <strong>low</strong><br><br>
+                                    <strong style="text-decoration:underline;">- 7 Skins or Drums</strong> for example, consisting of: <strong>3 Bongos</strong> (very high, high and medium**), <strong>3 Tom-toms</strong> (high, medium and (very) low) and <strong>Bass drum</strong> (particularly resonant).<br>
+                                    <span style="color:#991B1B;font-size:12px;">This instrument distribution represents the suggestion of a scale and may be adapted freely.<br>** The medium one may be replaced with a Chinese drum &ldquo;Low Pitch Battle Drum&rdquo; for instance.</span><br><br>
+                                    <em>mallets</em><br>
+                                    - 1 Tam-tam beater<br>
+                                    - 2 Snare drum sticks
+                                </div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Dedicated to <strong>Simon FORSTER</strong> and his family. Version: temporary v.1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /works-list percussion -->
+
+        <!-- ═══ PIANO ═══ -->
+        <div id="piano" class="section-anchor">
+            <div class="section-piano" style="margin-bottom:12px;">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+                    <rect x="8" y="25" width="64" height="35" rx="3" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <rect x="14" y="25" width="8" height="20" rx="1" fill="#6B1B3D"/>
+                    <rect x="26" y="25" width="8" height="20" rx="1" fill="#6B1B3D"/>
+                    <rect x="46" y="25" width="8" height="20" rx="1" fill="#6B1B3D"/>
+                    <rect x="58" y="25" width="8" height="20" rx="1" fill="#6B1B3D"/>
+                </svg>
+                <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                    <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#5B21B6;opacity:0.8;">02</span>
+                    <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Piano &mdash;</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="works-list">
+
+            <!-- DUEL -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Piano solo</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Duel</span>
+                        <span class="badge badge-free">Score FREE</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus &mdash;</span><span>2006</span><span>ca. 3&prime;</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="5" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="10" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="15" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="20" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="25" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="30" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="35" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="40" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="45" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="50" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="55" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="60" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="65" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="70" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="75" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="80" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="85" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="90" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="95" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="100" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="105" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="110" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="115" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="120" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="125" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="130" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="135" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="140" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="145" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="150" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="155" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="160" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="165" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="170" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="175" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="180" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="185" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="190" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="195" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.archive.org/download/DuelaudioExcerpt/extraitduel.mp3" target="_blank" class="score-btn">&#9654; Audio Excerpt</a>
+                        <a href="scores/DUEL%20by%20Alin%20GHERMAN%20%28v1%29%20for%20internet.pdf" target="_blank" class="score-btn free">Score (FREE temporarily!)</a>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">As the title says, the piece shows a thematic struggle between the two hands. The question is: Why does the struggle end in such a way?<br><br>This piece is based on a bass line taken from <em>&ldquo;Nyolc Zongoradarab&rdquo;</em> op.3 by Gy&ouml;rgy KURT&Aacute;G.</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Comments</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Big hands are required in order to play some of the very large intervals like the 9th and 10th (B natural &ndash; D natural).</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Premiere &amp; Performances</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">2007 March 20th, by <strong>Adam Wojciechowski</strong>, Concert <em>&ldquo;Miniatures de th&eacute;&acirc;tre musical&rdquo;</em>, Grosse Konzert Saal, Hochschule der K&uuml;nste Bern.</div>
+                            </div>
+                            <div>
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recording</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">2007, December 7th, by <strong>Kirill ZWEGINTSOW</strong> (Steinway D) at the Tonstudio, Hochschule der K&uuml;nste Bern (Switzerland).<br>Sound recording, editing &amp; mastering: Beno&icirc;t PICCAND. Produced by Alin GHERMAN with the support of the HKB.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOLCLOR -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Piano solo &mdash; 5 miniatures</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Folclor</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus &mdash;</span><span>2004</span><span>ca. 7&prime;10&Prime;</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="5" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="10" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="15" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="20" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="25" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="30" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="35" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="40" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="45" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="50" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="55" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="60" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="65" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="70" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="75" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="80" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="85" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="90" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="95" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="100" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="105" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="110" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="115" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="120" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="125" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="130" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="135" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="140" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="145" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="150" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="155" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="160" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="165" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="170" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="175" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="180" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="185" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="190" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="195" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="http://home.scarlet.be/bucovina/scores/preview/FOLCLOR_%28preview%29_by_Alin_GHERMAN_%28v.3color%29%28secured%29.pdf" target="_blank" class="score-btn">Score PREVIEW</a>
+                        <a href="http://home.scarlet.be/bucovina/scores/FOLCLOR_by_Alin_GHERMAN_(v.3color)(secured).pdf" target="_blank" class="score-btn">Score (locked) &mdash; Code to unlock: <strong>6 &euro;</strong></a>
+                    </div>
+                    <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+                        <a href="http://www.archive.org/download/Folclor-1FratiDeCruceaudioFull/extraitfolclorfratidecruce.mp3" target="_blank" class="score-btn">&#9654; 1. Fra&#x21b;ii de cruce (1&prime;10&Prime;)</a>
+                        <a href="http://www.archive.org/download/Folclor-2LpineaudioFull/extraitfolclorlepinezwegintsowv1.mp3" target="_blank" class="score-btn">&#9654; 2. L&rsquo;&eacute;pine (1&prime;26&Prime;)</a>
+                        <a href="http://www.archive.org/download/Folclor-5BocetaudioFull/extraitfolclorbocetzwegintsow.mp3" target="_blank" class="score-btn">&#9654; 5. Bocet (2&prime;05&Prime;)</a>
+                        <button onclick="event.stopPropagation();var c=document.getElementById('folclor-miniatures');var o=c.style.display==='block';c.style.display=o?'none':'block';this.textContent=o?'Show miniatures':'Hide miniatures';" class="show-details-btn" style="font-size:11px;padding:7px 14px;">Show miniatures</button>
+                    </div>
+                    <div id="folclor-miniatures" style="display:none;margin-top:14px;padding:16px 20px;background:#F9F7F4;border-left:3px solid var(--burgundy);font-size:13px;color:#1F2937;line-height:2.0;">
+                        1. <strong>Fra&#x21b;ii de cruce</strong> &nbsp;<em>(Transylvania &mdash; Sibiu) &mdash; fr&egrave;res de croix, blood brothers</em><br>
+                        2. <strong>L&rsquo;&eacute;pine</strong> &nbsp;<em>(Dobrogea, the Black Sea sunny region) &mdash; gimpele, the thorn-bush</em><br>
+                        3. <strong>Autre danse valaque &agrave; deux</strong> &nbsp;<em>(Walachia) &mdash; alt dans valah &icirc;n doi, another walachian dance for two</em><br>
+                        4. <strong>Gheorghi&#x21b;&atilde;</strong> &nbsp;<em>(Walachia &mdash; Muntenia)</em><br>
+                        5. <strong>Bocet</strong> &nbsp;<em>(Oa&#x219; county &mdash; Transylvania) &mdash; lamentations fun&eacute;raires, funeral lamentations</em>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Inspired by 5 Romanian folk songs. As the Romanian composer <strong>Dan DEDIU</strong> said after listening to &ldquo;Folclor&rdquo;: <em>&ldquo;The nostalgia of simplicity through a (contemporary) musical vocabulary which is not innocent.&rdquo;</em> (<em>in Romanian &mdash; &ldquo;Nostalgia naivitatii &#8222;vazuta&#8221; printr-un vocabular muzical (contemporan) neinocent.&rdquo;</em> &mdash; Dan DEDIU, Breaza, 2004)<br><br>The miniatures are based on folkloric melodies from the <em>&ldquo;Folclor muzical&rdquo;</em> anthology by Emilia COMISEL, Education Ministry, Didactic and Pedagogical Edition, Bucharest, 1967.</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">A piano with 3 pedals (Una Corda, Sostenuto, Sustain) is required to play the piece.<br>Current version: v.3 / revised 2008 (color). Ask for a free update if you have older versions!</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">
+                                    2008, November &mdash; Audio + Video recorded by <strong>Kirill ZWEGINTSOW</strong> (piano Steinway D) at the Tonstudio of Hochschule der K&uuml;nste Bern (Switzerland).<br>
+                                    Sound recording: Cyrill LIM &nbsp;&bull;&nbsp; Editing &amp; mastering: Kaspar KOCHULI.<br>
+                                    Video: Voltafilm Luzern, Stephan HEINIGER.<br>
+                                    Produced by Alin GHERMAN with the support of the Hochschule der K&uuml;nste Bern.<br><br>
+                                    <button onclick="event.stopPropagation();var c=document.getElementById('folclor-photos');var o=c.style.display==='block';c.style.display=o?'none':'block';this.textContent=o?'photos and video project in progress':'Hide photos';" style="background:none;border:none;color:var(--burgundy);font-size:12px;cursor:pointer;padding:0;text-decoration:underline;font-weight:500;">photos and video project in progress</button>
+                                    <div id="folclor-photos" style="display:none;margin-top:16px;">
+                                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:14px;">
+                                            <img src="folclor_photo1.jpg" alt="Kirill Zwegintsow recording session" style="width:100%;aspect-ratio:4/3;object-fit:cover;">
+                                            <img src="folclor_photo2.jpg" alt="Kirill Zwegintsow at piano" style="width:100%;aspect-ratio:4/3;object-fit:cover;">
+                                            <img src="folclor_photo3.jpg" alt="Recording session HKB Bern" style="width:100%;aspect-ratio:4/3;object-fit:cover;">
+                                        </div>
+                                        <div style="font-size:12px;color:var(--grey);line-height:1.8;padding:14px 16px;background:#F9F7F4;border-left:2px solid #D1C4C9;">
+                                            These snapshots pictures are extracted from a VIDEO recording. This studio recording was VIDEO recorded as well by <strong>Voltafilm Luzern</strong>, Stephan HEINIGER. (See &ldquo;Haute tension&rdquo; video clip &hellip; coming soon)<br><br>
+                                            Because of financial shortage, the mixing and editing of the 3 cameras material is suspended at the moment. The low-cost minimal budget is estimated at <strong>700 CHF</strong> (470 &euro;).<br><br>
+                                            Contribute to complete this video clip, and you will be featured Patron of this project! Please consider making a donation and/or <a href="mailto:alin.gherman@gmail.com" style="color:var(--burgundy);font-weight:500;">contact Alin Gherman</a>.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About Performances</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Premiere: 2004, June 18th, <strong>Alin GHERMAN</strong> (piano solo). Concert &ldquo;Jeunes talents&rdquo; organized by <a href="https://www.arthis.org" target="_blank" style="color:var(--burgundy);font-weight:500;">Arthis a.s.b.l.</a> &ldquo;The belgo-romanian cultural house&rdquo; at Pianos MAENE auditorium (Brussels).</div>
+                            </div>
+                            <div>
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About Audio Excerpt</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3, <strong>Kirill ZWEGINTSOW</strong> (piano Steinway D) at the Tonstudio of Hochschule der K&uuml;nste Bern (Switzerland), November 2008.<br>Sound recording: Cyrill LIM &nbsp;&bull;&nbsp; Editing &amp; mastering: Kaspar KOCHULI.<br>Produced by Alin GHERMAN with the support of the Hochschule der K&uuml;nste Bern.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARICIUL -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Piano solo</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Ariciul</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 55</span><span>2004</span><span>1&prime;</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="5" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="10" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="15" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="20" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="25" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="30" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="35" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="40" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="45" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="50" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="55" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="60" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="65" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="70" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="75" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="80" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="85" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="90" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="95" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="100" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="105" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="110" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="115" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="120" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="125" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="130" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="135" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="140" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="145" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="150" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="155" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="160" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="165" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="170" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="175" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="180" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="185" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="190" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="195" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="http://www.archive.org/download/Ariciul/09Ariciul.mp3" target="_blank" class="score-btn">&#9654; All (full)</a>
+                        <a href="http://home.scarlet.be/bucovina/scores/Ariciul_(v3)_by_Alin_GHERMAN_(secured).pdf" target="_blank" class="score-btn">Score (locked) &mdash; Code to unlock: <strong>1,50 &euro;</strong></a>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;"><em>Ariciul</em> means &ldquo;The hedgehog&rdquo; in Romanian language. The piece is based on a Romanian folk song.</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Composed as a light continuation of the <em>&ldquo;Folclor&rdquo;</em> miniatures for piano solo.</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About Performances</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">First performance &mdash; 2004 March 12th, by <strong>Alin Gherman</strong> (piano) at the &ldquo;Petite Salle&rdquo; of the Conservatoire Royal de Bruxelles.</div>
+                            </div>
+                            <div>
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About Audio Excerpt</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 file, 256Kbps &mdash; 1&prime; &mdash; piano: <strong>Eve BEROUX</strong> (Fr)<br><em style="color:var(--grey);font-size:12px;">Warning: Eve BEROUX performed version 2 of the piece (very last notes pianissimo). In version 3 (current) the dynamic was changed to FF.</em></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLAY SONG -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Piano solo</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Play song</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus &mdash;</span><span>2004</span><span>42&Prime;</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="20.0" width="3" height="8.0" rx="1" fill="#6B1B3D"/><rect x="5" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="10" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="15" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="20" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="25" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="30" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="35" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="40" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="45" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="50" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="55" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="60" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="65" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="70" y="20.0" width="3" height="8.0" rx="1" fill="#6B1B3D"/><rect x="75" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="80" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="85" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="90" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="95" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="100" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="105" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="110" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="115" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="120" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="125" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="130" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="135" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="140" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="145" y="20.0" width="3" height="8.0" rx="1" fill="#6B1B3D"/><rect x="150" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="155" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="160" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="165" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="170" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="175" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="180" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="185" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="190" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="195" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="http://www.archive.org/download/PlaySongarrangement/PlaySongarrangementDuneMlodiePopulaireHongroise.mp3" target="_blank" class="score-btn">&#9654; All (full)</a>
+                        <a href="http://home.scarlet.be/bucovina/scores/Play_song_(v4)_by_Alin%20GHERMAN_(secured).pdf" target="_blank" class="score-btn">Score (locked) &mdash; Code to unlock: <strong>1 &euro;</strong></a>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Variation based on the melody of <em>&ldquo;Play song&rdquo;</em> by B&eacute;la BART&Oacute;K (<em>&ldquo;For children&rdquo;</em> vol.1, 1945).</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Composed as a lighter continuation of the <em>&ldquo;Folclor&rdquo;</em> miniatures for piano solo. opus &mdash; &nbsp;&bull;&nbsp; current version: v.4 &mdash; 2004</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">2005, April 8th, by <strong>Eve BEROUX</strong> (Fr), piano Steinway D, Grande Salle du Conservatoire Royal de Bruxelles. Produced by Alin Gherman.</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About Performances</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">First performance &mdash; 2004 March 12th, by <strong>Carmen-Elena ROTARU</strong> (piano) at the &ldquo;Petite Salle&rdquo; of the Conservatoire Royal de Bruxelles.</div>
+                            </div>
+                            <div>
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About Audio Excerpt</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 file &mdash; 42&Prime; &mdash; piano: <strong>Eve BEROUX</strong> (Fr)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ERRANCES -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Piano solo</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Errances</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 49</span><span>2000</span><span>4&prime;</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="5" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="10" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="15" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="20" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="25" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="30" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="35" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="40" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="45" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="50" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="55" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="60" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="65" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="70" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="75" y="20.0" width="3" height="8.0" rx="1" fill="#6B1B3D"/><rect x="80" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="85" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="90" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="95" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="100" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="105" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="110" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="115" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="120" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="125" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="130" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="135" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="140" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="145" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="150" y="20.0" width="3" height="8.0" rx="1" fill="#6B1B3D"/><rect x="155" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="160" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="165" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="170" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="175" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="180" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="185" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="190" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="195" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="http://www.archive.org/download/ErrancesaudioExcerpt/extraiterrances.mp3" target="_blank" class="score-btn">&#9654; Audio Excerpt</a>
+                        <a href="http://www.archive.org/download/ErrancesmusicScoreExcerpt/ErrancesPREVIEW.pdf" target="_blank" class="score-btn">Score PREVIEW</a>
+                        <a href="http://home.scarlet.be/gherman/scores/Errances_(v3)_by_Alin_GHERMAN_(secured).pdf" target="_blank" class="score-btn">Score (locked) &mdash; Code to unlock: <strong>4 &euro;</strong></a>
+                    </div>
+                    <div style="margin-top:10px;padding:10px 14px;background:#F9F7F4;border-left:2px solid #D1C4C9;font-size:12px;color:var(--grey);line-height:1.7;">
+                        <strong style="color:var(--text-dark);">How to unlock the score:</strong> Acquire the score in PDF format &mdash; contribution towards production costs: 4 &euro;. Immediate download and unlock through PayPal system, all major credit cards accepted. (approx. 2 minutes process)
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;"><em>&ldquo;apr&egrave;s une lecture de la 7&egrave;me sonate&hellip;&rdquo;</em><br>A dodecaphonical piece composed from June to November 2001.</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Premiere &amp; Performances</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Premiere of the revised version (2007) &mdash; 2008, September 26th, by <strong>Natalia KOZIARZ</strong> (Pl) at the Polska Institutet, Stockholm, Sweden.<br>Premiere of the first version &mdash; by <strong>Alexander VAGUENER</strong> at the &ldquo;Petite Salle du Conservatoire Royal de Bruxelles&rdquo;.</div>
+                            </div>
+                            <div>
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recording</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">2007, December &mdash; Recorded by <button onclick="event.stopPropagation();var c=document.getElementById('natalia-photo');var o=c.style.display==='block';c.style.display=o?'none':'block';" style="background:none;border:none;color:var(--burgundy);font-size:13px;cursor:pointer;padding:0;text-decoration:underline;font-weight:500;">Natalia KOZIARZ</button> (Pl) at the H.K.B. Bern Tonstudio.<br>
+                                Sound engineer: Beno&icirc;t PICCAND. Produced by Alin Gherman.<br>
+                                <em style="font-size:12px;color:var(--grey);">Audio excerpt: MP3 &mdash; 1&prime;41&Prime; of 5&prime;05&Prime; total.</em>
+                                <div id="natalia-photo" style="display:none;margin-top:14px;">
+                                    <img src="natalia_koziarz.jpg" alt="Natalia KOZIARZ, pianist (Poland)" style="width:160px;border:1px solid var(--grey-light);">
+                                    <p style="font-size:11px;color:var(--grey);margin-top:6px;">Natalia KOZIARZ</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /works-list piano -->
+
+        <p style="margin-top:48px;font-size:12px;color:#9CA3AF;font-style:italic;text-align:center;">All compositions are protected by S.A.B.A.M. (Belgium) and U.C.M.R.A.D.A. (Rom&acirc;nia) &mdash; &copy; All rights reserved.</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">ALIN GHERMAN</div>
+            <div class="footer-note">Compositions for Solo Instruments</div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleWork(row){row.classList.toggle('open');}
+        function toggleDetails(btn){
+            var c=btn.nextElementSibling,a=btn.querySelector('.arrow-icon'),o=c.style.display==='block';
+            c.style.display=o?'none':'block';
+            a.style.transform=o?'rotate(0deg)':'rotate(180deg)';
+            btn.innerHTML=btn.innerHTML.replace(o?'Hide details':'Show details',o?'Show details':'Hide details');
+        }
+        document.querySelectorAll('.toc a').forEach(function(a){
+            a.addEventListener('click',function(){
+                document.querySelectorAll('.toc a').forEach(function(x){x.classList.remove('active');});
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
+

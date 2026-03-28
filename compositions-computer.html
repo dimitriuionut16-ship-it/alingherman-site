@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Remixed Performances &mdash; Alin Gherman</title>\r\n    <link rel="icon" href="/favicon.png" type="image/x-icon">\r\n    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+        .hero{padding:140px 48px 32px;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'Instrument Serif',serif;font-size:clamp(24px,4vw,48px);font-weight:400;color:var(--burgundy);line-height:1.25;}
+        .hero-note{font-size:13px;color:var(--grey);margin-top:10px;font-style:italic;}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin-top:20px;}
+        .container{max-width:1200px;padding:0 48px 100px;flex:1;}
+        .section-computer{background:linear-gradient(135deg,#f0f9ff,#e8f4fd);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-computer::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(transparent 43%,rgba(107,27,61,0.05) 43%,rgba(107,27,61,0.05) 45%,transparent 45%),linear-gradient(transparent 57%,rgba(107,27,61,0.05) 57%,rgba(107,27,61,0.05) 59%,transparent 59%);}
+        .section-anchor{scroll-margin-top:90px;}
+        .works-list{display:flex;flex-direction:column;gap:2px;margin-bottom:40px;}
+        .work-row{background:var(--white);border:1px solid var(--grey-light);overflow:hidden;position:relative;transition:border-color 0.25s;}
+        .work-row:hover,.work-row.open{border-color:var(--burgundy);}
+        .work-row-header{padding:20px 28px 16px;cursor:pointer;position:relative;}
+        .work-row-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--burgundy);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+        .work-row.open .work-row-header::after{transform:scaleX(1);}
+        .work-title{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+        .work-meta-inline{font-size:12px;color:var(--grey);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+        .work-details{display:none;padding:0 28px 22px;border-top:1px solid var(--grey-light);}
+        .work-row.open .work-details{display:block;}
+        .score-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font-size:12px;font-weight:500;letter-spacing:0.5px;text-decoration:none;border:1px solid var(--burgundy);color:var(--burgundy);background:transparent;transition:all 0.22s;cursor:pointer;white-space:nowrap;}
+        .score-btn:hover{background:var(--burgundy);color:#fff;}
+        .toggle-icon{float:right;font-size:18px;color:var(--burgundy);transition:transform 0.25s;user-select:none;margin-top:2px;}
+        .work-row.open .toggle-icon{transform:rotate(45deg);}
+        .waveform-bg{position:absolute;right:60px;top:0;bottom:0;width:200px;opacity:0.04;pointer-events:none;display:flex;align-items:center;}
+        .badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-left:6px;vertical-align:middle;}
+        .badge-computer{background:#E0F2FE;color:#0369A1;}
+        .badge-dedicated{background:#FCE7F3;color:#9D174D;}
+        .show-details-section{margin-top:16px;border-top:1px solid var(--grey-light);padding-top:14px;}
+        .show-details-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--burgundy);color:var(--burgundy);font-size:12px;font-weight:500;letter-spacing:1px;padding:7px 16px;cursor:pointer;text-transform:uppercase;transition:all 0.22s;}
+        .show-details-btn:hover{background:var(--burgundy);color:#fff;}
+        .arrow-icon{transition:transform 0.25s;display:inline-block;}
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+        @media(max-width:768px){
+            .nav-content,.container,.hero{padding-left:20px;padding-right:20px;}
+            .hero{padding-top:100px;}
+            .work-row-header{padding:16px 16px 12px;}
+            .work-details{padding:0 16px 18px;}
+            .work-title{font-size:18px;}
+            .waveform-bg{display:none;}
+            .footer-content{flex-direction:column;gap:12px;text-align:center;padding:0 24px;}
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN</a>
+            <a href="index.html#work" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                Back
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">Compositions</span>
+        <h1 class="hero-title">Computer Remixed Performances</h1>
+        <p class="hero-note">Live performances remixed and processed with computer</p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <div class="container">
+
+        <div id="computer" class="section-anchor">
+            <div class="section-computer" style="margin-bottom:12px;">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+                    <rect x="12" y="18" width="56" height="36" rx="3" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <rect x="28" y="54" width="24" height="6" fill="#6B1B3D" opacity="0.4"/>
+                    <line x1="20" y1="60" x2="60" y2="60" stroke="#6B1B3D" stroke-width="2"/>
+                    <path d="M25 36 L32 30 L39 38 L46 26 L53 36" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                </svg>
+                <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                    <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0369A1;opacity:0.8;">01</span>
+                    <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Computer Remixed &mdash;</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="works-list">
+
+            <!-- WANZE SESSIONS -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Bb clarinet and Roland hp-3e keyboard</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Wanze sessions (1 &amp; 2)</span>
+                        <span class="badge badge-computer">Computer Remix</span>
+                        <span class="badge badge-dedicated">Dedicated to Judith Enders</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 56</span><span>2004</span><span>duration: ca. 1&prime;41&quot;</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="5" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="10" y="14" width="3" height="20" rx="1" fill="#6B1B3D"/><rect x="15" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="20" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="25" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="30" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="35" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="40" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="45" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="50" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="55" y="16" width="3" height="16" rx="1" fill="#6B1B3D"/><rect x="60" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="65" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="70" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="75" y="13" width="3" height="22" rx="1" fill="#6B1B3D"/><rect x="80" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="85" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="90" y="11" width="3" height="26" rx="1" fill="#6B1B3D"/><rect x="95" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="100" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="105" y="9" width="3" height="30" rx="1" fill="#6B1B3D"/><rect x="110" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="115" y="15" width="3" height="18" rx="1" fill="#6B1B3D"/><rect x="120" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="125" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="130" y="11" width="3" height="26" rx="1" fill="#6B1B3D"/><rect x="135" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="140" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="145" y="17" width="3" height="14" rx="1" fill="#6B1B3D"/><rect x="150" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="155" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="160" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="165" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="170" y="13" width="3" height="22" rx="1" fill="#6B1B3D"/><rect x="175" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="180" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="185" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="190" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="195" y="15" width="3" height="18" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Composed and recorded during a short residency in Wanze area (Huy, Belgium) in April 2004, thanks to Philippe Roskam.<br><br>The initial performances by Mathieu Roskam (improvisation, Bb clarinet) and Alin Gherman (composition on Roland hp-3e) have been remixed on computer afterwards.</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Dedication</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Dedicated to Judith Enders.</div>
+                            </div>
+                            <div style="margin-bottom:18px;">
+                                <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performers</h4>
+                                <div style="font-size:13px;color:#1F2937;line-height:1.8;">Mathieu Roskam &mdash; Bb clarinet (improvisation)<br>Alin Gherman &mdash; Roland hp-3e keyboard (composition)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <span class="footer-brand">ALIN GHERMAN</span>
+            <span class="footer-note">&copy; 2024 Alin Gherman. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script>
+        function toggleWork(row) {
+            const isOpen = row.classList.contains('open');
+            document.querySelectorAll('.work-row.open').forEach(r => r.classList.remove('open'));
+            if (!isOpen) row.classList.add('open');
+        }
+        function toggleDetails(btn) {
+            const content = btn.nextElementSibling;
+            const arrow = btn.querySelector('.arrow-icon');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                content.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
+

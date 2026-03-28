@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brass Music — Compositions — Alin Gherman</title>\r\n    <link rel="icon" href="/favicon.png" type="image/x-icon">\r\n    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+        .hero{padding:140px 48px 48px;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,52px);font-weight:400;color:var(--burgundy);}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin-top:20px;}
+        .container{max-width:1200px;padding:0 48px 100px;flex:1;}
+        .toc{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;padding-top:16px;}
+        .toc a{padding:8px 20px;border:1px solid var(--burgundy);color:var(--burgundy);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:1px;transition:all 0.22s;}
+        .toc a:hover,.toc a.active{background:var(--burgundy);color:#fff;}
+        .section-military{background:linear-gradient(135deg,#fdf5e6,#f9efdc);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-quartet{background:linear-gradient(135deg,#f0f8f4,#e8f5ef);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-military::before,.section-quartet::before{content:'';position:absolute;inset:0;pointer-events:none;
+            background-image:linear-gradient(transparent 43%,rgba(107,27,61,0.05) 43%,rgba(107,27,61,0.05) 45%,transparent 45%),
+            linear-gradient(transparent 57%,rgba(107,27,61,0.05) 57%,rgba(107,27,61,0.05) 59%,transparent 59%),
+            linear-gradient(transparent 71%,rgba(107,27,61,0.05) 71%,rgba(107,27,61,0.05) 73%,transparent 73%),
+            linear-gradient(transparent 85%,rgba(107,27,61,0.05) 85%,rgba(107,27,61,0.05) 87%,transparent 87%);}
+        .section-anchor{scroll-margin-top:90px;}
+        .works-list{display:flex;flex-direction:column;gap:2px;margin-bottom:40px;}
+        .work-row{background:var(--white);border:1px solid var(--grey-light);overflow:hidden;position:relative;transition:border-color 0.25s;}
+        .work-row:hover,.work-row.open{border-color:var(--burgundy);}
+        .work-row-header{padding:20px 28px 16px;cursor:pointer;position:relative;}
+        .work-row-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--burgundy);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+        .work-row.open .work-row-header::after{transform:scaleX(1);}
+        .work-title{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+        .work-meta-inline{font-size:12px;color:var(--grey);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+        .work-details{display:none;padding:0 28px 22px;border-top:1px solid var(--grey-light);}
+        .work-row.open .work-details{display:block;}
+        .detail-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;align-items:center;}
+        .score-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font-size:12px;font-weight:500;letter-spacing:0.5px;text-decoration:none;border:1px solid var(--burgundy);color:var(--burgundy);background:transparent;transition:all 0.22s;cursor:pointer;white-space:nowrap;}
+        .score-btn:hover{background:var(--burgundy);color:#fff;}
+        .unlock-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:#003087;color:#fff;font-size:13px;font-weight:500;text-decoration:none;letter-spacing:0.5px;transition:background 0.22s;white-space:nowrap;}
+        .unlock-btn:hover{background:#001f5b;}
+        .toggle-icon{float:right;font-size:18px;color:var(--burgundy);transition:transform 0.25s;user-select:none;margin-top:2px;}
+        .work-row.open .toggle-icon{transform:rotate(45deg);}
+        .waveform-bg{position:absolute;right:60px;top:0;bottom:0;width:200px;opacity:0.04;pointer-events:none;display:flex;align-items:center;}
+        .badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-left:6px;vertical-align:middle;}
+        .badge-premiere{background:#EDE9FE;color:#5B21B6;}
+        .badge-commissioned{background:#FEF3C7;color:#92400E;}
+        .show-details-section{margin-top:16px;border-top:1px solid var(--grey-light);padding-top:14px;}
+        .show-details-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--burgundy);color:var(--burgundy);font-size:12px;font-weight:500;letter-spacing:1px;padding:7px 16px;cursor:pointer;text-transform:uppercase;transition:all 0.22s;}
+        .show-details-btn:hover{background:var(--burgundy);color:#fff;}
+        .arrow-icon{transition:transform 0.25s;display:inline-block;}
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+        @media(max-width:768px){.nav-content,.container,.hero{padding-left:24px;padding-right:24px;}}
+</style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN</a>
+            <a href="index.html#work" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                Back
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">Compositions</span>
+        <h1 class="hero-title">Brass Music</h1>
+        <div class="hero-divider"></div>
+    </div>
+
+    <div class="container">
+        <nav class="toc">
+            <a href="#military">Military Brass Ensemble</a>
+            <a href="#quartet">Brass Quartet</a>
+        </nav>
+
+        <!-- ═══ MILITARY BRASS ═══ -->
+        <div id="military" class="section-anchor">
+            
+        <div class="section-military" style="margin-bottom:12px;">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+<path d="M8 45 Q20 35 35 40 Q50 45 60 35 Q70 28 72 32" fill="none" stroke="#6B1B3D" stroke-width="3" stroke-linecap="round"/>
+<circle cx="72" cy="38" r="8" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+<line x1="8" y1="45" x2="4" y2="48" stroke="#6B1B3D" stroke-width="3" stroke-linecap="round"/>
+<line x1="4" y1="48" x2="4" y2="56" stroke="#6B1B3D" stroke-width="3" stroke-linecap="round"/>
+<rect x="28" y="30" width="3" height="10" rx="1" fill="#6B1B3D"/>
+<rect x="38" y="28" width="3" height="10" rx="1" fill="#6B1B3D"/>
+<rect x="48" y="26" width="3" height="10" rx="1" fill="#6B1B3D"/>
+</svg>
+            <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#92400E;opacity:0.8;">01</span>
+                <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">— Military Brass Ensemble —</h2>
+            </div>
+        </div>
+        </div>
+        <div class="works-list">
+            
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Military brass ensemble</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Full bright fanfare</span>
+                        <span class="badge badge-premiere">Bern 2010</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 83</span><span>2010</span><span>ca. 1'</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="17.0" width="3" height="13.9" rx="1" fill="#6B1B3D"/><rect x="5" y="6.0" width="3" height="36.1" rx="1" fill="#6B1B3D"/><rect x="10" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="15" y="3.6" width="3" height="40.8" rx="1" fill="#6B1B3D"/><rect x="20" y="7.2" width="3" height="33.6" rx="1" fill="#6B1B3D"/><rect x="25" y="16.5" width="3" height="15.0" rx="1" fill="#6B1B3D"/><rect x="30" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="35" y="2.5" width="3" height="43.1" rx="1" fill="#6B1B3D"/><rect x="40" y="5.2" width="3" height="37.6" rx="1" fill="#6B1B3D"/><rect x="45" y="12.6" width="3" height="22.8" rx="1" fill="#6B1B3D"/><rect x="50" y="10.4" width="3" height="27.1" rx="1" fill="#6B1B3D"/><rect x="55" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="60" y="5.1" width="3" height="37.7" rx="1" fill="#6B1B3D"/><rect x="65" y="8.3" width="3" height="31.3" rx="1" fill="#6B1B3D"/><rect x="70" y="11.0" width="3" height="26.1" rx="1" fill="#6B1B3D"/><rect x="75" y="5.5" width="3" height="37.0" rx="1" fill="#6B1B3D"/><rect x="80" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="85" y="9.5" width="3" height="29.0" rx="1" fill="#6B1B3D"/><rect x="90" y="12.5" width="3" height="23.1" rx="1" fill="#6B1B3D"/><rect x="95" y="7.6" width="3" height="32.9" rx="1" fill="#6B1B3D"/><rect x="100" y="2.1" width="3" height="43.7" rx="1" fill="#6B1B3D"/><rect x="105" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="110" y="13.6" width="3" height="20.9" rx="1" fill="#6B1B3D"/><rect x="115" y="9.1" width="3" height="29.7" rx="1" fill="#6B1B3D"/><rect x="120" y="5.4" width="3" height="37.2" rx="1" fill="#6B1B3D"/><rect x="125" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="130" y="4.6" width="3" height="38.8" rx="1" fill="#6B1B3D"/><rect x="135" y="17.0" width="3" height="14.1" rx="1" fill="#6B1B3D"/><rect x="140" y="4.6" width="3" height="38.8" rx="1" fill="#6B1B3D"/><rect x="145" y="4.9" width="3" height="38.2" rx="1" fill="#6B1B3D"/><rect x="150" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="155" y="9.8" width="3" height="28.4" rx="1" fill="#6B1B3D"/><rect x="160" y="12.2" width="3" height="23.6" rx="1" fill="#6B1B3D"/><rect x="165" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="170" y="6.1" width="3" height="35.8" rx="1" fill="#6B1B3D"/><rect x="175" y="3.8" width="3" height="40.4" rx="1" fill="#6B1B3D"/><rect x="180" y="15.9" width="3" height="16.2" rx="1" fill="#6B1B3D"/><rect x="185" y="6.6" width="3" height="34.9" rx="1" fill="#6B1B3D"/><rect x="190" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="195" y="6.1" width="3" height="35.8" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row"><a href="#" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a><a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score — 23 €</a><div style="position:relative;display:inline-block;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;c.style.display=c.style.display==='block'?'none':'block'})(this)" style="background:none;border:none;font-size:11px;color:#6B7280;cursor:pointer;letter-spacing:0.5px;text-decoration:underline;padding:0;">How to unlock?</button><div style="display:none;position:absolute;top:50%;left:calc(100% + 12px);transform:translateY(-50%);background:#1F2937;color:#fff;font-size:12px;line-height:1.7;padding:14px 18px;width:300px;z-index:100;border-radius:2px;"><strong>23 €</strong> — Score + all separate parts in one single PDF file (contribution towards production costs). Acquire via PayPal (all major credit cards accepted). 2-minute process, immediate download.<div style="position:absolute;top:50%;left:-6px;transform:translateY(-50%) rotate(45deg);width:12px;height:12px;background:#1F2937;"></div></div></div></div>
+                    <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">▾</span></button><div class="details-content" style="display:none;margin-top:20px;"><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">The fanfare was composed as part of a workshop organized by Oliver WAESPI, featuring the Swiss Bernese Military Band. Kaserne, Bern, Switzerland, 2010, May 12th.</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 83 &nbsp;·&nbsp; Current version: v1 — 5/2010</div></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ BRASS QUARTET ═══ -->
+        <div id="quartet" class="section-anchor">
+            
+        <div class="section-quartet" style="margin-bottom:12px;">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+<path d="M10 50 Q22 40 34 45" fill="none" stroke="#6B1B3D" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="34" cy="48" r="6" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+<path d="M46 42 Q58 32 70 37" fill="none" stroke="#6B1B3D" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="70" cy="40" r="6" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+<line x1="10" y1="50" x2="6" y2="53" stroke="#6B1B3D" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="46" y1="42" x2="42" y2="45" stroke="#6B1B3D" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+            <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#065F46;opacity:0.8;">02</span>
+                <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">— Brass Quartet —</h2>
+            </div>
+        </div>
+        </div>
+        <div class="works-list">
+            
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Brass quartet — Trumpet in Bb, 3 Horns in F</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Bright challenge fanfare</span>
+                        
+                    </div>
+                    <div class="work-meta-inline"><span>opus 82</span><span>2010</span><span>ca. 1'</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="2.3" width="3" height="43.5" rx="1" fill="#6B1B3D"/><rect x="5" y="5.6" width="3" height="36.7" rx="1" fill="#6B1B3D"/><rect x="10" y="2.9" width="3" height="42.3" rx="1" fill="#6B1B3D"/><rect x="15" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="20" y="8.1" width="3" height="31.8" rx="1" fill="#6B1B3D"/><rect x="25" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="30" y="5.9" width="3" height="36.3" rx="1" fill="#6B1B3D"/><rect x="35" y="6.5" width="3" height="35.1" rx="1" fill="#6B1B3D"/><rect x="40" y="14.5" width="3" height="19.0" rx="1" fill="#6B1B3D"/><rect x="45" y="3.4" width="3" height="41.3" rx="1" fill="#6B1B3D"/><rect x="50" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="55" y="7.1" width="3" height="33.9" rx="1" fill="#6B1B3D"/><rect x="60" y="11.2" width="3" height="25.6" rx="1" fill="#6B1B3D"/><rect x="65" y="11.3" width="3" height="25.3" rx="1" fill="#6B1B3D"/><rect x="70" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="75" y="2.6" width="3" height="42.9" rx="1" fill="#6B1B3D"/><rect x="80" y="9.7" width="3" height="28.6" rx="1" fill="#6B1B3D"/><rect x="85" y="10.2" width="3" height="27.6" rx="1" fill="#6B1B3D"/><rect x="90" y="8.4" width="3" height="31.2" rx="1" fill="#6B1B3D"/><rect x="95" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="100" y="6.5" width="3" height="34.9" rx="1" fill="#6B1B3D"/><rect x="105" y="13.3" width="3" height="21.4" rx="1" fill="#6B1B3D"/><rect x="110" y="6.3" width="3" height="35.5" rx="1" fill="#6B1B3D"/><rect x="115" y="4.7" width="3" height="38.6" rx="1" fill="#6B1B3D"/><rect x="120" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="125" y="12.0" width="3" height="24.1" rx="1" fill="#6B1B3D"/><rect x="130" y="10.6" width="3" height="26.8" rx="1" fill="#6B1B3D"/><rect x="135" y="3.6" width="3" height="40.8" rx="1" fill="#6B1B3D"/><rect x="140" y="2.8" width="3" height="42.5" rx="1" fill="#6B1B3D"/><rect x="145" y="3.1" width="3" height="41.7" rx="1" fill="#6B1B3D"/><rect x="150" y="18.3" width="3" height="11.5" rx="1" fill="#6B1B3D"/><rect x="155" y="5.4" width="3" height="37.1" rx="1" fill="#6B1B3D"/><rect x="160" y="2.6" width="3" height="42.8" rx="1" fill="#6B1B3D"/><rect x="165" y="2.7" width="3" height="42.5" rx="1" fill="#6B1B3D"/><rect x="170" y="7.7" width="3" height="32.6" rx="1" fill="#6B1B3D"/><rect x="175" y="15.2" width="3" height="17.5" rx="1" fill="#6B1B3D"/><rect x="180" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="185" y="3.5" width="3" height="41.1" rx="1" fill="#6B1B3D"/><rect x="190" y="4.6" width="3" height="38.9" rx="1" fill="#6B1B3D"/><rect x="195" y="13.3" width="3" height="21.4" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row"><a href="#" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a><a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score — 2 €</a><div style="position:relative;display:inline-block;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;c.style.display=c.style.display==='block'?'none':'block'})(this)" style="background:none;border:none;font-size:11px;color:#6B7280;cursor:pointer;letter-spacing:0.5px;text-decoration:underline;padding:0;">How to unlock?</button><div style="display:none;position:absolute;top:50%;left:calc(100% + 12px);transform:translateY(-50%);background:#1F2937;color:#fff;font-size:12px;line-height:1.7;padding:14px 18px;width:300px;z-index:100;border-radius:2px;"><strong>2 €</strong> — Score + all separate parts in printable PDF format (contribution towards production costs). Acquire via PayPal (all major credit cards accepted). 2-minute process, immediate download.<div style="position:absolute;top:50%;left:-6px;transform:translateY(-50%) rotate(45deg);width:12px;height:12px;background:#1F2937;"></div></div></div></div>
+                    <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">▾</span></button><div class="details-content" style="display:none;margin-top:20px;"><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">The fanfare was composed in Bern, Switzerland, March 2010.</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 82 &nbsp;·&nbsp; Current version: temporary v1 — 3/2010</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Not yet performed.</div></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top:48px;font-size:12px;color:#9CA3AF;font-style:italic;text-align:center;">All compositions are protected by S.A.B.A.M. (Belgium) and U.C.M.R.A.D.A. (România) — © All rights reserved.</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">ALIN GHERMAN</div>
+            <div class="footer-note">Brass Music — Compositions</div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleWork(row) { row.classList.toggle('open'); }
+        function toggleDetails(btn) {
+            var content = btn.nextElementSibling;
+            var arrow = btn.querySelector('.arrow-icon');
+            var isOpen = content.style.display === 'block';
+            content.style.display = isOpen ? 'none' : 'block';
+            arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+            btn.innerHTML = btn.innerHTML.replace(
+                isOpen ? 'Hide details' : 'Show details',
+                isOpen ? 'Show details' : 'Hide details'
+            );
+        }
+        document.querySelectorAll('.toc a').forEach(function(a) {
+            a.addEventListener('click', function() {
+                document.querySelectorAll('.toc a').forEach(function(x){x.classList.remove('active');});
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+

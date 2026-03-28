@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medium &amp; Large Ensembles &mdash; Compositions &mdash; Alin Gherman</title>\r\n    <link rel="icon" href="/favicon.png" type="image/x-icon">\r\n    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+        .hero{padding:140px 48px 32px;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,52px);font-weight:400;color:var(--burgundy);}
+        .hero-note{font-size:12px;color:var(--grey);margin-top:14px;line-height:1.9;}
+        .hero-note a{color:var(--burgundy);}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin-top:20px;}
+        .container{max-width:1200px;padding:0 48px 100px;flex:1;}
+        .toc{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;padding-top:20px;}
+        .toc a{padding:8px 20px;border:1px solid var(--burgundy);color:var(--burgundy);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:1px;transition:all 0.22s;}
+        .toc a:hover,.toc a.active{background:var(--burgundy);color:#fff;}
+        /* Section backgrounds */
+        .section-chamber{background:linear-gradient(135deg,#fdf8f0,#faf5ec);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-large{background:linear-gradient(135deg,#f0f4ff,#e8eefa);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-chamber::before,.section-large::before{
+            content:'';position:absolute;inset:0;pointer-events:none;
+            background-image:linear-gradient(transparent 43%,rgba(107,27,61,0.05) 43%,rgba(107,27,61,0.05) 45%,transparent 45%),
+            linear-gradient(transparent 57%,rgba(107,27,61,0.05) 57%,rgba(107,27,61,0.05) 59%,transparent 59%);}
+        .section-anchor{scroll-margin-top:90px;}
+        .works-list{display:flex;flex-direction:column;gap:2px;margin-bottom:40px;}
+        .work-row{background:var(--white);border:1px solid var(--grey-light);overflow:visible;position:relative;transition:border-color 0.25s;}
+        .work-row:hover,.work-row.open{border-color:var(--burgundy);}
+        .work-row-header{padding:20px 28px 16px;cursor:pointer;position:relative;}
+        .work-row-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--burgundy);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+        .work-row.open .work-row-header::after{transform:scaleX(1);}
+        .work-title{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+        .work-meta-inline{font-size:12px;color:var(--grey);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+        .work-details{display:none;padding:0 28px 22px;border-top:1px solid var(--grey-light);}
+        .work-row.open .work-details{display:block;}
+        .detail-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;align-items:center;overflow:visible;position:relative;z-index:10;}
+        .score-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font-size:12px;font-weight:500;letter-spacing:0.5px;text-decoration:none;border:1px solid var(--burgundy);color:var(--burgundy);background:transparent;transition:all 0.22s;cursor:pointer;white-space:nowrap;}
+        .score-btn:hover{background:var(--burgundy);color:#fff;}
+        .unlock-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:#003087;color:#fff;font-size:13px;font-weight:500;text-decoration:none;letter-spacing:0.5px;transition:background 0.22s;white-space:nowrap;}
+        .unlock-btn:hover{background:#001f5b;}
+        .toggle-icon{float:right;font-size:18px;color:var(--burgundy);transition:transform 0.25s;user-select:none;margin-top:2px;}
+        .work-row.open .toggle-icon{transform:rotate(45deg);}
+        .waveform-bg{position:absolute;right:60px;top:0;bottom:0;width:200px;opacity:0.04;pointer-events:none;display:flex;align-items:center;}
+        .badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-left:6px;vertical-align:middle;}
+        .badge-commissioned{background:#FEF3C7;color:#92400E;}
+        .badge-premiere{background:#EDE9FE;color:#5B21B6;}
+        .badge-note{background:#D1FAE5;color:#065F46;}
+        .badge-inprogress{background:#F3F4F6;color:#6B7280;}
+        .show-details-section{margin-top:16px;border-top:1px solid var(--grey-light);padding-top:14px;}
+        .show-details-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--burgundy);color:var(--burgundy);font-size:12px;font-weight:500;letter-spacing:1px;padding:7px 16px;cursor:pointer;text-transform:uppercase;transition:all 0.22s;}
+        .show-details-btn:hover{background:var(--burgundy);color:#fff;}
+        .arrow-icon{transition:transform 0.25s;display:inline-block;}
+        audio{display:block;width:100%;max-width:480px;height:36px;border:1px solid var(--grey-light);border-radius:2px;background:#fff;}
+        audio:focus{outline:2px solid var(--burgundy);}
+        .video-embed-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:560px;border:1px solid var(--grey-light);margin-top:10px;}
+        .video-embed-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+        .blockquote-note{font-style:italic;padding:12px 16px;border-left:2px solid var(--burgundy);background:#fdf8f2;font-size:13px;line-height:1.9;margin:8px 0;}
+        @media(max-width:768px){
+            .nav-content,.container,.hero{padding-left:24px;padding-right:24px;}
+            .work-row-header{padding:16px 16px 12px;}
+            .work-details{padding:0 16px 18px;}
+            .work-title{font-size:18px;}
+            .waveform-bg{display:none;}
+            .footer-content{flex-direction:column;gap:12px;text-align:center;padding:0 24px;}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-content">
+        <a href="index.html" class="nav-logo">ALIN GHERMAN</a>
+        <a href="index.html#work" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Back to Compositions
+        </a>
+    </div>
+</nav>
+
+<div class="hero">
+    <span class="hero-label">Compositions</span>
+    <h1 class="hero-title">Medium &amp; Large Ensembles</h1>
+    <p class="hero-note">Medium &amp; large ensembles &mdash; from septet to full orchestra</p>
+    <div class="hero-divider"></div>
+</div>
+
+<div class="container">
+    <nav class="toc">
+        <a href="#chamber">Chamber Ensemble</a>
+        <a href="#large">Large Ensemble</a>
+    </nav>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- CHAMBER ENSEMBLE -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div id="chamber" class="section-anchor">
+        <div class="section-chamber" style="margin-bottom:12px;">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+                <!-- simplified orchestra arc -->
+                <ellipse cx="40" cy="55" rx="30" ry="12" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                <line x1="40" y1="43" x2="40" y2="20" stroke="#6B1B3D" stroke-width="2"/>
+                <circle cx="40" cy="16" r="5" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                <line x1="20" y1="50" x2="25" y2="38" stroke="#6B1B3D" stroke-width="1.2"/>
+                <line x1="60" y1="50" x2="55" y2="38" stroke="#6B1B3D" stroke-width="1.2"/>
+            </svg>
+            <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#92400E;opacity:0.8;">01</span>
+                <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Chamber Ensemble &mdash;</h2>
+            </div>
+        </div>
+    </div>
+    <div class="works-list">
+
+        <!-- LE PAPILLON PAR UN MATIN TROUBLE -->
+        <div class="work-row">
+            <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Flute, Clarinet, Percussion, Piano, Violin, Viola, Cello &mdash; ensemble of 7</p>
+                <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                    <span class="work-title">Le Papillon par un matin trouble</span>
+                    <span class="badge badge-premiere">Mons 2011</span>
+                    <span class="badge badge-commissioned">FW-B Commission</span>
+                </div>
+                <div class="work-meta-inline"><span>opus 85</span><span>2011</span><span>ca. 9&prime;37&quot;</span><span>Excerpt</span></div>
+                <span class="toggle-icon">+</span>
+                <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="5" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="10" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="15" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="20" y="14" width="3" height="20" rx="1" fill="#6B1B3D"/><rect x="25" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="30" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="35" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="40" y="11" width="3" height="26" rx="1" fill="#6B1B3D"/><rect x="45" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="50" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="55" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="60" y="9" width="3" height="30" rx="1" fill="#6B1B3D"/><rect x="65" y="13" width="3" height="22" rx="1" fill="#6B1B3D"/><rect x="70" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="75" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="80" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="85" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="90" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="95" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="100" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="105" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="110" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="115" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="120" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="125" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="130" y="15" width="3" height="18" rx="1" fill="#6B1B3D"/><rect x="135" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="140" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="145" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="150" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="155" y="16" width="3" height="16" rx="1" fill="#6B1B3D"/><rect x="160" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="165" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="170" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="175" y="9" width="3" height="30" rx="1" fill="#6B1B3D"/><rect x="180" y="13" width="3" height="22" rx="1" fill="#6B1B3D"/><rect x="185" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="190" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="195" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/></svg></div>
+            </div>
+            <div class="work-details">
+                <div class="detail-row">
+                    <a href="https://www.youtube.com/watch?v=143P5enjl64" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video &mdash; Live Premi&egrave;re</a>
+                    <a href="http://www.archive.org/download/LePapillonParUnMatinTroublescorePreview/Le_Papillon_par_un_matin_trouble_by_Alin_GHERMAN_PREVIEW.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                    <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score + Parts &mdash; 15 &euro;</a>
+                    <div style="position:relative;display:inline-block;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;c.style.display=c.style.display==='block'?'none':'block'})(this)" style="background:none;border:none;font-size:11px;color:#6B7280;cursor:pointer;letter-spacing:0.5px;text-decoration:underline;padding:0;">How to unlock?</button><div style="display:none;position:absolute;top:50%;left:calc(100% + 12px);transform:translateY(-50%);background:#1F2937;color:#fff;font-size:12px;line-height:1.7;padding:14px 18px;width:300px;z-index:100;border-radius:2px;"><strong>15 &euro;</strong> &mdash; PDF conductor score + all separate parts. 2-minute process, immediate download.<div style="position:absolute;top:50%;left:-6px;transform:translateY(-50%) rotate(45deg);width:12px;height:12px;background:#1F2937;"></div></div></div>
+                </div>
+                <div style="margin-top:14px;">
+                    <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Live Premi&egrave;re, Th&eacute;&acirc;tre Royal de Mons 2011 &bull; 1&prime;40&quot;</div>
+                    <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                        <source src="http://www.archive.org/download/LePapillonParUnMatinTroubleaudioExcerpt/extraitlepapillon.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="show-details-section">
+                    <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                    <div class="details-content" style="display:none;margin-top:20px;">
+                        <div style="margin-bottom:16px;">
+                            <button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';b.querySelector('.lbl').textContent=o?'Show Instrumentation':'Hide Instrumentation'})(this)" style="display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid #14B8A6;color:#14B8A6;font-size:11px;font-weight:600;letter-spacing:1px;padding:6px 14px;cursor:pointer;text-transform:uppercase;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg><span class="lbl">Show Instrumentation</span></button>
+                            <div style="display:none;margin-top:12px;padding:16px;background:#FDFBF7;border-left:2px solid #14B8A6;font-size:13px;line-height:1.9;">
+                                &#8212; Flute (+ Alto Flute)<br>
+                                &#8212; Clarinet in B&#x266D; (+ Bass Clarinet in B&#x266D;)<br>
+                                &#8212; 1 Percussionist: Rainstick (medium low) / Bass drum / Suspended cymbal (ride) / 3 Bongos (high, med, low) / 3 Congas (high, med, low) / Tam-tam / Crotales (c6&ndash;c7) / Marimba (5 octaves) / Vibraphone (with bow)<br>
+                                &#8212; Piano<br>
+                                &#8212; Violin &nbsp;&middot;&nbsp; Viola &nbsp;&middot;&nbsp; Cello
+                            </div>
+                        </div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">After a bright and victorious flight, the insouciant Butterfly lands up a morning in an environment bathed with an entirely different light&hellip; Made heavy by atmospheric confusions and a sort of emerging maturity, the survival looks sometimes like a harmonic meditation or some forced acrobatics. However, the inner power remains the only sustainable light to explore a lane that soon will be of spiritual nature only.<br><br>
+                        <em style="color:#6B7280;font-size:12px;">Après un vol brillant et victorieux, le Papillon insouciant se retrouve, un matin, dans l&rsquo;environnement qui est baigné cette fois d&rsquo;une lumière toute différente... Alourdi par des troubles atmosphériques et une certaine maturité émergeante, la survie ressemble tantôt à une méditation harmonique, tantôt à quelques acrobaties forcées. La force intérieure demeure cependant le seul phare viable pour l&rsquo;exploration d&rsquo;un chemin bientôt purement spirituel.</em></div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Comments</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;"><div class="blockquote-note">&ldquo;I like the long tones. They help to focus the form and flow. Their &lsquo;simplicity of centeredness&rsquo; is lovely.&rdquo; &mdash; <strong>Augusta READ THOMAS</strong>, composer (USA)</div></div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 85 &nbsp;&middot;&nbsp; Current version: v.2 &mdash; 2012<br><em style="color:#6B7280;">v.2 is 20 seconds longer than v.1 &mdash; some foggy atmospheres slightly extended. Not yet performed in v.2.</em></div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">Dedicated to all who are dying. &nbsp;&middot;&nbsp; <em>Dédié à tous ceux qui agonisent.</em><br><br>Written with the support of the <strong>Ministère de la Communauté Française de Belgique</strong> (Fédération Wallonie-Bruxelles).</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">Premi&egrave;re recorded by Daniel LEON for <strong>Ensemble Musiques Nouvelles</strong>.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>Premi&egrave;re &mdash; 2011, January 21st</strong>, Ensemble Musiques Nouvelles, Th&eacute;&acirc;tre Royal de Mons (Belgium).<br>Antoine MAISONHAUTE (violin), Maxime DESERT (viola), Jeanne MAISONHAUTE (cello), André RISTIC (piano), Berten D&rsquo;HOLLANDER (flute), Charles MICHIELS (clarinets) &amp; Pierre QUIRINY (percussion).<br>Conducted by <strong>Jean-Paul DESSY</strong>. Produced by TACTUS / LE MANEGE MONS asbl.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3, 192kbps &mdash; 1&prime;40&quot; &mdash; Live concert, Th&eacute;&acirc;tre Royal de Mons, January 2011.</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ORIGINES -->
+        <div class="work-row">
+            <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Clarinets, Saxophones, Brass, Percussion, Piano, Strings</p>
+                <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                    <span class="work-title">Origines</span>
+                    <span class="badge badge-premiere">Krak&oacute;w 2006</span>
+                </div>
+                <div class="work-meta-inline"><span>opus 52</span><span>2003</span><span>ca. 10&prime;</span><span>Excerpt</span></div>
+                <span class="toggle-icon">+</span>
+                <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="11" width="3" height="26" rx="1" fill="#6B1B3D"/><rect x="5" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="10" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="15" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="20" y="17" width="3" height="14" rx="1" fill="#6B1B3D"/><rect x="25" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="30" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="35" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="40" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="45" y="14" width="3" height="20" rx="1" fill="#6B1B3D"/><rect x="50" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="55" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="60" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="65" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="70" y="9" width="3" height="30" rx="1" fill="#6B1B3D"/><rect x="75" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="80" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="85" y="11" width="3" height="26" rx="1" fill="#6B1B3D"/><rect x="90" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="95" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="100" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="105" y="13" width="3" height="22" rx="1" fill="#6B1B3D"/><rect x="110" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="115" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="120" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="125" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="130" y="16" width="3" height="16" rx="1" fill="#6B1B3D"/><rect x="135" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="140" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="145" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="150" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="155" y="15" width="3" height="18" rx="1" fill="#6B1B3D"/><rect x="160" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="165" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="170" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="175" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="180" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="185" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="190" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="195" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/></svg></div>
+            </div>
+            <div class="work-details">
+                <div class="detail-row">
+                    <a href="https://archive.org/download/OriginesConductorv22006ByAlinGhermanPREVIEW/Origines_(Conductor)_(v2-2006)_by_Alin_Gherman_(PREVIEW).pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                    <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Conductor Score &mdash; 23 &euro;</a>
+                    <div style="position:relative;display:inline-block;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;c.style.display=c.style.display==='block'?'none':'block'})(this)" style="background:none;border:none;font-size:11px;color:#6B7280;cursor:pointer;letter-spacing:0.5px;text-decoration:underline;padding:0;">How to unlock?</button><div style="display:none;position:absolute;top:50%;left:calc(100% + 12px);transform:translateY(-50%);background:#1F2937;color:#fff;font-size:12px;line-height:1.7;padding:14px 18px;width:300px;z-index:100;border-radius:2px;"><strong>23 &euro;</strong> &mdash; PDF conductor score (separate parts available on request). 2-minute process.<div style="position:absolute;top:50%;left:-6px;transform:translateY(-50%) rotate(45deg);width:12px;height:12px;background:#1F2937;"></div></div></div>
+                </div>
+                <div style="margin-top:12px;font-size:12px;color:#6B7280;font-style:italic;">Audio excerpt (1&prime;18&quot;, live) &mdash; original hosting retired.</div>
+                <div class="show-details-section">
+                    <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                    <div class="details-content" style="display:none;margin-top:20px;">
+                        <div style="margin-bottom:16px;">
+                            <button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';b.querySelector('.lbl').textContent=o?'Show Instrumentation':'Hide Instrumentation'})(this)" style="display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid #14B8A6;color:#14B8A6;font-size:11px;font-weight:600;letter-spacing:1px;padding:6px 14px;cursor:pointer;text-transform:uppercase;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg><span class="lbl">Show Instrumentation</span></button>
+                            <div style="display:none;margin-top:12px;padding:16px;background:#FDFBF7;border-left:2px solid #14B8A6;font-size:13px;line-height:1.9;">
+                                &#8212; B&#x266D; Clarinet &nbsp;&middot;&nbsp; Bass Clarinet<br>
+                                &#8212; Tenor Saxophone &nbsp;&middot;&nbsp; Alto Saxophone &nbsp;&middot;&nbsp; Baritone Saxophone<br>
+                                &#8212; Horn &nbsp;&middot;&nbsp; C Trumpet I &nbsp;&middot;&nbsp; C Trumpet II &nbsp;&middot;&nbsp; Trombone &nbsp;&middot;&nbsp; Tuba<br>
+                                &#8212; 1 Percussionist: Marimba (5 octaves) / Vibraphone (with bow) / 3 Tom-toms (with plastic mutes) / Bass drum / 2 Suspended cymbals / 2 Plastic bags<br>
+                                &#8212; Piano <em style="color:#6B7280;">(option: extra ossia for Bösendorfer Imperial with extended bass)</em><br>
+                                &#8212; Violin I &nbsp;&middot;&nbsp; Violin II &nbsp;&middot;&nbsp; Viola &nbsp;&middot;&nbsp; Cello
+                            </div>
+                        </div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">The title invites the audience to guess and discover the origins of the inspiration. Yes, I love Jazz music but in this piece I tried to hide that influence as much as possible &mdash; however some traces remain&hellip; My native Transylvania and the recent archaeological discoveries of a Neolithic civilisation in Romania (writing and art preceding Mesopotamian civilisation) added mystery to the folklore, mixed with influences from George CRUMB, Igor STRAVINSKY and Arvo PÄRT. Some piano passages (bass register) are a homage to old thriller films. The ring bell of the Palais des Beaux-Arts de Bruxelles announcing the end of an intermission also left traces at the end of the piece.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 52 &nbsp;&middot;&nbsp; Current version: v.2 &mdash; 2006</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">Dedicated to Judith ENDERS.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>First performance &mdash; 2006, January 20th</strong>, Orkiestra Nowej Muzyki, Akademia Muzyczna w Krak&oacute;w (Poland).</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 &mdash; 1&prime;18&quot; &mdash; Live concert, Krak&oacute;w 2006.</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARAF IN THE GRAVEYARD -->
+        <div class="work-row">
+            <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Winds, Brass, Percussion, Strings</p>
+                <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                    <span class="work-title">Taraf in the graveyard</span>
+                    <span class="badge badge-premiere">Metz 2006</span>
+                    <span class="badge badge-commissioned">Acanthes</span>
+                </div>
+                <div class="work-meta-inline"><span>opus 63</span><span>2006</span><span>ca. 7&prime;10&quot;</span><span>Excerpt</span></div>
+                <span class="toggle-icon">+</span>
+                <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="5" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="10" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="15" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="20" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="25" y="14" width="3" height="20" rx="1" fill="#6B1B3D"/><rect x="30" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="35" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="40" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="45" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="50" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="55" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="60" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="65" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="70" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="75" y="9" width="3" height="30" rx="1" fill="#6B1B3D"/><rect x="80" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="85" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="90" y="13" width="3" height="22" rx="1" fill="#6B1B3D"/><rect x="95" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="100" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="105" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="110" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="115" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="120" y="11" width="3" height="26" rx="1" fill="#6B1B3D"/><rect x="125" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="130" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="135" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="140" y="15" width="3" height="18" rx="1" fill="#6B1B3D"/><rect x="145" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="150" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="155" y="9" width="3" height="30" rx="1" fill="#6B1B3D"/><rect x="160" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="165" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="170" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="175" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="180" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="185" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="190" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="195" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/></svg></div>
+            </div>
+            <div class="work-details">
+                <div class="detail-row">
+                    <a href="http://archive.org/download/TarafInTheGraveyardscorePreview/TarafInTheGraveyardPreviewByAlinGherman.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                    <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Conductor Score &mdash; 23 &euro;</a>
+                </div>
+                <div style="margin-top:12px;font-size:12px;color:#6B7280;font-style:italic;">Audio excerpt (2&prime;08&quot;, live v.1) &mdash; original hosting retired.<br><em>Note: excerpt is from v.1; current score is v.2.1 (significantly revised).</em></div>
+                <div class="show-details-section">
+                    <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                    <div class="details-content" style="display:none;margin-top:20px;">
+                        <div style="margin-bottom:16px;">
+                            <button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';b.querySelector('.lbl').textContent=o?'Show Instrumentation':'Hide Instrumentation'})(this)" style="display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid #14B8A6;color:#14B8A6;font-size:11px;font-weight:600;letter-spacing:1px;padding:6px 14px;cursor:pointer;text-transform:uppercase;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg><span class="lbl">Show Instrumentation</span></button>
+                            <div style="display:none;margin-top:12px;padding:16px;background:#FDFBF7;border-left:2px solid #14B8A6;font-size:13px;line-height:1.9;">
+                                &#8212; Flute (+ Alto Flute) &nbsp;&middot;&nbsp; Oboe &nbsp;&middot;&nbsp; Clarinet in B&#x266D; (+ Piccolo Clarinet) &nbsp;&middot;&nbsp; Bassoon<br>
+                                &#8212; Horn in F &nbsp;&middot;&nbsp; Trumpet in B&#x266D; &nbsp;&middot;&nbsp; Tenor Trombone<br>
+                                &#8212; 1 Percussionist: 4 Toms / 2 Bongos / 2 Tumbas / Bass drum / 3 Suspended cymbals (high, med, low) / Tam-tam / Tubular bells (F4&ndash;F6) / Glockenspiel<br>
+                                &#8212; Violin I, II, III &amp; IV &nbsp;&middot;&nbsp; Viola I &amp; II &nbsp;&middot;&nbsp; Violoncello I &amp; II &nbsp;&middot;&nbsp; Double bass I &amp; II
+                            </div>
+                        </div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">The <em>happy graveyard</em> of S&acirc;p&acirc;nța (&ldquo;Cimitirul vesel&rdquo;, north Maramure&#351;, Romania) exhibits a funny and colourful approach to death. A <em>Taraf</em> is a band of traditional Romanian fiddlers (<em>lăutari</em>) that plays at weddings and large village parties &mdash; but not at funeral ceremonies. Throughout this composition I explore the attitude towards death.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Comments</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">The 2006 revised version (v.2.1) has not yet been performed.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 63 &nbsp;&middot;&nbsp; Current version: v.2.1 &mdash; 2006 (significantly revised)</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">Composed for the <strong>Acanthes Composition Workshop</strong>, Metz &mdash; France, July 2006.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>First performance &mdash; 2006, July 17th</strong>, musicians of the Orchestre National de Lorraine, Arsenal Concert Hall, Metz (France).</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end chamber works-list -->
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- LARGE ENSEMBLE -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div id="large" class="section-anchor">
+        <div class="section-large" style="margin-bottom:12px;">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+                <ellipse cx="40" cy="60" rx="32" ry="10" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                <ellipse cx="40" cy="50" rx="22" ry="7" fill="none" stroke="#6B1B3D" stroke-width="1.2"/>
+                <line x1="40" y1="43" x2="40" y2="22" stroke="#6B1B3D" stroke-width="2"/>
+                <circle cx="40" cy="18" r="5" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+            </svg>
+            <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3730A3;opacity:0.8;">02</span>
+                <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Large Ensemble &mdash;</h2>
+            </div>
+        </div>
+    </div>
+    <div class="works-list">
+
+        <!-- AVENTURES ET MIRACLES -->
+        <div class="work-row">
+            <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Winds, Brass, 3 Percussion, Electric Guitar, Bass Guitar, Sopranos, Alto, Piano, Accordion, Strings, DJ</p>
+                <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                    <span class="work-title">Aventures et miracles</span>
+                    <span class="badge badge-commissioned">ECO Commission</span>
+                    <span class="badge badge-premiere">Marseille 2012</span>
+                </div>
+                <div class="work-meta-inline"><span>opus 86a</span><span>2012</span><span>ca. 18&prime;</span><span>Excerpt</span></div>
+                <span class="toggle-icon">+</span>
+                <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="5" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="10" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="15" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="20" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="25" y="13" width="3" height="22" rx="1" fill="#6B1B3D"/><rect x="30" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="35" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="40" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="45" y="9" width="3" height="30" rx="1" fill="#6B1B3D"/><rect x="50" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="55" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="60" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="65" y="14" width="3" height="20" rx="1" fill="#6B1B3D"/><rect x="70" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="75" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="80" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="85" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="90" y="11" width="3" height="26" rx="1" fill="#6B1B3D"/><rect x="95" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="100" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="105" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="110" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="115" y="16" width="3" height="16" rx="1" fill="#6B1B3D"/><rect x="120" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="125" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="130" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="135" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="140" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="145" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="150" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="155" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="160" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="165" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="170" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="175" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="180" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="185" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="190" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="195" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/></svg></div>
+            </div>
+            <div class="work-details">
+                <div class="detail-row">
+                    <a href="http://www.dailymotion.com/video/xsf3v4_reportage-eco-on-the-beach-try-out-2_music" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Reportage ECO &mdash; Dailymotion</a>
+                    <span style="font-size:12px;color:#6B7280;font-style:italic;padding:9px 0;">Score under revision &mdash; contact Alin Gherman</span>
+                </div>
+                <div style="margin-top:14px;">
+                    <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; European Contemporary Orchestra, Marseille 2012</div>
+                    <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                        <source src="http://archive.org/download/AventuresEtMiraclesaudioExcerpt/extrait_aventuresetmiracles.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="show-details-section">
+                    <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                    <div class="details-content" style="display:none;margin-top:20px;">
+                        <div style="margin-bottom:16px;">
+                            <button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';b.querySelector('.lbl').textContent=o?'Show Instrumentation':'Hide Instrumentation'})(this)" style="display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid #14B8A6;color:#14B8A6;font-size:11px;font-weight:600;letter-spacing:1px;padding:6px 14px;cursor:pointer;text-transform:uppercase;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg><span class="lbl">Show Instrumentation</span></button>
+                            <div style="display:none;margin-top:12px;padding:16px;background:#FDFBF7;border-left:2px solid #14B8A6;font-size:13px;line-height:1.9;">
+                                <strong style="color:#6B1B3D;">Winds:</strong> Flute (+Piccolo) &nbsp;&middot;&nbsp; B&#x266D; Clarinet &nbsp;&middot;&nbsp; B&#x266D; Clarinet (+Bass Clarinet) &nbsp;&middot;&nbsp; Soprano Sax &nbsp;&middot;&nbsp; Tenor Sax (+Baritone Sax)<br>
+                                <strong style="color:#6B1B3D;">Brass:</strong> Horn &nbsp;&middot;&nbsp; C Trumpet &nbsp;&middot;&nbsp; Trombone &nbsp;&middot;&nbsp; Tuba<br>
+                                <strong style="color:#6B1B3D;">Percussion 1:</strong> Conga high / Anvil + metal hammers / Vibraphone / Gong G / Crash Cymbal / Cymbales frappées<br>
+                                <strong style="color:#6B1B3D;">Percussion 2:</strong> Claves / Whip / Triangle / Conga low / Snare drum / Marimba / Tam-tam / Crash Cymbals (2) / Hi-Hat / Splash Cymbal<br>
+                                <strong style="color:#6B1B3D;">Percussion 3:</strong> Wind chimes / Sleigh bells / Bongos / Bass Drum / Timpani (high+low) + Cymbal + Wine glass + bow<br>
+                                <strong style="color:#6B1B3D;">Voices:</strong> Soprano solo 1 &nbsp;&middot;&nbsp; Soprano solo 2 &nbsp;&middot;&nbsp; Alto solo<br>
+                                <strong style="color:#6B1B3D;">Keys &amp; Strings:</strong> Piano &nbsp;&middot;&nbsp; Electric keyboard &nbsp;&middot;&nbsp; Accordion &nbsp;&middot;&nbsp; Electric guitar &nbsp;&middot;&nbsp; Bass guitar<br>
+                                <strong style="color:#6B1B3D;">Strings:</strong> Violin 1,2,3 &nbsp;&middot;&nbsp; Viola 1,2,3 &nbsp;&middot;&nbsp; Violoncello 1,2,3 &nbsp;&middot;&nbsp; Double Bass &nbsp;&middot;&nbsp; DJ
+                            </div>
+                        </div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">My adventures are dedicated to those who desire them fervently while miracles are reserved for those who believe in them&hellip; Paying tribute to a certain &ldquo;tradition of travel&rdquo;, I allowed myself to make inroads (sometimes secretly) into the fantastic universes. Several scenes are presented:<br><br>
+                        <em style="color:#6B7280;">Propulsion and Northern lights &nbsp;&mdash;&nbsp; Miracle &nbsp;&mdash;&nbsp; Warriors parade in the catacombs &nbsp;&mdash;&nbsp; Pursuit in electric dresses &nbsp;&mdash;&nbsp; Chu-Chu-moving &nbsp;&mdash;&nbsp; Miracle again &nbsp;&mdash;&nbsp; On the tip of the dome &nbsp;&mdash;&nbsp; Wonders and sweets &nbsp;&mdash;&nbsp; Tenderness from the little fingers &nbsp;&mdash;&nbsp; In the magic Wood &nbsp;&mdash;&nbsp; Acid! &nbsp;&mdash;&nbsp; View of the fire field &nbsp;&mdash;&nbsp; Memory and nostalgia.</em></div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 86a &nbsp;&middot;&nbsp; Current version: v.1 &mdash; 2012/June</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">Dedicated to all those who wish fervently.<br>Commissioned by <strong>LE MANEGE.MONS / MUSIQUES NOUVELLES</strong> (Belgium) for the European Contemporary Orchestra.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">Premi&egrave;re recorded by Jarek FRANKOWSKY.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>Premi&egrave;re &mdash; 2012, June 15th</strong>, European Contemporary Orchestra (ECO) conducted by <strong>Raoul LAY</strong>.<br>Brigitte Peyré (soprano) &nbsp;&middot;&nbsp; Els Janssens-Vanmunster (mezzo) &nbsp;&middot;&nbsp; Raphaële Kennedy (soprano) &nbsp;&middot;&nbsp; Philippe Petit (DJ)<br>Ballet National de Marseille, France.</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AVENTURES INTERIEURES ET PETITS MIRACLES -->
+        <div class="work-row">
+            <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Winds, Brass, 3 Percussion, Electric Guitar, Bass Guitar, Sopranos, Alto, Piano, Accordion, Strings, DJ &mdash; short version</p>
+                <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                    <span class="work-title">Aventures int&eacute;rieures et petits miracles</span>
+                    <span class="badge badge-commissioned">ECO Commission</span>
+                    <span class="badge badge-premiere">Brussels 2012</span>
+                </div>
+                <div class="work-meta-inline"><span>opus 86b</span><span>2012</span><span>ca. 8&prime;</span></div>
+                <span class="toggle-icon">+</span>
+                <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="5" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="10" y="9" width="3" height="30" rx="1" fill="#6B1B3D"/><rect x="15" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="20" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="25" y="11" width="3" height="26" rx="1" fill="#6B1B3D"/><rect x="30" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="35" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="40" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="45" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="50" y="13" width="3" height="22" rx="1" fill="#6B1B3D"/><rect x="55" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="60" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="65" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="70" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="75" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="80" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="85" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="90" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="95" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="100" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="105" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="110" y="14" width="3" height="20" rx="1" fill="#6B1B3D"/><rect x="115" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="120" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="125" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="130" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="135" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="140" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="145" y="7" width="3" height="34" rx="1" fill="#6B1B3D"/><rect x="150" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="155" y="5" width="3" height="38" rx="1" fill="#6B1B3D"/><rect x="160" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="165" y="9" width="3" height="30" rx="1" fill="#6B1B3D"/><rect x="170" y="3" width="3" height="42" rx="1" fill="#6B1B3D"/><rect x="175" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="180" y="11" width="3" height="26" rx="1" fill="#6B1B3D"/><rect x="185" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="190" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="195" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/></svg></div>
+            </div>
+            <div class="work-details">
+                <div class="detail-row">
+                    <a href="https://www.youtube.com/watch?v=13txKZ7eRuY" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video &mdash; Flagey Brussels</a>
+                    <a href="http://archive.org/download/AventuresInterieuresEtPetitsMiraclesscorePreview/Aventures_interieures_et_petits_miracles_v1_by_Alin_GHERMAN_PREVIEW.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                    <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Conductor Score &mdash; 37 &euro;</a>
+                    <div style="position:relative;display:inline-block;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;c.style.display=c.style.display==='block'?'none':'block'})(this)" style="background:none;border:none;font-size:11px;color:#6B7280;cursor:pointer;letter-spacing:0.5px;text-decoration:underline;padding:0;">How to unlock?</button><div style="display:none;position:absolute;top:50%;right:0;transform:translateY(-50%);background:#1F2937;color:#fff;font-size:12px;line-height:1.7;padding:14px 18px;width:300px;z-index:100;border-radius:2px;"><strong>37 &euro;</strong> &mdash; PDF conductor score (separate parts available on request by contacting Alin Gherman). 2-minute process.<div style="position:absolute;top:50%;right:-6px;transform:translateY(-50%) rotate(45deg);width:12px;height:12px;background:#1F2937;"></div></div></div>
+                </div>
+                <div class="show-details-section">
+                    <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                    <div class="details-content" style="display:none;margin-top:20px;">
+                        <div style="margin-bottom:16px;">
+                            <button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';b.querySelector('.lbl').textContent=o?'Show Instrumentation':'Hide Instrumentation'})(this)" style="display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid #14B8A6;color:#14B8A6;font-size:11px;font-weight:600;letter-spacing:1px;padding:6px 14px;cursor:pointer;text-transform:uppercase;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg><span class="lbl">Show Instrumentation</span></button>
+                            <div style="display:none;margin-top:12px;padding:16px;background:#FDFBF7;border-left:2px solid #14B8A6;font-size:13px;line-height:1.9;">
+                                <strong style="color:#6B1B3D;">Winds:</strong> Flute (+Piccolo) &nbsp;&middot;&nbsp; B&#x266D; Clarinet &nbsp;&middot;&nbsp; B&#x266D; Clarinet (+Bass Clarinet) &nbsp;&middot;&nbsp; Soprano Sax &nbsp;&middot;&nbsp; Tenor Sax (+Baritone Sax)<br>
+                                <strong style="color:#6B1B3D;">Brass:</strong> Horn &nbsp;&middot;&nbsp; C Trumpet &nbsp;&middot;&nbsp; Trombone &nbsp;&middot;&nbsp; Tuba<br>
+                                <strong style="color:#6B1B3D;">Percussion 1:</strong> Glockenspiel / Vibraphone / Gong G / Crash Cymbal<br>
+                                <strong style="color:#6B1B3D;">Percussion 2:</strong> Triangle / Conga (low &amp; high) / Snare drum / Marimba / Crash Cymbals (2) + metal chain / Hi-Hat / Splash Cymbal<br>
+                                <strong style="color:#6B1B3D;">Percussion 3:</strong> Wind chimes / Bass Drum / Timpani (high+low) + Cymbal + Wine glass + bow<br>
+                                <strong style="color:#6B1B3D;">Voices:</strong> Soprano solo 1 &nbsp;&middot;&nbsp; Soprano solo 2 &nbsp;&middot;&nbsp; Alto solo<br>
+                                <strong style="color:#6B1B3D;">Keys &amp; More:</strong> Piano &nbsp;&middot;&nbsp; Electric keyboard &nbsp;&middot;&nbsp; Accordion &nbsp;&middot;&nbsp; Electric guitar &nbsp;&middot;&nbsp; Bass guitar &nbsp;&middot;&nbsp; DJ<br>
+                                <strong style="color:#6B1B3D;">Strings:</strong> Violin 1,2,3 &nbsp;&middot;&nbsp; Viola 1,2,3 &nbsp;&middot;&nbsp; Violoncello 1,2,3 &nbsp;&middot;&nbsp; Double Bass
+                            </div>
+                        </div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">A short version of <em>Aventures et miracles</em> (opus 86a). My adventures are dedicated to those who desire them fervently while miracles are reserved for those who believe in them&hellip;<br><br>
+                        <em style="color:#6B7280;">Scenes: Propulsion and boreal lights &mdash; Miracle again &mdash; On the edge of the dome &mdash; Wonders and sweets &mdash; Tenderness of the little fingers &mdash; In the magic Wood &mdash; Acid! &mdash; View over the fields of fire &mdash; Memory and nostalgia.</em></div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Comments</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;"><em>Aventures intérieures et petits miracles</em> is a condensed version of <em>Aventures et miracles</em> (opus 86a, ca. 18&prime;).</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 86b &nbsp;&middot;&nbsp; Current version: v.1 &mdash; 2012/June</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;">Dedicated to all those who wish fervently.<br>Commissioned by <strong>LE MANEGE.MONS / MUSIQUES NOUVELLES</strong> (Belgium) for the European Contemporary Orchestra.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4>
+                        <div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>Premi&egrave;re &mdash; 2012, December 6th</strong>, European Contemporary Orchestra (ECO) conducted by <strong>Raoul LAY</strong>, DJ Philippe Petit.<br>Flagey Studio 4 Concert Hall, Brussels, Belgium.</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end large works-list -->
+
+    <p style="margin-top:48px;font-size:12px;color:#9CA3AF;font-style:italic;text-align:center;">All compositions are protected by S.A.B.A.M. (Belgium) and U.C.M.R.A.D.A. (Rom&acirc;nia) &mdash; &copy; All rights reserved.</p>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-brand">ALIN GHERMAN</div>
+        <div class="footer-note">Medium &amp; Large Ensembles &mdash; Compositions</div>
+    </div>
+</footer>
+
+<script>
+    function toggleWork(row){row.classList.toggle('open');}
+    function toggleDetails(btn){
+        var content=btn.nextElementSibling;
+        var arrow=btn.querySelector('.arrow-icon');
+        var isOpen=content.style.display==='block';
+        content.style.display=isOpen?'none':'block';
+        arrow.style.transform=isOpen?'rotate(0deg)':'rotate(180deg)';
+        btn.innerHTML=btn.innerHTML.replace(
+            isOpen?'Hide details':'Show details',
+            isOpen?'Show details':'Hide details'
+        );
+    }
+    document.querySelectorAll('.toc a').forEach(function(a){
+        a.addEventListener('click',function(){
+            document.querySelectorAll('.toc a').forEach(function(x){x.classList.remove('active');});
+            this.classList.add('active');
+        });
+    });
+    var tocLinks=document.querySelectorAll('.toc a');
+    var observer=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(e.isIntersecting){
+                tocLinks.forEach(function(l){l.classList.remove('active');});
+                var active=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+                if(active)active.classList.add('active');
+            }
+        });
+    },{threshold:0.3});
+    document.querySelectorAll('.section-anchor').forEach(function(s){observer.observe(s);});
+</script>
+</body>
+</html>
+
+

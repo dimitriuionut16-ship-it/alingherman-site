@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duos, Trios, Quartets &amp; Quintets — Compositions — Alin Gherman</title>\r\n    <link rel="icon" href="/favicon.png" type="image/x-icon">\r\n    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+        .hero{padding:140px 48px 32px;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,52px);font-weight:400;color:var(--burgundy);}
+        .hero-note{font-size:12px;color:var(--grey);margin-top:14px;line-height:1.9;}
+        .hero-note a{color:var(--burgundy);}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin-top:20px;}
+        .container{max-width:1200px;padding:0 48px 100px;flex:1;}
+        .toc{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;padding-top:20px;}
+        .toc a{padding:8px 20px;border:1px solid var(--burgundy);color:var(--burgundy);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:1px;transition:all 0.22s;}
+        .toc a:hover,.toc a.active{background:var(--burgundy);color:#fff;}
+        /* Section backgrounds */
+        .section-duo{background:linear-gradient(135deg,#fdf8f0,#faf5ec);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-trio{background:linear-gradient(135deg,#f0f4ff,#e8eefa);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-quartet{background:linear-gradient(135deg,#f0f8f4,#eaf5f0);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-quintet{background:linear-gradient(135deg,#fff8f0,#fdf2e4);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-duo::before,.section-trio::before,.section-quartet::before,.section-quintet::before{
+            content:'';position:absolute;inset:0;pointer-events:none;
+            background-image:linear-gradient(transparent 43%,rgba(107,27,61,0.05) 43%,rgba(107,27,61,0.05) 45%,transparent 45%),
+            linear-gradient(transparent 57%,rgba(107,27,61,0.05) 57%,rgba(107,27,61,0.05) 59%,transparent 59%);}
+        .section-anchor{scroll-margin-top:90px;}
+        .works-list{display:flex;flex-direction:column;gap:2px;margin-bottom:40px;}
+        .work-row{background:var(--white);border:1px solid var(--grey-light);overflow:visible;position:relative;transition:border-color 0.25s;}
+        .work-row:hover,.work-row.open{border-color:var(--burgundy);}
+        .work-row-header{padding:20px 28px 16px;cursor:pointer;position:relative;}
+        .work-row-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--burgundy);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+        .work-row.open .work-row-header::after{transform:scaleX(1);}
+        .work-title{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+        .work-meta-inline{font-size:12px;color:var(--grey);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+        .work-details{display:none;padding:0 28px 22px;border-top:1px solid var(--grey-light);}
+        .work-row.open .work-details{display:block;}
+        .detail-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;align-items:center;overflow:visible;position:relative;z-index:10;}
+        .score-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font-size:12px;font-weight:500;letter-spacing:0.5px;text-decoration:none;border:1px solid var(--burgundy);color:var(--burgundy);background:transparent;transition:all 0.22s;cursor:pointer;white-space:nowrap;}
+        .score-btn:hover{background:var(--burgundy);color:#fff;}
+        .unlock-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:#003087;color:#fff;font-size:13px;font-weight:500;text-decoration:none;letter-spacing:0.5px;transition:background 0.22s;white-space:nowrap;}
+        .unlock-btn:hover{background:#001f5b;}
+        .toggle-icon{float:right;font-size:18px;color:var(--burgundy);transition:transform 0.25s;user-select:none;margin-top:2px;}
+        .work-row.open .toggle-icon{transform:rotate(45deg);}
+        .waveform-bg{position:absolute;right:60px;top:0;bottom:0;width:200px;opacity:0.04;pointer-events:none;display:flex;align-items:center;}
+        .badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-left:6px;vertical-align:middle;}
+        .badge-commissioned{background:#FEF3C7;color:#92400E;}
+        .badge-competition{background:#FEE2E2;color:#991B1B;}
+        .badge-premiere{background:#EDE9FE;color:#5B21B6;}
+        .badge-theatre{background:#D1FAE5;color:#065F46;}
+        .badge-new{background:#DBEAFE;color:#1D4ED8;}
+        .badge-inprogress{background:#F3F4F6;color:#6B7280;}
+        .show-details-section{margin-top:16px;border-top:1px solid var(--grey-light);padding-top:14px;}
+        .show-details-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--burgundy);color:var(--burgundy);font-size:12px;font-weight:500;letter-spacing:1px;padding:7px 16px;cursor:pointer;text-transform:uppercase;transition:all 0.22s;}
+        .show-details-btn:hover{background:var(--burgundy);color:#fff;}
+        .arrow-icon{transition:transform 0.25s;display:inline-block;}
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+        audio{display:block;width:100%;max-width:480px;height:36px;border:1px solid var(--grey-light);border-radius:2px;background:#fff;}
+        audio:focus{outline:2px solid var(--burgundy);}
+        .video-embed-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:560px;border:1px solid var(--grey-light);margin-top:10px;}
+        .video-embed-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+        .multi-show-wrapper{position:relative;display:inline-block;}
+        .multi-show-dropdown{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#fff;border:1px solid #6B1B3D;z-index:300;min-width:340px;box-shadow:0 6px 16px rgba(0,0,0,0.12);}
+        .multi-show-dropdown .clip-item{border-bottom:1px solid #e5e7eb;}
+        .multi-show-dropdown .clip-item:last-child{border-bottom:none;}
+        .multi-show-dropdown .clip-item a{display:block;padding:10px 16px 4px;font-size:12px;color:#6B1B3D;text-decoration:none;transition:background 0.2s;}
+        .multi-show-dropdown .clip-item a:hover{background:#fdf5f8;}
+        .multi-show-dropdown .clip-note{font-size:10px;color:#6B7280;padding:0 16px 10px;line-height:1.5;}
+        .multi-show-wrapper.open .multi-show-dropdown{display:block;}
+        @media(max-width:768px){
+            .nav-content,.container,.hero{padding-left:24px;padding-right:24px;}
+            .work-row-header{padding:16px 16px 12px;}
+            .work-details{padding:0 16px 18px;}
+            .work-title{font-size:18px;}
+            .waveform-bg{display:none;}
+            .footer-content{flex-direction:column;gap:12px;text-align:center;padding:0 24px;}
+        }
+
+        /* Back to Pressbook button */
+        .back-pressbook-btn {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--turquoise);
+            border: 1px solid var(--turquoise);
+            padding: 10px 20px;
+            background: transparent;
+            transition: all 0.25s;
+            cursor: pointer;
+            margin-left: 12px;
+        }
+        .back-pressbook-btn:hover {
+            background: var(--turquoise);
+            color: #fff;
+        }
+        .back-pressbook-btn svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s;
+        }
+        .back-pressbook-btn:hover svg {
+            transform: translateX(-3px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN</a>
+            <a href="index.html#work" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                Back to Compositions
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">Compositions</span>
+        <h1 class="hero-title">Duos, Trios, Quartets &amp; Quintets</h1>
+        <p class="hero-note">
+            For instrumental theatre with percussion &rarr; <a href="compositions-theatre.html">Instrumental Theatre</a><br>
+            For orchestra pieces &rarr; <a href="compositions-orchestra.html">Chamber / Symphonic Orchestra</a>
+        </p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <div class="container">
+        <nav class="toc">
+            <a href="#duo">Duos</a>
+            <a href="#trio">Trios</a>
+            <a href="#quartet">Quartets</a>
+            <a href="#quintet">Quintets</a>
+        </nav>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <!-- DUOS -->
+        <!-- ══════════════════════════════════════════════ -->
+        <div id="duo" class="section-anchor">
+            <div class="section-duo">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+                    <circle cx="28" cy="30" r="10" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <circle cx="52" cy="30" r="10" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <path d="M18 55 Q28 45 40 48 Q52 51 62 55" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                </svg>
+                <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                    <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#92400E;opacity:0.8;">01</span>
+                    <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Duos &mdash;</h2>
+                </div>
+            </div>
+        </div>
+        <div class="works-list">
+
+            <!-- METAL SPIRITS I -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">2 Percussionists &mdash; multi-percussion</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Metal spirits I</span>
+                        <span class="badge badge-competition">Concours de Gen&egrave;ve</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 79a</span><span>2009</span><span>ca. 2&prime;45&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.youtube.com/watch?v=J-LEQj5JP9I" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score I+II &mdash; 7 &euro;</a>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Samuel &amp; Simon Forster, HKB Bern 2009 &bull; 1&prime;30&quot;</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/MetalSpirits12audioExcerpts/extraitmetalspirits1.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:16px;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';b.querySelector('.lbl').textContent=o?'Show Instrumentation':'Hide Instrumentation'})(this)" style="display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid #14B8A6;color:#14B8A6;font-size:11px;font-weight:600;letter-spacing:1px;padding:6px 14px;cursor:pointer;text-transform:uppercase;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg><span class="lbl">Show Instrumentation</span></button>
+                            <div style="display:none;margin-top:12px;padding:16px;background:#FDFBF7;border-left:2px solid #14B8A6;font-size:13px;line-height:1.9;">
+                                <strong style="color:#6B1B3D;">Player 1</strong><br>
+                                <div style="margin-left:16px;">&#8212; Metal chimes (all ranges, large, scale-organized Wind chimes rack)<br>&#8212; 2 Thunder plates: small, large<br>&#8212; 2 Chinese Cymbals: 4 (medium high), 5 (high)<br>&#8212; 5 Chinese Gongs: c#1 / e1 / g1 / h1 / d2 (with glissando, tuned)<br>&#8212; 2 Domed Gongs: C4, A2</div><br>
+                                <strong style="color:#6B1B3D;">Player 2</strong><br>
+                                <div style="margin-left:16px;">&#8212; Glass chimes (all ranges, scale-organized Wind chimes rack)<br>&#8212; Metal chimes (all ranges, very large)<br>&#8212; 3 Chinese Cymbals: 1 (lowest), 2 (medium low), 3 (medium)<br>&#8212; 1 Chinese Gong: &alpha; (downward glissando, untuned)<br>&#8212; 1 Tam-tam: very high<br><em style="color:#6B7280;font-size:12px;">Additional instruments required for Metal spirits II &mdash; see below.</em></div>
+                            </div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">These two pieces (together with Metal spirits II) are conceived on the ideas of impact and resonance. Metallic timbres are in the foreground, expanded by special chimes in a &ldquo;guest&rdquo; role. (For Metal spirits I: Glass chimes; for Metal spirits II: Stone chimes)</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 79a &nbsp;&middot;&nbsp; Current version: v.1</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">&ldquo;Lobende Anerkennung&rdquo; (honorable acknowledgement) from Universit&auml;t Oldenburg (Germany) for Metal spirits I+II.<br>Dedicated to Simon FORSTER.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">2009 &mdash; July 7th, H.K.B. Studio, Bern. Samuel FORSTER &amp; Simon FORSTER (percussion). Sound engineer: Beat M&Uuml;LLER. Video: <a href="http://www.voltafilm.ch" target="_blank" style="color:#6B1B3D;">Voltafilm</a> Luzern (Stephan HEINIGER). Produced by Alin GHERMAN with the support of Fonds Culturel Suisse, HKB Bern and Voltafilm Luzern.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3, 320kbps &mdash; 1&prime;30&quot; of 2&prime;45&quot; (beginning)<br>Samuel FORSTER &amp; Simon FORSTER &mdash; July 7th, 2009, H.K.B. Studio, Bern.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- METAL SPIRITS II -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">2 Percussionists &mdash; multi-percussion</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Metal spirits II</span>
+                        <span class="badge badge-competition">Concours de Gen&egrave;ve</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 79b</span><span>2009</span><span>ca. 3&prime;12&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.youtube.com/watch?v=udXf9XuyYoQ" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score I+II &mdash; 7 &euro;</a>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Samuel &amp; Simon Forster, HKB Bern 2009 &bull; 1&prime;25&quot;</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/MetalSpirits12audioExcerpts/extraitmetalspirits2.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:16px;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';b.querySelector('.lbl').textContent=o?'Show Instrumentation':'Hide Instrumentation'})(this)" style="display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid #14B8A6;color:#14B8A6;font-size:11px;font-weight:600;letter-spacing:1px;padding:6px 14px;cursor:pointer;text-transform:uppercase;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg><span class="lbl">Show Instrumentation</span></button>
+                            <div style="display:none;margin-top:12px;padding:16px;background:#FDFBF7;border-left:2px solid #14B8A6;font-size:13px;line-height:1.9;">
+                                <strong style="color:#6B1B3D;">Player 1</strong><br>
+                                <div style="margin-left:16px;">&#8212; 2 Rainsticks (2&times; high)<br>&#8212; Hi-hat<br>&#8212; 2 Domed Gongs: F2#, F3<br>&#8212; 1 Tam-tam: very low</div><br>
+                                <strong style="color:#6B1B3D;">Player 2</strong><br>
+                                <div style="margin-left:16px;">&#8212; 3 Rainsticks (2&times; medium, 1&times; low)<br>&#8212; Stone chimes (may be replaced by additional irregular chimes)<br>&#8212; 3 Domed Gongs: A2#/E3, C3, D3<br>&#8212; 1 Tam-tam: medium high</div>
+                            </div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Together with Metal spirits I &mdash; conceived on the ideas of impact and resonance. Metallic timbres in the foreground, expanded by Stone chimes in a &ldquo;guest&rdquo; role.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">2009 &mdash; July 7th, H.K.B. Studio, Bern. Samuel FORSTER &amp; Simon FORSTER (percussion). Sound engineer: Beat M&Uuml;LLER. Video: <a href="http://www.voltafilm.ch" target="_blank" style="color:#6B1B3D;">Voltafilm</a> Luzern. Produced by Alin GHERMAN with the support of Fonds Culturel Suisse, HKB Bern and Voltafilm Luzern.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KLAVIERSTUCK V1 -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Piano 4 hands</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Klavierst&uuml;ck &mdash; v.1 (short version)</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 65</span><span>2007</span><span>ca. 4&prime;40&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://archive.org/download/KlavierstuckV1scorePreview/KlavierstckByAlinGhermanV1Preview.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score v.1+v.2 &mdash; 9 &euro;</a>
+                        <div style="position:relative;display:inline-block;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;c.style.display=c.style.display==='block'?'none':'block'})(this)" style="background:none;border:none;font-size:11px;color:#6B7280;cursor:pointer;letter-spacing:0.5px;text-decoration:underline;padding:0;">How to unlock?</button><div style="display:none;position:absolute;top:50%;left:calc(100% + 12px);transform:translateY(-50%);background:#1F2937;color:#fff;font-size:12px;line-height:1.7;padding:14px 18px;width:300px;z-index:100;border-radius:2px;"><strong>9 &euro;</strong> &mdash; Unlocks both v.1 (short) and v.2 (full) scores in PDF. 2-minute process.<div style="position:absolute;top:50%;left:-6px;transform:translateY(-50%) rotate(45deg);width:12px;height:12px;background:#1F2937;"></div></div></div>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Bösendorfer CEUS, HKB Bern 2008 &bull; 1&prime;49&quot;</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/Klavierstuckexcerpt/extraitklavierstuck.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">An hommage to the early 20th century&rsquo;s mechanical piano.<br><br><em>Virtuous piece for &ldquo;friends only&rdquo;! In a concert programme, it is suggested to play &ldquo;Addendum:exitum&rdquo; just afterwards.</em></div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 65 &nbsp;&middot;&nbsp; Current version: v.1 &mdash; 2007</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">2008 &mdash; November 24th: B&ouml;sendorfer CEUS (MIDI mechanical piano) + Kirill ZWEGINTSOW &amp; Jana UZUNOVA, H.K.B. Bern. Sound engineer: Beno&icirc;t PICCAND.<br>2008 &mdash; November 25th: Beatrice LIM &amp; Liu Wei JING (Steinway D), H.K.B. Bern. Sound engineer: Beno&icirc;t PICCAND.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3, 256kbps &mdash; 1&prime;49&quot; of 4&prime;28&quot; (ca. 1&prime;05&quot; after beginning)<br>MIDI controlled piano B&ouml;sendorfer CEUS, November 24th, 2008, H.K.B. Bern.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KLAVIERSTUCK V2 -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Piano 4 hands</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Klavierst&uuml;ck &mdash; v.2 (full version)</span>
+                        <span class="badge badge-new">NEW</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 65</span><span>2010</span><span>ca. 9&prime;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.youtube.com/watch?v=mHT6QVnDHOs" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video</a>
+                        <a href="https://archive.org/download/KlavierstuckV1scorePreview/KlavierstckByAlinGhermanV1Preview.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score v.1+v.2 &mdash; 9 &euro;</a>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Bösendorfer CEUS, HKB Bern 2010</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/Klavierstuckexcerpt/extraitklavierstuckv2.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">This piece is a tribute to the early 20th century&rsquo;s mechanical piano. A movement which departs from the extremes, leading to a chaos that results in a strong mechanical pattern that becomes necessary to tease. The question &mdash; <em>How would that music become human again?</em> &mdash; represents one of the challenges of the piece. The revised version of 2010 offers an exciting development of the polyrhythmic patterns already presented in the short version (v.1, 2007).</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About the B&ouml;sendorfer CEUS Recording</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">The rhythmic complexity and extreme virtuosity required by Klavierst&uuml;ck made a mechanical piano of the highest calibre the ideal solution. The B&ouml;sendorfer Imperial CEUS offers attack precision that transcends standard MIDI, resulting in a rhythmic richness and unexpected sonorities faithfully reproduced at every playback. The CEUS-controlled recording blurs the boundary between mechanical and human performance.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 65 &nbsp;&middot;&nbsp; v.2 &mdash; 2010<br><em style="color:#14B8A6;">Note: Score update in preparation &mdash; automatic update will be delivered.</em></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADDENDUM EXITUM (original) -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Piano 4 hands + page turner &mdash; Instrumental Theatre</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Addendum : exitum &mdash; original version</span>
+                        <span class="badge badge-theatre">Theatre</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 67a</span><span>2007</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.youtube.com/watch?v=BdABEaP7Rb0" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video &mdash; Live Premiere</a>
+                        <a href="https://archive.org/download/AddendumexitummusicScorePreview/AddendumExitumPreview.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Both Versions &mdash; 7 &euro;</a>
+                        <div style="position:relative;display:inline-block;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;c.style.display=c.style.display==='block'?'none':'block'})(this)" style="background:none;border:none;font-size:11px;color:#6B7280;cursor:pointer;letter-spacing:0.5px;text-decoration:underline;padding:0;">How to unlock?</button><div style="display:none;position:absolute;top:50%;left:calc(100% + 12px);transform:translateY(-50%);background:#1F2937;color:#fff;font-size:12px;line-height:1.7;padding:14px 18px;width:300px;z-index:100;border-radius:2px;"><strong>7 &euro;</strong> &mdash; One password unlocks both the original version and the long version (3 pieces). 2-minute process.<div style="position:absolute;top:50%;left:-6px;transform:translateY(-50%) rotate(45deg);width:12px;height:12px;background:#1F2937;"></div></div></div>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">&ldquo;Serious joke!&rdquo; &mdash; to include in a serious concert programme. Why not after &ldquo;Klavierst&uuml;ck&rdquo; or any other piece?</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Comments</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">First experiments with Justyna JARZAB &amp; Natalia KOZIARZ (Krakow, Poland). Further developments at HKB Bern with Anja F&Ucirc;STI (page turner), Natalia KOZIARZ &amp; Daniel BRYLEWSKI (piano).<br><br>There is an alternative long version with 3 pieces (opus 67b, duration 6&prime;&ndash;7&prime;) &mdash; see below.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 67a &nbsp;&middot;&nbsp; Current version: v.1<br><em style="color:#6B7280;">Th&eacute;&acirc;tre musical &mdash; Instrumental theatre.</em></div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">2008 February &mdash; LIVE PREMIERE by Natalia KOZIARZ &amp; Daniel BRYLEWSKI (piano), Anja F&Uuml;STI (page turner), Grosse Konzertsaal, H.K.B. Bern. Audio &amp; Video produced by Alin GHERMAN.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>Premi&egrave;re</strong> &mdash; 2008 February, Natalia KOZIARZ &amp; Daniel BRYLEWSKI, H.K.B. Bern.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADDENDUM EXITUM (long) -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Piano 4 hands + page turner &mdash; Instrumental Theatre</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Addendum : exitum &mdash; long version (3 pieces)</span>
+                        <span class="badge badge-theatre">Theatre</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 67b</span><span>2009</span><span>ca. 6&prime;&ndash;7&prime;</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://archive.org/download/AddendumexitummusicScorePreview/AddendumExitumPreview.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Both Versions &mdash; 7 &euro;</a>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">&ldquo;Serious joke!&rdquo; &mdash; This group of three pieces was conceived as a preparatory path to semi-improvisation. They may be played separately and without a page-turner.<br><br><em>&ldquo;Lamentation&rdquo;</em> (&ldquo;L&rsquo;&eacute;pine&rdquo;, excerpt of &ldquo;folclor&rdquo;) serves as an introductory atmosphere to make performers and audience more sensitive to the contemplation of minimal note usage.<br><br><em>&ldquo;Other spaces&rdquo;</em> invites the pianists to recompose the atmosphere of given notes, preparing missing parameters in advance.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 67b &nbsp;&middot;&nbsp; Current version: v.1</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HAUTE TENSION -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Prepared piano and percussion</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Haute tension</span>
+                        <span class="badge badge-premiere">Beijing 2011</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 75</span><span>2008</span><span>ca. 6&prime;30&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://archive.org/details/HauteTensionvideoFull" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video (archive.org)</a>
+                        <a href="https://archive.org/download/HauteTensionmusicScoreExcerpt/HauteTensionPREVIEW.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score &mdash; 9 &euro;</a>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">&ldquo;Haute tension&rdquo; (= High tension) was composed during a tensional period. I wanted to transpose this potential energy onto percussive instruments and search for a certain beauty and interest in the &ldquo;danger&rdquo;. The situation of discomfort gives a special &ldquo;alert&rdquo; power and the outburst remains uncertain. The visual aspect of the musicians being under pressure adds a second dramatic layer &mdash; the music is made by visible tensions and sounds.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Comments</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">As shown in the video clip, the musicians play with a CLICK (headphones) and therefore have no visual contact. This technical parameter makes the musicians even more alert, which is interesting for the audience to watch.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 75 &nbsp;&middot;&nbsp; Current version: v.1</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Piece selected by the Beijing Modern Music Festival 2011 for the &ldquo;Young Composers Project&rdquo;.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">2008 &mdash; November 25th, H.K.B. Studio, Bern. Natalia KOZIARZ (prepared piano) &amp; Simon FORSTER (percussion). Sound engineer: Cyrill LIM. Video: <a href="http://www.voltafilm.ch" target="_blank" style="color:#6B1B3D;">Voltafilm</a> Luzern (Stephan HEINIGER).</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3, 192kbps &mdash; 1&prime;41&quot; of 6&prime;30&quot; (beginning)<br>Natalia KOZIARZ (prepared piano) &amp; Simon FORSTER (percussion) &mdash; November 2008, H.K.B. Studio, Bern.<br><em style="color:#6B7280;">Audio excerpt link currently unavailable &mdash; see full video on archive.org above.</em></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VLAN -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Voice and piano</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Vlan ! &mdash; quelques petites annonces pour voix et piano</span>
+                        <span class="badge badge-competition">2d Prize Bucharest 2008</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 53</span><span>2004</span><span>ca. 4&prime;25&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score (all voices) &mdash; 6 &euro;</a>
+                        <div style="position:relative;display:inline-block;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;c.style.display=c.style.display==='block'?'none':'block'})(this)" style="background:none;border:none;font-size:11px;color:#6B7280;cursor:pointer;letter-spacing:0.5px;text-decoration:underline;padding:0;">How to unlock?</button><div style="display:none;position:absolute;top:50%;left:calc(100% + 12px);transform:translateY(-50%);background:#1F2937;color:#fff;font-size:12px;line-height:1.7;padding:14px 18px;width:300px;z-index:100;border-radius:2px;"><strong>6 &euro;</strong> &mdash; Download any version (soprano, tenor, baritone) or all for the same price. 2-minute process.<div style="position:absolute;top:50%;left:-6px;transform:translateY(-50%) rotate(45deg);width:12px;height:12px;background:#1F2937;"></div></div></div>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Baumann / Uzunova, HKB Bern 2008 &bull; 38&quot;</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/Vlan-petitesAnnoncesPourVoixEtPianoaudioExcerptSopranoVersion/extraitvlan.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">All of the adverts (but one ;&ndash;) have been taken from &ldquo;Vlan&rdquo;, a weekly free newspaper of Brussels.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 53 &nbsp;&middot;&nbsp; Current version: v.3 / revised 2008<br>Available versions: soprano, tenor, baritone (alto voice in preparation)</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Dedicated to maman.<br>2nd Prize at the International Composition Competition &ldquo;De la Romantici la Contemporani&rdquo; &mdash; Bucharest, May 2008.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">2004 &mdash; Video: Nicolas ACHTEN-HOFFMAN (baritone), Lionel BAMS (piano), Conservatoire Royal de Bruxelles.<br>2008 &mdash; Katja BAUMANN (soprano) &amp; Jana UZUNOVA (piano), H.K.B. Bern. Sound engineer: Cyrill LIM. Mastering: Kaspar KOCHULI.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>Premi&egrave;re</strong> &mdash; 2004, March 12th, Nicolas ACHTEN-HOFFMAN (baritone) &amp; Lionel BAMS (piano), Conservatoire Royal de Bruxelles (Licence 2 exam, Vocal dept).</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3, 256kbps &mdash; 38&quot; of 4&prime;25&quot; (end: &ldquo;Gai luron&rdquo; + &ldquo;Compositeur accueille&rdquo;)<br>Katja BAUMANN (soprano), Jana UZUNOVA (piano) &mdash; H.K.B. Bern, 2008.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end duos works-list -->
+
+        <!-- ══════════════════════════════════════════════ -->
+        <!-- TRIOS -->
+        <!-- ══════════════════════════════════════════════ -->
+        <div id="trio" class="section-anchor">
+            <div class="section-trio">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+                    <circle cx="20" cy="32" r="8" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <circle cx="40" cy="20" r="8" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <circle cx="60" cy="32" r="8" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <path d="M20 50 Q40 58 60 50" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                </svg>
+                <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                    <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3730A3;opacity:0.8;">02</span>
+                    <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Trios &mdash;</h2>
+                </div>
+            </div>
+        </div>
+        <div class="works-list">
+
+            <!-- O POVESTE -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Clarinet in B&flat;, violin and viola</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">O poveste</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 60</span><span>2005</span><span>ca. 7&prime;30&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.youtube.com/watch?v=o0i3IKXIUa0" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video</a>
+                        <a href="https://archive.org/download/OPOVESTEByAlinGHERMANv.5PREVIEW/O%20POVESTE%20by%20Alin%20GHERMAN%20(v.5)%20PREVIEW.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score &mdash; 9 &euro;</a>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Haynes ensemble</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/OPovesteaudioExcerptV.4/extraitopovestehaynes.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">&ldquo;O poveste&rdquo; means &ldquo;A story&rdquo; in Romanian. It&rsquo;s an epic journey with elements of imaginative tales. Lyrical, elastic melodies are placed around contrasting timbral densities. The &ldquo;lighting&rdquo; of elements is mainly focused; the rest remain murky but still real. Sometimes the trail leads to brief meditative moments, and eventually to ether&hellip;</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 60 &nbsp;&middot;&nbsp; Current version: v.5 / 2015<br><em style="color:#6B7280;">Musicians read from score. No separate parts.</em></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIVERTIMENTO -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Flute, viola and harp</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Divertimento</span>
+                        <span class="badge badge-commissioned">Commissioned</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 51</span><span>2003</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://archive.org/download/DivertimentoscorePreview/DivertimentoByAlinGhermanPreview.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score + Parts &mdash; 8 &euro;</a>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 51 &nbsp;&middot;&nbsp; Current version: v.1.2 &mdash; 2003</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Commissioned by Gwen&auml;elle GEISER (viola) for the &ldquo;ALTERNANCES&rdquo; ensemble (Switzerland).</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>First performance</strong> &mdash; 2005, January 15th, Trio Alternances: Laurent Parisot (flute), Gwen&auml;elle Geiser (viola), Eliane Zweifel (harp). Jeunesses Musicales de Fribourg, Centre Le Ph&eacute;nix, Fribourg, Switzerland.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POESIE PERDUE -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Alto voice, viola and bass clarinet</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Po&eacute;sie perdue</span>
+                        <span class="badge badge-competition">Prix Emile Agniez 2003</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 50</span><span>2003</span><span>ca. 5&prime;50&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://archive.org/download/PoesiePerduemusicScoreExcerpt/PoesiePerdueByAlinGhermanv.3.1Preview.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score + Parts &mdash; 8 &euro;</a>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Live Premiere, CRB Bruxelles 2003 &bull; 1&prime;36&quot;</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/PoesiePerdueaudioExcerpt/extraitpoesieperdueoiseau.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">The poems which inspired this composition were taken from the collection <em>&laquo;Po&eacute;sie perdue&raquo;</em> (&laquo;Lost poetry&raquo;) by Paul VAL&Eacute;RY (1871&ndash;1945). &copy; &Eacute;ditions Gallimard Paris.<br><br><div style="font-style:italic;padding:12px 16px;border-left:2px solid #6B1B3D;background:#fdf8f2;font-size:13px;line-height:2;">&ldquo;Sur l&rsquo;arbre de chair chante le minime oiseau spirituel.&rdquo;<br>&ldquo;Eveilll&eacute;, dress&eacute; dans le noir, parmi l&rsquo;absence de tout le reste. endormi, insensible au soleil, au c&oelig;ur de tous les bruits et les fleurs.&rdquo;</div><p style="font-size:12px;color:#6B7280;margin-top:8px;">(With permission from &Eacute;ditions Gallimard.)</p></div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Comments</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">4 Miniatures. The second miniature is an instrumental interm&egrave;de.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 50 &nbsp;&middot;&nbsp; Current version: v.3.1</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">&ldquo;Prix Emile Agniez&rdquo; 2003 &mdash; awarded at the Composition Competition of the Conservatoire Royal de Bruxelles, Belgium.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings &amp; Performances</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>Premi&egrave;re</strong> &mdash; 2003, March 18th, Alexia ALPEN (alto voice), Wendy RUYMEN (viola) &amp; Yoshi KOGA (bass clarinet), &ldquo;Petite salle&rdquo; du Conservatoire Royal de Bruxelles, Belgium.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 &mdash; 1&prime;36&quot; of 5&prime;50&quot; (beginning) &mdash; Live from the Premiere concert.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end trios works-list -->
+
+        <!-- ══════════════════════════════════════════════ -->
+        <!-- QUARTETS -->
+        <!-- ══════════════════════════════════════════════ -->
+        <div id="quartet" class="section-anchor">
+            <div class="section-quartet">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+                    <rect x="10" y="10" width="24" height="24" rx="2" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <rect x="46" y="10" width="24" height="24" rx="2" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <rect x="10" y="46" width="24" height="24" rx="2" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                    <rect x="46" y="46" width="24" height="24" rx="2" fill="none" stroke="#6B1B3D" stroke-width="2"/>
+                </svg>
+                <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                    <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#065F46;opacity:0.8;">03</span>
+                    <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Quartets &mdash;</h2>
+                </div>
+            </div>
+        </div>
+        <div class="works-list">
+
+            <!-- MOUTHS & STRINGS -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">String quartet &mdash; Instrumental Theatre</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Mouths &amp; Strings &mdash; lale</span>
+                        <span class="badge badge-theatre">Theatre</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 61</span><span>2005</span><span>ca. 5&prime;&ndash;6&prime;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://archive.org/download/MouthsAndStringsscorePreview/MouthAndStringsByAlinGhermanv2Preview.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score &mdash; 11 &euro;</a>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Airis Quartet, Krakow 2011 &bull; 3&prime;20&quot;</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/MouthsStringsaudioExcerpt/MouthsStringsExcerpt.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">&ldquo;Mouths &amp; Strings &mdash; lale&rdquo; is a surprise box with crazy dolls inside. Their expression is achieved by musical and theatrical means. Shake it and open! Performers and listeners must both &ldquo;find a way&rdquo; to the sense of these rushing minutes.<br><br>&ldquo;Lale&rdquo; means &ldquo;dolls&rdquo; in Polish and is intended to be the first of a collection of express string quartets.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Comments</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Th&eacute;&acirc;tre musical &mdash; Instrumental theatre.<br><em style="color:#6B7280;">Warning: A new version of the score is in preparation. Please contact Alin GHERMAN before performing this piece.</em></div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 61 &nbsp;&middot;&nbsp; Current version: v.2.1 IPA &mdash; Nov. 2006</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">2011 &mdash; March 23rd, Airis Quartet, Teatr Zale&zdot;ny PK, Krak&oacute;w. Aleksandra Czajor (violin I), Gra&zdot;yna Zubik (violin II), Natalia Warzecha (viola), Katarzyna Detko (cello). Recorded by RMF Radio.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>Premi&egrave;re</strong> &mdash; 2011, March 23rd, Airis Quartet, Teatr Zale&zdot;ny PK, Krak&oacute;w (&ldquo;Alchemia Kwartetu&rdquo; concert). Concert tour in Poland: Warsaw, Cracow, Przemy&sacute;l.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3, 320kbps &mdash; 3&prime;20&quot; (the end) &mdash; Live recording of the Premiere.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRAINS FLEUR ET SON ENVOL -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">B&flat; Clarinet, piano, percussion and double bass</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Grains, fleur et son envol</span>
+                        <span class="badge badge-commissioned">Commissioned</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 58</span><span>2005</span><span>ca. 7&prime;07&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://archive.org/download/GrainsFleurEtSonEnvolmusicScorePreviewV3/GrainsfleurEtSonEnvolByAlinGhermanPrview.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score + Parts &mdash; 11 &euro;</a>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Jeandupeux / Forster, HKB Bern 2007 &bull; 1&prime;47&quot;</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/ALINGHERMANGrainsfleuretsonenvol/extraitgrainsfleur.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:16px;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';b.querySelector('.lbl').textContent=o?'Show Instrumentation':'Hide Instrumentation'})(this)" style="display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid #14B8A6;color:#14B8A6;font-size:11px;font-weight:600;letter-spacing:1px;padding:6px 14px;cursor:pointer;text-transform:uppercase;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg><span class="lbl">Show Instrumentation</span></button>
+                            <div style="display:none;margin-top:12px;padding:16px;background:#FDFBF7;border-left:2px solid #14B8A6;font-size:13px;line-height:1.9;">
+                                <strong style="color:#6B1B3D;">Percussion:</strong><br>
+                                <div style="margin-left:16px;">&#8212; Tam-tam (85&quot;) / Gong high D / 2 Suspended cymbals + brushes / 1 Rived cymbal / Tambourine / 2 Triangles + metal sticks</div><br>
+                                <strong style="color:#6B1B3D;">B&flat; Clarinet &nbsp;&middot;&nbsp; Piano (3 pedals) &nbsp;&middot;&nbsp; Double Bass (4 strings)</strong>
+                            </div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">An hommage to Maurice RAVEL and the Spring season.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 58 &nbsp;&middot;&nbsp; v.3 &mdash; 2007</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Commissioned by Philippe ROSKAM (BE) for his son Mathieu ROSKAM (clarinet).</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">2007 &mdash; June, H.K.B. Bern. Nathalie JEANDUPEUX (clarinet), Simon FORSTER (percussion), Tadej HORVAT (piano) &amp; Melda UMUR (contrabass), conducted by Jacques-Alain FRANCK. Engineers: Beno&icirc;t PICCAND &amp; Beat M&Uuml;LLER.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>First performance</strong> &mdash; 2005, March 25th, Brussels: Mathieu ROSKAM (clarinet), Ward De KETELAERE (percussion), Blandine WALDMANN (piano) &amp; Eef PAREYN (contrabass), conducted by Bart BOUCKAERT.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 &mdash; 1&prime;47&quot; of 7&prime;07&quot;<br>Nathalie JEANDUPEUX (clarinet), Simon FORSTER (percussion), Tadej HORVAT (piano) &amp; Melda UMUR (contrabass) &mdash; H.K.B. Bern, June 2007.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end quartets works-list -->
+
+        <!-- ══════════════════════════════════════════════ -->
+        <!-- QUINTETS -->
+        <!-- ══════════════════════════════════════════════ -->
+        <div id="quintet" class="section-anchor">
+            <div class="section-quintet">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;">
+                    <circle cx="40" cy="14" r="7" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                    <circle cx="68" cy="33" r="7" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                    <circle cx="58" cy="63" r="7" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                    <circle cx="22" cy="63" r="7" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                    <circle cx="12" cy="33" r="7" fill="none" stroke="#6B1B3D" stroke-width="1.5"/>
+                    <path d="M40 21 L65 28 L59 57 L21 57 L15 28 Z" fill="none" stroke="#6B1B3D" stroke-width="1" opacity="0.5"/>
+                </svg>
+                <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+                    <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#92400E;opacity:0.8;">04</span>
+                    <h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Quintets &mdash;</h2>
+                </div>
+            </div>
+        </div>
+        <div class="works-list">
+
+            <!-- CAFE MELANGE -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Violin, electric guitar, percussion, accordion, coffee maker + conductor, amplification</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Caf&eacute;-m&eacute;lange</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 62</span><span>2005</span><span>ca. 7&prime;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://archive.org/download/CafeMelangescorePreview/CafMlangeByAlinGhermanv1Preview.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score + Parts &mdash; 11 &euro;</a>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:16px;"><button onclick="event.stopPropagation();(function(b){var c=b.nextElementSibling;var o=c.style.display==='block';c.style.display=o?'none':'block';b.querySelector('.lbl').textContent=o?'Show Instrumentation':'Hide Instrumentation'})(this)" style="display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid #14B8A6;color:#14B8A6;font-size:11px;font-weight:600;letter-spacing:1px;padding:6px 14px;cursor:pointer;text-transform:uppercase;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg><span class="lbl">Show Instrumentation</span></button>
+                            <div style="display:none;margin-top:12px;padding:16px;background:#FDFBF7;border-left:2px solid #14B8A6;font-size:13px;line-height:1.9;">
+                                <strong style="color:#6B1B3D;">Percussion:</strong> Many plastic cups (7 per performance)<br>
+                                <strong style="color:#6B1B3D;">Electric Guitar:</strong> + amplifier + effects<br>
+                                <strong style="color:#6B1B3D;">Also:</strong> Violin, Accordion, Coffee Maker on stage &mdash; see Score for details
+                            </div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">An audio moment for good mood. Choreographic elements included. A coffee maker is placed on stage. Composed during a dark Polish winter &mdash; integrating coffee smell, machine noise and the sound of cups.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 62 &nbsp;&middot;&nbsp; v.1.1 &mdash; 2006</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Composed for the 2006 Composers Forum of the Akademia Muzyczna w Krakowie.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">2006 &mdash; January 20th, Sala Kameralna, Krak&oacute;w: Karolina DURBACZ (violin), Piotr DRODECKI (el. guitar), Andrzej W&Lstrok;ODARCZYK (accordion) &amp; Micha&lstrok; PAWE&Lstrok;EK (percussion), conducted by Marcin P&Aogon;CZKOWSKI. Coffee Maker: Salton FC-3T.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 &mdash; 1&prime;07&quot; of 7&prime;12&quot; &mdash; Audio excerpt currently unavailable (original hosting retired).</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LES PETITS DEMONS -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Oboe, guitar, percussion, violin, contrabass &amp; live electronics/amplification</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Les petits d&eacute;mons de la Rose</span>
+                        <span class="badge badge-inprogress">In progress</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 81</span><span>2010</span><span>ca. 8&prime;40&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="https://www.youtube.com/watch?v=N11Chv3dyRA" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video</a>
+                        <span style="font-size:12px;color:#6B7280;font-style:italic;padding:9px 0;">Score not yet available &mdash; contact Alin Gherman to perform</span>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Ensemble Vortex, HKB Bern 2010 &bull; 1&prime;29&quot;</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/LesPetitsDemonsDeLaRosev1/extraitlespetitsdemonsdelarose.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><em>Baign&eacute;e dans un climat instable, la pi&egrave;ce exhibe une sentimentalit&eacute; excentrique et bariol&eacute;e. Il est question de jeux, de surprises et d&rsquo;extases dans un d&eacute;cor sonore entra&icirc;nant m&ecirc;l&eacute; &agrave; des parfums sucr&eacute;s. La contemplation de la Rose est &eacute;galement teint&eacute;e d&rsquo;angoisses voire d&rsquo;agressivit&eacute;.</em></div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 81 &nbsp;&middot;&nbsp; v.1 (under development)</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performances</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>Premi&egrave;re</strong> &mdash; 2010, February 24th, Ensemble Vortex (Gen&egrave;ve): B&eacute;atrice ZAWODNIK (oboe), Rada HADJIKOSTOVA-SCHLEUTER (violin), Jocelyne RUDASIGWA (contrabass), Mauricio CARRASCO (guitar), Florian FEYER (percussion) &amp; Daniel ZEA (electronics). HKB Bern.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3, 320kbps &mdash; 1&prime;29&quot; (beginning) &mdash; Ensemble Vortex, HKB Bern 2010.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIBRATIONS -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Flute and 4 Marimbas</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Vibrations</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 79c</span><span>2009</span><span>ca. 4&prime;32&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <div class="multi-show-wrapper">
+                            <button onclick="toggleMultiShow(this,event)" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Video &#9662;</button>
+                            <div class="multi-show-dropdown">
+                                <div class="clip-item"><a href="https://www.youtube.com/watch?v=wWNTEDAKUyU" target="_blank">Vibrations &mdash; Excerpt 1</a><div class="clip-note">Abstract clip made at the &ldquo;Rotsee&rdquo; (Kanton Luzern, Switzerland)</div></div>
+                                <div class="clip-item"><a href="https://www.youtube.com/watch?v=IE6XVQAog2U" target="_blank">Vibrations &mdash; Excerpt 2</a><div class="clip-note">Musicians clip made at the H.K.B. Tonstudio (Bern, Switzerland)</div></div>
+                            </div>
+                        </div>
+                        <a href="https://archive.org/download/VibrationsscorePreview/VibrationsByAlinGhermanV1Preview.pdf" target="_blank" onclick="event.stopPropagation()" class="score-btn">Score PREVIEW</a>
+                        <a href="https://www.paypal.com/checkoutnow" target="_blank" onclick="event.stopPropagation()" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score &mdash; 8 &euro;</a>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt &mdash; Oltean / Bellwald, HKB Bern 2009 &bull; 1&prime;41&quot;</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/VibrationsaudioExcerpt/extraitvibrations.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Conceived rather as a soundtrack for a movie or video clip, or as a material tank for other large pieces &mdash; not intended as a standalone concert piece.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">opus 79c &nbsp;&middot;&nbsp; v.1 &mdash; 2009</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recordings</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">2009 &mdash; July, H.K.B. Studio Bern. Ana Ioana OLTEAN (flute), Titus BELLWALD, Cathrin CURIGER, Samuel FORSTER &amp; Simon FORSTER (marimbas), conducted by C&eacute;dric BELLINI. Sound engineer: Beat M&Uuml;LLER. Video: <a href="http://www.voltafilm.ch" target="_blank" style="color:#6B1B3D;">Voltafilm</a> Luzern (Stephan HEINIGER). Produced by Alin GHERMAN with the support of HKB Bern and Voltafilm Luzern.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3, 256kbps &mdash; 1&prime;41&quot; (second part)</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIMILE -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Flute, clarinet in B&flat;, violin, viola and violoncello</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Simile &hellip;</span>
+                        <span class="badge badge-inprogress">In progress</span>
+                    </div>
+                    <div class="work-meta-inline"><span>2008</span><span>ca. 6&prime;30&quot;</span><span>Excerpt</span></div>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <span style="font-size:12px;color:#6B7280;font-style:italic;padding:9px 0;">Score currently in progress &mdash; contact Alin Gherman</span>
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:11px;font-weight:500;letter-spacing:1px;color:#6B7280;text-transform:uppercase;margin-bottom:6px;">Audio excerpt</div>
+                        <audio controls onclick="event.stopPropagation()" style="accent-color:#6B1B3D;">
+                            <source src="https://archive.org/download/SimileaudioExcerpt/extraitsimile.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="show-details-section">
+                        <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
+                        <div class="details-content" style="display:none;margin-top:20px;">
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Program Note</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">An experimental piece exploring chaotic materials that may sound organised.</div></div>
+                            <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Versions</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Current version: in progress</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end quintets works-list -->
+
+        <p style="margin-top:48px;font-size:12px;color:#9CA3AF;font-style:italic;text-align:center;">All compositions are protected by S.A.B.A.M. (Belgium) and U.C.M.R.A.D.A. (Rom&acirc;nia) &mdash; &copy; All rights reserved.</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">ALIN GHERMAN</div>
+            <div class="footer-note">Duos, Trios, Quartets &amp; Quintets &mdash; Compositions</div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleWork(row) { row.classList.toggle('open'); }
+        function toggleDetails(btn) {
+            var content = btn.nextElementSibling;
+            var arrow = btn.querySelector('.arrow-icon');
+            var isOpen = content.style.display === 'block';
+            content.style.display = isOpen ? 'none' : 'block';
+            arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+            btn.innerHTML = btn.innerHTML.replace(
+                isOpen ? 'Hide details' : 'Show details',
+                isOpen ? 'Show details' : 'Hide details'
+            );
+        }
+        document.querySelectorAll('.toc a').forEach(function(a) {
+            a.addEventListener('click', function() {
+                document.querySelectorAll('.toc a').forEach(function(x){x.classList.remove('active');});
+                this.classList.add('active');
+            });
+        });
+        function toggleMultiShow(btn, e) {
+            e.stopPropagation();
+            var w = btn.closest('.multi-show-wrapper');
+            var wasOpen = w.classList.contains('open');
+            document.querySelectorAll('.multi-show-wrapper').forEach(function(x){x.classList.remove('open');});
+            if (!wasOpen) {
+                w.classList.add('open');
+                setTimeout(function(){
+                    document.addEventListener('click', function cd(ev){
+                        if (!w.contains(ev.target)) w.classList.remove('open');
+                        document.removeEventListener('click', cd);
+                    }, true);
+                }, 0);
+            }
+        }
+        // TOC active state on scroll
+        var tocLinks = document.querySelectorAll('.toc a');
+        var observer = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+                if (e.isIntersecting) {
+                    tocLinks.forEach(function(l){l.classList.remove('active');});
+                    var active = document.querySelector('.toc a[href="#' + e.target.id + '"]');
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, {threshold: 0.3});
+        document.querySelectorAll('.section-anchor').forEach(function(s){observer.observe(s);});
+    </script>
+
+    <script>
+        // Show Back to Pressbook button if came from pressbook
+        (function() {
+            var ref = document.referrer;
+            var btn = document.getElementById('back-pressbook-btn');
+            if (btn && ref && ref.indexOf('pressbook') !== -1) {
+                btn.style.display = 'flex';
+                btn.href = ref;
+            }
+        })();
+    </script>
+</body>
+</html>
+
+

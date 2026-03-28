@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music for Film, Theatre, Dance and Media &mdash; Alin Gherman</title>\r\n    <link rel="icon" href="/favicon.png" type="image/x-icon">\r\n    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+        .hero{padding:140px 48px 32px;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'Instrument Serif',serif;font-size:clamp(24px,4vw,48px);font-weight:400;color:var(--burgundy);line-height:1.25;}
+        .hero-note{font-size:13px;color:var(--grey);margin-top:10px;font-style:italic;}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin-top:20px;}
+        .container{max-width:1200px;padding:0 48px 100px;flex:1;}
+        .toc{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;padding-top:20px;}
+        .toc a{padding:7px 16px;border:1px solid var(--burgundy);color:var(--burgundy);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:0.5px;transition:all 0.22s;}
+        .toc a:hover,.toc a.active{background:var(--burgundy);color:#fff;}
+        .section-film{background:linear-gradient(135deg,#fdf5f8,#f9edf2);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-theatre{background:linear-gradient(135deg,#f8f5ff,#f0ebfa);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-dance{background:linear-gradient(135deg,#f0f8f4,#eaf5f0);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-media{background:linear-gradient(135deg,#fdf8f0,#faf5ec);padding:28px 32px;position:relative;overflow:hidden;margin-bottom:12px;}
+        .section-film::before,.section-theatre::before,.section-dance::before,.section-media::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(transparent 43%,rgba(107,27,61,0.05) 43%,rgba(107,27,61,0.05) 45%,transparent 45%),linear-gradient(transparent 57%,rgba(107,27,61,0.05) 57%,rgba(107,27,61,0.05) 59%,transparent 59%);}
+        .section-anchor{scroll-margin-top:90px;}
+        .works-list{display:flex;flex-direction:column;gap:2px;margin-bottom:40px;}
+        .work-row{background:var(--white);border:1px solid var(--grey-light);overflow:hidden;position:relative;transition:border-color 0.25s;}
+        .work-row:hover,.work-row.open{border-color:var(--burgundy);}
+        .work-row-header{padding:20px 28px 16px;cursor:pointer;position:relative;}
+        .work-row-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--burgundy);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+        .work-row.open .work-row-header::after{transform:scaleX(1);}
+        .work-title{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+        .work-meta-inline{font-size:12px;color:var(--grey);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+        .work-details{display:none;padding:0 28px 22px;border-top:1px solid var(--grey-light);}
+        .work-row.open .work-details{display:block;}
+        .detail-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;align-items:center;}
+        .score-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font-size:12px;font-weight:500;letter-spacing:0.5px;text-decoration:none;border:1px solid var(--burgundy);color:var(--burgundy);background:transparent;transition:all 0.22s;cursor:pointer;white-space:nowrap;}
+        .score-btn:hover{background:var(--burgundy);color:#fff;}
+        .toggle-icon{float:right;font-size:18px;color:var(--burgundy);transition:transform 0.25s;user-select:none;margin-top:2px;}
+        .work-row.open .toggle-icon{transform:rotate(45deg);}
+        .waveform-bg{position:absolute;right:60px;top:0;bottom:0;width:200px;opacity:0.04;pointer-events:none;display:flex;align-items:center;}
+        .badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-left:6px;vertical-align:middle;}
+        .badge-commissioned{background:#FEF3C7;color:#92400E;}
+        .badge-premiere{background:#EDE9FE;color:#5B21B6;}
+        .badge-competition{background:#FEE2E2;color:#991B1B;}
+        .show-details-section{margin-top:16px;border-top:1px solid var(--grey-light);padding-top:14px;}
+        .show-details-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--burgundy);color:var(--burgundy);font-size:12px;font-weight:500;letter-spacing:1px;padding:7px 16px;cursor:pointer;text-transform:uppercase;transition:all 0.22s;}
+        .show-details-btn:hover{background:var(--burgundy);color:#fff;}
+        .arrow-icon{transition:transform 0.25s;display:inline-block;}
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+        /* Film stills grid */
+        .stills-grid{display:flex;gap:3px;flex-wrap:wrap;margin-top:10px;}
+        .still-item{flex:1;min-width:110px;aspect-ratio:4/3;overflow:hidden;position:relative;background:#1a1a1a;}
+        .still-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s;}
+        .still-item:hover img{transform:scale(1.05);}
+        .still-tc{position:absolute;bottom:5px;left:5px;font-size:9px;color:rgba(255,255,255,0.7);font-family:monospace;pointer-events:none;}
+        @media(max-width:768px){.nav-content,.container,.hero{padding-left:24px;padding-right:24px;}}
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN</a>
+            <a href="index.html#work" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                Back
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">Compositions</span>
+        <h1 class="hero-title">Music for Film, Theatre,<br>Dance and Media</h1>
+        <p class="hero-note">(without Music theatre &mdash; Th&eacute;&acirc;tre musical)</p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <div class="container">
+        <nav class="toc">
+            <a href="#film">Film</a>
+            <a href="#theatre">Theatre</a>
+            <a href="#dance">Dance</a>
+            <a href="#media">Media</a>
+        </nav>
+        
+        <div id="film" class="section-anchor"><div class="section-film" style="margin-bottom:12px;"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;"><rect x="6" y="16" width="68" height="48" rx="3" fill="none" stroke="#6B1B3D" stroke-width="2"/><rect x="6" y="16" width="10" height="48" fill="#6B1B3D" opacity="0.4"/><rect x="64" y="16" width="10" height="48" fill="#6B1B3D" opacity="0.4"/><circle cx="40" cy="40" r="8" fill="none" stroke="#6B1B3D" stroke-width="1.5"/><polygon points="37,36 37,44 45,40" fill="#6B1B3D"/></svg><div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#991B1B;opacity:0.8;">01</span><h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Film &mdash;</h2></div></div></div>
+        <div class="works-list">
+            <!-- EIN WERKTAG -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">New music composed and produced for silent film</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Ein Werktag</span>
+                        <span class="badge badge-commissioned">Commissioned</span><span class="badge badge-premiere">Winterthur 2009</span>
+                    </div>
+                    <div class="work-meta-inline"><span>2009</span><span>Silent movie (1931, 57 min.)</span><span>Acoustic + Electronics</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="5.7" width="3" height="36.6" rx="1" fill="#6B1B3D"/><rect x="5" y="17.7" width="3" height="12.6" rx="1" fill="#6B1B3D"/><rect x="10" y="3.0" width="3" height="42.1" rx="1" fill="#6B1B3D"/><rect x="15" y="3.1" width="3" height="41.7" rx="1" fill="#6B1B3D"/><rect x="20" y="3.4" width="3" height="41.2" rx="1" fill="#6B1B3D"/><rect x="25" y="11.0" width="3" height="26.0" rx="1" fill="#6B1B3D"/><rect x="30" y="11.4" width="3" height="25.1" rx="1" fill="#6B1B3D"/><rect x="35" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="40" y="5.1" width="3" height="37.7" rx="1" fill="#6B1B3D"/><rect x="45" y="6.2" width="3" height="35.7" rx="1" fill="#6B1B3D"/><rect x="50" y="13.5" width="3" height="21.0" rx="1" fill="#6B1B3D"/><rect x="55" y="6.1" width="3" height="35.8" rx="1" fill="#6B1B3D"/><rect x="60" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="65" y="8.8" width="3" height="30.3" rx="1" fill="#6B1B3D"/><rect x="70" y="10.2" width="3" height="27.6" rx="1" fill="#6B1B3D"/><rect x="75" y="9.9" width="3" height="28.1" rx="1" fill="#6B1B3D"/><rect x="80" y="2.2" width="3" height="43.6" rx="1" fill="#6B1B3D"/><rect x="85" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="90" y="11.0" width="3" height="26.0" rx="1" fill="#6B1B3D"/><rect x="95" y="11.0" width="3" height="25.9" rx="1" fill="#6B1B3D"/><rect x="100" y="7.4" width="3" height="33.2" rx="1" fill="#6B1B3D"/><rect x="105" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="110" y="3.7" width="3" height="40.6" rx="1" fill="#6B1B3D"/><rect x="115" y="14.2" width="3" height="19.5" rx="1" fill="#6B1B3D"/><rect x="120" y="6.4" width="3" height="35.2" rx="1" fill="#6B1B3D"/><rect x="125" y="6.2" width="3" height="35.5" rx="1" fill="#6B1B3D"/><rect x="130" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="135" y="8.6" width="3" height="30.9" rx="1" fill="#6B1B3D"/><rect x="140" y="13.5" width="3" height="20.9" rx="1" fill="#6B1B3D"/><rect x="145" y="2.9" width="3" height="42.1" rx="1" fill="#6B1B3D"/><rect x="150" y="5.2" width="3" height="37.6" rx="1" fill="#6B1B3D"/><rect x="155" y="2.3" width="3" height="43.5" rx="1" fill="#6B1B3D"/><rect x="160" y="14.5" width="3" height="18.9" rx="1" fill="#6B1B3D"/><rect x="165" y="7.7" width="3" height="32.5" rx="1" fill="#6B1B3D"/><rect x="170" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="175" y="4.5" width="3" height="38.9" rx="1" fill="#6B1B3D"/><rect x="180" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="185" y="16.1" width="3" height="15.8" rx="1" fill="#6B1B3D"/><rect x="190" y="3.1" width="3" height="41.9" rx="1" fill="#6B1B3D"/><rect x="195" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row"><a href="http://www.archive.org/download/EinWerktagaudioExcerpt-WirKaempfenFuerJugend/extraiteinwerktag_wir_kaempfen_fuer_jugend.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; Excerpt &laquo;&nbsp;&hellip;f&uuml;r Jugend&nbsp;&raquo;</a><a href="http://www.chronos-verlag.ch" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Chronos Verlag</a></div>
+                    <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;"><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About the Film</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><em>Ein Werktag</em> &mdash; silent documentary film, 1931, 57 min. New music composed and produced in 2009 for live performance with 35mm projection.<br><br>Screening of the 35mm roll with LIVE performance at the <strong>Winterthur Kurzfilmtage Festival 2009</strong>.</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performers</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Pierre FAVRE &amp; Simon FORSTER (percussion) &nbsp;&middot;&nbsp; Alena KOZLOVA (piano) &nbsp;&middot;&nbsp; Alin GHERMAN (Yamaha Disklavier control &amp; Artistic direction)</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Film Credits</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><em>Ein Film, hergestellt im Auftrag der S.P.S. von der Praesensfilm A.G.</em><br>Regie: R. Schweitzer &nbsp;&middot;&nbsp; Kamera: A. Berna<br>Documentary, 35mm, available at the Cin&eacute;math&egrave;que Suisse.<br>Renovation and documentation: Stefan LANZLINGER &amp; Thomas SCH&Auml;RER.</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Film Stills</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">
+                        <div class="stills-grid">
+                            <div class="still-item"><img src="einwerktagtitlen.webp" alt="Ein Werktag title card"><span class="still-tc">EIN WERK-TAG</span></div>
+                            <div class="still-item"><img src="einwerktagpraesensfilm.webp" alt="Praesens Film S.A. Zürich"><span class="still-tc">PRAESENS FILM S.A. ZÜRICH</span></div>
+                            <div class="still-item"><img src="einwerktagholzarbeiterfired2.webp" alt="Still 01"><span class="still-tc">Still 01</span></div>
+                            <div class="still-item"><img src="einwerktagindustrialscene4.webp" alt="Still 02"><span class="still-tc">Still 02</span></div>
+                            <div class="still-item"><img src="einwerktagarbeiter3_moto.webp" alt="Still 03"><span class="still-tc">Still 03</span></div>
+                            <div class="still-item"><img src="einwerktagindustrialscene6.webp" alt="Still 04"><span class="still-tc">Still 04</span></div>
+                        </div>
+                    </div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>Commissioned</strong> by the <a href="https://www.sozialarchiv.ch" target="_blank" style="color:#6B1B3D;font-weight:500;">Schweizerisches Sozialarchiv Z&uuml;rich</a> (Switzerland).<br>Book with DVD published by CHRONOS Verlag, Eisengasse 9, CH-8008 Z&uuml;rich &nbsp;&middot;&nbsp; <a href="http://www.chronos-verlag.ch" target="_blank" style="color:#6B1B3D;font-weight:500;">www.chronos-verlag.ch</a></div></div></div></div>
+                </div>
+            </div>
+
+            <!-- DESERT HOPI FRAU -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Acoustic &mdash; Music for film</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Desert Hopi Frau</span>
+                        <span class="badge badge-premiere">Solothurn 2009</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 77a</span><span>2009</span><span>for chamber ensemble</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="9.4" width="3" height="29.3" rx="1" fill="#6B1B3D"/><rect x="5" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="10" y="4.5" width="3" height="39.0" rx="1" fill="#6B1B3D"/><rect x="15" y="4.7" width="3" height="38.6" rx="1" fill="#6B1B3D"/><rect x="20" y="17.2" width="3" height="13.6" rx="1" fill="#6B1B3D"/><rect x="25" y="4.3" width="3" height="39.4" rx="1" fill="#6B1B3D"/><rect x="30" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="35" y="5.1" width="3" height="37.8" rx="1" fill="#6B1B3D"/><rect x="40" y="9.4" width="3" height="29.3" rx="1" fill="#6B1B3D"/><rect x="45" y="13.9" width="3" height="20.2" rx="1" fill="#6B1B3D"/><rect x="50" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="55" y="2.5" width="3" height="42.9" rx="1" fill="#6B1B3D"/><rect x="60" y="7.3" width="3" height="33.3" rx="1" fill="#6B1B3D"/><rect x="65" y="12.5" width="3" height="23.0" rx="1" fill="#6B1B3D"/><rect x="70" y="9.0" width="3" height="30.0" rx="1" fill="#6B1B3D"/><rect x="75" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="80" y="6.0" width="3" height="36.1" rx="1" fill="#6B1B3D"/><rect x="85" y="10.8" width="3" height="26.3" rx="1" fill="#6B1B3D"/><rect x="90" y="8.5" width="3" height="31.1" rx="1" fill="#6B1B3D"/><rect x="95" y="4.7" width="3" height="38.7" rx="1" fill="#6B1B3D"/><rect x="100" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="105" y="11.0" width="3" height="26.1" rx="1" fill="#6B1B3D"/><rect x="110" y="12.3" width="3" height="23.5" rx="1" fill="#6B1B3D"/><rect x="115" y="5.4" width="3" height="37.1" rx="1" fill="#6B1B3D"/><rect x="120" y="2.1" width="3" height="43.8" rx="1" fill="#6B1B3D"/><rect x="125" y="2.0" width="3" height="43.9" rx="1" fill="#6B1B3D"/><rect x="130" y="16.2" width="3" height="15.5" rx="1" fill="#6B1B3D"/><rect x="135" y="7.0" width="3" height="34.0" rx="1" fill="#6B1B3D"/><rect x="140" y="3.9" width="3" height="40.2" rx="1" fill="#6B1B3D"/><rect x="145" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="150" y="6.3" width="3" height="35.4" rx="1" fill="#6B1B3D"/><rect x="155" y="16.5" width="3" height="15.0" rx="1" fill="#6B1B3D"/><rect x="160" y="2.8" width="3" height="42.4" rx="1" fill="#6B1B3D"/><rect x="165" y="4.2" width="3" height="39.7" rx="1" fill="#6B1B3D"/><rect x="170" y="2.8" width="3" height="42.4" rx="1" fill="#6B1B3D"/><rect x="175" y="11.8" width="3" height="24.4" rx="1" fill="#6B1B3D"/><rect x="180" y="10.3" width="3" height="27.4" rx="1" fill="#6B1B3D"/><rect x="185" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="190" y="6.3" width="3" height="35.4" rx="1" fill="#6B1B3D"/><rect x="195" y="5.8" width="3" height="36.3" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row"><a href="http://www.archive.org/download/DesertHopiFrauaudio/HopiDesertFrauPart1.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; Part 1 (2&prime;24&Prime;)</a><a href="http://www.archive.org/download/DesertHopiFrauaudio/HopiDesertFrauPart2.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; Part 2 (1&prime;10&Prime;)</a></div>
+                    <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;"><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">New music for an excerpt of the movie <em>&ldquo;Desert&rdquo;</em> by Felix TISSI (CH), presented during the Film Music Th&eacute;&acirc;tre Forum, Solothurn Filmtage, January 2009.<br><a href="http://www.desert-themovie.com/" target="_blank" style="color:#6B1B3D;font-weight:500;">www.desert-themovie.com</a></div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpts</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 files, 256kbps &mdash; Part 1: 2&rsquo;24&quot; &nbsp;&middot;&nbsp; Part 2: 1&rsquo;10&quot;</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recording</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Recorded in the <em>Reformierte Kirche</em> W&uuml;lkon, Z&uuml;rich, January 9th, 2009.<br>Conductor: Fabian K&uuml;nzli<br>Fl.: Peter Eberl &nbsp;&middot;&nbsp; Cl.: Simon Wyrsch &nbsp;&middot;&nbsp; Violin 1: Margareta Benkova &nbsp;&middot;&nbsp; Violin 2: Gordon Bragg &nbsp;&middot;&nbsp; Viola: Anton Vikhov &nbsp;&middot;&nbsp; Cello: Ulrich Dimigen &nbsp;&middot;&nbsp; Kontrabass: Christian Bolesch<br>Sound engineer: Lasse Nipkow &nbsp;&middot;&nbsp; Forum FilmMusic Zhdk Z&uuml;rich</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Film Stills</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">
+                        <div class="stills-grid">
+                            <div class="still-item"><img src="desertfrauhopi1.webp" alt="TC+01:02:34:05"><span class="still-tc">TC+01:02:34:05</span></div>
+                            <div class="still-item"><img src="desertfrauhopi2.jpg" alt="TC+01:03:50:18"><span class="still-tc">TC+01:03:50:18</span></div>
+                            <div class="still-item"><img src="desertfrauhopi3.jpg" alt="TC+01:04:42:05"><span class="still-tc">TC+01:04:42:05</span></div>
+                            <div class="still-item"><img src="desertfrauhopi5.jpg" alt="TC+01:06:45:06"><span class="still-tc">TC+01:06:45:06</span></div>
+                        </div>
+                    </div></div></div></div>
+                </div>
+            </div>
+
+            <!-- DESERT NASCA -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Electronic &mdash; Music for film</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Desert NASCA &mdash; airplane view</span>
+                        <span class="badge badge-premiere">Solothurn 2009</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus 77b</span><span>2009</span><span>ca. 1&rsquo;56&quot;</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="3.9" width="3" height="40.1" rx="1" fill="#6B1B3D"/><rect x="5" y="2.2" width="3" height="43.6" rx="1" fill="#6B1B3D"/><rect x="10" y="10.1" width="3" height="27.9" rx="1" fill="#6B1B3D"/><rect x="15" y="12.1" width="3" height="23.9" rx="1" fill="#6B1B3D"/><rect x="20" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="25" y="5.5" width="3" height="37.0" rx="1" fill="#6B1B3D"/><rect x="30" y="4.7" width="3" height="38.5" rx="1" fill="#6B1B3D"/><rect x="35" y="15.4" width="3" height="17.2" rx="1" fill="#6B1B3D"/><rect x="40" y="6.5" width="3" height="35.0" rx="1" fill="#6B1B3D"/><rect x="45" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="50" y="7.3" width="3" height="33.3" rx="1" fill="#6B1B3D"/><rect x="55" y="8.7" width="3" height="30.6" rx="1" fill="#6B1B3D"/><rect x="60" y="11.8" width="3" height="24.4" rx="1" fill="#6B1B3D"/><rect x="65" y="2.3" width="3" height="43.4" rx="1" fill="#6B1B3D"/><rect x="70" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="75" y="9.2" width="3" height="29.6" rx="1" fill="#6B1B3D"/><rect x="80" y="12.4" width="3" height="23.1" rx="1" fill="#6B1B3D"/><rect x="85" y="9.0" width="3" height="29.9" rx="1" fill="#6B1B3D"/><rect x="90" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="95" y="3.4" width="3" height="41.2" rx="1" fill="#6B1B3D"/><rect x="100" y="12.3" width="3" height="23.5" rx="1" fill="#6B1B3D"/><rect x="105" y="7.8" width="3" height="32.4" rx="1" fill="#6B1B3D"/><rect x="110" y="7.5" width="3" height="33.0" rx="1" fill="#6B1B3D"/><rect x="115" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="120" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="125" y="14.4" width="3" height="19.2" rx="1" fill="#6B1B3D"/><rect x="130" y="4.2" width="3" height="39.6" rx="1" fill="#6B1B3D"/><rect x="135" y="4.6" width="3" height="38.8" rx="1" fill="#6B1B3D"/><rect x="140" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="145" y="13.8" width="3" height="20.3" rx="1" fill="#6B1B3D"/><rect x="150" y="8.6" width="3" height="30.9" rx="1" fill="#6B1B3D"/><rect x="155" y="2.1" width="3" height="43.8" rx="1" fill="#6B1B3D"/><rect x="160" y="3.5" width="3" height="41.0" rx="1" fill="#6B1B3D"/><rect x="165" y="4.9" width="3" height="38.2" rx="1" fill="#6B1B3D"/><rect x="170" y="18.2" width="3" height="11.6" rx="1" fill="#6B1B3D"/><rect x="175" y="3.7" width="3" height="40.6" rx="1" fill="#6B1B3D"/><rect x="180" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="185" y="4.2" width="3" height="39.5" rx="1" fill="#6B1B3D"/><rect x="190" y="9.8" width="3" height="28.4" rx="1" fill="#6B1B3D"/><rect x="195" y="13.4" width="3" height="21.2" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row"><a href="http://www.archive.org/download/DesertNasca-airplaneViewFullQuality/extraitdesertnasca256bits.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; All (full &mdash; 1&prime;56&Prime;)</a></div>
+                    <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;"><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">New music for an excerpt of the movie <em>&ldquo;Desert&rdquo;</em> by Felix TISSI (CH), presented during the Film Music Th&eacute;&acirc;tre Forum, Solothurn Filmtage, January 2009.<br><a href="http://www.desert-themovie.com/" target="_blank" style="color:#6B1B3D;font-weight:500;">www.desert-themovie.com</a></div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Technique</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Samples from <em>&ldquo;Due&rdquo;</em> (for piano solo) and different synthesizers were used for the mix.</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 file, 256kbps &mdash; full duration: 1&rsquo;56&quot;</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Film Stills &mdash; Nazca Lines (aerial photography)</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">
+                        <div class="stills-grid">
+                            <div class="still-item"><img src="Desertnasca1.jpg" alt="TC+01:00:06:03"><span class="still-tc">TC+01:00:06:03</span></div>
+                            <div class="still-item"><img src="Desertnasca2.jpg" alt="TC+01:00:41:04"><span class="still-tc">TC+01:00:41:04</span></div>
+                            <div class="still-item"><img src="Desertnasca3.jpg" alt="TC+01:00:48:16"><span class="still-tc">TC+01:00:48:16</span></div>
+                            <div class="still-item"><img src="Desertnasca4.jpg" alt="TC+01:01:09:23"><span class="still-tc">TC+01:01:09:23</span></div>
+                        </div>
+                        <div class="stills-grid">
+                            <div class="still-item"><img src="Desertnasca5.jpg" alt="TC+01:01:23:17"><span class="still-tc">TC+01:01:23:17</span></div>
+                            <div class="still-item"><img src="Desertnasca6.jpg" alt="TC+01:01:45:15"><span class="still-tc">TC+01:01:45:15</span></div>
+                            <div class="still-item"><img src="Desertnasca7.jpg" alt="TC+01:02:06:00"><span class="still-tc">TC+01:02:06:00</span></div>
+                        </div>
+                    </div></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="theatre" class="section-anchor"><div class="section-theatre" style="margin-bottom:12px;"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;"><circle cx="28" cy="38" r="14" fill="none" stroke="#6B1B3D" stroke-width="2"/><path d="M22 36 Q28 44 34 36" fill="none" stroke="#6B1B3D" stroke-width="2"/><circle cx="52" cy="38" r="14" fill="none" stroke="#6B1B3D" stroke-width="2"/><path d="M46 40 Q52 32 58 40" fill="none" stroke="#6B1B3D" stroke-width="2"/></svg><div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#5B21B6;opacity:0.8;">02</span><h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Theatre &mdash;</h2></div></div></div>
+        <div class="works-list">
+
+            <!-- PRESENCE EFFECT NAMELESS -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Electronic &mdash; Theatre performance</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Presence Effect &mdash; Nameless</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus &mdash;</span><span>2012</span><span>ca. 21&prime;</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="3.7" width="3" height="40.7" rx="1" fill="#6B1B3D"/><rect x="5" y="18.3" width="3" height="11.3" rx="1" fill="#6B1B3D"/><rect x="10" y="5.0" width="3" height="38.0" rx="1" fill="#6B1B3D"/><rect x="15" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="20" y="3.8" width="3" height="40.4" rx="1" fill="#6B1B3D"/><rect x="25" y="8.2" width="3" height="31.6" rx="1" fill="#6B1B3D"/><rect x="30" y="15.2" width="3" height="17.6" rx="1" fill="#6B1B3D"/><rect x="35" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="40" y="2.8" width="3" height="42.3" rx="1" fill="#6B1B3D"/><rect x="45" y="5.7" width="3" height="36.5" rx="1" fill="#6B1B3D"/><rect x="50" y="13.7" width="3" height="20.5" rx="1" fill="#6B1B3D"/><rect x="55" y="9.3" width="3" height="29.3" rx="1" fill="#6B1B3D"/><rect x="60" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="65" y="5.9" width="3" height="36.2" rx="1" fill="#6B1B3D"/><rect x="70" y="9.1" width="3" height="29.8" rx="1" fill="#6B1B3D"/><rect x="75" y="10.2" width="3" height="27.6" rx="1" fill="#6B1B3D"/><rect x="80" y="4.7" width="3" height="38.6" rx="1" fill="#6B1B3D"/><rect x="85" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="90" y="10.6" width="3" height="26.9" rx="1" fill="#6B1B3D"/><rect x="95" y="13.4" width="3" height="21.3" rx="1" fill="#6B1B3D"/><rect x="100" y="7.0" width="3" height="33.9" rx="1" fill="#6B1B3D"/><rect x="105" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="110" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="115" y="14.2" width="3" height="19.6" rx="1" fill="#6B1B3D"/><rect x="120" y="8.1" width="3" height="31.7" rx="1" fill="#6B1B3D"/><rect x="125" y="5.2" width="3" height="37.6" rx="1" fill="#6B1B3D"/><rect x="130" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="135" y="5.6" width="3" height="36.9" rx="1" fill="#6B1B3D"/><rect x="140" y="17.2" width="3" height="13.6" rx="1" fill="#6B1B3D"/><rect x="145" y="3.8" width="3" height="40.3" rx="1" fill="#6B1B3D"/><rect x="150" y="5.0" width="3" height="38.0" rx="1" fill="#6B1B3D"/><rect x="155" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="160" y="11.0" width="3" height="26.1" rx="1" fill="#6B1B3D"/><rect x="165" y="11.0" width="3" height="26.0" rx="1" fill="#6B1B3D"/><rect x="170" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="175" y="5.9" width="3" height="36.1" rx="1" fill="#6B1B3D"/><rect x="180" y="4.5" width="3" height="39.0" rx="1" fill="#6B1B3D"/><rect x="185" y="16.2" width="3" height="15.5" rx="1" fill="#6B1B3D"/><rect x="190" y="5.6" width="3" height="36.8" rx="1" fill="#6B1B3D"/><rect x="195" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="http://archive.org/download/MusicForTheatreOfBeckettDirectedByAndreiSavichaudioExcerpt/extraittheatrebecketsavichminsk.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; Excerpt (36&Prime; of 21&prime;20&Prime;)</a>
+                    </div>
+                    <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;">
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Music for the theatre play <em>&ldquo;Presence Effect: Nameless&rdquo;</em> (after Samuel Beckett), directed by <strong>Andrei SAUCHANKA</strong> (BY), with the participation of actor <strong>Ivan PATAPAU</strong> (BY), photographies <strong>Volha SAVICH</strong> (BY) and <strong>Jonas FEHR</strong> (CH).<br><br>The person loses his/her essence, language, name. The only thing which is left is his/her memories where he/she can wander along the ruins of his/her Babel which he/she erected inside of himself/herself one day.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 file, 320Kbits &mdash; 36&Prime; out of a total of 21&prime;20&Prime; &mdash; Final session, 31st August 2012.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performance Photos</h4><div class="stills-grid"><div class="still-item" style="aspect-ratio:4/3;"><img src="presenceeffect1.jpg" alt="Presence Effect: Nameless — rehearsal" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="still-item" style="aspect-ratio:4/3;"><img src="presenceeffect2.jpg" alt="Presence Effect: Nameless — performance" style="width:100%;height:100%;object-fit:cover;display:block;"></div></div></div>
+                    </div></div>
+                </div>
+            </div>
+
+            <!-- KASIMIR UND KAROLINE -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Acoustic &mdash; Theatre scene</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Kasimir und Karoline</span>
+                        <span class="badge badge-premiere">ZHdK 2009</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus &mdash;</span><span>2009</span><span>ca. 11&prime;</span><span>Cl, Perc, Cb</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="5" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="10" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="15" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="20" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="25" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="30" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="35" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="40" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="45" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="50" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="55" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="60" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="65" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="70" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="75" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="80" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="85" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="90" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="95" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="100" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="105" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="110" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="115" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="120" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="125" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="130" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="135" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="140" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="145" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="150" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="155" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="160" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="165" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="170" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="175" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="180" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="185" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="190" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="195" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="http://www.archive.org/download/KasimirUndKarolineaudioExcerptOfTheMusicForATheatreScene/extraitkasimirundkaroline1.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; Excerpt 1</a>
+                        <a href="http://www.archive.org/download/KasimirUndKarolineaudioExcerptOfTheMusicForATheatreScene/extraitkasimirundkaroline2.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; Excerpt 2</a>
+                    </div>
+                    <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;">
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Music for the excerpt <em>&ldquo;2./3 &amp; 5. Szene&rdquo;</em> by &Ouml;d&ouml;n von Horv&aacute;th &mdash; a theatre scene with new original music.<br><br>First performance at the <em>Z&uuml;rcher Hochschule der K&uuml;nste</em>, Florhofgasse, 20th May 2009.</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Instrumentation</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">for Clarinet, Percussion (vibraphone, 2 woodblocks, 2 cymbals and snare drum) and Contrabass</div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Cast &amp; Performers</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Stage director: Christopher KRIESE &nbsp;&bull;&nbsp; Music: Alin GHERMAN<br>Katharina CROMME (Karoline) &nbsp;&bull;&nbsp; Dominik LOCHER (Kasimir)<br>Simon WYRSCH (Cl.) &nbsp;&bull;&nbsp; Samuel M&Uuml;LLER (Perc.) &nbsp;&bull;&nbsp; Felix K&Uuml;BLER (Cb.)</div></div>
+                        <div><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performance Photo</h4><div class="stills-grid" style="grid-template-columns:1fr;max-width:560px;"><div class="still-item" style="aspect-ratio:16/9;"><img src="kasimirundkaroline.jpg" alt="Kasimir und Karoline — ZHdK Florhof, May 2009" style="width:100%;height:100%;object-fit:cover;display:block;"></div></div></div>
+                    </div></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══ DANCE ═══ -->
+        <div id="dance" class="section-anchor"><div class="section-dance" style="margin-bottom:12px;"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;"><circle cx="40" cy="18" r="7" fill="none" stroke="#6B1B3D" stroke-width="2"/><path d="M40 25 Q32 40 28 55" fill="none" stroke="#6B1B3D" stroke-width="2"/><path d="M40 25 Q48 40 52 55" fill="none" stroke="#6B1B3D" stroke-width="2"/><path d="M33 38 Q40 42 47 38" fill="none" stroke="#6B1B3D" stroke-width="1.5"/></svg><div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0f766e;opacity:0.8;">03</span><h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Dance &mdash;</h2></div></div></div>
+        <div class="works-list">
+
+            <!-- INDIVIDUAL IN THE MASSES -->
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Electronics &mdash; Live dance performance</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Individual in the Masses</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus &mdash;</span><span>2012</span><span>10&prime;&ndash;12&prime;</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="5" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="10" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="15" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="20" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="25" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="30" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="35" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="40" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="45" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="50" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="55" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="60" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="65" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="70" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="75" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="80" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="85" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="90" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="95" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="100" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="105" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="110" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="115" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="120" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="125" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="130" y="16.0" width="3" height="16.0" rx="1" fill="#6B1B3D"/><rect x="135" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="140" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="145" y="12.0" width="3" height="24.0" rx="1" fill="#6B1B3D"/><rect x="150" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="155" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="160" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="165" y="10.0" width="3" height="28.0" rx="1" fill="#6B1B3D"/><rect x="170" y="18.0" width="3" height="12.0" rx="1" fill="#6B1B3D"/><rect x="175" y="4.0" width="3" height="40.0" rx="1" fill="#6B1B3D"/><rect x="180" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="185" y="8.0" width="3" height="32.0" rx="1" fill="#6B1B3D"/><rect x="190" y="14.0" width="3" height="20.0" rx="1" fill="#6B1B3D"/><rect x="195" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row">
+                        <a href="http://archive.org/download/MinskJamSessionDanceElenaaudioExcerpt/extraitjamminskelenafinal.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; Excerpt (3&prime;18&Prime; of 10&prime;42&Prime;)</a>
+                    </div>
+                    <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;">
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">4 LIVE JAM sessions in trio with <strong>Lukas HUBER</strong> (CH) and <strong>Nicolas SCHMITZ</strong> (CH), Minsk, Belarus, 2012.<br><br>Dance live performances as part of the International stage for young performing and media artists <strong>SYPEMedia</strong> at the National Theatre of Belarusian Dramaturgy.<br><em style="font-size:12px;color:#6B7280;">SYPEMEDA = (Media+Performing Arts) &times; (Internationality+Innovation+Accessibility+Convergence)</em></div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 file, 320Kbits &mdash; 3&prime;18&Prime; out of a total of 10&prime;42&Prime; &mdash; Final session, 31st August 2012.</div></div>
+                        <div><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performance Photo</h4><div class="stills-grid" style="grid-template-columns:1fr;max-width:560px;"><div class="still-item" style="aspect-ratio:16/9;"><img src="individualinthemasses.jpg" alt="Individual in the Masses — Minsk 2012" style="width:100%;height:100%;object-fit:cover;display:block;"></div></div></div>
+                    </div></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="media" class="section-anchor"><div class="section-media" style="margin-bottom:12px;"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:90px;height:90px;opacity:0.12;"><rect x="8" y="20" width="50" height="36" rx="3" fill="none" stroke="#6B1B3D" stroke-width="2"/><line x1="58" y1="30" x2="72" y2="22" stroke="#6B1B3D" stroke-width="2"/><line x1="58" y1="48" x2="72" y2="56" stroke="#6B1B3D" stroke-width="2"/><line x1="33" y1="56" x2="33" y2="64" stroke="#6B1B3D" stroke-width="1.5"/><line x1="15" y1="64" x2="52" y2="64" stroke="#6B1B3D" stroke-width="1.5"/></svg><div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#92400E;opacity:0.8;">04</span><h2 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B1B3D;">&mdash; Media &mdash;</h2></div></div></div>
+        <div class="works-list">
+            <div class="work-row">
+                <div class="work-row-header" onclick="toggleWork(this.closest('.work-row'))">
+                    <p style="font-size:11px;color:#14B8A6;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;">Electronic &mdash; Melodic ringtone for mobile telephone</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                        <span class="work-title">Prestissimo</span>
+                        <span class="badge badge-commissioned">Artmafia</span>
+                    </div>
+                    <div class="work-meta-inline"><span>opus &mdash;</span><span>2009</span><span>2 &times; 10&quot;</span></div>
+                    <span class="toggle-icon">+</span>
+                    <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:48px;"><rect x="0" y="2.6" width="3" height="42.7" rx="1" fill="#6B1B3D"/><rect x="5" y="2.6" width="3" height="42.8" rx="1" fill="#6B1B3D"/><rect x="10" y="7.2" width="3" height="33.6" rx="1" fill="#6B1B3D"/><rect x="15" y="15.9" width="3" height="16.3" rx="1" fill="#6B1B3D"/><rect x="20" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="25" y="3.3" width="3" height="41.3" rx="1" fill="#6B1B3D"/><rect x="30" y="4.3" width="3" height="39.4" rx="1" fill="#6B1B3D"/><rect x="35" y="12.7" width="3" height="22.6" rx="1" fill="#6B1B3D"/><rect x="40" y="9.8" width="3" height="28.4" rx="1" fill="#6B1B3D"/><rect x="45" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="50" y="5.9" width="3" height="36.1" rx="1" fill="#6B1B3D"/><rect x="55" y="7.5" width="3" height="33.0" rx="1" fill="#6B1B3D"/><rect x="60" y="12.1" width="3" height="23.9" rx="1" fill="#6B1B3D"/><rect x="65" y="4.8" width="3" height="38.3" rx="1" fill="#6B1B3D"/><rect x="70" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="75" y="9.7" width="3" height="28.7" rx="1" fill="#6B1B3D"/><rect x="80" y="11.8" width="3" height="24.4" rx="1" fill="#6B1B3D"/><rect x="85" y="8.7" width="3" height="30.5" rx="1" fill="#6B1B3D"/><rect x="90" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="95" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="100" y="12.2" width="3" height="23.5" rx="1" fill="#6B1B3D"/><rect x="105" y="9.4" width="3" height="29.1" rx="1" fill="#6B1B3D"/><rect x="110" y="6.6" width="3" height="34.8" rx="1" fill="#6B1B3D"/><rect x="115" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="120" y="5.0" width="3" height="38.1" rx="1" fill="#6B1B3D"/><rect x="125" y="15.6" width="3" height="16.7" rx="1" fill="#6B1B3D"/><rect x="130" y="5.1" width="3" height="37.9" rx="1" fill="#6B1B3D"/><rect x="135" y="6.0" width="3" height="36.0" rx="1" fill="#6B1B3D"/><rect x="140" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="145" y="10.2" width="3" height="27.6" rx="1" fill="#6B1B3D"/><rect x="150" y="11.7" width="3" height="24.5" rx="1" fill="#6B1B3D"/><rect x="155" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="160" y="5.0" width="3" height="37.9" rx="1" fill="#6B1B3D"/><rect x="165" y="3.3" width="3" height="41.3" rx="1" fill="#6B1B3D"/><rect x="170" y="16.4" width="3" height="15.2" rx="1" fill="#6B1B3D"/><rect x="175" y="6.2" width="3" height="35.6" rx="1" fill="#6B1B3D"/><rect x="180" y="2.0" width="3" height="44.0" rx="1" fill="#6B1B3D"/><rect x="185" y="5.0" width="3" height="38.1" rx="1" fill="#6B1B3D"/><rect x="190" y="7.5" width="3" height="33.1" rx="1" fill="#6B1B3D"/><rect x="195" y="14.8" width="3" height="18.5" rx="1" fill="#6B1B3D"/></svg></div>
+                </div>
+                <div class="work-details">
+                    <div class="detail-row"></div>
+                    <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;"><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Melodic RINGTONE for mobile telephone. Tested successfully in noisy environments and thick pockets.<br><br>Produced in collaboration with <strong>Artmafia</strong> (digital media). Two versions available.</div></div></div></div>
+                </div>
+            </div>
+        </div><!-- /works-list media -->
+
+        <p style="margin-top:48px;font-size:12px;color:#9CA3AF;font-style:italic;text-align:center;">All compositions are protected by S.A.B.A.M. (Belgium) and U.C.M.R.A.D.A. (Rom&acirc;nia) &mdash; &copy; All rights reserved.</p>
+    </div><!-- /container -->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">ALIN GHERMAN</div>
+            <div class="footer-note">Music for Film, Theatre, Dance and Media</div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleWork(row){row.classList.toggle('open');}
+        function toggleDetails(btn){
+            var c=btn.nextElementSibling,a=btn.querySelector('.arrow-icon'),o=c.style.display==='block';
+            c.style.display=o?'none':'block';
+            a.style.transform=o?'rotate(0deg)':'rotate(180deg)';
+            btn.innerHTML=btn.innerHTML.replace(o?'Hide details':'Show details',o?'Show details':'Hide details');
+        }
+        document.querySelectorAll('.toc a').forEach(function(a){
+            a.addEventListener('click',function(){
+                document.querySelectorAll('.toc a').forEach(function(x){x.classList.remove('active');});
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
+

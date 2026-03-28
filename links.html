@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Links &mdash; Alin Gherman</title>\r\n    <link rel="icon" href="/favicon.png" type="image/x-icon">\r\n    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{
+            --white:#FFFFFF;
+            --cream:#FDFBF7;
+            --burgundy:#6B1B3D;
+            --turquoise:#14B8A6;
+            --grey:#6B7280;
+            --grey-light:#E5E7EB;
+            --text-dark:#1F2937;
+        }
+        html{scroll-behavior:smooth;}
+        body{
+            font-family:'Inter',sans-serif;
+            background:var(--cream);
+            color:var(--text-dark);
+            line-height:1.6;
+            font-weight:300;
+            -webkit-font-smoothing:antialiased;
+            display:flex;
+            flex-direction:column;
+            min-height:100vh;
+        }
+
+        /* NAV */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+
+        /* HERO */
+        .hero{padding:140px 48px 40px;max-width:900px;margin:0 auto;text-align:center;}
+        .hero-divider{margin-left:auto;margin-right:auto;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,52px);font-weight:400;color:var(--burgundy);line-height:1.2;}
+        .hero-note{font-size:13px;color:var(--grey);margin-top:10px;font-style:italic;}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin-top:20px;}
+
+        /* MAIN CONTAINER */
+        .container{max-width:900px;padding:0 48px 100px;flex:1;margin:0 auto;}
+
+        /* SECTION HEADERS */
+        .section-header{
+            display:flex;
+            align-items:center;
+            gap:16px;
+            margin:48px 0 16px;
+            padding:20px 28px;
+            position:relative;
+            overflow:hidden;
+        }
+        .section-header::before{
+            content:'';position:absolute;inset:0;
+            background-image:linear-gradient(transparent 43%,rgba(107,27,61,0.05) 43%,rgba(107,27,61,0.05) 45%,transparent 45%),
+                             linear-gradient(transparent 57%,rgba(107,27,61,0.05) 57%,rgba(107,27,61,0.05) 59%,transparent 59%);
+            pointer-events:none;
+        }
+        .section-header.personal{background:linear-gradient(135deg,#fdf5f8,#f9edf2);}
+        .section-header.labels{background:linear-gradient(135deg,#f8f5ff,#f0ebfa);}
+        .section-header.ensembles{background:linear-gradient(135deg,#f0f8f4,#eaf5f0);}
+        .section-header.info{background:linear-gradient(135deg,#fdf8f0,#faf5ec);}
+        .section-num{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:0.7;}
+        .section-num.personal{color:#991B1B;}
+        .section-num.labels{color:#5B21B6;}
+        .section-num.ensembles{color:#065F46;}
+        .section-num.info{color:#92400E;}
+        .section-title{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+
+        /* LINKS LIST */
+        .links-list{display:flex;flex-direction:column;gap:2px;margin-bottom:8px;}
+
+        /* LINK ROW */
+        .link-row{
+            background:var(--white);
+            border:1px solid var(--grey-light);
+            padding:18px 28px;
+            display:flex;
+            align-items:flex-start;
+            gap:20px;
+            text-decoration:none;
+            color:inherit;
+            transition:border-color 0.25s,background 0.2s;
+            position:relative;
+            overflow:hidden;
+        }
+        .link-row::after{
+            content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+            background:var(--burgundy);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;
+        }
+        .link-row:hover{border-color:var(--burgundy);background:#fdf9fb;}
+        .link-row:hover::after{transform:scaleX(1);}
+
+        .link-icon{
+            width:38px;height:38px;border-radius:2px;
+            background:var(--burgundy);
+            display:flex;align-items:center;justify-content:center;
+            flex-shrink:0;
+            margin-top:2px;
+        }
+        .link-icon svg{width:18px;height:18px;fill:#fff;}
+        .link-icon.yt{background:#C00;}
+        .link-icon.bc{background:#1DA0C3;}
+        .link-icon.sc{background:#f50;}
+        .link-icon.fb{background:#1877F2;}
+        .link-icon.web{background:var(--burgundy);}
+
+        .link-body{flex:1;min-width:0;}
+        .link-name{
+            font-size:14px;font-weight:500;color:var(--burgundy);
+            display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+            margin-bottom:3px;
+        }
+        .link-url{
+            font-size:11px;color:var(--turquoise);letter-spacing:0.3px;
+            font-weight:400;word-break:break-all;
+        }
+        .link-desc{font-size:12px;color:var(--grey);margin-top:4px;line-height:1.5;}
+
+        .link-arrow{
+            color:var(--burgundy);font-size:18px;opacity:0.4;
+            flex-shrink:0;align-self:center;transition:transform 0.25s,opacity 0.25s;
+        }
+        .link-row:hover .link-arrow{transform:translateX(4px);opacity:1;}
+
+        /* BADGE */
+        .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;}
+        .badge-official{background:#FEF3C7;color:#92400E;}
+        .badge-belgium{background:#EDE9FE;color:#5B21B6;}
+        .badge-romania{background:#FEE2E2;color:#991B1B;}
+        .badge-swiss{background:#dcfce7;color:#166534;}
+
+        /* FOOTER */
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+
+        @media(max-width:768px){
+            .nav-content,.container,.hero{padding-left:24px;padding-right:24px;}
+            .footer-content{flex-direction:column;gap:8px;text-align:center;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN</a>
+            <a href="index.html" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                Back
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">Resources</span>
+        <h1 class="hero-title">My Links</h1>
+        <p class="hero-note">Recordings, publishers, ensembles &amp; information centres</p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <div class="container">
+
+        <!-- PERSONAL CHANNELS -->
+        <div class="section-header personal">
+            <span class="section-num personal">01</span>
+            <h2 class="section-title">&mdash; Personal Channels &mdash;</h2>
+        </div>
+        <div class="links-list">
+
+            <a class="link-row" href="https://www.youtube.com/user/alinescu1" target="_blank" rel="noopener">
+                <div class="link-icon yt">
+                    <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Alin Gherman Official Youtube
+                        <span class="badge badge-official">Official</span>
+                    </div>
+                    <div class="link-url">youtube.com/user/alinescu1</div>
+                    <div class="link-desc">alinescu1&rsquo;s Channel &mdash; video recordings and performances.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+            <a class="link-row" href="https://alingherman.bandcamp.com" target="_blank" rel="noopener">
+                <div class="link-icon bc">
+                    <svg viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Official Bandcamp
+                        <span class="badge badge-official">Official</span>
+                    </div>
+                    <div class="link-url">alingherman.bandcamp.com</div>
+                    <div class="link-desc">To buy some full length recordings.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+            <a class="link-row" href="https://soundcloud.com/alin-gherman/tracks" target="_blank" rel="noopener">
+                <div class="link-icon sc">
+                    <svg viewBox="0 0 24 24"><path d="M1.175 12.225c-.041 0-.082.035-.082.082l-.439 2.412.439 2.354c0 .047.041.082.082.082.046 0 .082-.035.082-.082l.498-2.354-.498-2.412c0-.047-.036-.082-.082-.082zm1.558-.57c-.047 0-.094.041-.094.094l-.374 2.988.374 2.836c0 .053.047.094.094.094.053 0 .094-.041.094-.094l.427-2.836-.427-2.988c0-.053-.041-.094-.094-.094zm1.582-.282c-.059 0-.105.047-.105.105l-.31 3.27.31 2.918c0 .059.046.105.105.105.058 0 .105-.046.105-.105l.351-2.918-.351-3.27c0-.058-.047-.105-.105-.105zm1.629.094c-.07 0-.129.059-.129.129l-.246 3.176.246 2.988c0 .07.059.129.129.129.07 0 .129-.059.129-.129l.281-2.988-.281-3.176c0-.07-.059-.129-.129-.129zm1.664-.164c-.082 0-.152.07-.152.152l-.187 3.34.187 3.012c0 .082.07.152.152.152.082 0 .152-.07.152-.152l.211-3.012-.211-3.34c0-.082-.07-.152-.152-.152zm1.687.246c-.094 0-.176.082-.176.176l-.129 3.094.129 3.023c0 .094.082.176.176.176.094 0 .176-.082.176-.176l.146-3.023-.146-3.094c0-.094-.082-.176-.176-.176zm1.723.293c-.105 0-.199.094-.199.199l-.07 2.801.07 3.012c0 .105.094.199.199.199.105 0 .199-.094.199-.199l.082-3.012-.082-2.801c0-.105-.094-.199-.199-.199zm1.77.164c-.117 0-.223.105-.223.223l-.011 2.637.011 3.023c0 .117.106.223.223.223.117 0 .223-.106.223-.223l.012-3.023-.012-2.637c0-.118-.106-.223-.223-.223zm1.792-.223c-.129 0-.246.117-.246.246v5.883c0 .129.117.246.246.246.129 0 .246-.117.246-.246V11.945c0-.129-.117-.246-.246-.246zm1.828-.211c-.141 0-.258.117-.258.258v6.305c0 .141.117.258.258.258.14 0 .257-.117.257-.258v-6.305c0-.141-.117-.258-.257-.258zm1.852.176c-.152 0-.281.129-.281.281v5.953c0 .152.129.281.281.281.152 0 .281-.129.281-.281v-5.953c0-.152-.129-.281-.281-.281z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Official Soundcloud
+                        <span class="badge badge-official">Official</span>
+                    </div>
+                    <div class="link-url">soundcloud.com/alin-gherman/tracks</div>
+                    <div class="link-desc">To listen to some full length recordings.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+        </div>
+
+        <!-- PUBLISHERS & LABELS -->
+        <div class="section-header labels">
+            <span class="section-num labels">02</span>
+            <h2 class="section-title">&mdash; Publishers &amp; Labels &mdash;</h2>
+        </div>
+        <div class="links-list">
+
+            <a class="link-row" href="https://www.editionspapillon.ch" target="_blank" rel="noopener">
+                <div class="link-icon web">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Editions Papillon, Geneva
+                        <span class="badge badge-swiss">Switzerland</span>
+                    </div>
+                    <div class="link-url">editionspapillon.ch</div>
+                    <div class="link-desc">Publisher of <em>&ldquo;Purple ritual&rdquo;</em> for multi-percussion.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+            <a class="link-row" href="https://www.cypres-records.be" target="_blank" rel="noopener">
+                <div class="link-icon web">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Cypr&egrave;s Records
+                        <span class="badge badge-belgium">Belgium</span>
+                    </div>
+                    <div class="link-url">cypres-records.be</div>
+                    <div class="link-desc">Belgian disc label.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+        </div>
+
+        <!-- INFORMATION CENTRES -->
+        <div class="section-header info">
+            <span class="section-num info">03</span>
+            <h2 class="section-title">&mdash; Information Centres &mdash;</h2>
+        </div>
+        <div class="links-list">
+
+            <a class="link-row" href="http://soundcloud.com/romaniannewmusic3/" target="_blank" rel="noopener">
+                <div class="link-icon sc">
+                    <svg viewBox="0 0 24 24"><path d="M1.175 12.225c-.041 0-.082.035-.082.082l-.439 2.412.439 2.354c0 .047.041.082.082.082.046 0 .082-.035.082-.082l.498-2.354-.498-2.412c0-.047-.036-.082-.082-.082zm1.558-.57c-.047 0-.094.041-.094.094l-.374 2.988.374 2.836c0 .053.047.094.094.094.053 0 .094-.041.094-.094l.427-2.836-.427-2.988c0-.053-.041-.094-.094-.094zm1.582-.282c-.059 0-.105.047-.105.105l-.31 3.27.31 2.918c0 .059.046.105.105.105.058 0 .105-.046.105-.105l.351-2.918-.351-3.27c0-.058-.047-.105-.105-.105zm1.629.094c-.07 0-.129.059-.129.129l-.246 3.176.246 2.988c0 .07.059.129.129.129.07 0 .129-.059.129-.129l.281-2.988-.281-3.176c0-.07-.059-.129-.129-.129zm1.664-.164c-.082 0-.152.07-.152.152l-.187 3.34.187 3.012c0 .082.07.152.152.152.082 0 .152-.07.152-.152l.211-3.012-.211-3.34c0-.082-.07-.152-.152-.152zm1.687.246c-.094 0-.176.082-.176.176l-.129 3.094.129 3.023c0 .094.082.176.176.176.094 0 .176-.082.176-.176l.146-3.023-.146-3.094c0-.094-.082-.176-.176-.176zm1.723.293c-.105 0-.199.094-.199.199l-.07 2.801.07 3.012c0 .105.094.199.199.199.105 0 .199-.094.199-.199l.082-3.012-.082-2.801c0-.105-.094-.199-.199-.199zm1.77.164c-.117 0-.223.105-.223.223l-.011 2.637.011 3.023c0 .117.106.223.223.223.117 0 .223-.106.223-.223l.012-3.023-.012-2.637c0-.118-.106-.223-.223-.223zm1.792-.223c-.129 0-.246.117-.246.246v5.883c0 .129.117.246.246.246.129 0 .246-.117.246-.246V11.945c0-.129-.117-.246-.246-.246zm1.828-.211c-.141 0-.258.117-.258.258v6.305c0 .141.117.258.258.258.14 0 .257-.117.257-.258v-6.305c0-.141-.117-.258-.257-.258zm1.852.176c-.152 0-.281.129-.281.281v5.953c0 .152.129.281.281.281.152 0 .281-.129.281-.281v-5.953c0-.152-.129-.281-.281-.281z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Romanian New Music
+                        <span class="badge badge-romania">Romania</span>
+                    </div>
+                    <div class="link-url">soundcloud.com/romaniannewmusic3</div>
+                    <div class="link-desc">Audio platform to listen to representative composers of new music.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+            <a class="link-row" href="http://cimro.ro" target="_blank" rel="noopener">
+                <div class="link-icon web">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        CIMRO &mdash; Centrul de informare muzical&#259;
+                        <span class="badge badge-romania">Romania</span>
+                    </div>
+                    <div class="link-url">cimro.ro</div>
+                    <div class="link-desc">Romanian Information Centre for music.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+            <a class="link-row" href="https://www.cebedem.be" target="_blank" rel="noopener">
+                <div class="link-icon web">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        CeBeDem &mdash; Centre Belge de Documentation Musicale
+                        <span class="badge badge-belgium">Belgium</span>
+                    </div>
+                    <div class="link-url">cebedem.be</div>
+                    <div class="link-desc">The Belgian site for contemporary music. There is an office in Brussels where you can borrow scores.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+            <a class="link-row" href="http://compozitorii.blogspot.com" target="_blank" rel="noopener">
+                <div class="link-icon web">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25S13.24 11.25 12 11.25 9.75 10.24 9.75 9 10.76 6.75 12 6.75zM17 17H7v-.75c0-2.28 3.37-3.25 5-3.25s5 .97 5 3.25V17z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Compozitorii
+                        <span class="badge badge-romania">Romania</span>
+                    </div>
+                    <div class="link-url">compozitorii.blogspot.com</div>
+                    <div class="link-desc">Romanian blog about contemporary great composers.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+        </div>
+
+        <!-- ENSEMBLES & STUDIOS -->
+        <div class="section-header ensembles">
+            <span class="section-num ensembles">04</span>
+            <h2 class="section-title">&mdash; Ensembles &amp; Studios &mdash;</h2>
+        </div>
+        <div class="links-list">
+
+            <a class="link-row" href="https://www.facebook.com/tonstudio.hkb" target="_blank" rel="noopener">
+                <div class="link-icon fb">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Tonstudio der Hochschule der K&uuml;nste Bern
+                        <span class="badge badge-swiss">Switzerland</span>
+                    </div>
+                    <div class="link-url">on Facebook</div>
+                    <div class="link-desc">Great studio recording with excellent sound engineer chief: Benoit PICCAND.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+            <a class="link-row" href="http://www.musiquesnouvelles.com" target="_blank" rel="noopener">
+                <div class="link-icon web">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Ensemble Musiques Nouvelles
+                        <span class="badge badge-belgium">Belgium</span>
+                    </div>
+                    <div class="link-url">musiquesnouvelles.com</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+            <a class="link-row" href="http://www.nicolasachten.be" target="_blank" rel="noopener">
+                <div class="link-icon web">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Scherzi musicali
+                        <span class="badge badge-belgium">Belgium</span>
+                    </div>
+                    <div class="link-url">nicolasachten.be</div>
+                    <div class="link-desc">Ancient music ensemble directed by Nicolas ACHTEN. The website address may change.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+            <a class="link-row" href="http://www.nadine.be" target="_blank" rel="noopener">
+                <div class="link-icon web">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Nadine asbl &mdash; Plateau-Tani, Brussels
+                        <span class="badge badge-belgium">Belgium</span>
+                    </div>
+                    <div class="link-url">nadine.be</div>
+                    <div class="link-desc">Audio, video and dance experiences.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+            <a class="link-row" href="http://www.hetcollectief.be" target="_blank" rel="noopener">
+                <div class="link-icon web">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <div class="link-body">
+                    <div class="link-name">
+                        Het Collectief
+                        <span class="badge badge-belgium">Belgium</span>
+                    </div>
+                    <div class="link-url">hetcollectief.be</div>
+                    <div class="link-desc">Belgian contemporary music ensemble. Low cost entrances thanks to the Flemish Community sponsoring.</div>
+                </div>
+                <span class="link-arrow">&#8594;</span>
+            </a>
+
+        </div>
+
+    </div><!-- /container -->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">ALIN GHERMAN</div>
+            <div class="footer-note">My Links &mdash; Recordings, Publishers &amp; Ensembles</div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+

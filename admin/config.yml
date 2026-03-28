@@ -1,0 +1,100 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "site_content"
+    label: "Site Content"
+    files:
+      - label: "Homepage hero"
+        name: "homepage_hero"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Hero label", name: "home.hero.label", widget: "string" }
+          - { label: "Hero title", name: "home.hero.title", widget: "text" }
+          - { label: "Hero text", name: "home.hero.text", widget: "text" }
+          - { label: "CTA Primary", name: "home.hero.ctaPrimary", widget: "string" }
+          - { label: "CTA Secondary", name: "home.hero.ctaSecondary", widget: "string" }
+      - label: "Navigation"
+        name: "navigation"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Logo", name: "nav.logo", widget: "string" }
+          - { label: "Presentation", name: "nav.presentation", widget: "string" }
+          - { label: "Compositions", name: "nav.compositions", widget: "string" }
+          - { label: "Instruments", name: "nav.instruments", widget: "string" }
+          - { label: "Pressbook", name: "nav.pressbook", widget: "string" }
+          - { label: "Concerts", name: "nav.concerts", widget: "string" }
+          - { label: "Photos", name: "nav.photos", widget: "string" }
+          - { label: "Links", name: "nav.links", widget: "string" }
+          - { label: "Support", name: "nav.support", widget: "string" }
+          - { label: "Contact", name: "nav.contact", widget: "string" }
+      - label: "About section"
+        name: "about_section"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Label", name: "about.label", widget: "string" }
+          - { label: "Title", name: "about.title", widget: "string" }
+      - label: "Work section"
+        name: "work_section"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Label", name: "work.label", widget: "string" }
+          - { label: "Title", name: "work.title", widget: "string" }
+          - { label: "Card 1 Title", name: "work.card1.title", widget: "string" }
+          - { label: "Card 2 Title", name: "work.card2.title", widget: "string" }
+          - { label: "Card 3 Title", name: "work.card3.title", widget: "string" }
+          - { label: "Card 4 Title", name: "work.card4.title", widget: "string" }
+          - { label: "Card 5 Title", name: "work.card5.title", widget: "string" }
+          - { label: "Card 6 Title", name: "work.card6.title", widget: "string" }
+          - { label: "Card 7 Title", name: "work.card7.title", widget: "string" }
+          - { label: "Card 8 Title", name: "work.card8.title", widget: "string" }
+          - { label: "Card 9 Title", name: "work.card9.title", widget: "string" }
+      - label: "Instruments section"
+        name: "instruments_section"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Label", name: "instruments.label", widget: "string" }
+          - { label: "Title", name: "instruments.title", widget: "string" }
+          - { label: "Quote", name: "instruments.quote", widget: "text" }
+      - label: "Pressbook header"
+        name: "pressbook_header"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Pressbook title", name: "pressbook.title", widget: "string" }
+          - { label: "Pressbook subtitle", name: "pressbook.subtitle", widget: "text" }
+      - label: "Photos section"
+        name: "photos_section"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Label", name: "photos.label", widget: "string" }
+          - { label: "Title", name: "photos.title", widget: "string" }
+      - label: "Links section"
+        name: "links_section"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Label", name: "links.label", widget: "string" }
+          - { label: "Title", name: "links.title", widget: "string" }
+      - label: "Contact section"
+        name: "contact_section"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Label", name: "contact.label", widget: "string" }
+          - { label: "Title", name: "contact.title", widget: "string" }
+      - label: "Footer"
+        name: "footer"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Brand", name: "footer.brand", widget: "string" }
+          - { label: "Copyright", name: "footer.copy", widget: "string" }
+          - { label: "Note", name: "footer.note", widget: "string" }
+          - { label: "Support", name: "footer.support", widget: "string" }
+      - label: "Compositions Percussion"
+        name: "compositions_percussion"
+        file: "content/site-content.json"
+        fields:
+          - { label: "Hero Label", name: "compositions.percussion.hero.label", widget: "string" }
+          - { label: "Hero Title", name: "compositions.percussion.hero.title", widget: "string" }
