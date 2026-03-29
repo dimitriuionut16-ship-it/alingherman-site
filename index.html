@@ -1209,13 +1209,15 @@
                     </div>
                 </div>
 
-                <form class="contact-form reveal reveal--right" action="mailto:alin.gherman@gmail.com" method="POST" enctype="text/plain">
+                <form class="contact-form reveal reveal--right" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact">
+                    <p style="display:none"><input name="bot-field"></p>
                     <div class="form-row">
-                        <input type="text" placeholder="Name" required>
-                        <input type="email" placeholder="Email" required>
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="email" name="email" placeholder="Email" required>
                     </div>
-                    <input type="text" placeholder="Subject" required>
-                    <textarea placeholder="Message" rows="6" required></textarea>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Message" rows="6" required></textarea>
                     <button type="submit" class="btn-submit">Send Message</button>
                 </form>
             </div>
