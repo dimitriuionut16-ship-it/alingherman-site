@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Exclude thank-you pages from indexing
+Disallow: /thanky
+Disallow: /thank-you.html
+Disallow: /scores/
+
+Sitemap: https://alingherman.com/sitemap.xml
