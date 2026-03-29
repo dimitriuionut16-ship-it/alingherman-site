@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3 scripts/fix_performance.py)"
+      "Bash(python3 scripts/fix_performance.py)",
+      "WebFetch(domain:alingherman.com)",
+      "Bash(ls c:/Users/IONUT/Desktop/SITE-GHERAM-FULL/*.pdf)"
     ]
   }
 }
