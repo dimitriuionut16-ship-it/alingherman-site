@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solo Instruments &mdash; Alin Gherman</title>\r\n    <link rel="icon" href="/favicon.png" type="image/x-icon">\r\n    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+        <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6B1B3D">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -87,6 +89,21 @@
             .work-title { font-size: 16px; }
         }
 }
+
+        /* ── BACK BTN TOUCH TARGET ── */
+        .back-btn {
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -450,9 +467,9 @@
                                     <button onclick="event.stopPropagation();var c=document.getElementById('folclor-photos');var o=c.style.display==='block';c.style.display=o?'none':'block';this.textContent=o?'photos and video project in progress':'Hide photos';" style="background:none;border:none;color:var(--burgundy);font-size:12px;cursor:pointer;padding:0;text-decoration:underline;font-weight:500;">photos and video project in progress</button>
                                     <div id="folclor-photos" style="display:none;margin-top:16px;">
                                         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:14px;">
-                                            <img src="folclor_photo1.jpg" alt="Kirill Zwegintsow recording session" style="width:100%;aspect-ratio:4/3;object-fit:cover;">
-                                            <img src="folclor_photo2.jpg" alt="Kirill Zwegintsow at piano" style="width:100%;aspect-ratio:4/3;object-fit:cover;">
-                                            <img src="folclor_photo3.jpg" alt="Recording session HKB Bern" style="width:100%;aspect-ratio:4/3;object-fit:cover;">
+                                            <img src="folclor_photo1.jpg" alt="Kirill Zwegintsow recording session" style="width:100%;aspect-ratio:4/3;object-fit:cover;" decoding="async" loading="lazy">
+                                            <img src="folclor_photo2.jpg" alt="Kirill Zwegintsow at piano" style="width:100%;aspect-ratio:4/3;object-fit:cover;" decoding="async" loading="lazy">
+                                            <img src="folclor_photo3.jpg" alt="Recording session HKB Bern" style="width:100%;aspect-ratio:4/3;object-fit:cover;" decoding="async" loading="lazy">
                                         </div>
                                         <div style="font-size:12px;color:var(--grey);line-height:1.8;padding:14px 16px;background:#F9F7F4;border-left:2px solid #D1C4C9;">
                                             These snapshots pictures are extracted from a VIDEO recording. This studio recording was VIDEO recorded as well by <strong>Voltafilm Luzern</strong>, Stephan HEINIGER. (See &ldquo;Haute tension&rdquo; video clip &hellip; coming soon)<br><br>
@@ -596,7 +613,7 @@
                                 Sound engineer: Beno&icirc;t PICCAND. Produced by Alin Gherman.<br>
                                 <em style="font-size:12px;color:var(--grey);">Audio excerpt: MP3 &mdash; 1&prime;41&Prime; of 5&prime;05&Prime; total.</em>
                                 <div id="natalia-photo" style="display:none;margin-top:14px;">
-                                    <img src="natalia_koziarz.jpg" alt="Natalia KOZIARZ, pianist (Poland)" style="width:160px;border:1px solid var(--grey-light);">
+                                    <img src="natalia_koziarz.jpg" alt="Natalia KOZIARZ, pianist (Poland)" style="width:160px;border:1px solid var(--grey-light);" decoding="async" loading="lazy">
                                     <p style="font-size:11px;color:var(--grey);margin-top:6px;">Natalia KOZIARZ</p>
                                 </div>
                                 </div>

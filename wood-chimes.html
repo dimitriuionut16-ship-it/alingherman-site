@@ -6,6 +6,8 @@
     <title>Wood Chimes — Alin Gherman</title>
     <link rel="icon" href="/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+        <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6B1B3D">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -293,6 +295,21 @@
             .hero-title { font-size: clamp(28px, 10vw, 48px) !important; }
             .desc-grid { gap: 32px; }
             .used-work { font-size: 17px; }
+        }
+
+
+        /* ── BACK BTN TOUCH TARGET ── */
+        .back-btn {
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
     </style>

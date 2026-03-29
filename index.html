@@ -7,6 +7,47 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>Alin Gherman — Contemporary Composer</title>\r\n    <link rel="icon" href="/favicon.png" type="image/x-icon">\r\n    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <meta name="description" content="Alin Gherman — contemporary composer. Compositions for percussion, orchestra, electronic music, instrumental theatre, and film.">
+    <meta name="author" content="Alin Gherman">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://alingherman.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Alin Gherman — Contemporary Composer">
+    <meta property="og:description" content="Compositions for percussion, orchestra, electronic music, instrumental theatre, and film.">
+    <meta property="og:image" content="https://alingherman.com/pianist-tanar-color-1997.webp">
+    <meta property="og:url" content="https://alingherman.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Alin Gherman">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alin Gherman — Contemporary Composer">
+    <meta name="twitter:description" content="Compositions for percussion, orchestra, electronic music, instrumental theatre, and film.">
+    <meta name="twitter:image" content="https://alingherman.com/pianist-tanar-color-1997.webp">
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6B1B3D">
+    <link rel="apple-touch-icon" href="/favicon.png">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alin Gherman",
+      "jobTitle": "Contemporary Composer",
+      "url": "https://alingherman.com",
+      "image": "https://alingherman.com/pianist-tanar-color-1997.webp",
+      "sameAs": [
+        "https://www.youtube.com/@AlinGherman",
+        "https://soundcloud.com/alingherman",
+        "https://alingherman.bandcamp.com"
+      ],
+      "knowsAbout": ["Contemporary Music", "Percussion", "Electronic Music", "Film Music", "Instrumental Theatre", "Orchestra"]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -421,103 +462,126 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* ── NAV TOGGLE (hamburger) ── */
+        
+        /* ── NAV TOGGLE — MOBILE FIRST ── */
         .nav-toggle {
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 22px; height: 16px;
+            width: 24px; height: 18px;
             background: none; border: none;
-            cursor: pointer; padding: 0; z-index: 1100;
-            flex-shrink: 0;
+            cursor: pointer; padding: 0;
+            z-index: 1100; flex-shrink: 0;
+            min-width: 44px; min-height: 44px;
+            align-items: center; justify-content: center;
         }
         .nav-toggle span {
-            display: block; width: 100%; height: 2px;
+            display: block; width: 22px; height: 2px;
             background: var(--burgundy);
-            transition: all 0.3s ease;
+            transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+                        opacity 0.25s ease;
             transform-origin: center;
         }
         .nav-toggle.open span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
+            transform: translateY(8px) rotate(45deg);
         }
         .nav-toggle.open span:nth-child(2) {
-            transform: translateY(-7px) rotate(-45deg);
+            transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* ── MOBILE BREAKPOINTS ── */
-        @media (max-width: 900px) {
-            .nav-content { padding: 18px 32px; }
-            .nav-links { gap: 28px; }
+        /* MOBILE NAV — fullscreen overlay */
+        .nav-links {
+            position: fixed;
+            inset: 0;
+            background: rgba(253,251,247,0.98);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 1050;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        .nav-links.open {
+            transform: translateX(0);
+        }
+        .nav-links a {
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+            color: var(--burgundy);
+            padding: 0.5rem 1rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
         }
 
-        @media (max-width: 768px) {
-            /* show hamburger, hide links */
-            .nav-toggle { display: flex; }
-            .nav-content { padding: 16px 24px; }
+        /* TABLET+ — inline nav */
+        @media (min-width: 900px) {
+            .nav-toggle { display: none; }
             .nav-links {
-                position: fixed;
-                inset: 0;
-                background: rgba(253,251,247,0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 36px;
-                z-index: 1050;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s ease;
-            }
-            .nav-links.open {
-                opacity: 1;
-                pointer-events: all;
+                position: static;
+                flex-direction: row;
+                gap: 2.5rem;
+                background: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                transform: none;
+                z-index: auto;
+                transition: none;
             }
             .nav-links a {
-                font-size: 18px;
-                letter-spacing: 1px;
-                color: var(--burgundy);
+                font-size: 0.875rem;
+                letter-spacing: 0.5px;
+                color: var(--text-dark);
+                padding: 0;
+                min-height: auto;
             }
+        }
 
-            /* hero */
-            .hero { padding: 100px 24px 64px; min-height: 90vh; }
-            .hero-title { font-size: clamp(34px, 10vw, 56px) !important; }
-            .hero-text { font-size: 15px; padding: 0 8px; }
-            .hero-cta { flex-direction: column; align-items: center; gap: 12px; }
+        /* ── MOBILE LAYOUT ── */
+        @media (max-width: 899px) {
+            .nav-content { padding: 1rem 1.5rem; }
+            .hero { padding: 6rem 1.5rem 3.5rem; min-height: 90svh; }
+            .hero-title { font-size: clamp(2rem, 9vw, 3.5rem) !important; }
+            .hero-text { font-size: 0.9375rem; }
+            .hero-cta { flex-direction: column; align-items: center; gap: 0.75rem; }
             .btn-primary, .btn-secondary {
                 width: 100%; max-width: 280px;
                 text-align: center; display: block;
+                min-height: 44px; display: flex; align-items: center; justify-content: center;
             }
-
-            /* sections */
-            section { padding: 80px 0; }
-            .container-fluid, .container-narrow { padding: 0 24px; }
-            .section-title { font-size: clamp(30px, 7vw, 52px) !important; }
-            .section-label { font-size: 10px; }
-
-            /* about */
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .about-stats { flex-direction: column; gap: 28px; }
-            .stat-number { font-size: 36px; }
-
-            /* work cards */
-            .work-grid { grid-template-columns: 1fr; gap: 16px; }
-            .work-card { padding: 24px; }
-
-            /* instruments */
-            .instruments-showcase { grid-template-columns: 1fr; gap: 40px; }
-
-            /* contact */
-            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            section { padding: 4rem 0; }
+            .container-fluid, .container-narrow { padding: 0 1.5rem; }
+            .section-title { font-size: clamp(1.75rem, 7vw, 3rem) !important; }
+            .about-grid, .instruments-showcase, .contact-grid {
+                grid-template-columns: 1fr; gap: 2.5rem;
+            }
+            .about-stats { flex-direction: column; gap: 1.5rem; }
+            .work-grid { grid-template-columns: 1fr; gap: 1rem; }
             .form-row { grid-template-columns: 1fr; }
-
-            /* footer */
-            .footer-content { flex-direction: column; gap: 16px; text-align: center; }
+            .footer-content { flex-direction: column; gap: 1rem; text-align: center; }
             .footer-center { justify-content: center; }
+            .about-stats { padding-top: 2rem; margin-top: 2rem; }
         }
 
         @media (max-width: 480px) {
-            .nav-content { padding: 14px 20px; }
-            .hero { padding: 90px 20px 56px; }
+            .nav-content { padding: 0.875rem 1.25rem; }
+            .container-fluid, .container-narrow { padding: 0 1.25rem; }
+            .hero { padding: 5.5rem 1.25rem 3rem; }
+            .section-title { font-size: clamp(1.5rem, 8vw, 2.5rem) !important; }
+        }
+
+        /* ── REDUCE MOTION ── */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+.hero { padding: 90px 20px 56px; }
             .container-fluid, .container-narrow { padding: 0 20px; }
             .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 13px; }
             .work-card { padding: 20px; }
@@ -648,7 +712,7 @@
                 <a href="support.html" data-content-key="nav.support">Support</a>
                 <a href="#contact" data-content-key="nav.contact">Contact</a>
             </div>
-            <button class="nav-toggle" id="navToggle">
+            <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
                 <span></span>
                 <span></span>
             </button>
@@ -1314,22 +1378,36 @@
     </script>
     <script>
 
-        // ── HAMBURGER MENU ──
+        
+
+
+        // ── HAMBURGER MENU — mobile-first ──
         (function() {
             var toggle = document.getElementById('navToggle');
-            var links  = document.querySelector('.nav-links');
-            if (!toggle || !links) return;
+            var menu   = document.querySelector('.nav-links');
+            if (!toggle || !menu) return;
+            function closeMenu() {
+                toggle.classList.remove('open');
+                menu.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
             toggle.addEventListener('click', function() {
-                toggle.classList.toggle('open');
-                links.classList.toggle('open');
-                document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+                var isOpen = menu.classList.contains('open');
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    toggle.classList.add('open');
+                    menu.classList.add('open');
+                    toggle.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                }
             });
-            links.querySelectorAll('a').forEach(function(a) {
-                a.addEventListener('click', function() {
-                    toggle.classList.remove('open');
-                    links.classList.remove('open');
-                    document.body.style.overflow = '';
-                });
+            menu.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', closeMenu);
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeMenu();
             });
         })();
 

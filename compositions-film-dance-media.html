@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music for Film, Theatre, Dance and Media &mdash; Alin Gherman</title>\r\n    <link rel="icon" href="/favicon.png" type="image/x-icon">\r\n    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+        <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6B1B3D">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -92,6 +94,21 @@
             .work-title { font-size: 16px; }
         }
 }
+
+        /* ── BACK BTN TOUCH TARGET ── */
+        .back-btn {
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -138,12 +155,12 @@
                     <div class="detail-row"><a href="http://www.archive.org/download/EinWerktagaudioExcerpt-WirKaempfenFuerJugend/extraiteinwerktag_wir_kaempfen_fuer_jugend.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; Excerpt &laquo;&nbsp;&hellip;f&uuml;r Jugend&nbsp;&raquo;</a><a href="http://www.chronos-verlag.ch" target="_blank" onclick="event.stopPropagation()" class="score-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Chronos Verlag</a></div>
                     <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;"><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About the Film</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><em>Ein Werktag</em> &mdash; silent documentary film, 1931, 57 min. New music composed and produced in 2009 for live performance with 35mm projection.<br><br>Screening of the 35mm roll with LIVE performance at the <strong>Winterthur Kurzfilmtage Festival 2009</strong>.</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performers</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Pierre FAVRE &amp; Simon FORSTER (percussion) &nbsp;&middot;&nbsp; Alena KOZLOVA (piano) &nbsp;&middot;&nbsp; Alin GHERMAN (Yamaha Disklavier control &amp; Artistic direction)</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Film Credits</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><em>Ein Film, hergestellt im Auftrag der S.P.S. von der Praesensfilm A.G.</em><br>Regie: R. Schweitzer &nbsp;&middot;&nbsp; Kamera: A. Berna<br>Documentary, 35mm, available at the Cin&eacute;math&egrave;que Suisse.<br>Renovation and documentation: Stefan LANZLINGER &amp; Thomas SCH&Auml;RER.</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Film Stills</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">
                         <div class="stills-grid">
-                            <div class="still-item"><img src="einwerktagtitlen.webp" alt="Ein Werktag title card"><span class="still-tc">EIN WERK-TAG</span></div>
-                            <div class="still-item"><img src="einwerktagpraesensfilm.webp" alt="Praesens Film S.A. Zürich"><span class="still-tc">PRAESENS FILM S.A. ZÜRICH</span></div>
-                            <div class="still-item"><img src="einwerktagholzarbeiterfired2.webp" alt="Still 01"><span class="still-tc">Still 01</span></div>
-                            <div class="still-item"><img src="einwerktagindustrialscene4.webp" alt="Still 02"><span class="still-tc">Still 02</span></div>
-                            <div class="still-item"><img src="einwerktagarbeiter3_moto.webp" alt="Still 03"><span class="still-tc">Still 03</span></div>
-                            <div class="still-item"><img src="einwerktagindustrialscene6.webp" alt="Still 04"><span class="still-tc">Still 04</span></div>
+                            <div class="still-item"><img src="einwerktagtitlen.webp" alt="Ein Werktag title card" decoding="async" loading="lazy"><span class="still-tc">EIN WERK-TAG</span></div>
+                            <div class="still-item"><img src="einwerktagpraesensfilm.webp" alt="Praesens Film S.A. Zürich" decoding="async" loading="lazy"><span class="still-tc">PRAESENS FILM S.A. ZÜRICH</span></div>
+                            <div class="still-item"><img src="einwerktagholzarbeiterfired2.webp" alt="Still 01" decoding="async" loading="lazy"><span class="still-tc">Still 01</span></div>
+                            <div class="still-item"><img src="einwerktagindustrialscene4.webp" alt="Still 02" decoding="async" loading="lazy"><span class="still-tc">Still 02</span></div>
+                            <div class="still-item"><img src="einwerktagarbeiter3_moto.webp" alt="Still 03" decoding="async" loading="lazy"><span class="still-tc">Still 03</span></div>
+                            <div class="still-item"><img src="einwerktagindustrialscene6.webp" alt="Still 04" decoding="async" loading="lazy"><span class="still-tc">Still 04</span></div>
                         </div>
                     </div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Miscellaneous</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;"><strong>Commissioned</strong> by the <a href="https://www.sozialarchiv.ch" target="_blank" style="color:#6B1B3D;font-weight:500;">Schweizerisches Sozialarchiv Z&uuml;rich</a> (Switzerland).<br>Book with DVD published by CHRONOS Verlag, Eisengasse 9, CH-8008 Z&uuml;rich &nbsp;&middot;&nbsp; <a href="http://www.chronos-verlag.ch" target="_blank" style="color:#6B1B3D;font-weight:500;">www.chronos-verlag.ch</a></div></div></div></div>
                 </div>
@@ -165,10 +182,10 @@
                     <div class="detail-row"><a href="http://www.archive.org/download/DesertHopiFrauaudio/HopiDesertFrauPart1.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; Part 1 (2&prime;24&Prime;)</a><a href="http://www.archive.org/download/DesertHopiFrauaudio/HopiDesertFrauPart2.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; Part 2 (1&prime;10&Prime;)</a></div>
                     <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;"><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">New music for an excerpt of the movie <em>&ldquo;Desert&rdquo;</em> by Felix TISSI (CH), presented during the Film Music Th&eacute;&acirc;tre Forum, Solothurn Filmtage, January 2009.<br><a href="http://www.desert-themovie.com/" target="_blank" style="color:#6B1B3D;font-weight:500;">www.desert-themovie.com</a></div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpts</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 files, 256kbps &mdash; Part 1: 2&rsquo;24&quot; &nbsp;&middot;&nbsp; Part 2: 1&rsquo;10&quot;</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Recording</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Recorded in the <em>Reformierte Kirche</em> W&uuml;lkon, Z&uuml;rich, January 9th, 2009.<br>Conductor: Fabian K&uuml;nzli<br>Fl.: Peter Eberl &nbsp;&middot;&nbsp; Cl.: Simon Wyrsch &nbsp;&middot;&nbsp; Violin 1: Margareta Benkova &nbsp;&middot;&nbsp; Violin 2: Gordon Bragg &nbsp;&middot;&nbsp; Viola: Anton Vikhov &nbsp;&middot;&nbsp; Cello: Ulrich Dimigen &nbsp;&middot;&nbsp; Kontrabass: Christian Bolesch<br>Sound engineer: Lasse Nipkow &nbsp;&middot;&nbsp; Forum FilmMusic Zhdk Z&uuml;rich</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Film Stills</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">
                         <div class="stills-grid">
-                            <div class="still-item"><img src="desertfrauhopi1.webp" alt="TC+01:02:34:05"><span class="still-tc">TC+01:02:34:05</span></div>
-                            <div class="still-item"><img src="desertfrauhopi2.jpg" alt="TC+01:03:50:18"><span class="still-tc">TC+01:03:50:18</span></div>
-                            <div class="still-item"><img src="desertfrauhopi3.jpg" alt="TC+01:04:42:05"><span class="still-tc">TC+01:04:42:05</span></div>
-                            <div class="still-item"><img src="desertfrauhopi5.jpg" alt="TC+01:06:45:06"><span class="still-tc">TC+01:06:45:06</span></div>
+                            <div class="still-item"><img src="desertfrauhopi1.webp" alt="TC+01:02:34:05" decoding="async" loading="lazy"><span class="still-tc">TC+01:02:34:05</span></div>
+                            <div class="still-item"><img src="desertfrauhopi2.jpg" alt="TC+01:03:50:18" decoding="async" loading="lazy"><span class="still-tc">TC+01:03:50:18</span></div>
+                            <div class="still-item"><img src="desertfrauhopi3.jpg" alt="TC+01:04:42:05" decoding="async" loading="lazy"><span class="still-tc">TC+01:04:42:05</span></div>
+                            <div class="still-item"><img src="desertfrauhopi5.jpg" alt="TC+01:06:45:06" decoding="async" loading="lazy"><span class="still-tc">TC+01:06:45:06</span></div>
                         </div>
                     </div></div></div></div>
                 </div>
@@ -190,15 +207,15 @@
                     <div class="detail-row"><a href="http://www.archive.org/download/DesertNasca-airplaneViewFullQuality/extraitdesertnasca256bits.mp3" target="_blank" onclick="event.stopPropagation()" class="score-btn">&#9654; All (full &mdash; 1&prime;56&Prime;)</a></div>
                     <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;"><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">New music for an excerpt of the movie <em>&ldquo;Desert&rdquo;</em> by Felix TISSI (CH), presented during the Film Music Th&eacute;&acirc;tre Forum, Solothurn Filmtage, January 2009.<br><a href="http://www.desert-themovie.com/" target="_blank" style="color:#6B1B3D;font-weight:500;">www.desert-themovie.com</a></div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Technique</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Samples from <em>&ldquo;Due&rdquo;</em> (for piano solo) and different synthesizers were used for the mix.</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 file, 256kbps &mdash; full duration: 1&rsquo;56&quot;</div></div><div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Film Stills &mdash; Nazca Lines (aerial photography)</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">
                         <div class="stills-grid">
-                            <div class="still-item"><img src="Desertnasca1.jpg" alt="TC+01:00:06:03"><span class="still-tc">TC+01:00:06:03</span></div>
-                            <div class="still-item"><img src="Desertnasca2.jpg" alt="TC+01:00:41:04"><span class="still-tc">TC+01:00:41:04</span></div>
-                            <div class="still-item"><img src="Desertnasca3.jpg" alt="TC+01:00:48:16"><span class="still-tc">TC+01:00:48:16</span></div>
-                            <div class="still-item"><img src="Desertnasca4.jpg" alt="TC+01:01:09:23"><span class="still-tc">TC+01:01:09:23</span></div>
+                            <div class="still-item"><img src="Desertnasca1.jpg" alt="TC+01:00:06:03" decoding="async" loading="lazy"><span class="still-tc">TC+01:00:06:03</span></div>
+                            <div class="still-item"><img src="Desertnasca2.jpg" alt="TC+01:00:41:04" decoding="async" loading="lazy"><span class="still-tc">TC+01:00:41:04</span></div>
+                            <div class="still-item"><img src="Desertnasca3.jpg" alt="TC+01:00:48:16" decoding="async" loading="lazy"><span class="still-tc">TC+01:00:48:16</span></div>
+                            <div class="still-item"><img src="Desertnasca4.jpg" alt="TC+01:01:09:23" decoding="async" loading="lazy"><span class="still-tc">TC+01:01:09:23</span></div>
                         </div>
                         <div class="stills-grid">
-                            <div class="still-item"><img src="Desertnasca5.jpg" alt="TC+01:01:23:17"><span class="still-tc">TC+01:01:23:17</span></div>
-                            <div class="still-item"><img src="Desertnasca6.jpg" alt="TC+01:01:45:15"><span class="still-tc">TC+01:01:45:15</span></div>
-                            <div class="still-item"><img src="Desertnasca7.jpg" alt="TC+01:02:06:00"><span class="still-tc">TC+01:02:06:00</span></div>
+                            <div class="still-item"><img src="Desertnasca5.jpg" alt="TC+01:01:23:17" decoding="async" loading="lazy"><span class="still-tc">TC+01:01:23:17</span></div>
+                            <div class="still-item"><img src="Desertnasca6.jpg" alt="TC+01:01:45:15" decoding="async" loading="lazy"><span class="still-tc">TC+01:01:45:15</span></div>
+                            <div class="still-item"><img src="Desertnasca7.jpg" alt="TC+01:02:06:00" decoding="async" loading="lazy"><span class="still-tc">TC+01:02:06:00</span></div>
                         </div>
                     </div></div></div></div>
                 </div>
@@ -226,7 +243,7 @@
                     <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;">
                         <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Music for the theatre play <em>&ldquo;Presence Effect: Nameless&rdquo;</em> (after Samuel Beckett), directed by <strong>Andrei SAUCHANKA</strong> (BY), with the participation of actor <strong>Ivan PATAPAU</strong> (BY), photographies <strong>Volha SAVICH</strong> (BY) and <strong>Jonas FEHR</strong> (CH).<br><br>The person loses his/her essence, language, name. The only thing which is left is his/her memories where he/she can wander along the ruins of his/her Babel which he/she erected inside of himself/herself one day.</div></div>
                         <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 file, 320Kbits &mdash; 36&Prime; out of a total of 21&prime;20&Prime; &mdash; Final session, 31st August 2012.</div></div>
-                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performance Photos</h4><div class="stills-grid"><div class="still-item" style="aspect-ratio:4/3;"><img src="presenceeffect1.jpg" alt="Presence Effect: Nameless — rehearsal" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="still-item" style="aspect-ratio:4/3;"><img src="presenceeffect2.jpg" alt="Presence Effect: Nameless — performance" style="width:100%;height:100%;object-fit:cover;display:block;"></div></div></div>
+                        <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performance Photos</h4><div class="stills-grid"><div class="still-item" style="aspect-ratio:4/3;"><img src="presenceeffect1.jpg" alt="Presence Effect: Nameless — rehearsal" style="width:100%;height:100%;object-fit:cover;display:block;" decoding="async" loading="lazy"></div><div class="still-item" style="aspect-ratio:4/3;"><img src="presenceeffect2.jpg" alt="Presence Effect: Nameless — performance" style="width:100%;height:100%;object-fit:cover;display:block;" decoding="async" loading="lazy"></div></div></div>
                     </div></div>
                 </div>
             </div>
@@ -252,7 +269,7 @@
                         <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Music for the excerpt <em>&ldquo;2./3 &amp; 5. Szene&rdquo;</em> by &Ouml;d&ouml;n von Horv&aacute;th &mdash; a theatre scene with new original music.<br><br>First performance at the <em>Z&uuml;rcher Hochschule der K&uuml;nste</em>, Florhofgasse, 20th May 2009.</div></div>
                         <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Instrumentation</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">for Clarinet, Percussion (vibraphone, 2 woodblocks, 2 cymbals and snare drum) and Contrabass</div></div>
                         <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Cast &amp; Performers</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">Stage director: Christopher KRIESE &nbsp;&bull;&nbsp; Music: Alin GHERMAN<br>Katharina CROMME (Karoline) &nbsp;&bull;&nbsp; Dominik LOCHER (Kasimir)<br>Simon WYRSCH (Cl.) &nbsp;&bull;&nbsp; Samuel M&Uuml;LLER (Perc.) &nbsp;&bull;&nbsp; Felix K&Uuml;BLER (Cb.)</div></div>
-                        <div><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performance Photo</h4><div class="stills-grid" style="grid-template-columns:1fr;max-width:560px;"><div class="still-item" style="aspect-ratio:16/9;"><img src="kasimirundkaroline.jpg" alt="Kasimir und Karoline — ZHdK Florhof, May 2009" style="width:100%;height:100%;object-fit:cover;display:block;"></div></div></div>
+                        <div><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performance Photo</h4><div class="stills-grid" style="grid-template-columns:1fr;max-width:560px;"><div class="still-item" style="aspect-ratio:16/9;"><img src="kasimirundkaroline.jpg" alt="Kasimir und Karoline — ZHdK Florhof, May 2009" style="width:100%;height:100%;object-fit:cover;display:block;" decoding="async" loading="lazy"></div></div></div>
                     </div></div>
                 </div>
             </div>
@@ -281,7 +298,7 @@
                     <div class="show-details-section"><button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button><div class="details-content" style="display:none;margin-top:20px;">
                         <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">About</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">4 LIVE JAM sessions in trio with <strong>Lukas HUBER</strong> (CH) and <strong>Nicolas SCHMITZ</strong> (CH), Minsk, Belarus, 2012.<br><br>Dance live performances as part of the International stage for young performing and media artists <strong>SYPEMedia</strong> at the National Theatre of Belarusian Dramaturgy.<br><em style="font-size:12px;color:#6B7280;">SYPEMEDA = (Media+Performing Arts) &times; (Internationality+Innovation+Accessibility+Convergence)</em></div></div>
                         <div style="margin-bottom:18px;"><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Audio Excerpt</h4><div style="font-size:13px;color:#1F2937;line-height:1.8;">MP3 file, 320Kbits &mdash; 3&prime;18&Prime; out of a total of 10&prime;42&Prime; &mdash; Final session, 31st August 2012.</div></div>
-                        <div><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performance Photo</h4><div class="stills-grid" style="grid-template-columns:1fr;max-width:560px;"><div class="still-item" style="aspect-ratio:16/9;"><img src="individualinthemasses.jpg" alt="Individual in the Masses — Minsk 2012" style="width:100%;height:100%;object-fit:cover;display:block;"></div></div></div>
+                        <div><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14B8A6;margin-bottom:8px;">Performance Photo</h4><div class="stills-grid" style="grid-template-columns:1fr;max-width:560px;"><div class="still-item" style="aspect-ratio:16/9;"><img src="individualinthemasses.jpg" alt="Individual in the Masses — Minsk 2012" style="width:100%;height:100%;object-fit:cover;display:block;" decoding="async" loading="lazy"></div></div></div>
                     </div></div>
                 </div>
             </div>

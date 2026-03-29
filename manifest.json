@@ -1,0 +1,16 @@
+{
+  "name": "Alin Gherman — Contemporary Composer",
+  "short_name": "Alin Gherman",
+  "description": "Contemporary composer — percussion, orchestra, electronic, theatre and film music",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#6B1B3D",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}
