@@ -36,7 +36,7 @@
         .section-percussion::before,.section-piano::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(transparent 43%,rgba(107,27,61,0.05) 43%,rgba(107,27,61,0.05) 45%,transparent 45%),linear-gradient(transparent 57%,rgba(107,27,61,0.05) 57%,rgba(107,27,61,0.05) 59%,transparent 59%);}
         .section-anchor{scroll-margin-top:90px;}
         .works-list{display:flex;flex-direction:column;gap:2px;margin-bottom:40px;}
-        .work-row{background:var(--white);border:1px solid var(--grey-light);overflow:hidden;position:relative;transition:border-color 0.25s;}
+        .work-row{background:var(--white);border:1px solid var(--grey-light);overflow:hidden;position :relative;transition:border-color 0.25s;}
         .work-row:hover,.work-row.open{border-color:var(--burgundy);}
         .work-row-header{padding:20px 28px 16px;cursor:pointer;position:relative;}
         .work-row-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--burgundy);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
@@ -50,6 +50,8 @@
         .score-btn:hover{background:var(--burgundy);color:#fff;}
         .score-btn.free{border-color:#16a34a;color:#16a34a;}
         .score-btn.free:hover{background:#16a34a;color:#fff;}
+        .unlock-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:#003087;color:#fff;font-size:13px;font-weight:500;text-decoration:none;letter-spacing:0.5px;transition:background 0.22s;white-space:nowrap;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+        .unlock-btn:hover{background:#001f5b;}
         .toggle-icon{float:right;font-size:18px;color:var(--burgundy);transition:transform 0.25s;user-select:none;margin-top:2px;}
         .work-row.open .toggle-icon{transform:rotate(45deg);}
         .waveform-bg{position:absolute;right:60px;top:0;bottom:0;width:200px;opacity:0.04;pointer-events:none;display:flex;align-items:center;}
@@ -277,18 +279,7 @@
                     <div class="detail-row">
                         <a href="https://www.youtube.com/watch?v=pcSejc5ZXW0" target="_blank" class="score-btn">&#9654; Show video</a>
                         <a href="scores/Cymbals_Vitamins_by_Alin_Gherman_(secured).pdf" target="_blank" class="score-btn">Score (locked PDF)</a>
-                    </div>
-                    <div style="margin-top:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-                        <div>
-                            <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--turquoise);font-weight:500;margin-bottom:8px;">Unlock score &mdash; 8 &euro;</p>
-                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" onclick="event.stopPropagation()">
-                                <input type="hidden" name="cmd" value="_s-xclick" />
-                                <input type="hidden" name="hosted_button_id" value="BUTTON_ID_CYMBALS_VITAMINS" />
-                                <input type="hidden" name="currency_code" value="EUR" />
-                                <input type="image" src="https://alingherman.com/shoppingcartadditemsmall.jpeg" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" style="display:block;height:40px;" />
-                            </form>
-                        </div>
-                        <p style="font-size:12px;color:var(--grey);max-width:320px;line-height:1.6;">After payment you will receive the unlock code by email within 24h.</p>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" onclick="event.stopPropagation()" style="display:inline;"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="UGKT3ZN8BF2JQ" /><input type="hidden" name="currency_code" value="EUR" /><button type="submit" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score &mdash; 9 &euro;</button></form><img src="paypal-logo.jpg" alt="We accept PayPal" style="height:18px;vertical-align:middle;margin-left:6px;opacity:0.85;border-radius:2px;background:#fff;padding:1px 5px;">
                     </div>
                     <div style="margin-top:10px;">
                         <a href="https://www.tudou.com/" target="_blank" style="font-size:12px;color:var(--grey);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--burgundy)'" onmouseout="this.style.color='var(--grey)'">&#22914;&#26524;&#20320;&#22312;&#20013;&#22269;&#30340;&#26102;&#20505;&#65292;&#35831;&#28857;&#20987;&#36825;&#37324;&#35266;&#30475;&#30001;Brian Archinal&#38073;&#32500;&#29983;&#32032;&#30340;&#38899;&#20048;&#24405;&#24433;&#24102;&#65281; &nbsp;&nbsp;&nbsp; If you&rsquo;re in China, click here to watch the music video of Cymbals vitamins by Brian Archinal!</a>
@@ -328,18 +319,7 @@
                     <div class="detail-row">
                         <a href="https://www.youtube.com/watch?v=i78q7nBjJ7U" target="_blank" class="score-btn">&#9654; Show video</a>
                         <a href="scores/Dance-under_impending_rain-by_Alin_Gherman_tempv1.1(secured).pdf" target="_blank" class="score-btn">Score (locked PDF)</a>
-                    </div>
-                    <div style="margin-top:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-                        <div>
-                            <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--turquoise);font-weight:500;margin-bottom:8px;">Unlock score &mdash; 9 &euro;</p>
-                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" onclick="event.stopPropagation()">
-                                <input type="hidden" name="cmd" value="_s-xclick" />
-                                <input type="hidden" name="hosted_button_id" value="BUTTON_ID_DANCE_RAIN" />
-                                <input type="hidden" name="currency_code" value="EUR" />
-                                <input type="image" src="https://alingherman.com/shoppingcartadditemsmall.jpeg" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" style="display:block;height:40px;" />
-                            </form>
-                        </div>
-                        <p style="font-size:12px;color:var(--grey);max-width:320px;line-height:1.6;">After payment you will receive the unlock code by email within 24h.</p>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" onclick="event.stopPropagation()" style="display:inline;"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="BHEXWXRS4FBQE" /><input type="hidden" name="currency_code" value="EUR" /><button type="submit" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score &mdash; 9 &euro;</button></form><img src="paypal-logo.jpg" alt="We accept PayPal" style="height:18px;vertical-align:middle;margin-left:6px;opacity:0.85;border-radius:2px;background:#fff;padding:1px 5px;">
                     </div>
                     <div style="margin-top:10px;">
                         <a href="https://www.tudou.com/" target="_blank" style="font-size:12px;color:var(--grey);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--burgundy)'" onmouseout="this.style.color='var(--grey)'">&#22914;&#26524;&#20320;&#22312;&#20013;&#22269;&#30340;&#26102;&#20505;&#65292;&#35831;&#28857;&#20987;&#36825;&#37324;&#35266;&#30475;&#30001;Brian Archinal&#38073;&#32500;&#29983;&#32032;&#30340;&#38899;&#20048;&#24405;&#24433;&#24102;&#65281; &nbsp;&nbsp;&nbsp; If you&rsquo;re in China, click here to watch the music video of Dance &ndash;under impending rain&ndash; by Brian Archinal!</a>
@@ -456,7 +436,8 @@
                 <div class="work-details">
                     <div class="detail-row">
                         <a href="scores/preview/FOLCLOR_%28preview%29_by_Alin_GHERMAN_%28v.3color%29%28secured%29.pdf" target="_blank" class="score-btn">Score PREVIEW</a>
-                        <a href="scores/FOLCLOR_by_Alin_GHERMAN_(v.3color)(secured).pdf" target="_blank" class="score-btn">Score (locked) &mdash; Code to unlock: <strong>6 &euro;</strong></a>
+                        <a href="scores/FOLCLOR_by_Alin_GHERMAN_(v.3color)(secured).pdf" target="_blank" class="score-btn">Score (locked)</a>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" onclick="event.stopPropagation()" style="display:inline;"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="10497483" /><input type="hidden" name="currency_code" value="EUR" /><button type="submit" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score &mdash; 6 &euro;</button></form><img src="paypal-logo.jpg" alt="We accept PayPal" style="height:18px;vertical-align:middle;margin-left:6px;opacity:0.85;border-radius:2px;background:#fff;padding:1px 5px;">
                     </div>
                     <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
                         <a href="http://www.archive.org/download/Folclor-1FratiDeCruceaudioFull/extraitfolclorfratidecruce.mp3" target="_blank" class="score-btn">&#9654; 1. Fra&#x21b;ii de cruce (1&prime;10&Prime;)</a>
@@ -531,7 +512,8 @@
                 <div class="work-details">
                     <div class="detail-row">
                         <a href="http://www.archive.org/download/Ariciul/09Ariciul.mp3" target="_blank" class="score-btn">&#9654; All (full)</a>
-                        <a href="scores/Ariciul_(v3)_by_Alin_GHERMAN_(secured).pdf" target="_blank" class="score-btn">Score (locked) &mdash; Code to unlock: <strong>1,50 &euro;</strong></a>
+                        <a href="scores/Ariciul_(v3)_by_Alin_GHERMAN_(secured).pdf" target="_blank" class="score-btn">Score (locked)</a>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" onclick="event.stopPropagation()" style="display:inline;"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="10654249" /><input type="hidden" name="currency_code" value="EUR" /><button type="submit" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score &mdash; 1,50 &euro;</button></form><img src="paypal-logo.jpg" alt="We accept PayPal" style="height:18px;vertical-align:middle;margin-left:6px;opacity:0.85;border-radius:2px;background:#fff;padding:1px 5px;">
                     </div>
                     <div class="show-details-section">
                         <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
@@ -571,7 +553,8 @@
                 <div class="work-details">
                     <div class="detail-row">
                         <a href="http://www.archive.org/download/PlaySongarrangement/PlaySongarrangementDuneMlodiePopulaireHongroise.mp3" target="_blank" class="score-btn">&#9654; All (full)</a>
-                        <a href="scores/Play_song_(v4)_by_Alin%20GHERMAN_(secured).pdf" target="_blank" class="score-btn">Score (locked) &mdash; Code to unlock: <strong>1 &euro;</strong></a>
+                        <a href="scores/Play_song_(v4)_by_Alin%20GHERMAN_(secured).pdf" target="_blank" class="score-btn">Score (locked)</a>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" onclick="event.stopPropagation()" style="display:inline;"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="10654260" /><input type="hidden" name="currency_code" value="EUR" /><button type="submit" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score &mdash; 1 &euro;</button></form><img src="paypal-logo.jpg" alt="We accept PayPal" style="height:18px;vertical-align:middle;margin-left:6px;opacity:0.85;border-radius:2px;background:#fff;padding:1px 5px;">
                     </div>
                     <div class="show-details-section">
                         <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
@@ -616,10 +599,8 @@
                     <div class="detail-row">
                         <a href="http://www.archive.org/download/ErrancesaudioExcerpt/extraiterrances.mp3" target="_blank" class="score-btn">&#9654; Audio Excerpt</a>
                         <a href="http://www.archive.org/download/ErrancesmusicScoreExcerpt/ErrancesPREVIEW.pdf" target="_blank" class="score-btn">Score PREVIEW</a>
-                        <a href="scores/Errances_(v3)_by_Alin_GHERMAN_(secured).pdf" target="_blank" class="score-btn">Score (locked) &mdash; Code to unlock: <strong>4 &euro;</strong></a>
-                    </div>
-                    <div style="margin-top:10px;padding:10px 14px;background:#F9F7F4;border-left:2px solid #D1C4C9;font-size:12px;color:var(--grey);line-height:1.7;">
-                        <strong style="color:var(--text-dark);">How to unlock the score:</strong> Acquire the score in PDF format &mdash; contribution towards production costs: 4 &euro;. Immediate download and unlock through PayPal system, all major credit cards accepted. (approx. 2 minutes process)
+                        <a href="scores/Errances_(v3)_by_Alin_GHERMAN_(secured).pdf" target="_blank" class="score-btn">Score (locked)</a>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" onclick="event.stopPropagation()" style="display:inline;"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="10654280" /><input type="hidden" name="currency_code" value="EUR" /><button type="submit" class="unlock-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Unlock Score &mdash; 4 &euro;</button></form><img src="paypal-logo.jpg" alt="We accept PayPal" style="height:18px;vertical-align:middle;margin-left:6px;opacity:0.85;border-radius:2px;background:#fff;padding:1px 5px;">
                     </div>
                     <div class="show-details-section">
                         <button onclick="event.stopPropagation();toggleDetails(this)" class="show-details-btn">Show details <span class="arrow-icon">&#9662;</span></button>
