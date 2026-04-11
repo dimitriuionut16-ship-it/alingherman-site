@@ -44,7 +44,7 @@
       if (img.closest('.nav') || img.closest('footer') || img.closest('.footer')) continue;
       if (img.dataset.lbBound) continue;
       img.dataset.lbBound = '1';
-      img.style.cursor = 'zoom-in';
+      img.style.cursor = 'default';
       img.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();

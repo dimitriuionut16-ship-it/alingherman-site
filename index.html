@@ -485,18 +485,20 @@
         }
         .nav-toggle.open span:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
+            background: #FFFFFF;
         }
         .nav-toggle.open span:nth-child(2) {
             transform: translateY(-8px) rotate(-45deg);
+            background: #FFFFFF;
         }
 
         /* MOBILE NAV — fullscreen overlay */
         .nav-links {
             position: fixed;
             inset: 0;
-            background: rgba(253,251,247,0.98);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-light) 100%);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -512,7 +514,7 @@
         .nav-links a {
             font-size: 1.25rem;
             letter-spacing: 0.5px;
-            color: var(--burgundy);
+            color: #FFFFFF;
             padding: 0.5rem 1rem;
             min-height: 44px;
             display: flex;
@@ -1023,8 +1025,10 @@
                     <p style="text-align:center;font-size:11px;color:#9CA3AF;font-style:italic;margin-top:10px;">Beijing Modern Music Festival, 2011</p>
                 </div>
 
+        </div>
+
             <!-- Press Mentions CTA Button -->
-            <div style="margin-top: 80px; text-align: center;">
+            <div style="margin-top: 48px; text-align: center;">
                 <a href="pressbook-timeline-updated.html" style="display: inline-block; padding: 18px 48px; background: #6B1B3D; color: white; font-size: 16px; font-weight: 500; text-decoration: none; border-radius: 4px; transition: all 0.3s; letter-spacing: 0.5px;">
                     See Press Mentions
                 </a>
