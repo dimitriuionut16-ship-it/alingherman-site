@@ -5,7 +5,13 @@
       "WebFetch(domain:alingherman.com)",
       "Bash(ls c:/Users/IONUT/Desktop/SITE-GHERAM-FULL/*.pdf)",
       "Bash(python3)",
-      "Bash(python3 -c ':*)"
+      "Bash(python3 -c ':*)",
+      "Bash(ls c:\\\\Users\\\\IONUT\\\\Desktop\\\\SITE-GHERAM-FULL/*.html)",
+      "Bash(iconv -f UTF-16LE -t UTF-8 duo.html)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(grep -n \"^[[:space:]]*}$\" compositions-duos.html)",
+      "Bash(python -c ':*)"
     ]
   }
 }
