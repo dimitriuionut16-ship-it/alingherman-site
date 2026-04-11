@@ -24,7 +24,7 @@
             --text-dark: #1F2937;
         }
         
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: auto; }
         
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -75,6 +75,7 @@
             margin-bottom: 120px;
             border-left: 3px solid var(--turquoise);
             padding-left: 48px;
+            scroll-margin-top: 30px;
         }
         
         .year-title {
@@ -195,9 +196,9 @@
 
             <div class="event">
                 <div class="event-date">5th December</div>
-                <h3 class="event-title">First performance of <em>Agua Aguita</em> — Flagey Studio 4, Bruxelles, Belgium</h3>
+                <h3 class="event-title">First performance of <a href="compositions-chamber.html#agua-aguita" style="color:var(--turquoise);text-decoration:underline;font-style:italic;" target="_blank"><em>Agua Aguita</em></a> — Flagey Studio 4, Bruxelles, Belgium</h3>
                 <div class="event-description">
-                    First performance of <em>Agua Aguita</em> by the <a href="http://www.musiquesnouvelles.com" target="_blank" style="color:var(--turquoise);text-decoration:underline;">Ensemble Musiques Nouvelles</a> conducted by Jean-Paul Dessy. Flagey Studio 4, Bruxelles, Belgium.
+                    First performance of <a href="compositions-chamber.html#agua-aguita" style="color:var(--turquoise);text-decoration:underline;font-style:italic;" target="_blank"><em>Agua Aguita</em></a> by the <a href="http://www.musiquesnouvelles.com" target="_blank" style="color:var(--turquoise);text-decoration:underline;">Ensemble Musiques Nouvelles</a> conducted by Jean-Paul Dessy. Flagey Studio 4, Bruxelles, Belgium.
                 </div>
             </div>
         </div>
@@ -1294,6 +1295,32 @@
         if (window.loadSiteContent) {
             window.loadSiteContent('/content/site-content.json');
         }
+
+        // Jump to year section from hash
+        (function() {
+            var hash = window.location.hash;
+            if (!hash) return;
+            var id = hash.substring(1);
+
+            function jumpTo() {
+                var el = document.getElementById(id);
+                if (el) el.scrollIntoView(true);
+            }
+
+            document.documentElement.style.scrollBehavior = 'auto';
+
+            jumpTo();
+            document.addEventListener('DOMContentLoaded', jumpTo);
+            window.addEventListener('load', function() {
+                jumpTo();
+                setTimeout(jumpTo, 200);
+                setTimeout(jumpTo, 600);
+                setTimeout(jumpTo, 1200);
+                setTimeout(function() {
+                    document.documentElement.style.scrollBehavior = 'smooth';
+                }, 1500);
+            });
+        })();
     </script>
 </body>
 </html>

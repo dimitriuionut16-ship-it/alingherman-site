@@ -25,7 +25,7 @@
             --text-dark: #1F2937;
         }
         
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: auto; }
         
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -76,6 +76,7 @@
             margin-bottom: 120px;
             border-left: 3px solid var(--turquoise);
             padding-left: 48px;
+            scroll-margin-top: 30px;
         }
         
         .year-title {
@@ -140,12 +141,14 @@
             .hero-title { font-size: clamp(28px, 8vw, 48px) !important; }
             .footer-content { flex-direction: column !important; gap: 12px !important; text-align: center !important; }
             section { padding: 60px 0 !important; }
+            .event-image { width: 100% !important; max-width: 100% !important; }
+            .event-description { font-size: 14px; }
         }
         @media (max-width: 480px) {
             .nav-content { padding: 12px 16px !important; }
             .container, .container-narrow { padding: 0 16px !important; }
-        }
-
+            .header h1 { font-size: 36px; }
+            .year-title { font-size: 28px; }
         }
         
         .image-caption {
@@ -222,11 +225,24 @@
 <body>
     <div class="header">
         <h1 data-content-key="pressbook.title">Pressbook Timeline</h1>
-        <p data-content-key="pressbook.subtitle">A Journey Through Music • 1994 – 2015</p>
+        <p data-content-key="pressbook.subtitle">A Journey Through Music • 1994 – 2022</p>
     </div>
     
     <div class="container">
         <a href="index.html" class="back-link">← Back to Main Site</a>
+        <!-- 2022 -->
+        <div class="year-section" id="2022">
+            <h2 class="year-title">2022</h2>
+
+            <div class="event">
+                <div class="event-date">5th December</div>
+                <h3 class="event-title">First performance of <a href="compositions-chamber.html#agua-aguita" style="color:var(--turquoise);text-decoration:underline;font-style:italic;" target="_blank"><em>Agua Aguita</em></a> — Flagey Studio 4, Bruxelles, Belgium</h3>
+                <div class="event-description">
+                    First performance of <a href="compositions-chamber.html#agua-aguita" style="color:var(--turquoise);text-decoration:underline;font-style:italic;" target="_blank"><em>Agua Aguita</em></a> by the <a href="http://www.musiquesnouvelles.com" target="_blank" style="color:var(--turquoise);text-decoration:underline;">Ensemble Musiques Nouvelles</a> conducted by Jean-Paul Dessy. Flagey Studio 4, Bruxelles, Belgium.
+                </div>
+            </div>
+        </div>
+
                 <!-- 2015 -->
         <div class="year-section" id="2015">
             <h2 class="year-title">2015</h2>
@@ -1248,6 +1264,35 @@
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        // Jump to year section from hash
+        (function() {
+            var hash = window.location.hash;
+            if (!hash) return;
+            var id = hash.substring(1);
+
+            function jumpTo() {
+                var el = document.getElementById(id);
+                if (el) el.scrollIntoView(true);
+            }
+
+            // Disable native smooth scroll temporarily
+            document.documentElement.style.scrollBehavior = 'auto';
+
+            // Jump immediately, after DOM, after load, and again after images settle
+            jumpTo();
+            document.addEventListener('DOMContentLoaded', jumpTo);
+            window.addEventListener('load', function() {
+                jumpTo();
+                setTimeout(jumpTo, 200);
+                setTimeout(jumpTo, 600);
+                setTimeout(jumpTo, 1200);
+                // Re-enable smooth scroll for in-page links after settled
+                setTimeout(function() {
+                    document.documentElement.style.scrollBehavior = 'smooth';
+                }, 1500);
+            });
+        })();
     </script>
 </body>
 </html>
