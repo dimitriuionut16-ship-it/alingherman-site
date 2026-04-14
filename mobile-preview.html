@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Preview — alingherman.com</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #2c2c2c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: -apple-system, sans-serif;
+            padding: 40px 20px;
+        }
+        h1 {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+        .phones {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .phone-wrapper {
+            text-align: center;
+        }
+        .phone-label {
+            color: #999;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            border-radius: 40px;
+            border: 6px solid #555;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 28px;
+            background: #555;
+            border-radius: 0 0 16px 16px;
+            z-index: 10;
+        }
+        .phone-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .phone-frame-small {
+            width: 320px;
+            height: 568px;
+            border-radius: 32px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile Preview</h1>
+    <div class="phones">
+        <div class="phone-wrapper">
+            <div class="phone-label">iPhone 14 / 15 &mdash; 375 &times; 812</div>
+            <div class="phone-frame">
+                <iframe src="index.html"></iframe>
+            </div>
+        </div>
+        <div class="phone-wrapper">
+            <div class="phone-label">iPhone SE &mdash; 320 &times; 568</div>
+            <div class="phone-frame phone-frame-small">
+                <iframe src="index.html"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

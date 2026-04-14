@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Test — Creating soundscapes that transcend time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel+Decorative:wght@400;700&family=Playfair+Display+SC:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #FAF8F5;
+            color: #1F2937;
+            font-family: 'Inter', sans-serif;
+            padding: 40px 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #14B8A6;
+            margin-bottom: 12px;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-family: 'Instrument Serif', serif;
+            font-size: 32px;
+            color: #6B1B3D;
+            margin-bottom: 8px;
+        }
+
+        .page-note {
+            text-align: center;
+            font-size: 14px;
+            color: #9CA3AF;
+            margin-bottom: 60px;
+            font-style: italic;
+        }
+
+        .font-card {
+            max-width: 900px;
+            margin: 0 auto 48px;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #E5E7EB;
+        }
+
+        .font-card-header {
+            padding: 16px 32px;
+            background: #6B1B3D;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .font-name {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .font-number {
+            color: rgba(255,255,255,0.5);
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .font-card-body {
+            padding: 48px 32px;
+        }
+
+        /* Dark background variant */
+        .font-card-body.dark {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 56px 32px;
+        }
+
+        .font-card-body.dark .sample-text {
+            color: #E8D5C4;
+        }
+
+        .font-card-body.dark .sample-text-alt {
+            color: rgba(232, 213, 196, 0.6);
+        }
+
+        .sample-text {
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.15;
+            color: #6B1B3D;
+            margin-bottom: 24px;
+        }
+
+        .sample-text-small {
+            font-size: clamp(20px, 3vw, 28px);
+            line-height: 1.4;
+            color: #4B5563;
+            margin-top: 20px;
+        }
+
+        .sample-text-alt {
+            font-size: 18px;
+            color: #9CA3AF;
+            font-style: italic;
+            margin-top: 16px;
+        }
+
+        .font-card-footer {
+            padding: 16px 32px;
+            background: #F9FAFB;
+            border-top: 1px solid #E5E7EB;
+            font-size: 12px;
+            color: #6B7280;
+            display: flex;
+            gap: 24px;
+        }
+
+        .font-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #DBEAFE;
+            color: #1D4ED8;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .font-tag.rec {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .divider {
+            max-width: 900px;
+            margin: 0 auto 48px;
+            border: none;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        /* Font 1: Current */
+        .f-instrument { font-family: 'Instrument Serif', Georgia, serif; }
+        /* Font 2 */
+        .f-cormorant { font-family: 'Cormorant Garamond', Georgia, serif; }
+        /* Font 3 */
+        .f-cinzel { font-family: 'Cinzel Decorative', serif; }
+        /* Font 4 */
+        .f-playfair { font-family: 'Playfair Display SC', serif; }
+        /* Font 5 */
+        .f-eb { font-family: 'EB Garamond', Georgia, serif; }
+        /* Font 6 */
+        .f-spectral { font-family: 'Spectral', Georgia, serif; }
+
+        @media (max-width: 600px) {
+            .font-card-body { padding: 32px 20px; }
+            .font-card-header { padding: 12px 20px; }
+            .font-card-footer { flex-direction: column; gap: 8px; padding: 12px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <p class="page-title">Font Comparison</p>
+    <h1 class="page-subtitle">Choose the right typeface</h1>
+    <p class="page-note">Each font shown on light &amp; dark backgrounds &mdash; as it would appear on the website</p>
+
+    <!-- FONT 0: Current (Instrument Serif) -->
+    <div class="font-card">
+        <div class="font-card-header">
+            <span class="font-name">INSTRUMENT SERIF &mdash; current font</span>
+            <span class="font-number">00</span>
+        </div>
+        <div class="font-card-body">
+            <div class="sample-text f-instrument">Creating soundscapes<br>that transcend time</div>
+            <div class="sample-text-small f-instrument">&ldquo;...to make music with some personal sounds...&rdquo;</div>
+            <div class="sample-text-alt f-instrument">Bridging tradition and innovation through contemporary classical music</div>
+        </div>
+        <div class="font-card-body dark">
+            <div class="sample-text f-instrument">Creating soundscapes<br>that transcend time</div>
+        </div>
+        <div class="font-card-footer">
+            <span>Style: Elegant, classic, editorial</span>
+            <span class="font-tag">Current</span>
+        </div>
+    </div>
+
+    <!-- FONT 1: Cormorant Garamond -->
+    <div class="font-card">
+        <div class="font-card-header">
+            <span class="font-name">CORMORANT GARAMOND</span>
+            <span class="font-number">01</span>
+        </div>
+        <div class="font-card-body">
+            <div class="sample-text f-cormorant" style="font-weight:300;">Creating soundscapes<br>that transcend time</div>
+            <div class="sample-text-small f-cormorant" style="font-weight:300;">&ldquo;...to make music with some personal sounds...&rdquo;</div>
+            <div class="sample-text-alt f-cormorant">Bridging tradition and innovation through contemporary classical music</div>
+        </div>
+        <div class="font-card-body dark">
+            <div class="sample-text f-cormorant" style="font-weight:300;">Creating soundscapes<br>that transcend time</div>
+        </div>
+        <div class="font-card-footer">
+            <span>Style: Organic, refined, calligraphic influence &mdash; closest to Weibei TC feel</span>
+            <span class="font-tag rec">Recommended</span>
+        </div>
+    </div>
+
+    <!-- FONT 2: Cinzel Decorative -->
+    <div class="font-card">
+        <div class="font-card-header">
+            <span class="font-name">CINZEL DECORATIVE</span>
+            <span class="font-number">02</span>
+        </div>
+        <div class="font-card-body">
+            <div class="sample-text f-cinzel" style="font-size:clamp(28px, 5vw, 52px);">Creating soundscapes<br>that transcend time</div>
+            <div class="sample-text-small f-cinzel">&ldquo;...to make music with some personal sounds...&rdquo;</div>
+            <div class="sample-text-alt f-cinzel" style="font-style:normal;">Bridging tradition and innovation through contemporary classical music</div>
+        </div>
+        <div class="font-card-body dark">
+            <div class="sample-text f-cinzel" style="font-size:clamp(28px, 5vw, 52px);">Creating soundscapes<br>that transcend time</div>
+        </div>
+        <div class="font-card-footer">
+            <span>Style: Monumental, dramatic, ancient &mdash; very decorative, may be too heavy</span>
+            <span class="font-tag">Bold choice</span>
+        </div>
+    </div>
+
+    <!-- FONT 3: Playfair Display SC -->
+    <div class="font-card">
+        <div class="font-card-header">
+            <span class="font-name">PLAYFAIR DISPLAY SC</span>
+            <span class="font-number">03</span>
+        </div>
+        <div class="font-card-body">
+            <div class="sample-text f-playfair" style="font-size:clamp(30px, 5vw, 54px);">Creating soundscapes<br>that transcend time</div>
+            <div class="sample-text-small f-playfair">&ldquo;...to make music with some personal sounds...&rdquo;</div>
+            <div class="sample-text-alt f-playfair" style="font-style:normal;">Bridging tradition and innovation through contemporary classical music</div>
+        </div>
+        <div class="font-card-body dark">
+            <div class="sample-text f-playfair" style="font-size:clamp(30px, 5vw, 54px);">Creating soundscapes<br>that transcend time</div>
+        </div>
+        <div class="font-card-footer">
+            <span>Style: Small caps, editorial luxury, refined &mdash; very distinctive look</span>
+            <span class="font-tag">Distinctive</span>
+        </div>
+    </div>
+
+    <!-- FONT 4: EB Garamond -->
+    <div class="font-card">
+        <div class="font-card-header">
+            <span class="font-name">EB GARAMOND</span>
+            <span class="font-number">04</span>
+        </div>
+        <div class="font-card-body">
+            <div class="sample-text f-eb">Creating soundscapes<br>that transcend time</div>
+            <div class="sample-text-small f-eb">&ldquo;...to make music with some personal sounds...&rdquo;</div>
+            <div class="sample-text-alt f-eb">Bridging tradition and innovation through contemporary classical music</div>
+        </div>
+        <div class="font-card-body dark">
+            <div class="sample-text f-eb">Creating soundscapes<br>that transcend time</div>
+        </div>
+        <div class="font-card-footer">
+            <span>Style: Timeless, humanist, warm &mdash; classic with subtle character</span>
+            <span class="font-tag">Classic</span>
+        </div>
+    </div>
+
+    <!-- FONT 5: Spectral -->
+    <div class="font-card">
+        <div class="font-card-header">
+            <span class="font-name">SPECTRAL</span>
+            <span class="font-number">05</span>
+        </div>
+        <div class="font-card-body">
+            <div class="sample-text f-spectral" style="font-weight:300;">Creating soundscapes<br>that transcend time</div>
+            <div class="sample-text-small f-spectral" style="font-weight:300;">&ldquo;...to make music with some personal sounds...&rdquo;</div>
+            <div class="sample-text-alt f-spectral">Bridging tradition and innovation through contemporary classical music</div>
+        </div>
+        <div class="font-card-body dark">
+            <div class="sample-text f-spectral" style="font-weight:300;">Creating soundscapes<br>that transcend time</div>
+        </div>
+        <div class="font-card-footer">
+            <span>Style: Modern, precise, slightly technical &mdash; contemporary edge</span>
+            <span class="font-tag">Modern</span>
+        </div>
+    </div>
+
+</body>
+</html>

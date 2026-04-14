@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-site-verification" content="6PKhuUOjWzaFjH9atFuckhfN-bmy_oq4b6zHRSC5KEk" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glass Chimes — Alin Gherman</title>
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <meta name="description" content="Glass Chimes, an original instrument invented by composer Alin Gherman. Construction, sound, and compositions.">
+    <meta name="author" content="Alin Gherman">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://alingherman.com/glass-chimes.html">
+    <meta property="og:title" content="Glass Chimes — Invented Instrument — Alin Gherman">
+    <meta property="og:description" content="Glass Chimes, an original instrument invented by composer Alin Gherman. Construction, sound, and compositions.">
+    <meta property="og:image" content="https://alingherman.com/pianist-tanar-color-1997.webp">
+    <meta property="og:url" content="https://alingherman.com/glass-chimes.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Alin Gherman">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Glass Chimes — Invented Instrument — Alin Gherman">
+    <meta name="twitter:description" content="Glass Chimes, an original instrument invented by composer Alin Gherman. Construction, sound, and compositions.">
+    <meta name="twitter:image" content="https://alingherman.com/pianist-tanar-color-1997.webp">
         <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#6B1B3D">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -270,10 +285,6 @@
             .hero-text { padding: 0 24px 40px; }
             .hero-hint { right: 24px; bottom: 40px; }
         }
-        @media (max-width: 600px) {
-            .photo-grid-3, .photo-grid-2 { grid-template-columns: 1fr; }
-        }
-
         @media (max-width: 768px) {
             .nav-content { padding: 14px 24px; }
             .back-btn { padding: 8px 16px; font-size: 11px; }
@@ -288,6 +299,13 @@
             .gallery-header { margin-bottom: 28px; }
             .gallery-title { font-size: 24px; }
             .photo-grid-2 { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; gap: 1rem; text-align: center; padding: 0 24px; }
+        }
+        @media (max-width: 600px) {
+            .photo-grid-3, .photo-grid-2 { grid-template-columns: 1fr; }
+            .container, .container-narrow { padding: 0 20px; }
+            .nav-content { padding: 14px 20px; }
+            img { max-width: 100%; height: auto; }
         }
         @media (max-width: 480px) {
             .nav-content { padding: 12px 16px; }
@@ -296,7 +314,14 @@
             .desc-grid { gap: 32px; }
             .used-work { font-size: 17px; }
         }
-
+        @media (max-width: 360px) {
+            .container, .container-narrow { padding: 0 16px; }
+            .nav-content { padding: 10px 16px; }
+            .hero-text { padding: 0 16px 32px; }
+            .hero-hint { right: 16px; bottom: 32px; }
+            .gallery-title { font-size: 20px; }
+            .used-work { font-size: 15px; }
+        }
 
         /* ── BACK BTN TOUCH TARGET ── */
         .back-btn {

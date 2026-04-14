@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-site-verification" content="6PKhuUOjWzaFjH9atFuckhfN-bmy_oq4b6zHRSC5KEk" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purple ritual &mdash; Set-up Photos &amp; Video</title>\r\n    <link rel="icon" href="favicon.png" type="image/png">
+    <title>Purple ritual &mdash; Set-up Photos &amp; Video</title>
+    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <meta name="description" content="Purple Ritual by Alin Gherman. Set-up photos, performance video, and documentation of this percussion composition.">
+    <meta name="author" content="Alin Gherman">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://alingherman.com/purpleritual.html">
+    <meta property="og:title" content="Purple Ritual — Set-up Photos <link rel="shortcut icon" href="favicon.png" type="image/x-icon"> Video — Alin Gherman">
+    <meta property="og:description" content="Purple Ritual by Alin Gherman. Set-up photos, performance video, and documentation of this percussion composition.">
+    <meta property="og:image" content="https://alingherman.com/pianist-tanar-color-1997.webp">
+    <meta property="og:url" content="https://alingherman.com/purpleritual.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Alin Gherman">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Purple Ritual — Set-up Photos <link rel="shortcut icon" href="favicon.png" type="image/x-icon"> Video — Alin Gherman">
+    <meta name="twitter:description" content="Purple Ritual by Alin Gherman. Set-up photos, performance video, and documentation of this percussion composition.">
+    <meta name="twitter:image" content="https://alingherman.com/pianist-tanar-color-1997.webp">
         <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#6B1B3D">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +29,7 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         :root{--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
-        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
         .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
         .nav-content{max-width:1200px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
         .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
@@ -56,17 +72,33 @@
         @media (max-width: 768px) {
             .nav-content { padding: 14px 24px !important; }
             .back-btn { padding: 8px 16px; font-size: 11px; }
-            .container, .container-narrow { padding: 0 24px !important; }
+            .container { padding: 100px 24px 60px !important; }
             .hero { padding: 100px 24px 48px !important; min-height: auto !important; }
             .hero-title { font-size: clamp(28px, 8vw, 48px) !important; }
             .footer-content { flex-direction: column !important; gap: 12px !important; text-align: center !important; }
             section { padding: 60px 0 !important; }
+            .photos-grid { grid-template-columns: 1fr; }
+            .video-thumb-inner { flex-direction: column; padding: 24px; text-align: center; }
         }
         @media (max-width: 480px) {
             .nav-content { padding: 12px 16px !important; }
             .container, .container-narrow { padding: 0 16px !important; }
+            .container { padding: 90px 16px 48px !important; }
+            .photos-grid { grid-template-columns: 1fr; gap: 2px; }
+            .video-thumb-inner { flex-direction: column; padding: 16px; text-align: center; gap: 16px; }
+            .play-btn { width: 56px; height: 56px; }
+            .play-btn svg { width: 22px; height: 22px; }
+            .video-info h3 { font-size: 17px; }
         }
-.photos-grid{grid-template-columns:1fr;}.nav-content{padding:20px 24px;}.video-thumb-inner{flex-direction:column;padding:24px;text-align:center;}}
+        @media (max-width: 360px) {
+            .container { padding: 86px 10px 40px !important; }
+            .nav-content { padding: 10px 12px !important; }
+            h1 { font-size: clamp(22px, 6vw, 36px) !important; }
+        }
+
+        /* Touch target */
+        .back-btn { min-height: 44px; min-width: 44px; }
+
     </style>
 </head>
 <body>

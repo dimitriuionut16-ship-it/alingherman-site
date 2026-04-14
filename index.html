@@ -146,6 +146,22 @@
             padding: 120px 48px 80px;
             text-align: center;
             background: linear-gradient(135deg, rgba(253,251,247,0.92) 0%, rgba(253,251,247,0.92) 100%);
+            overflow: hidden;
+        }
+
+        .hero-score {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 420px;
+            height: auto;
+            opacity: 0.41;
+            pointer-events: none;
+            z-index: 1;
+            mask-image: linear-gradient(to left, rgba(0,0,0,1) 20%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 20%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0) 100%);
+            filter: sepia(0.2) contrast(1.2);
         }
         
         .hero-label {
@@ -548,6 +564,7 @@
         @media (max-width: 899px) {
             .nav-content { padding: 1rem 1.5rem; }
             .hero { padding: 6rem 1.5rem 3.5rem; min-height: 90svh; }
+            .hero-score { width: 220px; right: 0; opacity: 0.28; }
             .hero-title { font-size: clamp(2rem, 9vw, 3.5rem) !important; }
             .hero-text { font-size: 0.9375rem; max-width: 90vw; }
             .hero-cta { flex-direction: column; align-items: center; gap: 0.75rem; }
@@ -705,6 +722,7 @@
         .reveal-group.is-visible > *:nth-child(11) { opacity:1; transform:none; transition-delay: 0.80s; }
         .reveal-group.is-visible > *:nth-child(n+12) { opacity:1; transform:none; transition-delay: 0.88s; }
         </style>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -733,6 +751,7 @@
     <!-- HERO -->
     <section class="hero" id="hero-bg">
         <div class="hero-bg"></div>
+        <img src="pozapartitura.jpeg" alt="" class="hero-score" aria-hidden="true">
         <div class="hero-content" style="position:relative;z-index:2;text-align:center;width:100%;">
             <div class="hero-label" data-content-key="home.hero.label">Contemporary Composer</div>
             <h1 class="hero-title" data-content-key="home.hero.title">Creating soundscapes<br>that transcend time</h1>
@@ -931,6 +950,13 @@
         </div>
     </section>
 
+    <!-- LOTUS DIVIDER -->
+    <div style="text-align:center; padding:48px 0; background:transparent; display:flex; justify-content:center; align-items:center; gap:20px;">
+        <img src="LOTUS-TRANSPARENT.png" alt="" style="width:38px; height:auto; opacity:0.75;">
+        <img src="LOTUS-TRANSPARENT.png" alt="" style="width:36px; height:auto; opacity:0.7;">
+        <img src="LOTUS-TRANSPARENT.png" alt="" style="width:38px; height:auto; opacity:0.75;">
+    </div>
+
     <!-- PRESSBOOK -->
     <section class="pressbook" id="pressbook" style="padding: 160px 0; background: #FFFFFF; border-bottom: 1px solid #E5E7EB;">
         <div class="container-fluid">
@@ -1055,45 +1081,16 @@
 
     <!-- PHOTOS -->
 
-    <div class="music-separator fade-in" style="padding: 40px 0; text-align:center; overflow:hidden;">
-        <svg viewBox="0 0 800 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:800px;height:60px;display:block;margin:0 auto;">
-            <!-- Staff lines with gradient -->
-            <defs>
-                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:#FDFBF7;stop-opacity:1"/>
-                    <stop offset="15%" style="stop-color:#6B1B3D;stop-opacity:0.3"/>
-                    <stop offset="50%" style="stop-color:#6B1B3D;stop-opacity:0.7"/>
-                    <stop offset="85%" style="stop-color:#6B1B3D;stop-opacity:0.3"/>
-                    <stop offset="100%" style="stop-color:#FDFBF7;stop-opacity:1"/>
-                </linearGradient>
-                <linearGradient id="noteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#6B1B3D"/>
-                    <stop offset="100%" style="stop-color:#9B2355"/>
-                </linearGradient>
-            </defs>
-            <!-- 5 staff lines -->
-            <line x1="0" y1="18" x2="800" y2="18" stroke="url(#lineGrad)" stroke-width="1"/>
-            <line x1="0" y1="26" x2="800" y2="26" stroke="url(#lineGrad)" stroke-width="1"/>
-            <line x1="0" y1="34" x2="800" y2="34" stroke="url(#lineGrad)" stroke-width="1"/>
-            <line x1="0" y1="42" x2="800" y2="42" stroke="url(#lineGrad)" stroke-width="1"/>
-            <line x1="0" y1="50" x2="800" y2="50" stroke="url(#lineGrad)" stroke-width="1"/>
-            <!-- Quarter note 1 -->
-            <ellipse cx="330" cy="46" rx="6" ry="4.5" fill="url(#noteGrad)" transform="rotate(-20,330,46)"/>
-            <line x1="336" y1="44" x2="336" y2="18" stroke="#6B1B3D" stroke-width="1.5"/>
-            <!-- Quarter note 2 -->
-            <ellipse cx="380" cy="38" rx="6" ry="4.5" fill="url(#noteGrad)" transform="rotate(-20,380,38)"/>
-            <line x1="386" y1="36" x2="386" y2="10" stroke="#6B1B3D" stroke-width="1.5"/>
-            <!-- Quarter note 3 -->
-            <ellipse cx="430" cy="42" rx="6" ry="4.5" fill="url(#noteGrad)" transform="rotate(-20,430,42)"/>
-            <line x1="436" y1="40" x2="436" y2="14" stroke="#6B1B3D" stroke-width="1.5"/>
-            <!-- Half note -->
-            <ellipse cx="480" cy="34" rx="6" ry="4.5" fill="none" stroke="#6B1B3D" stroke-width="1.5" transform="rotate(-20,480,34)"/>
-            <line x1="486" y1="32" x2="486" y2="6" stroke="#6B1B3D" stroke-width="1.5"/>
-        </svg>
+    <!-- LOTUS DIVIDER -->
+    <div class="fade-in" style="padding: 40px 0; text-align:center; background:transparent; display:flex; justify-content:center; align-items:center; gap:16px;">
+        <img src="LOTUS-TRANSPARENT.png" alt="" style="width:36px; height:auto; opacity:0.75;">
+        <img src="LOTUS-TRANSPARENT.png" alt="" style="width:46px; height:auto; opacity:0.85;">
+        <img src="LOTUS-TRANSPARENT.png" alt="" style="width:36px; height:auto; opacity:0.75;">
     </div>
     <section class="photos" id="photos" style="padding: 60px 0 160px; background: #FDFBF7; border-bottom: 1px solid #E5E7EB;">
         <div class="container-fluid">
             <div style="margin-bottom: 48px; text-align: center;">
+                <img src="VIATA-GHERMAN.png" alt="Om" class="fade-in" style="width:80px; height:auto; opacity:0.8; margin-bottom:24px; display:block; margin-left:auto; margin-right:auto; mix-blend-mode:multiply;">
                 <blockquote style="margin: 0 auto 48px; max-width: 900px; text-align: center; padding: 0 24px;">
                     <p style="font-family: 'Instrument Serif', serif; font-size: 19px; color: #1F2937; font-style: italic; line-height: 1.7; margin-bottom: 12px;">
                         "Music gives a higher type of emotional enjoyment and infuses in all the ecstatic state of Bhava Samadhi or superconsciousness through dissolution in pure feeling."
@@ -1141,41 +1138,11 @@
     </section>
 
 
-    <div class="music-separator fade-in" style="padding: 40px 0; text-align:center; overflow:hidden;">
-        <svg viewBox="0 0 800 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:800px;height:60px;display:block;margin:0 auto;">
-            <!-- Staff lines with gradient -->
-            <defs>
-                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:#FDFBF7;stop-opacity:1"/>
-                    <stop offset="15%" style="stop-color:#6B1B3D;stop-opacity:0.3"/>
-                    <stop offset="50%" style="stop-color:#6B1B3D;stop-opacity:0.7"/>
-                    <stop offset="85%" style="stop-color:#6B1B3D;stop-opacity:0.3"/>
-                    <stop offset="100%" style="stop-color:#FDFBF7;stop-opacity:1"/>
-                </linearGradient>
-                <linearGradient id="noteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#6B1B3D"/>
-                    <stop offset="100%" style="stop-color:#9B2355"/>
-                </linearGradient>
-            </defs>
-            <!-- 5 staff lines -->
-            <line x1="0" y1="18" x2="800" y2="18" stroke="url(#lineGrad)" stroke-width="1"/>
-            <line x1="0" y1="26" x2="800" y2="26" stroke="url(#lineGrad)" stroke-width="1"/>
-            <line x1="0" y1="34" x2="800" y2="34" stroke="url(#lineGrad)" stroke-width="1"/>
-            <line x1="0" y1="42" x2="800" y2="42" stroke="url(#lineGrad)" stroke-width="1"/>
-            <line x1="0" y1="50" x2="800" y2="50" stroke="url(#lineGrad)" stroke-width="1"/>
-            <!-- Quarter note 1 -->
-            <ellipse cx="330" cy="46" rx="6" ry="4.5" fill="url(#noteGrad)" transform="rotate(-20,330,46)"/>
-            <line x1="336" y1="44" x2="336" y2="18" stroke="#6B1B3D" stroke-width="1.5"/>
-            <!-- Quarter note 2 -->
-            <ellipse cx="380" cy="38" rx="6" ry="4.5" fill="url(#noteGrad)" transform="rotate(-20,380,38)"/>
-            <line x1="386" y1="36" x2="386" y2="10" stroke="#6B1B3D" stroke-width="1.5"/>
-            <!-- Quarter note 3 -->
-            <ellipse cx="430" cy="42" rx="6" ry="4.5" fill="url(#noteGrad)" transform="rotate(-20,430,42)"/>
-            <line x1="436" y1="40" x2="436" y2="14" stroke="#6B1B3D" stroke-width="1.5"/>
-            <!-- Half note -->
-            <ellipse cx="480" cy="34" rx="6" ry="4.5" fill="none" stroke="#6B1B3D" stroke-width="1.5" transform="rotate(-20,480,34)"/>
-            <line x1="486" y1="32" x2="486" y2="6" stroke="#6B1B3D" stroke-width="1.5"/>
-        </svg>
+    <!-- LOTUS DIVIDER -->
+    <div class="fade-in" style="padding: 40px 0; text-align:center; display:flex; justify-content:center; align-items:center; gap:16px;">
+        <img src="LOTUS-TRANSPARENT.png" alt="" style="width:36px; height:auto; opacity:0.75;">
+        <img src="LOTUS-TRANSPARENT.png" alt="" style="width:46px; height:auto; opacity:0.85;">
+        <img src="LOTUS-TRANSPARENT.png" alt="" style="width:36px; height:auto; opacity:0.75;">
     </div>
     <!-- MY LINKS -->
     <section class="links" id="links" style="padding: 160px 0; background: #FFFFFF; border-bottom: 1px solid #E5E7EB;">
@@ -1440,3 +1407,16 @@
     });
     </script>
 <script src="lightbox.js"></script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on('init', function(user) {
+                if (!user) {
+                    window.netlifyIdentity.on('login', function() {
+                        document.location.href = '/admin/';
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

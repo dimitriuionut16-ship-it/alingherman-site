@@ -5,96 +5,187 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
+# Logo displayed in the CMS
+logo_url: "https://alingherman.com/favicon.png"
+
 collections:
   - name: "site_content"
-    label: "Site Content"
+    label: "Edit Website Content"
+    description: "Here you can change texts that appear on your website. Click a section, edit the text, then click 'Save' at the top. Changes go live automatically in ~30 seconds."
     files:
-      - label: "Homepage hero"
+
+      # ═══════════════════════════════════════
+      #  HOMEPAGE — HERO (the big intro section)
+      # ═══════════════════════════════════════
+      - label: "Homepage — Hero Section (the big intro at the top)"
         name: "homepage_hero"
         file: "content/site-content.json"
+        description: "This is the first thing visitors see — the large title, subtitle, and buttons at the top of the homepage."
         fields:
-          - { label: "Hero label", name: "home.hero.label", widget: "string" }
-          - { label: "Hero title", name: "home.hero.title", widget: "text" }
-          - { label: "Hero text", name: "home.hero.text", widget: "text" }
-          - { label: "CTA Primary", name: "home.hero.ctaPrimary", widget: "string" }
-          - { label: "CTA Secondary", name: "home.hero.ctaSecondary", widget: "string" }
-      - label: "Navigation"
+          - label: "Small label above the title"
+            name: "home.hero.label"
+            widget: "string"
+            hint: "Currently says 'Contemporary Composer'. This small text appears above your name."
+          - label: "Main title (big text)"
+            name: "home.hero.title"
+            widget: "text"
+            hint: "The large headline visitors see first. Use <br> for a line break. Currently: 'Creating soundscapes that transcend time'"
+          - label: "Description text below the title"
+            name: "home.hero.text"
+            widget: "text"
+            hint: "A short sentence describing your work. Appears below the main title."
+          - label: "Left button text"
+            name: "home.hero.ctaPrimary"
+            widget: "string"
+            hint: "The burgundy button. Currently says 'Explore Work'."
+          - label: "Right button text"
+            name: "home.hero.ctaSecondary"
+            widget: "string"
+            hint: "The outline button. Currently says 'Get in Touch'."
+
+      # ═══════════════════════════════════════
+      #  NAVIGATION — Menu links at the top
+      # ═══════════════════════════════════════
+      - label: "Navigation — Menu links at the top of every page"
         name: "navigation"
         file: "content/site-content.json"
+        description: "These are the menu items in the navigation bar. Change the text of any menu link."
         fields:
-          - { label: "Logo", name: "nav.logo", widget: "string" }
-          - { label: "Presentation", name: "nav.presentation", widget: "string" }
-          - { label: "Compositions", name: "nav.compositions", widget: "string" }
-          - { label: "Instruments", name: "nav.instruments", widget: "string" }
-          - { label: "Pressbook", name: "nav.pressbook", widget: "string" }
-          - { label: "Concerts", name: "nav.concerts", widget: "string" }
-          - { label: "Photos", name: "nav.photos", widget: "string" }
-          - { label: "Links", name: "nav.links", widget: "string" }
-          - { label: "Support", name: "nav.support", widget: "string" }
-          - { label: "Contact", name: "nav.contact", widget: "string" }
-      - label: "About section"
+          - { label: "Site name (top-left logo text)", name: "nav.logo", widget: "string", hint: "Your name in the top-left corner. Currently 'ALIN GHERMAN'." }
+          - { label: "Menu: Presentation", name: "nav.presentation", widget: "string" }
+          - { label: "Menu: Compositions", name: "nav.compositions", widget: "string" }
+          - { label: "Menu: Instruments", name: "nav.instruments", widget: "string" }
+          - { label: "Menu: Pressbook", name: "nav.pressbook", widget: "string" }
+          - { label: "Menu: Concerts", name: "nav.concerts", widget: "string" }
+          - { label: "Menu: Photos", name: "nav.photos", widget: "string" }
+          - { label: "Menu: Links", name: "nav.links", widget: "string" }
+          - { label: "Menu: Support", name: "nav.support", widget: "string" }
+          - { label: "Menu: Contact", name: "nav.contact", widget: "string" }
+
+      # ═══════════════════════════════════════
+      #  ABOUT / BIOGRAPHY section
+      # ═══════════════════════════════════════
+      - label: "Homepage — Biography Section"
         name: "about_section"
         file: "content/site-content.json"
+        description: "The 'Presentation' / biography area on the homepage, below the hero."
         fields:
-          - { label: "Label", name: "about.label", widget: "string" }
-          - { label: "Title", name: "about.title", widget: "string" }
-      - label: "Work section"
+          - label: "Small label above title"
+            name: "about.label"
+            widget: "string"
+            hint: "Currently 'Biography'. The small turquoise text above the section title."
+          - label: "Section title"
+            name: "about.title"
+            widget: "string"
+            hint: "Currently 'Alin Gherman'. The large burgundy title."
+
+      # ═══════════════════════════════════════
+      #  COMPOSITIONS section
+      # ═══════════════════════════════════════
+      - label: "Homepage — Compositions Section (the grid of categories)"
         name: "work_section"
         file: "content/site-content.json"
+        description: "The section with clickable cards for each composition category (Solo, Duos, Orchestra, etc.)."
         fields:
-          - { label: "Label", name: "work.label", widget: "string" }
-          - { label: "Title", name: "work.title", widget: "string" }
-          - { label: "Card 1 Title", name: "work.card1.title", widget: "string" }
-          - { label: "Card 2 Title", name: "work.card2.title", widget: "string" }
-          - { label: "Card 3 Title", name: "work.card3.title", widget: "string" }
-          - { label: "Card 4 Title", name: "work.card4.title", widget: "string" }
-          - { label: "Card 5 Title", name: "work.card5.title", widget: "string" }
-          - { label: "Card 6 Title", name: "work.card6.title", widget: "string" }
-          - { label: "Card 7 Title", name: "work.card7.title", widget: "string" }
-          - { label: "Card 8 Title", name: "work.card8.title", widget: "string" }
-          - { label: "Card 9 Title", name: "work.card9.title", widget: "string" }
-      - label: "Instruments section"
+          - { label: "Small label above title", name: "work.label", widget: "string", hint: "Currently 'Selected Works'." }
+          - { label: "Section title", name: "work.title", widget: "string", hint: "Currently 'Compositions'." }
+          - { label: "Card: Solo instruments", name: "work.card0.title", widget: "string", hint: "First card in the grid." }
+          - { label: "Card: Chamber Orchestra", name: "work.card1.title", widget: "string" }
+          - { label: "Card: Opera", name: "work.card2.title", widget: "string" }
+          - { label: "Card: Organ", name: "work.card3.title", widget: "string" }
+          - { label: "Card: Brass", name: "work.card4.title", widget: "string" }
+          - { label: "Card: Percussion", name: "work.card5.title", widget: "string" }
+          - { label: "Card: Theatre", name: "work.card6.title", widget: "string" }
+          - { label: "Card: Film/Dance/Media", name: "work.card7.title", widget: "string" }
+          - { label: "Card: Electronic", name: "work.card8.title", widget: "string" }
+          - { label: "Card: Computer", name: "work.card9.title", widget: "string" }
+
+      # ═══════════════════════════════════════
+      #  INSTRUMENTS section
+      # ═══════════════════════════════════════
+      - label: "Homepage — Personal Instruments Section"
         name: "instruments_section"
         file: "content/site-content.json"
+        description: "The section about your invented instruments (Metal Cans Chimes, Wood Chimes, etc.)."
         fields:
-          - { label: "Label", name: "instruments.label", widget: "string" }
-          - { label: "Title", name: "instruments.title", widget: "string" }
-          - { label: "Quote", name: "instruments.quote", widget: "text" }
-      - label: "Pressbook header"
-        name: "pressbook_header"
+          - label: "Small label"
+            name: "instruments.label"
+            widget: "string"
+            hint: "Currently 'Custom Instruments'."
+          - label: "Section title"
+            name: "instruments.title"
+            widget: "string"
+            hint: "Currently 'Personal Soundscapes'."
+          - label: "Italic quote"
+            name: "instruments.quote"
+            widget: "text"
+            hint: "The italic quote below the title. Currently '...to make music with some personal sounds...'"
+
+      # ═══════════════════════════════════════
+      #  PRESSBOOK section
+      # ═══════════════════════════════════════
+      - label: "Homepage — Pressbook Section"
+        name: "pressbook_section"
         file: "content/site-content.json"
+        description: "The section showing press mentions and timeline."
         fields:
-          - { label: "Pressbook title", name: "pressbook.title", widget: "string" }
-          - { label: "Pressbook subtitle", name: "pressbook.subtitle", widget: "text" }
-      - label: "Photos section"
+          - { label: "Small label", name: "pressbook.label", widget: "string", hint: "Currently 'Press & Media'." }
+          - { label: "Section title", name: "pressbook.title", widget: "string", hint: "Currently 'Pressbook'." }
+          - { label: "Subtitle / year range", name: "pressbook.subtitle", widget: "text", hint: "Currently 'A Journey Through Music - 1994 - 2015'." }
+
+      # ═══════════════════════════════════════
+      #  PHOTOS section
+      # ═══════════════════════════════════════
+      - label: "Homepage — Photos Section"
         name: "photos_section"
         file: "content/site-content.json"
+        description: "The photo gallery section on the homepage."
         fields:
-          - { label: "Label", name: "photos.label", widget: "string" }
-          - { label: "Title", name: "photos.title", widget: "string" }
-      - label: "Links section"
+          - { label: "Small label", name: "photos.label", widget: "string", hint: "Currently 'Gallery'." }
+          - { label: "Section title", name: "photos.title", widget: "string", hint: "Currently 'Photos'." }
+
+      # ═══════════════════════════════════════
+      #  MY LINKS section
+      # ═══════════════════════════════════════
+      - label: "Homepage — My Links Section"
         name: "links_section"
         file: "content/site-content.json"
+        description: "The section with external links (YouTube, SoundCloud, etc.)."
         fields:
-          - { label: "Label", name: "links.label", widget: "string" }
-          - { label: "Title", name: "links.title", widget: "string" }
-      - label: "Contact section"
+          - { label: "Small label", name: "links.label", widget: "string", hint: "Currently 'Connect'." }
+          - { label: "Section title", name: "links.title", widget: "string", hint: "Currently 'My Links'." }
+
+      # ═══════════════════════════════════════
+      #  CONTACT section
+      # ═══════════════════════════════════════
+      - label: "Homepage — Contact Section (Let's Collaborate)"
         name: "contact_section"
         file: "content/site-content.json"
+        description: "The contact form section at the bottom of the homepage."
         fields:
-          - { label: "Label", name: "contact.label", widget: "string" }
-          - { label: "Title", name: "contact.title", widget: "string" }
-      - label: "Footer"
+          - { label: "Small label", name: "contact.label", widget: "string", hint: "Currently 'Get in Touch'." }
+          - { label: "Section title", name: "contact.title", widget: "string", hint: "Currently 'Let's Collaborate'." }
+
+      # ═══════════════════════════════════════
+      #  FOOTER — bottom of every page
+      # ═══════════════════════════════════════
+      - label: "Footer — Bottom of every page"
         name: "footer"
         file: "content/site-content.json"
+        description: "Text in the dark burgundy footer at the very bottom."
         fields:
-          - { label: "Brand", name: "footer.brand", widget: "string" }
-          - { label: "Copyright", name: "footer.copy", widget: "string" }
-          - { label: "Note", name: "footer.note", widget: "string" }
-          - { label: "Support", name: "footer.support", widget: "string" }
-      - label: "Compositions Percussion"
+          - { label: "Brand name (left side)", name: "footer.brand", widget: "string", hint: "Currently 'ALIN GHERMAN'." }
+          - { label: "Copyright text", name: "footer.copy", widget: "string", hint: "Currently '(c) 2026 All Rights Reserved'." }
+          - { label: "Note text (right side)", name: "footer.note", widget: "string", hint: "Currently 'All compositions protected by copyright'." }
+          - { label: "Support link text", name: "footer.support", widget: "string", hint: "Currently 'Support'. The link to the support page." }
+
+      # ═══════════════════════════════════════
+      #  PERCUSSION PAGE
+      # ═══════════════════════════════════════
+      - label: "Compositions — Percussion Page Title"
         name: "compositions_percussion"
         file: "content/site-content.json"
+        description: "The hero text on the Percussion compositions page."
         fields:
-          - { label: "Hero Label", name: "compositions.percussion.hero.label", widget: "string" }
-          - { label: "Hero Title", name: "compositions.percussion.hero.title", widget: "string" }
+          - { label: "Page label", name: "compositions.percussion.hero.label", widget: "string", hint: "Small text above title. Currently 'Compositions'." }
+          - { label: "Page title", name: "compositions.percussion.hero.title", widget: "string", hint: "Currently 'Percussion Corner'." }
