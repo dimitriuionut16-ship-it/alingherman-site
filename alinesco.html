@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compositions Gallery Archive — Alin Gherman</title>
+    <meta name="description" content="Archive of compositions from the original alingherman.com (1998-2009). Shhh!, Cafe melange, Relations lumineuses.">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6B1B3D">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--burgundy-light:#8B2654;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+        .hero{padding:140px 48px 32px;text-align:center;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'EB Garamond',serif;font-size:clamp(28px,4vw,52px);font-weight:400;color:var(--burgundy);}
+        .hero-subtitle{font-size:14px;color:var(--grey);margin-top:10px;line-height:1.8;}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin:20px auto 0;}
+        .container{max-width:1200px;padding:0 48px 100px;flex:1;margin:0 auto;}
+
+        .cards-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:40px;}
+        .comp-card{background:var(--white);border:1px solid var(--grey-light);overflow:hidden;position:relative;transition:border-color 0.25s,transform 0.2s;display:block;text-decoration:none;color:inherit;padding:28px 32px;text-align:left;}
+        .comp-card:hover{border-color:var(--burgundy);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.08);}
+        .comp-card h2{font-family:'EB Garamond',serif;color:var(--burgundy);font-size:clamp(22px,3vw,30px);font-weight:400;margin-bottom:8px;}
+        .comp-card .meta{font-size:12px;color:var(--turquoise);font-weight:500;letter-spacing:0.5px;margin-bottom:12px;}
+        .comp-card p{font-size:14px;color:var(--grey);line-height:1.7;margin-bottom:14px;}
+        .comp-card .view-link{font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--burgundy);}
+        .comp-card:hover .view-link{color:var(--turquoise);}
+
+        .waveform-bg{position:absolute;right:20px;top:50%;transform:translateY(-50%);opacity:0.06;pointer-events:none;}
+
+        .archive-note{margin-top:48px;padding:20px 24px;border-left:3px solid var(--turquoise);background:rgba(20,184,166,0.04);font-size:13px;color:var(--grey);line-height:1.7;text-align:left;}
+
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+
+        @media(max-width:768px){
+            .nav-content{padding:16px 20px;}
+            .hero{padding:110px 20px 24px;}
+            .container{padding:0 20px 60px;}
+            .footer-content{padding:0 20px;flex-direction:column;gap:8px;text-align:center;}
+            .back-btn{padding:8px 14px;font-size:10px;}
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN<br><span style="font-size:0.7em; font-style:italic; opacity:0.7; font-weight:400; letter-spacing:1px; display:block; text-align:center;">(Hamsa)</span></a>
+            <a href="index.html#work" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Compositions
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">Archive &middot; 1998&ndash;2009</span>
+        <h1 class="hero-title">Compositions Gallery</h1>
+        <p class="hero-subtitle">Selected works from the original alingherman.com website</p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <div class="container">
+        <div class="cards-grid">
+            <a href="3175KZDS.html" class="comp-card">
+                <h2>Shhh! &hellip; the pronunciations</h2>
+                <div class="meta">Opus 57 &middot; 2005 &middot; ca. 6&prime; &middot; speech quartet &amp; newspapers</div>
+                <p>A piece built around three original poems with special pronunciation instructions for the musicians. Dedicated to Michel LYSIGHT and Santiago ABADIA PARADA, Elias BACHOURA, Fran&ccedil;ois HOUTART, Cindy BASSO-VALENTINA (Conservatoire Royal de Bruxelles).</p>
+                <span class="view-link">View details &rarr;</span>
+                <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:48px;"><rect x="0" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="8" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="16" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="24" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="32" y="14" width="3" height="20" rx="1" fill="#6B1B3D"/><rect x="40" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="48" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="56" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="64" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="72" y="16" width="3" height="16" rx="1" fill="#6B1B3D"/><rect x="80" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="88" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/></svg></div>
+            </a>
+
+            <a href="4635VBMN.html" class="comp-card">
+                <h2>Caf&eacute; m&eacute;lange</h2>
+                <div class="meta">Composition for Salton FC-3T</div>
+                <p>A composition exploring the sonic possibilities of the Salton FC-3T.</p>
+                <span class="view-link">View details &rarr;</span>
+                <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:48px;"><rect x="0" y="14" width="3" height="20" rx="1" fill="#6B1B3D"/><rect x="8" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="16" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="24" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="32" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="40" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="48" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="56" y="16" width="3" height="16" rx="1" fill="#6B1B3D"/><rect x="64" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="72" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="80" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="88" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/></svg></div>
+            </a>
+
+            <a href="7398JKEY.html" class="comp-card">
+                <h2>Relations lumineuses</h2>
+                <div class="meta">With lighting sequence for STRAND 520 (v.2.8.5)</div>
+                <p>A composition integrating a programmed lighting sequence for the STRAND 520 console, merging sound and light in performance.</p>
+                <span class="view-link">View details &rarr;</span>
+                <div class="waveform-bg"><svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:48px;"><rect x="0" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="8" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="16" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="24" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="32" y="10" width="3" height="28" rx="1" fill="#6B1B3D"/><rect x="40" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/><rect x="48" y="14" width="3" height="20" rx="1" fill="#6B1B3D"/><rect x="56" y="4" width="3" height="40" rx="1" fill="#6B1B3D"/><rect x="64" y="8" width="3" height="32" rx="1" fill="#6B1B3D"/><rect x="72" y="2" width="3" height="44" rx="1" fill="#6B1B3D"/><rect x="80" y="12" width="3" height="24" rx="1" fill="#6B1B3D"/><rect x="88" y="6" width="3" height="36" rx="1" fill="#6B1B3D"/></svg></div>
+            </a>
+        </div>
+
+        <div class="archive-note">
+            This page is part of the original alingherman.com archive (1998&ndash;2009). These pages have been redesigned to match the current site, while preserving the original content.
+        </div>
+
+        <p style="margin-top:48px;font-size:12px;color:#9CA3AF;font-style:italic;text-align:center;">All compositions are protected by S.A.B.A.M. (Belgium) and U.C.M.R.&ndash;A.D.A. (Rom&acirc;nia) &mdash; &copy; All rights reserved for all countries.</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">ALIN GHERMAN</div>
+            <div class="footer-note">Compositions Gallery &mdash; Archive</div>
+        </div>
+    </footer>
+</body>
+</html>

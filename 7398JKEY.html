@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relations lumineuses — Alin Gherman</title>
+    <meta name="description" content="Relations lumineuses by Alin Gherman — with lighting sequence for STRAND 520. Archive page.">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6B1B3D">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;min-height:100vh;display:flex;flex-direction:column;}
+        .nav{position:fixed;top:0;left:0;right:0;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);z-index:1000;}
+        .nav-content{max-width:1400px;margin:0 auto;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:600;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .nav-links{display:flex;gap:14px;}
+        .nav-links a{font-size:12px;font-weight:500;color:var(--text-dark);text-decoration:none;letter-spacing:0.5px;}
+        .nav-links a:hover{color:var(--burgundy);}
+
+        .hero{padding:120px 40px 30px;max-width:900px;margin:0 auto;text-align:center;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:10px;}
+        .hero-title{font-family:'EB Garamond',serif;font-size:clamp(24px,6vw,44px);color:var(--burgundy);margin:0;}
+        .hero-subtitle{font-size:14px;line-height:1.8;color:var(--grey);margin-top:12px;max-width:680px;margin-left:auto;margin-right:auto;}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin:22px auto 0;}
+
+        .main{flex:1;padding:20px 40px 60px;max-width:900px;margin:0 auto;width:100%;text-align:center;}
+
+        .archive-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--turquoise);border:1px solid var(--turquoise);border-radius:20px;padding:4px 14px;margin-bottom:20px;}
+
+        .card{background:var(--white);text-align:left;border:1px solid var(--grey-light);box-shadow:0 3px 12px rgba(0,0,0,0.08);border-radius:10px;padding:28px 26px;margin-bottom:20px;}
+        .card h2{font-family:'EB Garamond',serif;color:var(--burgundy);font-size:clamp(18px,3.5vw,24px);margin-bottom:12px;}
+        .card p{font-size:14px;color:var(--text-dark);line-height:1.8;margin-bottom:10px;}
+
+        .download-box{text-align:left;display:flex;align-items:center;gap:14px;background:rgba(20,184,166,0.05);border:1px solid rgba(20,184,166,0.2);border-radius:8px;padding:18px 22px;margin:16px 0;}
+        .download-box svg{width:24px;height:24px;fill:var(--turquoise);flex-shrink:0;}
+        .download-box .dl-info{flex:1;}
+        .download-box .dl-info strong{display:block;font-size:14px;color:var(--text-dark);margin-bottom:2px;}
+        .download-box .dl-info span{font-size:12px;color:var(--grey);}
+        .download-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--turquoise);color:#fff;border-radius:5px;font-size:13px;font-weight:500;text-decoration:none;transition:0.25s;flex-shrink:0;}
+        .download-btn:hover{background:#0d9488;}
+
+        .tech-note{text-align:left;background:rgba(107,27,61,0.03);border-left:3px solid var(--burgundy);border-radius:0 8px 8px 0;padding:16px 20px;margin:16px 0;font-size:13px;color:var(--grey);line-height:1.7;}
+
+        .copyright-note{text-align:left;background:rgba(107,27,61,0.03);border-left:3px solid var(--burgundy);border-radius:0 8px 8px 0;padding:16px 20px;margin:16px 0;font-size:13px;color:var(--grey);line-height:1.7;}
+
+        .back-link{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid var(--burgundy);border-radius:5px;color:var(--burgundy);font-weight:500;font-size:13px;text-decoration:none;transition:0.25s;margin-top:10px;}
+        .back-link:hover{background:var(--burgundy);color:#fff;}
+
+        .archive-note{margin-top:30px;text-align:left;padding:20px;border-left:3px solid var(--turquoise);background:rgba(20,184,166,0.04);border-radius:0 8px 8px 0;font-size:13px;color:var(--grey);line-height:1.7;}
+
+        .footer{padding:22px 40px;text-align:center;background:var(--burgundy);color:#fff;font-size:13px;}
+
+        @media(max-width:768px){
+            .nav-content,.main,.footer{padding-left:20px;padding-right:20px;}
+            .hero{padding:100px 20px 20px;}
+            .download-box{flex-direction:column;align-items:flex-start;gap:12px;}
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN<br><span style="font-size:0.7em; font-style:italic; opacity:0.7; font-weight:400; letter-spacing:1px; display:block; text-align:center;">(Hamsa)</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="compositions-chamber.html">Compositions</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">ARCHIVE</span>
+        <h1 class="hero-title">Relations lumineuses</h1>
+        <p class="hero-subtitle">With lighting sequence for STRAND 520</p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <main class="main">
+        <div style="text-align:center;"><span class="archive-badge">Original Site Archive</span>
+
+        <article class="card">
+            <h2>About this composition</h2>
+            <p>Relations lumineuses is a composition that integrates a programmed lighting sequence designed for the STRAND 520 lighting console (v.2.8.5).</p>
+            <p>The lighting sequence is an integral part of the performance, creating a dialogue between sound and light.</p>
+        </article>
+
+        <article class="card">
+            <h2>Lighting sequence download</h2>
+            <p>The lighting sequence programmed for the STRAND 520 (v.2.8.5) is available as a downloadable package.</p>
+            <div class="download-box">
+                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <div class="dl-info">
+                    <strong>RelationsLumineusesLIGHTNINGsequence.zip</strong>
+                    <span>STRAND 520 lighting sequence (v.2.8.5)</span>
+                </div>
+                <a href="zip/RelationsLumineusesLIGHTNINGsequence.zip" class="download-btn" download>Download</a>
+            </div>
+            <div class="tech-note">
+                <strong>Note:</strong> This file was part of the original alingherman.com archive. The download link has been preserved as-is and may no longer be available.
+            </div>
+        </article>
+
+        <div class="copyright-note">
+            <strong>Copyright:</strong> All compositions are protected by <a href="https://www.sabam.be" target="_blank" rel="noopener" style="color:var(--burgundy);">S.A.B.A.M.</a> (Belgium) and A.D.A. (Rom&acirc;nia). All rights reserved for all countries.
+        </div>
+
+        <div style="margin-top:20px;text-align:center;">
+            <a href="alinesco.html" class="back-link">&larr; Back to Archive</a>
+        </div>
+
+        <div class="archive-note">
+            This page is part of the original alingherman.com archive (1998-2009). The content has been preserved; the design has been updated to match the current site.
+        </div>
+    </main>
+
+    <footer class="footer">&copy; 2026 Alin Gherman &mdash; All rights reserved</footer>
+</body>
+</html>
