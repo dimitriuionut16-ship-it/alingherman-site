@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -68,8 +68,8 @@
             --text-dark: #1F2937;
         }
         
-        html { scroll-behavior: smooth; }
-        
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background: var(--cream);
@@ -77,6 +77,8 @@
             line-height: 1.6;
             font-weight: 300;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            width: 100%;
         }
         
         h1, h2, h3, h4 {
@@ -104,8 +106,9 @@
             background: rgba(253, 251, 247, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--grey-light);
+            padding-top: env(safe-area-inset-top);
         }
-        
+
         .nav-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -487,13 +490,13 @@
         .nav-toggle {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            width: 24px; height: 18px;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            width: 44px; height: 44px;
             background: none; border: none;
             cursor: pointer; padding: 0;
             z-index: 1100; flex-shrink: 0;
-            min-width: 44px; min-height: 44px;
-            align-items: center; justify-content: center;
         }
         .nav-toggle span {
             display: block; width: 22px; height: 2px;
@@ -503,64 +506,55 @@
             transform-origin: center;
         }
         .nav-toggle.open span:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
+            transform: translateY(4px) rotate(45deg);
             background: #FFFFFF;
         }
         .nav-toggle.open span:nth-child(2) {
-            transform: translateY(-8px) rotate(-45deg);
+            transform: translateY(-4px) rotate(-45deg);
             background: #FFFFFF;
         }
 
-        /* MOBILE NAV — fullscreen overlay */
-        .nav-links {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-light) 100%);
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            z-index: 1050;
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
-        }
-        .nav-links.open {
-            transform: translateX(0);
-        }
-        .nav-links a {
-            font-size: 1.25rem;
-            letter-spacing: 0.5px;
-            color: #FFFFFF;
-            padding: 0.5rem 1rem;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
+        /* MOBILE NAV — solid burgundy slide-in panel from right (mobile only) */
+        @media (max-width: 899px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: auto;
+                height: 100vh;
+                height: 100dvh;
+                width: 78vw;
+                max-width: 320px;
+                background: #5A1632;
+                opacity: 1;
+                box-shadow: -8px 0 32px rgba(0,0,0,0.45);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1.4rem;
+                z-index: 1050;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+            }
+            .nav-links.open {
+                transform: translateX(0);
+            }
+            .nav-links a {
+                font-size: 1.05rem;
+                letter-spacing: 0.5px;
+                color: #FFFFFF;
+                padding: 0.4rem 1rem;
+                min-height: 40px;
+                display: flex;
+                align-items: center;
+            }
         }
 
         /* TABLET+ — inline nav */
         @media (min-width: 900px) {
             .nav-toggle { display: none; }
-            .nav-links {
-                position: static;
-                flex-direction: row;
-                gap: 2.5rem;
-                background: none;
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
-                transform: none;
-                z-index: auto;
-                transition: none;
-            }
-            .nav-links a {
-                font-size: 0.875rem;
-                letter-spacing: 0.5px;
-                color: var(--text-dark);
-                padding: 0;
-                min-height: auto;
-            }
         }
 
         /* ── MOBILE LAYOUT ── */

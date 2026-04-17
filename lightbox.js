@@ -1,23 +1,26 @@
 /* Lightbox — click any content image to view full size */
 (function () {
+  // Skip if page already has its own custom lightbox (avoid ID/handler conflicts)
+  if (document.getElementById('lb-img') || document.getElementById('lightbox')) return;
+
   // Build overlay once
   var overlay = document.createElement('div');
   overlay.id = 'lb-overlay';
   overlay.innerHTML =
     '<div id="lb-wrap">' +
-      '<img id="lb-img" alt="">' +
+      '<img id="lb-img-global" alt="">' +
       '<button id="lb-close" aria-label="Close">&times;</button>' +
     '</div>';
   document.body.appendChild(overlay);
 
-  var lbImg = document.getElementById('lb-img');
+  var lbImg = document.getElementById('lb-img-global');
   var style = document.createElement('style');
   style.textContent =
     '#lb-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);' +
     'justify-content:center;align-items:center;cursor:zoom-out;}' +
     '#lb-overlay.show{display:flex;}' +
     '#lb-wrap{position:relative;max-width:92vw;max-height:92vh;}' +
-    '#lb-img{max-width:92vw;max-height:92vh;object-fit:contain;border-radius:4px;box-shadow:0 0 40px rgba(0,0,0,.5);}' +
+    '#lb-img-global{max-width:92vw;max-height:92vh;object-fit:contain;border-radius:4px;box-shadow:0 0 40px rgba(0,0,0,.5);}' +
     '#lb-close{position:fixed;top:18px;right:24px;background:none;border:none;color:#fff;' +
     'font-size:40px;cursor:pointer;line-height:1;z-index:10000;font-weight:300;}' +
     '#lb-close:hover{opacity:.7;}';
