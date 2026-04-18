@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duos, Trios, Quartets &amp; Quintets &mdash; Early / Easy Pieces &mdash; Alin Gherman</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <meta name="description" content="Early and easy pieces for duos, trios, quartets and quintets by Alin Gherman — generally before 2002.">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6B1B3D">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;min-height:44px;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+        .hero{padding:140px 48px 32px;text-align:center;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'EB Garamond',serif;font-size:clamp(24px,4vw,48px);font-weight:400;color:var(--burgundy);line-height:1.25;}
+        .hero-note{font-size:13px;color:var(--grey);margin-top:10px;font-style:italic;}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin:20px auto 0;}
+        .container{max-width:1200px;margin:0 auto;padding:0 48px 100px;flex:1;width:100%;}
+        .intro{background:linear-gradient(135deg,#fdf5f8,#f9edf2);padding:24px 32px;margin-bottom:28px;position:relative;overflow:hidden;}
+        .intro::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(transparent 43%,rgba(107,27,61,0.05) 43%,rgba(107,27,61,0.05) 45%,transparent 45%),linear-gradient(transparent 57%,rgba(107,27,61,0.05) 57%,rgba(107,27,61,0.05) 59%,transparent 59%);}
+        .intro-inner{position:relative;z-index:1;}
+        .intro-inner h2{font-family:'EB Garamond',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+        .intro-inner p{font-size:13px;color:var(--grey);margin-top:4px;}
+        .works-list{display:flex;flex-direction:column;gap:8px;}
+        .work-card{background:var(--white);border:1px solid var(--grey-light);padding:20px 28px;transition:border-color 0.25s,transform 0.2s;}
+        .work-card:hover{border-color:var(--burgundy);}
+        .work-kicker{font-size:11px;color:var(--turquoise);letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;}
+        .work-title{font-family:'EB Garamond',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+        .work-meta-inline{font-size:12px;color:var(--grey);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+        .work-desc{font-size:13px;color:var(--text-dark);line-height:1.8;margin-top:10px;}
+        .badge{display:inline-block;padding:3px 9px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-left:6px;vertical-align:middle;background:#FEE2E2;color:#991B1B;}
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+        @media (max-width:768px){
+            .nav-content{padding:14px 24px;}
+            .hero{padding:100px 24px 48px;}
+            .hero-title{font-size:clamp(28px,8vw,48px)!important;}
+            .container{padding:0 24px 80px;}
+            .work-card{padding:16px 18px;}
+            .work-title{font-size:18px;}
+            .footer-content{flex-direction:column;gap:1rem;text-align:center;padding:0 24px;}
+        }
+        @media (max-width:480px){
+            .hero{padding:88px 20px 40px;}
+            .container{padding:0 20px 72px;}
+            .work-title{font-size:16px;}
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN<br><span style="font-size:0.7em; font-style:italic; opacity:0.7; font-weight:400; letter-spacing:1px; display:block; text-align:center;">(Hamsa)</span></a>
+            <a href="compositions-duos.html" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                Back to Duos
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">Early Pieces &mdash; Easy Pieces</span>
+        <h1 class="hero-title">Duos, Trios, Quartets &amp; Quintets</h1>
+        <p class="hero-note">Generally before 2002 &mdash; early and easy pieces</p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <div class="container">
+        <div class="intro">
+            <div class="intro-inner">
+                <h2>Chamber works from the early catalogue</h2>
+                <p>A small selection of early and easy pieces for small chamber groups, from opus 19 (1996) to opus 47 (2001).</p>
+            </div>
+        </div>
+
+        <div class="works-list">
+
+            <div class="work-card">
+                <div class="work-kicker">Cello and Piano &mdash; Dedicated to Raphael Feye</div>
+                <div class="work-title">Le manoir imaginaire</div>
+                <div class="work-meta-inline"><span>opus 47</span><span>2001</span><span>ca. 6&prime;15&Prime;</span></div>
+                <div class="work-desc">Epic consonant music piece. Premiered 18 March 2001 at the Royal Conservatory of Brussels.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">String quartet and Bb clarinet &mdash; Arrangement of opus 46a (Sextuor)</div>
+                <div class="work-title">Missing</div>
+                <div class="work-meta-inline"><span>opus 46b</span><span>2001 / 2005</span><span>ca. 7&prime;26&Prime;</span><span>Excerpt</span></div>
+                <div class="work-desc">Arrangement of the Sextuor for string quartet and Bb clarinet. Revised 2008 &mdash; current version v.1/2008.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Violin and Piano &mdash; Dedicated to Noushka</div>
+                <div class="work-title">Adagio amoroso</div>
+                <div class="work-meta-inline"><span>opus 44 n&deg;1</span><span>2000</span><span>current version: v.2.2 &ndash; 2005</span></div>
+                <div class="work-desc">Romantic miniature &mdash; chamber version of the piano piece of the same name.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Voice and Piano &mdash; Dedicated to Swami Kailasa</div>
+                <div class="work-title">Kailasa</div>
+                <div class="work-meta-inline"><span>opus 19</span><span>1996</span></div>
+                <div class="work-desc">A reference to the Himalayan sacred mountain. Also available for piano solo.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Bassoon &amp; Contrabassoon / 2 Bassoons &mdash; Commissioned by Hansruedi Stoll</div>
+                <div class="work-title">Trotinettst&uuml;ck</div>
+                <div class="work-meta-inline"><span>opus 68</span><span>2007</span></div>
+                <div class="work-desc">Available in four versions: original for bassoon and contrabassoon, an adaptation for two bassoons, and two simplified variants.</div>
+            </div>
+
+        </div>
+
+        <p style="margin-top:48px;font-size:12px;color:#9CA3AF;font-style:italic;text-align:center;">All compositions are protected by S.A.B.A.M. (Belgium) and U.C.M.R.A.D.A. (Rom&acirc;nia) &mdash; &copy; All rights reserved.</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">ALIN GHERMAN</div>
+            <div class="footer-note">Early &amp; Easy Pieces &mdash; Duos, Trios, Quartets &amp; Quintets</div>
+        </div>
+        <div style="text-align:center;padding:8px 0 0;"><img src="paypal-logo.jpg" alt="We accept PayPal" style="height:20px;opacity:0.75;border-radius:2px;background:#fff;padding:2px 6px;"></div>
+    </footer>
+</body>
+</html>

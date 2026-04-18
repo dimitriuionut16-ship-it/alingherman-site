@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano Solo &mdash; Early Pieces &mdash; Alin Gherman</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <meta name="description" content="Early piano solo compositions by Alin Gherman, before September 2000 — opus 14 to 45.">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6B1B3D">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;min-height:44px;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+        .hero{padding:140px 48px 32px;text-align:center;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'EB Garamond',serif;font-size:clamp(24px,4vw,48px);font-weight:400;color:var(--burgundy);line-height:1.25;}
+        .hero-note{font-size:13px;color:var(--grey);margin-top:10px;font-style:italic;}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin:20px auto 0;}
+        .container{max-width:1200px;margin:0 auto;padding:0 48px 100px;flex:1;width:100%;}
+        .intro{background:linear-gradient(135deg,#f8f5ff,#f0ebfa);padding:24px 32px;margin-bottom:28px;position:relative;overflow:hidden;}
+        .intro::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(transparent 43%,rgba(107,27,61,0.05) 43%,rgba(107,27,61,0.05) 45%,transparent 45%),linear-gradient(transparent 57%,rgba(107,27,61,0.05) 57%,rgba(107,27,61,0.05) 59%,transparent 59%);}
+        .intro-inner{position:relative;z-index:1;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+        .intro-inner h2{font-family:'EB Garamond',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+        .intro-inner p{font-size:13px;color:var(--grey);margin-top:4px;}
+        .works-list{display:flex;flex-direction:column;gap:8px;}
+        .work-card{background:var(--white);border:1px solid var(--grey-light);padding:20px 28px;transition:border-color 0.25s,transform 0.2s;position:relative;}
+        .work-card:hover{border-color:var(--burgundy);}
+        .work-kicker{font-size:11px;color:var(--turquoise);letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:6px;}
+        .work-title{font-family:'EB Garamond',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);}
+        .work-meta-inline{font-size:12px;color:var(--grey);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+        .work-desc{font-size:13px;color:var(--text-dark);line-height:1.8;margin-top:10px;}
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+        @media (max-width: 768px){
+            .nav-content{padding:14px 24px;}
+            .hero{padding:100px 24px 48px;}
+            .hero-title{font-size:clamp(28px,8vw,48px)!important;}
+            .container{padding:0 24px 80px;}
+            .work-card{padding:16px 18px;}
+            .work-title{font-size:18px;}
+            .footer-content{flex-direction:column;gap:1rem;text-align:center;padding:0 24px;}
+        }
+        @media (max-width:480px){
+            .hero{padding:88px 20px 40px;}
+            .container{padding:0 20px 72px;}
+            .work-title{font-size:16px;}
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN<br><span style="font-size:0.7em; font-style:italic; opacity:0.7; font-weight:400; letter-spacing:1px; display:block; text-align:center;">(Hamsa)</span></a>
+            <a href="compositions-solo.html" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                Back to Solo Instruments
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">Early Pieces &mdash; Piano Solo</span>
+        <h1 class="hero-title">Early pieces for piano solo</h1>
+        <p class="hero-note">Generally before September 2000 &mdash; opus 14 to 45</p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <div class="container">
+        <div class="intro">
+            <div class="intro-inner">
+                <div>
+                    <h2>An archive of youth works</h2>
+                    <p>Neo-romantic miniatures, dances and &eacute;tudes composed between 1996 and 2000. Many have orchestral versions. Listed by opus number.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="works-list">
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Modern classical</div>
+                <div class="work-title">La danse des fleurs bleues</div>
+                <div class="work-meta-inline"><span>opus 45</span><span>2000</span><span>3&prime;42&Prime;</span></div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Romantic, dedicated to Noushka</div>
+                <div class="work-title">Adagio amoroso</div>
+                <div class="work-meta-inline"><span>opus 44 n&deg;1</span><span>2000</span><span>ca. 1&prime;50&Prime;</span></div>
+                <div class="work-desc">Romantic miniature. Recorded live at the Viva Musica festival (2000).</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo</div>
+                <div class="work-title">M&eacute;lancolie</div>
+                <div class="work-meta-inline"><span>opus 44 n&deg;2</span><span>2000</span><span>ca. 3&prime;</span></div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Prize-winner</div>
+                <div class="work-title">Le Samoura&iuml; et la geisha</div>
+                <div class="work-meta-inline"><span>opus 43</span><span>2000</span><span>ca. 4&prime;50&Prime;</span></div>
+                <div class="work-desc">Inspired by the dramaturgy of Japanese Kabuki theatre. Awarded the &laquo;&nbsp;&Eacute;douard Bastin&nbsp;&raquo; Composition Prize 2001 at the Royal Conservatory of Brussels.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Neo-romantic</div>
+                <div class="work-title">Impromptu</div>
+                <div class="work-meta-inline"><span>opus 42</span><span>1999</span></div>
+                <div class="work-desc">Composed January&ndash;June 1999.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Romanian folklore</div>
+                <div class="work-title">Danse roumaine 3</div>
+                <div class="work-meta-inline"><span>opus 41</span><span>1998&ndash;1999</span></div>
+                <div class="work-desc">Original Romanian dance for piano, composed December 1998&ndash;February 1999.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Neo-romantic, dedicated to Claude Caudron</div>
+                <div class="work-title">Les vagues d&rsquo;Ostende</div>
+                <div class="work-meta-inline"><span>opus 38</span><span>1997&ndash;1998</span><span>ca. 5&prime;32&Prime;</span></div>
+                <div class="work-desc">Neo-romantic piece, December 1997&ndash;1998.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Romanian inspiration</div>
+                <div class="work-title">Au cr&eacute;puscule</div>
+                <div class="work-meta-inline"><span>opus 35</span><span>September 1997</span></div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Romanian style (easy)</div>
+                <div class="work-title">La Danse du sorcier</div>
+                <div class="work-meta-inline"><span>opus 33</span><span>15 April 1997</span></div>
+                <div class="work-desc">Easy to play. An orchestral version is available.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Dedicated to Abb&eacute; Charles Schmitz</div>
+                <div class="work-title">Nostalgie</div>
+                <div class="work-meta-inline"><span>opus 32</span><span>1997</span></div>
+                <div class="work-desc">Very romantic composition.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Neo-romantic</div>
+                <div class="work-title">Une larme</div>
+                <div class="work-meta-inline"><span>opus 31</span><span>March 1997</span></div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Valse, for Aurelia Gherman</div>
+                <div class="work-title">Gramy</div>
+                <div class="work-meta-inline"><span>opus 30</span><span>February 1997</span></div>
+                <div class="work-desc">Valse composed for Aurelia Gherman. An orchestral version is available.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Valse, for Marie-Pierre de Buisseret</div>
+                <div class="work-title">Esp&eacute;rance</div>
+                <div class="work-meta-inline"><span>opus 29</span><span>January 1997</span></div>
+                <div class="work-desc">Valse in classical style. An orchestral version is available.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Romanian style</div>
+                <div class="work-title">Joie de Vivre</div>
+                <div class="work-meta-inline"><span>opus 28</span><span>January 1997</span></div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Maramures region</div>
+                <div class="work-title">M&eacute;lodie de Maramures</div>
+                <div class="work-meta-inline"><span>opus 22</span><span>July 1996</span></div>
+                <div class="work-desc">Composed in Vi&scedil;eul de Jos (Maramure&scedil;, Romania). Orchestral version available.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Dedicated to Dorina Gherman</div>
+                <div class="work-title">Le Nouveau Monde</div>
+                <div class="work-meta-inline"><span>opus 20</span><span>30 April 1996</span></div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Dedicated to Swami Kailasa (Yoga Sivananda, Paris)</div>
+                <div class="work-title">Kailasa</div>
+                <div class="work-meta-inline"><span>opus 19</span><span>1996</span></div>
+                <div class="work-desc">Also arranged for voice and piano.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo</div>
+                <div class="work-title">Brise oc&eacute;anique</div>
+                <div class="work-meta-inline"><span>opus 18</span><span>1&ndash;5 April 1996</span></div>
+                <div class="work-desc">An oceanic breeze.</div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo</div>
+                <div class="work-title">Pour Helo&iuml;se</div>
+                <div class="work-meta-inline"><span>opus 17</span><span>30&ndash;31 March 1996</span></div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; Dedicated to Ms. C&eacute;cile Castiau</div>
+                <div class="work-title">Pour C&eacute;cile</div>
+                <div class="work-meta-inline"><span>opus 16</span><span>19 March 1996</span></div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-kicker">Piano solo &mdash; For mother&rsquo;s birthday</div>
+                <div class="work-title">Anniversaire</div>
+                <div class="work-meta-inline"><span>opus 14</span><span>22 January 1996</span></div>
+                <div class="work-desc">Orchestral version available.</div>
+            </div>
+
+        </div>
+
+        <p style="margin-top:48px;font-size:12px;color:#9CA3AF;font-style:italic;text-align:center;">All compositions are protected by S.A.B.A.M. (Belgium) and U.C.M.R.A.D.A. (Rom&acirc;nia) &mdash; &copy; All rights reserved.</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">ALIN GHERMAN</div>
+            <div class="footer-note">Early Pieces &mdash; Piano Solo (before Sept. 2000)</div>
+        </div>
+        <div style="text-align:center;padding:8px 0 0;"><img src="paypal-logo.jpg" alt="We accept PayPal" style="height:20px;opacity:0.75;border-radius:2px;background:#fff;padding:2px 6px;"></div>
+    </footer>
+</body>
+</html>
