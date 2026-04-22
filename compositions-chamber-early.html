@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chamber Orchestra &mdash; Early Pieces &mdash; Alin Gherman</title>
+    <title>Chamber Ensembles &mdash; Early Pieces &mdash; Alin Gherman</title>
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <meta name="description" content="Early pieces for chamber orchestra by Alin Gherman — before September 2002.">
+    <meta name="description" content="Early pieces for chamber ensembles by Alin Gherman — composed before 2002.">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#6B1B3D">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,23 +44,45 @@
         .work-desc{font-size:13px;color:var(--text-dark);line-height:1.8;margin-top:14px;}
         .detail-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--turquoise);margin-bottom:6px;font-weight:500;}
         .detail-block{margin-top:18px;}
+        .audio-block{min-width:260px;margin-top:8px;}
+        .audio-block audio{max-width:100%;accent-color:var(--burgundy);height:32px;}
+        .media-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px;}
+        .score-btn{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:8px 14px;background:transparent;transition:all 0.25s;}
+        .score-btn:hover{background:var(--burgundy);color:#fff;}
         .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
         .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
         .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
         .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
         @media (max-width:768px){
-            .nav-content{padding:14px 24px;}
-            .hero{padding:100px 24px 48px;}
-            .hero-title{font-size:clamp(28px,8vw,48px)!important;}
-            .container{padding:0 24px 80px;}
-            .work-card{padding:16px 18px;}
-            .work-title{font-size:18px;}
-            .footer-content{flex-direction:column;gap:1rem;text-align:center;padding:0 24px;}
+            .nav-content{padding:14px 20px;}
+            .back-btn{padding:8px 14px;font-size:10px;}
+            .hero{padding:96px 20px 28px;}
+            .hero-title{font-size:clamp(22px,6.5vw,32px)!important;line-height:1.2;}
+            .hero-label{font-size:10px;letter-spacing:2px;}
+            .hero-note{font-size:12px;}
+            .container{padding:0 20px 72px;}
+            .work-card{padding:18px 20px;}
+            .work-title{font-size:19px;line-height:1.25;}
+            .work-kicker{font-size:10px;letter-spacing:1px;}
+            .work-meta-inline{font-size:11px;gap:10px;}
+            .work-desc{font-size:13px;line-height:1.7;}
+            .audio-block{min-width:0;width:100%;}
+            .audio-block audio{width:100%;}
+            .media-row{gap:8px;}
+            .score-btn{font-size:10px;padding:7px 11px;letter-spacing:0.5px;}
+            .detail-label{font-size:9px;letter-spacing:1.5px;}
+            .footer-content{flex-direction:column;gap:0.75rem;text-align:center;padding:0 20px;}
         }
         @media (max-width:480px){
-            .hero{padding:88px 20px 40px;}
-            .container{padding:0 20px 72px;}
-            .work-title{font-size:16px;}
+            .nav-content{padding:12px 16px;}
+            .hero{padding:84px 16px 20px;}
+            .hero-title{font-size:clamp(20px,7vw,26px)!important;}
+            .container{padding:0 16px 60px;}
+            .work-card{padding:16px 16px;}
+            .work-title{font-size:17px;}
+            .work-meta-inline{font-size:10.5px;}
+            .media-row{flex-direction:column;align-items:stretch;}
+            .score-btn{justify-content:center;width:100%;font-size:10.5px;}
         }
     </style>
 </head>
@@ -68,40 +90,38 @@
     <nav class="nav">
         <div class="nav-content">
             <a href="index.html" class="nav-logo">ALIN GHERMAN<br><span style="font-size:0.7em; font-style:italic; opacity:0.7; font-weight:400; letter-spacing:1px; display:block; text-align:center;">(Hamsa)</span></a>
-            <a href="compositions-chamber.html" class="back-btn">
+            <a href="compositions-orchestra.html" class="back-btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-                Back to Chamber
+                Back to Medium &amp; Large Ensembles
             </a>
         </div>
     </nav>
 
     <div class="hero">
-        <span class="hero-label">Early Pieces &mdash; Chamber Orchestra</span>
-        <h1 class="hero-title">Early pieces for chamber orchestra</h1>
-        <p class="hero-note">Before September 2002</p>
+        <span class="hero-label">Early Compositions</span>
+        <h1 class="hero-title">Chamber Ensembles</h1>
+        <p class="hero-note">Composed before 2002</p>
         <div class="hero-divider"></div>
     </div>
 
     <div class="container">
-        <div class="intro">
-            <div class="intro-inner">
-                <h2>A single early work for small ensemble</h2>
-                <p>Premiered at the Royal Conservatory of Brussels, with later chamber arrangement as &laquo;&nbsp;Missing&nbsp;&raquo; (opus 46b).</p>
-            </div>
-        </div>
-
         <div class="works-list">
 
             <div class="work-card">
-                <div class="work-kicker">Flute, Oboe, Bb Clarinet, Tenor Saxophone, Violin &amp; Cello</div>
+                <div class="work-kicker">Flute, Oboe, B&flat; Clarinet, Tenor Saxophone, Violin &amp; Cello</div>
                 <div class="work-title">Sextuor</div>
                 <div class="work-meta-inline"><span>opus 46a</span><span>2001</span><span>ca. 7&prime;26&Prime;</span><span>current version: v.2 / 2001</span></div>
-                <div class="work-desc">A chamber piece for mixed sextet. An arrangement for string quartet and Bb clarinet is available as <em>Missing</em> (opus 46b).</div>
+                <div class="audio-block" onclick="event.stopPropagation()" style="margin-top:14px;">
+                    <audio controls preload="metadata">
+                        <source src="https://archive.org/download/SextuoraudioExcerpt/extraitsextuor.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="work-desc">A chamber piece for mixed sextet. An arrangement for string quartet and B&flat; clarinet is available as <em>Missing</em> (opus 46b &mdash; see <a href="compositions-duos-early.html" style="color:var(--burgundy);text-decoration:underline;">Duos Early</a>).</div>
 
                 <div class="detail-block">
                     <div class="detail-label">First Performance</div>
                     <div style="font-size:13px;color:var(--text-dark);line-height:1.8;">
-                        Flute: Delphine Tchaoussoglou &nbsp;&middot;&nbsp; Oboe: G&eacute;raldine Steyer &nbsp;&middot;&nbsp; Clarinet in Bb: Jean-Philippe Poncin &nbsp;&middot;&nbsp; Tenor saxophone: David Reiland &nbsp;&middot;&nbsp; Violin: Nicolas Draps &nbsp;&middot;&nbsp; Cello: Raphael Feye &nbsp;&middot;&nbsp; Conducted by Michel Lysight.
+                        Flute: Delphine Tchaoussoglou &nbsp;&middot;&nbsp; Oboe: G&eacute;raldine Steyer &nbsp;&middot;&nbsp; Clarinet in B&flat;: Jean-Philippe Poncin &nbsp;&middot;&nbsp; Tenor saxophone: David Reiland &nbsp;&middot;&nbsp; Violin: Nicolas Draps &nbsp;&middot;&nbsp; Cello: Raphael Feye &nbsp;&middot;&nbsp; Conducted by Michel Lysight.
                     </div>
                 </div>
             </div>
@@ -114,7 +134,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">ALIN GHERMAN</div>
-            <div class="footer-note">Early Pieces &mdash; Chamber Orchestra (before Sept. 2002)</div>
+            <div class="footer-note">Early Pieces &mdash; Chamber Ensembles (composed before 2002)</div>
         </div>
         <div style="text-align:center;padding:8px 0 0;"><img src="paypal-logo.jpg" alt="We accept PayPal" style="height:20px;opacity:0.75;border-radius:2px;background:#fff;padding:2px 6px;"></div>
     </footer>

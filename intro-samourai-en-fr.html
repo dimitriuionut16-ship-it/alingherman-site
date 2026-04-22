@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Samoura&iuml; et la geisha &mdash; Introduction (EN / FR) &mdash; Alin Gherman</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <meta name="description" content="Introduction (English / Fran&ccedil;ais) to &laquo;Le Samoura&iuml; et la geisha&raquo; (opus 43, 2000) by Alin Gherman &mdash; &Eacute;douard Bastin 2001 Composition Prize.">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6B1B3D">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--white:#FFFFFF;--cream:#FDFBF7;--burgundy:#6B1B3D;--turquoise:#14B8A6;--grey:#6B7280;--grey-light:#E5E7EB;--text-dark:#1F2937;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,251,247,0.96);backdrop-filter:blur(20px);border-bottom:3px solid var(--burgundy);}
+        .nav-content{max-width:1400px;margin:0 auto;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo{font-size:14px;font-weight:500;letter-spacing:2px;color:var(--burgundy);text-decoration:none;}
+        .back-btn{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:10px 20px;background:transparent;transition:all 0.25s;min-height:44px;}
+        .back-btn:hover{background:var(--burgundy);color:#fff;}
+        .back-btn svg{width:14px;height:14px;transition:transform 0.3s;}
+        .back-btn:hover svg{transform:translateX(-3px);}
+        .hero{padding:140px 48px 32px;text-align:center;max-width:960px;margin:0 auto;}
+        .hero-label{display:block;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--turquoise);margin-bottom:12px;}
+        .hero-title{font-family:'EB Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:400;font-style:italic;color:var(--burgundy);line-height:1.25;}
+        .hero-meta{font-size:12px;color:var(--grey);margin-top:14px;letter-spacing:1px;}
+        .hero-divider{width:40px;height:2px;background:var(--burgundy);margin:24px auto 0;}
+        main{max-width:880px;margin:0 auto;padding:24px 48px 80px;flex:1;width:100%;}
+        .lang-section{background:var(--white);border:1px solid var(--grey-light);padding:36px 40px;margin-bottom:24px;}
+        .facsimile{text-align:center;margin:0 auto 36px;max-width:720px;}
+        .facsimile-caption{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:14px;font-weight:500;}
+        .facsimile img{max-width:100%;height:auto;box-shadow:0 6px 28px rgba(107,27,61,0.12);border:1px solid var(--grey-light);}
+        .lang-flag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--turquoise);margin-bottom:10px;}
+        .lang-title{font-family:'EB Garamond',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--burgundy);margin-bottom:20px;}
+        .lang-body{font-size:15px;color:var(--text-dark);line-height:1.85;}
+        .lang-body p{margin-bottom:14px;}
+        .prize-box{background:linear-gradient(135deg,#f8f5ff,#f0ebfa);padding:20px 28px;margin-top:28px;border-left:3px solid var(--burgundy);}
+        .prize-box strong{color:var(--burgundy);font-weight:500;}
+        .ro-link{margin-top:24px;text-align:center;font-size:13px;}
+        .ro-link a{color:var(--burgundy);text-decoration:underline;font-weight:500;}
+        .ro-link a:hover{color:var(--turquoise);}
+        .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
+        .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
+        .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
+        @media (max-width:768px){
+            .nav-content{padding:14px 20px;}
+            .back-btn{padding:8px 14px;font-size:10px;}
+            .hero{padding:96px 20px 20px;}
+            .hero-title{font-size:clamp(22px,6.5vw,32px)!important;line-height:1.2;}
+            .hero-label{font-size:10px;letter-spacing:2px;}
+            main{padding:20px 20px 60px;}
+            .lang-section{padding:24px 20px;}
+            .lang-title{font-size:19px;}
+            .lang-body{font-size:14px;}
+            .facsimile{margin-bottom:28px;}
+            .facsimile-caption{font-size:9.5px;}
+            .prize-box{padding:16px 20px;font-size:13px;}
+            .footer-content{flex-direction:column;gap:0.75rem;text-align:center;padding:0 20px;}
+        }
+        @media (max-width:480px){
+            .hero{padding:84px 16px 16px;}
+            main{padding:16px 16px 50px;}
+            .lang-section{padding:20px 16px;}
+            .lang-title{font-size:17px;}
+            .lang-body{font-size:13.5px;line-height:1.75;}
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">ALIN GHERMAN<br><span style="font-size:0.7em; font-style:italic; opacity:0.7; font-weight:400; letter-spacing:1px; display:block; text-align:center;">(Hamsa)</span></a>
+            <a href="compositions-solo-early.html" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                Back to Early Pieces
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span class="hero-label">Introduction &mdash; English / Fran&ccedil;ais</span>
+        <h1 class="hero-title">Le Samoura&iuml; et la geisha</h1>
+        <p class="hero-meta">opus 43 &middot; 2000 &middot; ca. 4&prime;50&Prime; &middot; Piano solo</p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <main>
+        <div class="facsimile">
+            <div class="facsimile-caption">Original introduction &mdash; English / Fran&ccedil;ais (2001)</div>
+            <img src="introsamfren.JPG" alt="Introduction to Le Samoura&iuml; et la geisha &mdash; English and French original document" loading="lazy" decoding="async">
+        </div>
+
+        <section class="lang-section">
+            <span class="lang-flag">English</span>
+            <h2 class="lang-title">A celebration of Kabuki theatre</h2>
+            <div class="lang-body">
+                <p>Japanese Kabuki theatre, Nippon tradition, inspired this celebrated modern piece. Exaggeration and expressive force are the distinctive traits of this flamboyant theatre genre, first making its appearance in the 17th&nbsp;century.</p>
+                <p>The word <em>Kabuki</em> means &laquo;&nbsp;to lose balance&nbsp;&raquo;. In this theatre of frivolity, the actors do not sing, but they do everything else &mdash; dance, love, war. The spirit of the poetic moments succeeds against the fighting and hurting everything in this lavish d&eacute;cor.</p>
+                <p>Premiered in concert by Alin Gherman at the Royal Conservatory of Music of Brussels, 31&nbsp;March&nbsp;2001.</p>
+            </div>
+        </section>
+
+        <section class="lang-section">
+            <span class="lang-flag">Fran&ccedil;ais</span>
+            <h2 class="lang-title">Un hommage au th&eacute;&acirc;tre Kabuki</h2>
+            <div class="lang-body">
+                <p>Le th&eacute;&acirc;tre japonais Kabuki, tradition nippone, a inspir&eacute; cette pi&egrave;ce moderne c&eacute;l&eacute;br&eacute;e. L&rsquo;exag&eacute;ration et la force expressive sont les traits distinctifs de ce genre th&eacute;&acirc;tral flamboyant, apparu pour la premi&egrave;re fois au XVII<sup>e</sup>&nbsp;si&egrave;cle.</p>
+                <p>Le mot <em>Kabuki</em> signifie &laquo;&nbsp;perdre l&rsquo;&eacute;quilibre&nbsp;&raquo;. Dans ce th&eacute;&acirc;tre de la frivolit&eacute;, les acteurs ne chantent pas, mais ils font tout le reste &mdash; la danse, l&rsquo;amour, la guerre. L&rsquo;esprit des moments po&eacute;tiques triomphe contre les combats et blesse tout dans ce d&eacute;cor somptueux.</p>
+                <p>Cr&eacute;&eacute; en concert par Alin Gherman au Conservatoire royal de Musique de Bruxelles, le 31&nbsp;mars&nbsp;2001.</p>
+            </div>
+        </section>
+
+        <div class="prize-box">
+            <strong>&laquo;&nbsp;&Eacute;douard Bastin&nbsp;&raquo; 2001 Composition Prize</strong> &mdash; Ciney, Belgium.
+        </div>
+
+        <div style="text-align:center;margin-top:32px;">
+            <a href="samourai geisha.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:12px 22px;transition:all 0.25s;" onmouseover="this.style.background='var(--burgundy)';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='var(--burgundy)';">View Score PREVIEW (1st page)</a>
+            <p style="font-size:11px;color:var(--grey);margin-top:10px;font-style:italic;">Full score (11&nbsp;pages) available by e-mail &mdash; S.A.B.A.M. protected.</p>
+        </div>
+
+        <p class="ro-link"><a href="intro-samourai-ro.html">Citi&scedil;te introducerea &icirc;n rom&acirc;ne&scedil;te &rarr;</a></p>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">ALIN GHERMAN</div>
+            <div class="footer-note">Le Samoura&iuml; et la geisha &mdash; opus 43 (2000)</div>
+        </div>
+    </footer>
+</body>
+</html>

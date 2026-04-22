@@ -29,6 +29,17 @@
         .hero-note a{color:var(--burgundy);}
         .hero-divider{width:40px;height:2px;background:var(--burgundy);margin-top:20px;}
         .container{max-width:1200px;padding:0 48px 100px;flex:1;}
+        .early-link{margin:24px 0 8px;font-size:13px;line-height:1.7;}
+        .early-link-label{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--turquoise);margin-right:10px;}
+        .early-link a{font-family:'EB Garamond',serif;font-size:16px;font-style:italic;color:var(--burgundy);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;}
+        .early-link a:hover{color:var(--turquoise);}
+        .early-link-note{font-size:12px;color:var(--grey);font-style:italic;margin-left:8px;}
+        @media (max-width:640px){
+            .early-link{font-size:12px;}
+            .early-link-label{display:block;margin-bottom:4px;margin-right:0;}
+            .early-link a{font-size:15px;}
+            .early-link-note{display:block;margin-left:0;margin-top:4px;font-size:11.5px;}
+        }
         .toc{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;padding-top:20px;}
         .toc a{padding:8px 20px;border:1px solid var(--burgundy);color:var(--burgundy);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:1px;transition:all 0.22s;}
         .toc a:hover,.toc a.active{background:var(--burgundy);color:#fff;}
@@ -142,6 +153,12 @@
 </div>
 
 <div class="container">
+    <p class="early-link">
+        <span class="early-link-label">Early Pieces</span>
+        <a href="compositions-chamber-early.html">for chamber ensembles</a>
+        <span class="early-link-note">&mdash; composed before 2002, Sextuor (opus 46a) and early ensemble works</span>
+    </p>
+
     <nav class="toc">
         <a href="#chamber">Chamber Ensemble</a>
         <a href="#large">Large Ensemble</a>

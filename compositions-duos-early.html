@@ -6,7 +6,7 @@
     <title>Duos, Trios, Quartets &amp; Quintets &mdash; Early / Easy Pieces &mdash; Alin Gherman</title>
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <meta name="description" content="Early and easy pieces for duos, trios, quartets and quintets by Alin Gherman — generally before 2002.">
+    <meta name="description" content="Early and easy pieces for duos, trios, quartets and quintets by Alin Gherman — composed before 2002.">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#6B1B3D">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,23 +43,56 @@
         .work-meta-inline{font-size:12px;color:var(--grey);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
         .work-desc{font-size:13px;color:var(--text-dark);line-height:1.8;margin-top:10px;}
         .badge{display:inline-block;padding:3px 9px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-left:6px;vertical-align:middle;background:#FEE2E2;color:#991B1B;}
+        .work-subtitle{font-family:'EB Garamond',serif;font-size:14px;font-style:italic;color:var(--grey);margin-top:2px;font-weight:400;}
+        .media-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px;}
+        .audio-block{min-width:260px;margin-top:6px;}
+        .audio-block audio{max-width:100%;accent-color:var(--burgundy);height:32px;}
+        .score-btn{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;text-decoration:none;color:var(--burgundy);border:1px solid var(--burgundy);padding:8px 14px;background:transparent;transition:all 0.25s;}
+        .score-btn:hover{background:var(--burgundy);color:#fff;}
+        .score-btn.locked{border-color:var(--grey);color:var(--grey);}
+        .score-btn.locked:hover{background:var(--grey);color:#fff;}
+        .contact-hint{margin-top:10px;font-size:12px;color:var(--grey);font-style:italic;}
+        .contact-hint a{color:var(--burgundy);text-decoration:underline;font-weight:400;transition:color 0.2s;}
+        .contact-hint a:hover{color:var(--turquoise);}
+        .detail-block{margin-top:16px;padding-top:14px;border-top:1px solid var(--grey-light);}
+        .detail-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--turquoise);margin-bottom:6px;font-weight:500;}
+        .detail-text{font-size:13px;color:var(--text-dark);line-height:1.8;}
         .footer{padding:48px 0;background:var(--burgundy);color:#fff;}
         .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:0 48px;}
         .footer-brand{font-size:13px;font-weight:500;letter-spacing:2px;}
         .footer-note{font-size:12px;color:rgba(255,255,255,0.7);}
         @media (max-width:768px){
-            .nav-content{padding:14px 24px;}
-            .hero{padding:100px 24px 48px;}
-            .hero-title{font-size:clamp(28px,8vw,48px)!important;}
-            .container{padding:0 24px 80px;}
-            .work-card{padding:16px 18px;}
-            .work-title{font-size:18px;}
-            .footer-content{flex-direction:column;gap:1rem;text-align:center;padding:0 24px;}
+            .nav-content{padding:14px 20px;}
+            .back-btn{padding:8px 14px;font-size:10px;}
+            .hero{padding:96px 20px 28px;}
+            .hero-title{font-size:clamp(22px,6.5vw,32px)!important;line-height:1.2;}
+            .hero-label{font-size:10px;letter-spacing:2px;}
+            .hero-note{font-size:12px;}
+            .container{padding:0 20px 72px;}
+            .work-card{padding:18px 20px;}
+            .work-title{font-size:19px;line-height:1.25;}
+            .work-subtitle{font-size:13px;}
+            .work-kicker{font-size:10px;letter-spacing:1px;}
+            .work-meta-inline{font-size:11px;gap:10px;}
+            .work-desc{font-size:13px;line-height:1.7;}
+            .audio-block{min-width:0;width:100%;}
+            .audio-block audio{width:100%;}
+            .media-row{gap:8px;}
+            .score-btn{font-size:10px;padding:7px 11px;letter-spacing:0.5px;}
+            .detail-label{font-size:9px;letter-spacing:1.5px;}
+            .contact-hint{font-size:11px;}
+            .footer-content{flex-direction:column;gap:0.75rem;text-align:center;padding:0 20px;}
         }
         @media (max-width:480px){
-            .hero{padding:88px 20px 40px;}
-            .container{padding:0 20px 72px;}
-            .work-title{font-size:16px;}
+            .nav-content{padding:12px 16px;}
+            .hero{padding:84px 16px 20px;}
+            .hero-title{font-size:clamp(20px,7vw,26px)!important;}
+            .container{padding:0 16px 60px;}
+            .work-card{padding:16px 16px;}
+            .work-title{font-size:17px;}
+            .work-meta-inline{font-size:10.5px;}
+            .media-row{flex-direction:column;align-items:stretch;}
+            .score-btn{justify-content:center;width:100%;font-size:10.5px;}
         }
     </style>
 </head>
@@ -75,55 +108,80 @@
     </nav>
 
     <div class="hero">
-        <span class="hero-label">Early Pieces &mdash; Easy Pieces</span>
+        <span class="hero-label">Early Compositions</span>
         <h1 class="hero-title">Duos, Trios, Quartets &amp; Quintets</h1>
-        <p class="hero-note">Generally before 2002 &mdash; early and easy pieces</p>
+        <p class="hero-note">Composed before 2002 &mdash; early and easy pieces</p>
         <div class="hero-divider"></div>
     </div>
 
     <div class="container">
-        <div class="intro">
-            <div class="intro-inner">
-                <h2>Chamber works from the early catalogue</h2>
-                <p>A small selection of early and easy pieces for small chamber groups, from opus 19 (1996) to opus 47 (2001).</p>
-            </div>
-        </div>
-
         <div class="works-list">
 
             <div class="work-card">
-                <div class="work-kicker">Cello and Piano &mdash; Dedicated to Raphael Feye</div>
+                <div class="work-kicker">Cello and piano</div>
                 <div class="work-title">Le manoir imaginaire</div>
                 <div class="work-meta-inline"><span>opus 47</span><span>2001</span><span>ca. 6&prime;15&Prime;</span></div>
-                <div class="work-desc">Epic consonant music piece. Premiered 18 March 2001 at the Royal Conservatory of Brussels.</div>
+                <div class="audio-block" onclick="event.stopPropagation()" style="margin-top:14px;">
+                    <audio controls preload="metadata">
+                        <source src="https://archive.org/download/LeManoirImaginaireaudioExcerpt/extraitmanoir.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="work-desc">An epic new consonant music piece. First performance: 18&nbsp;March&nbsp;2001 at the Royal Conservatory of Brussels. Dedicated to Raphael Feye.</div>
+                <div class="detail-block">
+                    <div class="media-row">
+                        <a href="scores/preview/Le manoir imaginaire by Alin Gherman (v3)PREVIEW.pdf" target="_blank" class="score-btn" onclick="event.stopPropagation()">Score PREVIEW</a>
+                        <a href="scores/Lemanoirimaginaire(score+part)byAlinGherman(v3).pdf" target="_blank" class="score-btn locked" onclick="event.stopPropagation()">Le manoir imaginaire (v3) &mdash; locked PDF</a>
+                    </div>
+                    <p class="contact-hint"><a href="index.html#contact" onclick="event.stopPropagation()">Contact Alin Gherman to get the code</a></p>
+                </div>
             </div>
 
             <div class="work-card">
                 <div class="work-kicker">String quartet and Bb clarinet &mdash; Arrangement of opus 46a (Sextuor)</div>
                 <div class="work-title">Missing</div>
-                <div class="work-meta-inline"><span>opus 46b</span><span>2001 / 2005</span><span>ca. 7&prime;26&Prime;</span><span>Excerpt</span></div>
-                <div class="work-desc">Arrangement of the Sextuor for string quartet and Bb clarinet. Revised 2008 &mdash; current version v.1/2008.</div>
+                <div class="work-meta-inline"><span>opus 46b</span><span>2001 / 2005</span><span>ca. 7&prime;26&Prime;</span></div>
+                <div class="audio-block" onclick="event.stopPropagation()" style="margin-top:14px;">
+                    <audio controls preload="metadata">
+                        <source src="https://archive.org/download/MissingexcerptMusicScorePreview/extraitmissingquintet.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="work-desc">Arrangement of the <em>Sextuor</em> (opus&nbsp;46a) for string quartet and B&flat; clarinet. Revised 2008 &mdash; current version v.1 / 2008.</div>
+                <div class="detail-block">
+                    <div class="media-row">
+                        <a href="scores/preview/MISSING by Alin GHERMAN (v1) PREVIEW.pdf" target="_blank" class="score-btn" onclick="event.stopPropagation()">Score PREVIEW</a>
+                        <a href="scores/MISSING by Alin GHERMAN (v1).pdf" target="_blank" class="score-btn locked" onclick="event.stopPropagation()">Missing (v1) &mdash; locked PDF</a>
+                    </div>
+                    <p class="contact-hint"><a href="index.html#contact" onclick="event.stopPropagation()">Contact Alin Gherman to get the code</a></p>
+                </div>
             </div>
 
             <div class="work-card">
-                <div class="work-kicker">Violin and Piano &mdash; Dedicated to Noushka</div>
+                <div class="work-kicker">Violin and piano</div>
                 <div class="work-title">Adagio amoroso</div>
-                <div class="work-meta-inline"><span>opus 44 n&deg;1</span><span>2000</span><span>current version: v.2.2 &ndash; 2005</span></div>
-                <div class="work-desc">Romantic miniature &mdash; chamber version of the piano piece of the same name.</div>
+                <div class="work-meta-inline"><span>opus 44 n&deg;1</span><span>2000</span><span>v.2.2 / 2005</span></div>
+                <div class="work-desc">Romantic miniature &mdash; chamber version for violin and piano of the piano piece of the same name. The original piano version was recorded live at the Viva Musica festival, Brussels (2000).</div>
             </div>
 
             <div class="work-card">
-                <div class="work-kicker">Voice and Piano &mdash; Dedicated to Swami Kailasa</div>
+                <div class="work-kicker">Voice and piano &mdash; Dedicated to Swami Kailasa (Yoga Sivananda, Paris)</div>
                 <div class="work-title">Kailasa</div>
                 <div class="work-meta-inline"><span>opus 19</span><span>1996</span></div>
-                <div class="work-desc">A reference to the Himalayan sacred mountain. Also available for piano solo.</div>
+                <div class="work-desc">Dedicated to Swami Kailasa, from the Yoga Sivananda organisation (Centre of Paris). Kailasa is also the name of a holy peak in the Himalayan mountains. Also available for piano solo (see <a href="compositions-solo-early.html" style="color:var(--burgundy);text-decoration:underline;">Piano Solo Early</a>).</div>
             </div>
 
             <div class="work-card">
-                <div class="work-kicker">Bassoon &amp; Contrabassoon / 2 Bassoons &mdash; Commissioned by Hansruedi Stoll</div>
+                <div class="work-kicker">Bassoon &amp; contrabassoon / 2 bassoons</div>
                 <div class="work-title">Trotinettst&uuml;ck</div>
                 <div class="work-meta-inline"><span>opus 68</span><span>2007</span></div>
                 <div class="work-desc">Available in four versions: original for bassoon and contrabassoon, an adaptation for two bassoons, and two simplified variants.</div>
+                <div class="detail-block">
+                    <div class="detail-label">Scores</div>
+                    <div class="media-row">
+                        <a href="scores/Trotinettstuck_(v2_Original_for_2bassoons)_by_Alin_GHERMAN_(secured).pdf" target="_blank" class="score-btn locked" onclick="event.stopPropagation()">Trotinettst&uuml;ck (2 bassoons, v2) &mdash; locked PDF</a>
+                        <a href="scores/Trotinettstuck_(v2_Original_for_Fg_and_Kfg)_by_Alin_GHERMAN_(secured).pdf" target="_blank" class="score-btn locked" onclick="event.stopPropagation()">Trotinettst&uuml;ck (Fg &amp; Kfg, v2) &mdash; locked PDF</a>
+                    </div>
+                    <p class="contact-hint"><a href="index.html#contact" onclick="event.stopPropagation()">Contact Alin Gherman to get the code</a></p>
+                </div>
             </div>
 
         </div>
