@@ -4,6 +4,10 @@
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
 
+# Block all /scores/ PDFs and RTFs from search indexing (password-protected content)
+/scores/*
+  X-Robots-Tag: noindex, nofollow
+
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
 

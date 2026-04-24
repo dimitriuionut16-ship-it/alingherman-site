@@ -1,9 +1,11 @@
 User-agent: *
 Allow: /
 
-# Exclude thank-you pages from indexing
-Disallow: /thanky
-Disallow: /thank-you.html
+# Password-protected score PDFs — never crawl or index.
 Disallow: /scores/
+
+# Note: thank-you pages, legacy pages, and test pages use
+# <meta name="robots" content="noindex, nofollow"> on the page itself.
+# They are crawlable so that crawlers can see the noindex directive.
 
 Sitemap: https://alingherman.com/sitemap.xml

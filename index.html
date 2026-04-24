@@ -3,20 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Alin Gherman — Contemporary Composer</title>\r\n    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <meta name="description" content="Alin Gherman — contemporary composer. Compositions for percussion, orchestra, electronic music, instrumental theatre, and film.">
+    <!-- SEO -->
+    <meta name="description" content="Alin Gherman - contemporary composer. Compositions for percussion, orchestra, electronic music, instrumental theatre, film and invented percussion instruments.">
     <meta name="author" content="Alin Gherman">
     <meta name="robots" content="index, follow">
-    <meta name="google-site-verification" content="6PKhuUOjWzaFjH9atFuckhfN-bmy_oq4b6zHRSC5KEk" />
     <link rel="canonical" href="https://alingherman.com/">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Alin Gherman — Contemporary Composer">
-    <meta property="og:description" content="Compositions for percussion, orchestra, electronic music, instrumental theatre, and film.">
+    <meta property="og:description" content="Alin Gherman - contemporary composer. Compositions for percussion, orchestra, electronic music, instrumental theatre, film and invented percussion instruments.">
     <meta property="og:image" content="https://alingherman.com/pianist-tanar-color-1997.webp">
     <meta property="og:url" content="https://alingherman.com/">
     <meta property="og:type" content="website">
@@ -25,10 +20,15 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Alin Gherman — Contemporary Composer">
-    <meta name="twitter:description" content="Compositions for percussion, orchestra, electronic music, instrumental theatre, and film.">
+    <meta name="twitter:description" content="Alin Gherman - contemporary composer. Compositions for percussion, orchestra, electronic music, instrumental theatre, film and invented percussion instruments.">
     <meta name="twitter:image" content="https://alingherman.com/pianist-tanar-color-1997.webp">
-
-    <!-- PWA -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Alin Gherman — Contemporary Composer</title>\r\n    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+<meta name="google-site-verification" content="6PKhuUOjWzaFjH9atFuckhfN-bmy_oq4b6zHRSC5KEk" />
+<!-- PWA -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#6B1B3D">
     <link rel="apple-touch-icon" href="/favicon.png">
@@ -37,17 +37,42 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Alin Gherman",
-      "jobTitle": "Contemporary Composer",
-      "url": "https://alingherman.com",
-      "image": "https://alingherman.com/pianist-tanar-color-1997.webp",
-      "sameAs": [
-        "https://www.youtube.com/@AlinGherman",
-        "https://soundcloud.com/alin-gherman/tracks",
-        "https://alingherman.bandcamp.com"
-      ],
-      "knowsAbout": ["Contemporary Music", "Percussion", "Electronic Music", "Film Music", "Instrumental Theatre", "Orchestra"]
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://alingherman.com/#person",
+          "name": "Alin Gherman",
+          "alternateName": ["Alin GHERMAN", "Alin Gherman compositor"],
+          "jobTitle": "Contemporary Composer",
+          "description": "Contemporary composer writing for percussion, orchestra, opera, instrumental theatre, electronic media, and invented percussion instruments.",
+          "url": "https://alingherman.com",
+          "image": "https://alingherman.com/pianist-tanar-color-1997.webp",
+          "sameAs": [
+            "https://www.youtube.com/@AlinGherman",
+            "https://soundcloud.com/alin-gherman/tracks",
+            "https://alingherman.bandcamp.com"
+          ],
+          "knowsAbout": [
+            "Contemporary Classical Music",
+            "Percussion",
+            "Electronic Music",
+            "Film Music",
+            "Instrumental Theatre",
+            "Opera",
+            "Orchestra",
+            "Invented Percussion Instruments"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://alingherman.com/#website",
+          "url": "https://alingherman.com",
+          "name": "Alin Gherman",
+          "description": "Official website of contemporary composer Alin Gherman.",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://alingherman.com/#person" }
+        }
+      ]
     }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
