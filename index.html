@@ -10,7 +10,7 @@
     <link rel="canonical" href="https://alingherman.com/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Alin Gherman — Contemporary Composer">
+    <meta property="og:title" content="Alin Gherman (Hamsa) — Contemporary Composer">
     <meta property="og:description" content="Alin Gherman - contemporary composer. Compositions for percussion, orchestra, electronic music, instrumental theatre, film and invented percussion instruments.">
     <meta property="og:image" content="https://alingherman.com/og-share.jpg">
     <meta property="og:url" content="https://alingherman.com/">
@@ -19,7 +19,7 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Alin Gherman — Contemporary Composer">
+    <meta name="twitter:title" content="Alin Gherman (Hamsa) — Contemporary Composer">
     <meta name="twitter:description" content="Alin Gherman - contemporary composer. Compositions for percussion, orchestra, electronic music, instrumental theatre, film and invented percussion instruments.">
     <meta name="twitter:image" content="https://alingherman.com/og-share.jpg">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -291,8 +291,21 @@
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 120px;
+            align-items: start;
         }
-        
+
+        .about-image {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+        }
+
+        @media (max-width: 768px) {
+            .about-image {
+                position: static;
+            }
+        }
+
         .placeholder-img {
             width: 100%;
             height: 100%;
