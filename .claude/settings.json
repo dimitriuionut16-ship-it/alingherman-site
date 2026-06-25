@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Select-String -Path \"c:\\\\Users\\\\IONUT\\\\Desktop\\\\SITE-GHERAM-FULL\\\\photos-composers.html\" -Pattern 'src=\"\\(?!data:\\)[^\"]+\"' | Select-Object LineNumber, @{N='m';E={[regex]::Match\\($_.Line,'src=\"\\(?!data:\\)\\([^\"]+\\)\"'\\).Groups[1].Value}})",
+      "PowerShell(\\(Get-Item \"c:\\\\Users\\\\IONUT\\\\Desktop\\\\SITE-GHERAM-FULL\\\\compositions-film-dance-media.html\"\\).Length / 1KB)"
+    ]
+  }
+}
