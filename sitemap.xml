@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Homepage -->
+  <!-- ═══════════════════════════════════════
+       HOMEPAGE
+  ═══════════════════════════════════════ -->
   <url>
     <loc>https://alingherman.com/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-official-composer-portrait.webp</image:loc>
+      <image:title>Alin Gherman — official portrait of the contemporary composer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-composer-photo-gallery.webp</image:loc>
+      <image:title>Alin Gherman — composer photographs collection</image:title>
+    </image:image>
   </url>
 
-  <!-- Compositions (main) -->
+  <!-- ═══════════════════════════════════════
+       COMPOSITIONS — MAIN
+  ═══════════════════════════════════════ -->
   <url>
     <loc>https://alingherman.com/compositions-percussion.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -83,7 +96,9 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Compositions (early / formative) -->
+  <!-- ═══════════════════════════════════════
+       COMPOSITIONS — EARLY / FORMATIVE
+  ═══════════════════════════════════════ -->
   <url>
     <loc>https://alingherman.com/compositions-solo-early.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -102,8 +117,22 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://alingherman.com/duoearly.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://alingherman.com/chamberorchearly.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 
-  <!-- Invented instruments -->
+  <!-- ═══════════════════════════════════════
+       INVENTED INSTRUMENTS
+  ═══════════════════════════════════════ -->
   <url>
     <loc>https://alingherman.com/metal-cans-chimes.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -115,50 +144,104 @@
     <lastmod>2026-06-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-spoons-forks-chimes.webp</image:loc>
+      <image:title>Metal Spoons and Forks Chimes — invented percussion instrument by Alin Gherman</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/metal-tubes-chimes.html</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-tubes-spoon-chimes.webp</image:loc>
+      <image:title>Metal Tubes Chimes — invented percussion instrument by Alin Gherman</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/wood-chimes.html</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-finished.webp</image:loc>
+      <image:title>Wood Chimes — invented percussion instrument by Alin Gherman</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/glass-chimes.html</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/glass-chimes-becuri.webp</image:loc>
+      <image:title>Glass Chimes — invented percussion instrument made with glass elements, Alin Gherman</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/stone-chimes.html</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-detail.webp</image:loc>
+      <image:title>Stone Chimes — invented percussion instrument made from tuned stones, Alin Gherman</image:title>
+    </image:image>
   </url>
 
-  <!-- Press & biography -->
+  <!-- ═══════════════════════════════════════
+       PRESS, BIOGRAPHY & PHOTOS
+  ═══════════════════════════════════════ -->
   <url>
     <loc>https://alingherman.com/pressbook-timeline-updated.html</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/press-photos.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-official-composer-portrait.webp</image:loc>
+      <image:title>Alin Gherman — official portrait of the contemporary composer</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/portraits.html</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-young-portrait-brussels-1999.webp</image:loc>
+      <image:title>Alin Gherman — young portrait in formal attire, Brussels 1999</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-at-piano-gent-1998.webp</image:loc>
+      <image:title>Alin Gherman at the piano — Flores Juventutis Festival, Gent 1998</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-viva-musica-brussels-2000.webp</image:loc>
+      <image:title>Alin Gherman at the piano — Viva Musica, Brussels 2000</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-portrait-luxembourg-2000.webp</image:loc>
+      <image:title>Alin Gherman — portrait, Luxembourg 2000</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-studio-portrait-hersonisou-2002.webp</image:loc>
+      <image:title>Alin Gherman — studio portrait, Hersonisou, Greece 2002</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-sepia-portrait-crete-2002.webp</image:loc>
+      <image:title>Alin Gherman — sepia portrait, Hersonisou, Crete 2002</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/press-photos.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-official-composer-portrait.webp</image:loc>
+      <image:title>Alin Gherman — press photo, official composer portrait</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/photos-composers.html</loc>
@@ -171,15 +254,81 @@
     <lastmod>2026-06-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/andrei-marcovici-percussion-expo-milano.webp</image:loc>
+      <image:title>Andrei Marcovici playing percussion at EXPO Milano 2015, Alin Gherman composition</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/photos-miscellaneous.html</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-harbour-hersonisou-crete-2002.webp</image:loc>
+      <image:title>Alin Gherman at the harbour, Hersonisou, Crete 2002</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-greek-chapel-hersonisou-crete-2002.webp</image:loc>
+      <image:title>Alin Gherman near a Greek chapel, Hersonisou, Crete 2002</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-mother-aurelia-gherman-brussels-2002.webp</image:loc>
+      <image:title>Alin Gherman with his mother Aurelia Gherman, Brussels 2002</image:title>
+    </image:image>
   </url>
 
-  <!-- Other pages -->
+  <!-- ═══════════════════════════════════════
+       COMPOSITIONS — SPECIFIC WORKS & NOTES
+  ═══════════════════════════════════════ -->
+  <url>
+    <loc>https://alingherman.com/purpleritual.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-full-setup.webp</image:loc>
+      <image:title>Purple Ritual — full percussion setup on stage, composition by Alin Gherman</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-cymbale-closeup.webp</image:loc>
+      <image:title>Purple Ritual — cymbals close-up, percussion composition by Alin Gherman</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-marimba-closeup.webp</image:loc>
+      <image:title>Purple Ritual — marimba close-up, percussion composition by Alin Gherman</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/caudron.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/claude-caudron-pianist-portrait.webp</image:loc>
+      <image:title>Claude Caudron — pianist portrait, in memoriam</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/intro-samourai-en-fr.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <image:image>
+      <image:loc>https://alingherman.com/le-samourai-et-la-geisha-introduction-alin-gherman.webp</image:loc>
+      <image:title>Le Samouraï et la geisha — programme notes introduction by Alin Gherman</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/intro-samourai-ro.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════════
+       OTHER PAGES
+  ═══════════════════════════════════════ -->
   <url>
     <loc>https://alingherman.com/links.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -187,31 +336,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://alingherman.com/purpleritual.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://alingherman.com/support.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/caudron.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/intro-samourai-en-fr.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/intro-samourai-ro.html</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
