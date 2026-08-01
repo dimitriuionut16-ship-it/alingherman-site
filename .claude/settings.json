@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "PowerShell(Select-String -Path \"c:\\\\Users\\\\IONUT\\\\Desktop\\\\SITE-GHERAM-FULL\\\\photos-composers.html\" -Pattern 'src=\"\\(?!data:\\)[^\"]+\"' | Select-Object LineNumber, @{N='m';E={[regex]::Match\\($_.Line,'src=\"\\(?!data:\\)\\([^\"]+\\)\"'\\).Groups[1].Value}})",
-      "PowerShell(\\(Get-Item \"c:\\\\Users\\\\IONUT\\\\Desktop\\\\SITE-GHERAM-FULL\\\\compositions-film-dance-media.html\"\\).Length / 1KB)"
+      "PowerShell(\\(Get-Item \"c:\\\\Users\\\\IONUT\\\\Desktop\\\\SITE-GHERAM-FULL\\\\compositions-film-dance-media.html\"\\).Length / 1KB)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "PowerShell(Start-Process \"http://localhost:8080\")",
+      "PowerShell($size = \\(Get-ChildItem \"C:\\\\Users\\\\IONUT\\\\AppData\\\\Local\\\\claude-cli-nodejs\" -Recurse -File -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum\\).Sum / 1MB; Write-Host \"claude-cli-nodejs: $\\([math]::Round\\($size,1\\)\\) MB\")"
     ]
   }
 }

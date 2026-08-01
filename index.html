@@ -183,16 +183,18 @@
         .hero-score {
             position: absolute;
             right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 520px;
-            height: auto;
+            top: 0;
+            width: 68vw;
+            height: 100%;
+            object-fit: cover;
+            object-position: left center;
             opacity: 0.38;
+            mix-blend-mode: multiply;
             pointer-events: none;
             z-index: 1;
-            mask-image: linear-gradient(to left, rgba(0,0,0,1) 15%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 85%);
-            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 15%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 85%);
-            filter: sepia(0.2) contrast(1.2);
+            mask-image: linear-gradient(80deg, transparent 0%, rgba(0,0,0,0.5) 8%, black 16%);
+            -webkit-mask-image: linear-gradient(80deg, transparent 0%, rgba(0,0,0,0.5) 8%, black 16%);
+            filter: contrast(1.1);
         }
         
         .hero-label {
@@ -600,7 +602,7 @@
         @media (max-width: 899px) {
             .nav-content { padding: 1rem 1.5rem; }
             .hero { padding: 6rem 1.5rem 3.5rem; min-height: 90svh; }
-            .hero-score { width: 220px; right: 0; opacity: 0.28; }
+            .hero-score { width: 65vw; right: 0; opacity: 0.38; }
             .hero-title { font-size: clamp(2rem, 9vw, 3.5rem) !important; }
             .hero-text { font-size: 0.9375rem; max-width: 90vw; }
             .hero-cta { flex-direction: column; align-items: center; gap: 0.75rem; }
@@ -787,7 +789,7 @@
     <!-- HERO -->
     <section class="hero" id="hero-bg">
         <div class="hero-bg"></div>
-        <img src="alin-gherman-agua-aguita-score-2022.webp" alt="" class="hero-score" aria-hidden="true">
+        <img src="alin-gherman-partitura-blend-hero.jpeg" alt="" class="hero-score" aria-hidden="true">
         <span style="position:absolute; bottom:18px; right:28px; font-family:'EB Garamond',serif; font-style:italic; font-size:13px; color:rgba(107,27,61,0.55); z-index:3; letter-spacing:0.3px;">Agua aguita, 2022</span>
         <div class="hero-content" style="position:relative;z-index:2;text-align:center;width:100%;">
             <div class="hero-label" data-content-key="home.hero.label">Contemporary Composer</div>
