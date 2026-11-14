@@ -1,11 +1,13 @@
 User-agent: *
 Allow: /
 
-# Password-protected score PDFs — never crawl or index.
-Disallow: /scores/
+# /scores/ PDFs carry "X-Robots-Tag: noindex, nofollow" (see _headers).
+# They are intentionally NOT disallowed here, so crawlers can read that header.
+# The CMS admin area is not meant for search engines.
+Disallow: /admin/
 
 # Note: thank-you pages, legacy pages, and test pages use
-# <meta name="robots" content="noindex, nofollow"> on the page itself.
+# <meta name="robots" content="noindex"> on the page itself.
 # They are crawlable so that crawlers can see the noindex directive.
 
 Sitemap: https://alingherman.com/sitemap.xml

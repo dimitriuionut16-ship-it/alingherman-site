@@ -131,7 +131,7 @@ collections:
         fields:
           - { label: "Small label", name: "pressbook.label", widget: "string", hint: "Currently 'Press & Media'." }
           - { label: "Section title", name: "pressbook.title", widget: "string", hint: "Currently 'Pressbook'." }
-          - { label: "Subtitle / year range", name: "pressbook.subtitle", widget: "text", hint: "Currently 'A Journey Through Music - 1994 - 2015'." }
+          - { label: "Subtitle / year range", name: "pressbook.subtitle", widget: "text", hint: "Currently 'A Journey Through Music • from 1994'." }
 
       # ═══════════════════════════════════════
       #  PHOTOS section

@@ -1,3 +1,11 @@
 http://alingherman.com/* https://alingherman.com/:splat 301!
 http://www.alingherman.com/* https://alingherman.com/:splat 301!
 https://www.alingherman.com/* https://alingherman.com/:splat 301!
+
+# Private/legacy files that must never be served publicly
+/scores/passwordRULE.rtf  /404.html  404!
+/alinescu.html  /404.html  404!
+/alinescu  /404.html  404!
+
+# Romanian section: custom 404 page (only when no file matches)
+/ro/*  /ro/404.html  404

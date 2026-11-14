@@ -1,339 +1,1137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-
-  <!-- ═══════════════════════════════════════
-       HOMEPAGE
-  ═══════════════════════════════════════ -->
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://alingherman.com/</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/"/>
     <image:image>
       <image:loc>https://alingherman.com/alin-gherman-official-composer-portrait.webp</image:loc>
-      <image:title>Alin Gherman — official portrait of the contemporary composer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-crafting-instruments.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-at-beijing-modern-music-festival.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-om-spiritual-artwork.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://alingherman.com/alin-gherman-composer-photo-gallery.webp</image:loc>
-      <image:title>Alin Gherman — composer photographs collection</image:title>
     </image:image>
-  </url>
-
-  <!-- ═══════════════════════════════════════
-       COMPOSITIONS — MAIN
-  ═══════════════════════════════════════ -->
-  <url>
-    <loc>https://alingherman.com/compositions-percussion.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-solo.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-duos.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-chamber.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-orchestra.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-opera.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-organ.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://alingherman.com/compositions-brass.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-theatre.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-film-dance-media.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-electronic.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-computer.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- ═══════════════════════════════════════
-       COMPOSITIONS — EARLY / FORMATIVE
-  ═══════════════════════════════════════ -->
-  <url>
-    <loc>https://alingherman.com/compositions-solo-early.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/compositions-duos-early.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-brass.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-brass.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-brass.html"/>
   </url>
   <url>
     <loc>https://alingherman.com/compositions-chamber-early.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-chamber-early.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-chamber-early.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-chamber-early.html"/>
   </url>
-
-  <!-- ═══════════════════════════════════════
-       INVENTED INSTRUMENTS
-  ═══════════════════════════════════════ -->
+  <url>
+    <loc>https://alingherman.com/compositions-chamber.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-chamber.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-chamber.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-chamber.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-computer.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-computer.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-computer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-computer.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-duos-early.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-duos-early.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-duos-early.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-duos-early.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-duos.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-duos.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-duos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-duos.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-electronic.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-electronic.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-electronic.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-electronic.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-00-06-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-00-41-04.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-00-48-16.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-01-09-23.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-01-23-17.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-01-45-15.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-film-dance-media.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-film-dance-media.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-film-dance-media.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-film-dance-media.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagtitlen.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagpraesensfilm.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagholzarbeiterfired2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagindustrialscene4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagarbeiter3%2Bmoto.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagindustrialscene6.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/desertfrauhopi1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/desert-frau-hopi-film-still-02-alin-gherman.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/desert-frau-hopi-film-still-03-alin-gherman.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/desert-frau-hopi-film-still-05-alin-gherman.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-opera.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-opera.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-opera.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-opera.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-orchestra.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-orchestra.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-orchestra.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-orchestra.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-organ.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-organ.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-organ.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-organ.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-percussion.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-percussion.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-percussion.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-percussion.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-solo-early.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-solo-early.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-solo-early.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-solo-early.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-solo.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-solo.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-solo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-solo.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/kirill-zwegintsow-recording-session-hkb-bern.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/kirill-zwegintsow-pianist-hkb-bern.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/recording-session-hkb-bern-studio.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/natalia-koziarz-pianist-poland.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/compositions-theatre.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-theatre.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-theatre.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-theatre.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/glass-chimes.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/glass-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/glass-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/glass-chimes.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/glass-chimes-set-b-medium-register.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/glass-chimes-set-b-low-register.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/glass-chimes-set-a-front-view-low-left-medium-centre-high-right.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/glass-chimes-set-b-front-view-low-left-medium-centre-high-right.webp</image:loc>
+    </image:image>
+  </url>
   <url>
     <loc>https://alingherman.com/metal-cans-chimes.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/metal-cans-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/metal-cans-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/metal-cans-chimes.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-photo.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-photo-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-photo-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-photo-4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-set-a-label.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-photo-5.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/metal-spoons-chimes.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/metal-spoons-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/metal-spoons-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/metal-spoons-chimes.html"/>
     <image:image>
       <image:loc>https://alingherman.com/metal-spoons-forks-chimes.webp</image:loc>
-      <image:title>Metal Spoons and Forks Chimes — invented percussion instrument by Alin Gherman</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/metal-tubes-chimes.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/metal-tubes-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/metal-tubes-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/metal-tubes-chimes.html"/>
     <image:image>
-      <image:loc>https://alingherman.com/metal-tubes-spoon-chimes.webp</image:loc>
-      <image:title>Metal Tubes Chimes — invented percussion instrument by Alin Gherman</image:title>
+      <image:loc>https://alingherman.com/metal-tubes-chimes-natural-light-full-view.webp</image:loc>
     </image:image>
-  </url>
-  <url>
-    <loc>https://alingherman.com/wood-chimes.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
     <image:image>
-      <image:loc>https://alingherman.com/wood-chimes-finished.webp</image:loc>
-      <image:title>Wood Chimes — invented percussion instrument by Alin Gherman</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://alingherman.com/glass-chimes.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://alingherman.com/glass-chimes-becuri.webp</image:loc>
-      <image:title>Glass Chimes — invented percussion instrument made with glass elements, Alin Gherman</image:title>
+      <image:loc>https://alingherman.com/metal-tubes-chimes-platform-natural-wood.webp</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/stone-chimes.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/stone-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/stone-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/stone-chimes.html"/>
     <image:image>
-      <image:loc>https://alingherman.com/stone-chimes-detail.webp</image:loc>
-      <image:title>Stone Chimes — invented percussion instrument made from tuned stones, Alin Gherman</image:title>
-    </image:image>
-  </url>
-
-  <!-- ═══════════════════════════════════════
-       PRESS, BIOGRAPHY & PHOTOS
-  ═══════════════════════════════════════ -->
-  <url>
-    <loc>https://alingherman.com/pressbook-timeline-updated.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://alingherman.com/alin-gherman-official-composer-portrait.webp</image:loc>
-      <image:title>Alin Gherman — official portrait of the contemporary composer</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://alingherman.com/portraits.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://alingherman.com/alin-gherman-young-portrait-brussels-1999.webp</image:loc>
-      <image:title>Alin Gherman — young portrait in formal attire, Brussels 1999</image:title>
+      <image:loc>https://alingherman.com/stone-chimes-set-a-back-high-medium.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://alingherman.com/alin-gherman-at-piano-gent-1998.webp</image:loc>
-      <image:title>Alin Gherman at the piano — Flores Juventutis Festival, Gent 1998</image:title>
+      <image:loc>https://alingherman.com/stone-chimes-set-a-front-low.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://alingherman.com/alin-gherman-viva-musica-brussels-2000.webp</image:loc>
-      <image:title>Alin Gherman at the piano — Viva Musica, Brussels 2000</image:title>
+      <image:loc>https://alingherman.com/stone-chimes-set-a-left-side-high-medium-and-low.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://alingherman.com/alin-gherman-portrait-luxembourg-2000.webp</image:loc>
-      <image:title>Alin Gherman — portrait, Luxembourg 2000</image:title>
+      <image:loc>https://alingherman.com/stone-chimes-set-b-stones-before-assembly.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://alingherman.com/alin-gherman-studio-portrait-hersonisou-2002.webp</image:loc>
-      <image:title>Alin Gherman — studio portrait, Hersonisou, Greece 2002</image:title>
+      <image:loc>https://alingherman.com/stone-chimes-set-b-top-manufacturing-details.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://alingherman.com/alin-gherman-sepia-portrait-crete-2002.webp</image:loc>
-      <image:title>Alin Gherman — sepia portrait, Hersonisou, Crete 2002</image:title>
+      <image:loc>https://alingherman.com/stone-chimes-set-b-front-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-set-b-front-right-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-set-b-back-right-high.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://alingherman.com/press-photos.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://alingherman.com/wood-chimes.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/wood-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/wood-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/wood-chimes.html"/>
     <image:image>
-      <image:loc>https://alingherman.com/alin-gherman-official-composer-portrait.webp</image:loc>
-      <image:title>Alin Gherman — press photo, official composer portrait</image:title>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-front-high-medium-high.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-front-high.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-front-right-high-medium-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-back-low-medium-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-back-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-back-low-detail.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-a.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-a-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-a-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-c.webp</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/photos-composers.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://alingherman.com/photos-performers-recent.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/photos-composers.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/photos-composers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/photos-composers.html"/>
     <image:image>
-      <image:loc>https://alingherman.com/andrei-marcovici-percussion-expo-milano.webp</image:loc>
-      <image:title>Andrei Marcovici playing percussion at EXPO Milano 2015, Alin Gherman composition</image:title>
+      <image:loc>https://alingherman.com/eric-gaudibert-alin-gherman.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/from-left-to-right-lee-il-joo-korea-chris-adams-new-zealand-alin.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/georges-aperghis-alin-gherman.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-karol-nepelski.webp</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/photos-miscellaneous.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/photos-miscellaneous.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/photos-miscellaneous.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/photos-miscellaneous.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-miscellaneous-photo.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-miscellaneous-photo-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-miscellaneous-photo-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-miscellaneous-photo-4.webp</image:loc>
+    </image:image>
     <image:image>
       <image:loc>https://alingherman.com/alin-gherman-harbour-hersonisou-crete-2002.webp</image:loc>
-      <image:title>Alin Gherman at the harbour, Hersonisou, Crete 2002</image:title>
     </image:image>
     <image:image>
       <image:loc>https://alingherman.com/alin-gherman-greek-chapel-hersonisou-crete-2002.webp</image:loc>
-      <image:title>Alin Gherman near a Greek chapel, Hersonisou, Crete 2002</image:title>
     </image:image>
     <image:image>
       <image:loc>https://alingherman.com/alin-gherman-with-mother-aurelia-gherman-brussels-2002.webp</image:loc>
-      <image:title>Alin Gherman with his mother Aurelia Gherman, Brussels 2002</image:title>
     </image:image>
   </url>
-
-  <!-- ═══════════════════════════════════════
-       COMPOSITIONS — SPECIFIC WORKS & NOTES
-  ═══════════════════════════════════════ -->
   <url>
-    <loc>https://alingherman.com/purpleritual.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://alingherman.com/photos-performers-recent.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/photos-performers-recent.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/photos-performers-recent.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/photos-performers-recent.html"/>
     <image:image>
-      <image:loc>https://alingherman.com/purple-ritual-full-setup.webp</image:loc>
-      <image:title>Purple Ritual — full percussion setup on stage, composition by Alin Gherman</image:title>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-1.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://alingherman.com/purple-ritual-cymbale-closeup.webp</image:loc>
-      <image:title>Purple Ritual — cymbals close-up, percussion composition by Alin Gherman</image:title>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-2.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://alingherman.com/purple-ritual-marimba-closeup.webp</image:loc>
-      <image:title>Purple Ritual — marimba close-up, percussion composition by Alin Gherman</image:title>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-3.webp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/simon-forster.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/samuel-forster-1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/samuel-forster-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-7.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-8.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-9.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/portraits.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/portraits.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/portraits.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/portraits.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-gura-portitei-2009.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-2012.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-bern-2009.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-black-sea-2009.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-kaserne-hkb-bern-2009.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-black-sea-2007.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-black-sea-2007-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-young-portrait-brussels-1999.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-at-piano-gent-1998.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-viva-musica-brussels-2000.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/press-photos.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/press-photos.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/press-photos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/press-photos.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo-4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo-5.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo-6.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/pressbook-timeline-updated.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/pressbook-timeline-updated.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/pressbook-timeline-updated.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/pressbook-timeline-updated.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/andrei-marcovici-percussion-expo-milano.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/expo-milano-2015-badge-alin-gherman.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/mons-2015-capitale-europeenne-poster.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/sky-of-light-visual-foc.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/repetitie-ansamblu-arsonic-mons.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/iscm-musicarama-2015-hong-kong-poster.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/concert-sky-of-light-proiectie-aarhus.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/solisti-sky-of-light-aarhus-2014.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/performer-body-paint-outdoor-dykai.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/performer-walking-body-paint-dykai.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/alinesco.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/alinesco.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/alinesco.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/alinesco.html"/>
   </url>
   <url>
     <loc>https://alingherman.com/caudron.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/caudron.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/caudron.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/caudron.html"/>
     <image:image>
       <image:loc>https://alingherman.com/claude-caudron-pianist-portrait.webp</image:loc>
-      <image:title>Claude Caudron — pianist portrait, in memoriam</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/intro-samourai-en-fr.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/intro-samourai-en-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://alingherman.com/intro-samourai-en-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/intro-samourai-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/intro-samourai-en-fr.html"/>
     <image:image>
       <image:loc>https://alingherman.com/le-samourai-et-la-geisha-introduction-alin-gherman.webp</image:loc>
-      <image:title>Le Samouraï et la geisha — programme notes introduction by Alin Gherman</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/intro-samourai-ro.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/intro-samourai-en-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://alingherman.com/intro-samourai-en-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/intro-samourai-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/intro-samourai-en-fr.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/introsamro.webp</image:loc>
+    </image:image>
   </url>
-
-  <!-- ═══════════════════════════════════════
-       OTHER PAGES
-  ═══════════════════════════════════════ -->
   <url>
     <loc>https://alingherman.com/links.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/links.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/links.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/links.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/purpleritual.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/purpleritual.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/purpleritual.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/purpleritual.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-set-up-overview.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-set-up-aerial-view.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-set-up-drums-and-score.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-set-up-cymbals-detail.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://alingherman.com/support.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/support.html"/>
   </url>
   <url>
-    <loc>https://alingherman.com/alinesco.html</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://alingherman.com/ro/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/"/>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-official-composer-portrait.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-crafting-instruments.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-at-beijing-modern-music-festival.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-om-spiritual-artwork.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-composer-photo-gallery.webp</image:loc>
+    </image:image>
   </url>
-
+  <url>
+    <loc>https://alingherman.com/ro/compositions-brass.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-brass.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-brass.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-brass.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-chamber-early.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-chamber-early.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-chamber-early.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-chamber-early.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-chamber.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-chamber.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-chamber.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-chamber.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-computer.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-computer.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-computer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-computer.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-duos-early.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-duos-early.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-duos-early.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-duos-early.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-duos.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-duos.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-duos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-duos.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-electronic.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-electronic.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-electronic.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-electronic.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-00-06-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-00-41-04.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-00-48-16.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-01-09-23.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-01-23-17.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/electronic-video-still-tc-01-01-45-15.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-film-dance-media.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-film-dance-media.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-film-dance-media.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-film-dance-media.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagtitlen.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagpraesensfilm.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagholzarbeiterfired2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagindustrialscene4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagarbeiter3%2Bmoto.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/einwerktagindustrialscene6.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/desertfrauhopi1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/desert-frau-hopi-film-still-02-alin-gherman.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/desert-frau-hopi-film-still-03-alin-gherman.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/desert-frau-hopi-film-still-05-alin-gherman.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-opera.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-opera.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-opera.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-opera.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-orchestra.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-orchestra.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-orchestra.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-orchestra.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-organ.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-organ.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-organ.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-organ.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-percussion.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-percussion.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-percussion.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-percussion.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-solo-early.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-solo-early.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-solo-early.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-solo-early.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-solo.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-solo.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-solo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-solo.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/kirill-zwegintsow-recording-session-hkb-bern.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/kirill-zwegintsow-pianist-hkb-bern.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/recording-session-hkb-bern-studio.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/natalia-koziarz-pianist-poland.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/compositions-theatre.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/compositions-theatre.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/compositions-theatre.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/compositions-theatre.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/glass-chimes.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/glass-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/glass-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/glass-chimes.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/glass-chimes-set-b-medium-register.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/glass-chimes-set-b-low-register.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/glass-chimes-set-a-front-view-low-left-medium-centre-high-right.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/glass-chimes-set-b-front-view-low-left-medium-centre-high-right.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/metal-cans-chimes.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/metal-cans-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/metal-cans-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/metal-cans-chimes.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-photo.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-photo-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-photo-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-photo-4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-set-a-label.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-cans-chimes-photo-5.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/metal-spoons-chimes.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/metal-spoons-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/metal-spoons-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/metal-spoons-chimes.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-spoons-forks-chimes.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/metal-tubes-chimes.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/metal-tubes-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/metal-tubes-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/metal-tubes-chimes.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-tubes-chimes-natural-light-full-view.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/metal-tubes-chimes-platform-natural-wood.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/stone-chimes.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/stone-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/stone-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/stone-chimes.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-set-a-back-high-medium.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-set-a-front-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-set-a-left-side-high-medium-and-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-set-b-stones-before-assembly.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-set-b-top-manufacturing-details.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-set-b-front-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-set-b-front-right-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/stone-chimes-set-b-back-right-high.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/wood-chimes.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/wood-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/wood-chimes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/wood-chimes.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-front-high-medium-high.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-front-high.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-front-right-high-medium-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-back-low-medium-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-back-low.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-b-the-queen-back-low-detail.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-a.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-a-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-a-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/wood-chimes-set-c.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/photos-composers.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/photos-composers.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/photos-composers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/photos-composers.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/eric-gaudibert-alin-gherman.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/from-left-to-right-lee-il-joo-korea-chris-adams-new-zealand-alin.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/georges-aperghis-alin-gherman.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-karol-nepelski.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/photos-miscellaneous.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/photos-miscellaneous.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/photos-miscellaneous.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/photos-miscellaneous.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-miscellaneous-photo.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-miscellaneous-photo-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-miscellaneous-photo-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-miscellaneous-photo-4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-harbour-hersonisou-crete-2002.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-greek-chapel-hersonisou-crete-2002.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-mother-aurelia-gherman-brussels-2002.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/photos-performers-recent.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/photos-performers-recent.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/photos-performers-recent.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/photos-performers-recent.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/simon-forster.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/samuel-forster-1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/samuel-forster-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-7.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-8.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-with-performers-9.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/portraits.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/portraits.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/portraits.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/portraits.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-gura-portitei-2009.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-2012.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-bern-2009.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-black-sea-2009.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-kaserne-hkb-bern-2009.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-black-sea-2007.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-black-sea-2007-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-young-portrait-brussels-1999.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-at-piano-gent-1998.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-viva-musica-brussels-2000.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/press-photos.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/press-photos.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/press-photos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/press-photos.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo-4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo-5.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/alin-gherman-press-photo-6.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/pressbook-timeline-updated.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/pressbook-timeline-updated.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/pressbook-timeline-updated.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/pressbook-timeline-updated.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/andrei-marcovici-percussion-expo-milano.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/expo-milano-2015-badge-alin-gherman.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/mons-2015-capitale-europeenne-poster.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/sky-of-light-visual-foc.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/repetitie-ansamblu-arsonic-mons.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/iscm-musicarama-2015-hong-kong-poster.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/concert-sky-of-light-proiectie-aarhus.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/solisti-sky-of-light-aarhus-2014.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/performer-body-paint-outdoor-dykai.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/performer-walking-body-paint-dykai.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/alinesco.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/alinesco.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/alinesco.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/alinesco.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/caudron.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/caudron.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/caudron.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/caudron.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/claude-caudron-pianist-portrait.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/links.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/links.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/links.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/links.html"/>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/purpleritual.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/purpleritual.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/purpleritual.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/purpleritual.html"/>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-set-up-overview.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-set-up-aerial-view.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-set-up-drums-and-score.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://alingherman.com/purple-ritual-set-up-cymbals-detail.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alingherman.com/ro/support.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alingherman.com/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://alingherman.com/ro/support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alingherman.com/support.html"/>
+  </url>
 </urlset>
